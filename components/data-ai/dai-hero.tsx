@@ -1,4 +1,4 @@
-import { ArrowUpRight, Database } from "lucide-react";
+import { ArrowUpRight, Bot } from "lucide-react";
 import { SignalField } from "@/components/geometry/signal-field";
 import { LetsTalkContactLink } from "@/components/modals";
 import { ServiceGlassForm } from "@/components/services";
@@ -13,16 +13,17 @@ export function DaiHero() {
       <div className="svc-header-grid relative z-10 mx-auto grid max-w-[1240px] grid-cols-[1.06fr_0.94fr] items-center gap-[clamp(40px,5vw,72px)] px-8 py-[clamp(84px,10vw,128px)] pb-[clamp(64px,7vw,96px)]">
         <div>
           <div className="mb-6 inline-flex items-center gap-2 rounded-pill border border-white/22 bg-white/[0.07] px-4 py-[7px] font-mono text-white text-xs uppercase tracking-[0.18em] backdrop-blur-sm">
-            <Database className="h-3.5 w-3.5" aria-hidden />
-            AI &amp; Data Innovation
+            <Bot className="h-3.5 w-3.5" aria-hidden />
+            AI Innovation
           </div>
           <h1 className="hero-reveal hero-reveal-1 mb-6 text-balance font-extrabold font-sans text-[clamp(36px,5vw,66px)] text-white leading-none tracking-[-0.03em]">
-            Your partner in AI and data innovation
+            Your partner in AI innovation
             <span className="text-tangerine-400">.</span>
           </h1>
           <p className="hero-reveal hero-reveal-2 mb-8 max-w-[520px] font-sans text-[18.5px] text-white/82 leading-relaxed">
-            Our AI &amp; data services accelerate data and AI adoption to create
-            practical outcomes that strengthen teams and organizations.
+            Our AI services help you design, build, and ship agents, models, and
+            automations that create practical outcomes for your teams and
+            customers.
           </p>
           <div className="flex flex-wrap items-center gap-3.5">
             <LetsTalkContactLink
@@ -39,9 +40,10 @@ export function DaiHero() {
           </div>
         </div>
         <ServiceGlassForm
+          formName="ai-contact"
           title="Start growing your business with us"
           messageLabel="About project"
-          messagePlaceholder="A sentence about your data or AI goals"
+          messagePlaceholder="A sentence about your AI goals"
         />
       </div>
     </section>

@@ -11,7 +11,14 @@ const nextConfig: NextConfig = {
     ],
   },
   async redirects() {
-    return legacyRedirectsForNextConfig();
+    return [
+      ...legacyRedirectsForNextConfig(),
+      {
+        source: "/data-ai",
+        destination: "/ai",
+        permanent: true,
+      },
+    ];
   },
 };
 

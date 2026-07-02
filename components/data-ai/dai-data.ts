@@ -1,20 +1,20 @@
-/** Shared data for the data-ai page (server + client safe). */
+/** Shared data for the AI services page (server + client safe). */
 
 export const DAI_FAQS = [
   {
-    q: "How do we know if our organization is ready for AI and data innovation?",
-    a: "Readiness depends on your current data quality, infrastructure, workflows, and business priorities. Most organizations begin with an assessment to understand gaps in data, architecture, and processes. This helps determine where AI can create the most value and what needs to be improved first. A clear readiness evaluation reduces risk and accelerates adoption.",
+    q: "How do we know if our organization is ready for AI?",
+    a: "Readiness depends on your use cases, workflows, and integration landscape. Most organizations begin with a focused assessment to identify high-value opportunities — agents, automation, RAG, or custom models — and the technical path to production. A clear evaluation reduces risk and accelerates adoption.",
   },
   {
-    q: "How long does it take to implement an AI or data project?",
-    a: "It depends on scope and data maturity. A focused proof of value typically runs a few weeks, while production rollouts span a few months. We work in short, outcome-based phases so you see value early and decide each next step with evidence rather than guesswork.",
+    q: "How long does it take to implement an AI project?",
+    a: "It depends on scope and complexity. A focused proof of value typically runs a few weeks, while production rollouts span a few months. We work in short, outcome-based phases so you see value early and decide each next step with evidence rather than guesswork.",
   },
   {
-    q: "Do we need fully clean or structured data before starting?",
-    a: "No. Most organizations start with imperfect data. Part of our work is assessing, cleaning, and structuring data as we go. We design pipelines and governance that improve data quality continuously rather than waiting for perfection before any value is delivered.",
+    q: "What is RAG and when should we use it?",
+    a: "Retrieval-augmented generation (RAG) grounds LLM responses in your own documents, knowledge bases, and APIs. It is ideal when answers must be accurate, cite sources, and stay within your domain — support, internal search, sales enablement, and compliance-heavy workflows.",
   },
   {
-    q: "Will AI and data solutions integrate with our existing systems?",
+    q: "Will AI solutions integrate with our existing systems?",
     a: "Yes. We build on open standards and connect to your existing stack — cloud platforms, databases, applications, and APIs — so new capabilities extend what you already run instead of replacing it. Interoperability is a design requirement from day one.",
   },
   {

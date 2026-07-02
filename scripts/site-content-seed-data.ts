@@ -33,16 +33,16 @@ export const ABOUT_FAQ = [
 
 export const HOME_SERVICE_META = {
   order: [
-    "Data & AI",
+    "AI",
     "Engineering",
     "Managed Services",
     "Consulting",
     "Marketing Services",
   ],
   meta: {
-    "Data & AI": {
+    AI: {
       shape: "star",
-      desc: "Applied ML, LLMs, RAG and agents — engineered for your data and your domain. We turn unstructured chaos into models your business can trust.",
+      desc: "Applied ML, LLMs, RAG and agents — engineered for your domain. We turn unstructured chaos into models your business can trust.",
     },
     Engineering: {
       shape: "ring",

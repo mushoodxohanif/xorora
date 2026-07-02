@@ -13,52 +13,51 @@ import { DAI_FAQS } from "@/components/data-ai/dai-data";
 import { SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = {
-  title: "AI & Data Services — Data Modernization & Analytics | Xorora",
+  title: "AI Services — Agents, ML & Automation | Xorora",
   description:
-    "AI & Data Services: data modernization, data & AI consulting, data analytics, cloud migration, and AI agent development services by Xorora.",
+    "AI agent development, ML, workflow automation, RAG, generative AI, and conversational AI — production-ready solutions by Xorora.",
   keywords: [
-    "AI & Data Services",
-    "Data Modernization Solutions",
-    "Data Modernization Services",
-    "Data and AI Consulting",
-    "Data Analytics Services in USA",
-    "Cloud Migration Services",
+    "AI Services",
     "AI Agent Development Services",
+    "ML & Data Science Services",
+    "Workflow Automation Services",
+    "RAG Pipelines",
+    "Generative AI",
+    "Conversational AI",
   ],
-  alternates: { canonical: "/data-ai" },
+  alternates: { canonical: "/ai" },
   openGraph: {
-    title: "AI & Data Services | Xorora",
+    title: "AI Services | Xorora",
     description:
-      "AI & Data Services: data modernization, data & AI consulting, data analytics, cloud migration, and AI agent development services.",
-    url: "/data-ai",
+      "AI agent development, ML, workflow automation, RAG, generative AI, and conversational AI — production-ready solutions by Xorora.",
+    url: "/ai",
     siteName: "Xorora",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI & Data Services | Xorora",
+    title: "AI Services | Xorora",
     description:
-      "Data modernization, data & AI consulting, analytics, cloud migration, and AI agent development services.",
+      "AI agents, ML, workflow automation, RAG, generative AI, and conversational AI — engineered for production.",
   },
 };
 
 const SERVICE_CATALOG = [
-  "Data Modernization Services",
-  "Data Analytics Services",
-  "Data & AI Consulting",
-  "Cloud Migration Services",
   "AI Agent Development Services",
   "ML & Data Science Services",
   "Workflow Automation Services",
+  "RAG Pipelines",
+  "Generative AI",
+  "Conversational AI",
 ] as const;
 
 const serviceJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  serviceType: "AI & Data Services",
-  name: "AI & Data Services",
+  serviceType: "AI Services",
+  name: "AI Services",
   description:
-    "AI & Data Services from Xorora: data modernization, data & AI consulting, data analytics, cloud migration, and AI agent development services.",
+    "AI services from Xorora: agent development, ML, workflow automation, RAG pipelines, generative AI, and conversational AI.",
   provider: {
     "@type": "Organization",
     name: "Xorora",
@@ -67,7 +66,7 @@ const serviceJsonLd = {
   areaServed: ["United States", "North America", "Europe", "Asia"],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "AI & Data Services",
+    name: "AI Services",
     itemListElement: SERVICE_CATALOG.map((name) => ({
       "@type": "Offer",
       itemOffered: { "@type": "Service", name },
@@ -98,13 +97,13 @@ const breadcrumbJsonLd = {
     {
       "@type": "ListItem",
       position: 2,
-      name: "AI & Data Services",
-      item: `${SITE_URL}/data-ai`,
+      name: "AI Services",
+      item: `${SITE_URL}/ai`,
     },
   ],
 };
 
-export default function DataAiPage() {
+export default function AiPage() {
   return (
     <div className="bg-surface">
       <script

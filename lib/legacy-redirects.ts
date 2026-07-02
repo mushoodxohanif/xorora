@@ -19,7 +19,7 @@ export const LEGACY_REDIRECTS: Record<string, string> = {
   // Services
   "/Consulting.html": "/consulting",
   "/Engineering.html": "/engineering",
-  "/Data & AI.html": "/data-ai",
+  "/Data & AI.html": "/ai",
   "/Managed Services.html": "/managed-services",
   "/Managed Services v2.html": "/managed-services",
   "/Marketing Services.html": "/marketing-services",

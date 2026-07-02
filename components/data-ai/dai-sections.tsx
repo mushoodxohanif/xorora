@@ -26,7 +26,7 @@ const CHALLENGES = [
   },
   {
     v: "60%",
-    body: "of AI projects fail when organizations lack AI-ready data.",
+    body: "of AI pilots stall when organizations lack a clear path from prototype to production.",
     src: "Gartner",
     lift: "mt-12",
   },
@@ -34,29 +34,9 @@ const CHALLENGES = [
 
 const SERVICES = [
   {
-    icon: "database-zap",
-    name: "Data Modernization Services",
-    body: "Reliable pipelines, warehouses, and lakehouses — data modernization solutions that make your data clean, governed, and analytics-ready.",
-  },
-  {
-    icon: "bar-chart-3",
-    name: "Data Analytics Services",
-    body: "Dashboards, reporting, and decision intelligence — our data analytics services in the USA turn raw data into answers your teams can act on.",
-  },
-  {
-    icon: "compass",
-    name: "Data & AI Consulting",
-    body: "Strategy, roadmaps, and readiness assessments — data and AI consulting that pinpoints where AI creates the most value and how to get there.",
-  },
-  {
-    icon: "cloud",
-    name: "Cloud Migration Services",
-    body: "Modernize and migrate to the cloud with scalable, secure, cost-aware architecture built for AI workloads.",
-  },
-  {
     icon: "bot",
     name: "AI Agent Development Services",
-    body: "Autonomous and assistive agents that automate workflows, reason over your data, and act within guardrails.",
+    body: "Autonomous and assistive agents that automate workflows, reason over your systems, and act within guardrails.",
   },
   {
     icon: "sigma",
@@ -68,16 +48,31 @@ const SERVICES = [
     name: "Workflow Automation Services",
     body: "Connect systems and automate processes end-to-end so your teams spend time on judgment, not busywork.",
   },
+  {
+    icon: "database-zap",
+    name: "RAG Pipelines",
+    body: "Retrieval-augmented generation over your documents and knowledge bases — accurate answers grounded in your content.",
+  },
+  {
+    icon: "sparkles",
+    name: "Generative AI",
+    body: "Custom LLM applications, content generation, and copilots tailored to your domain and brand voice.",
+  },
+  {
+    icon: "message-circle",
+    name: "Conversational AI",
+    body: "Chatbots, voice agents, and multi-turn assistants that handle support, sales, and internal queries at scale.",
+  },
 ] as const;
 
 const EVOLVE = [
   {
-    t: "End-to-end expertise in data & AI",
-    b: "From strategy through to execution, we combine deep technical skill with business insight to deliver solutions that matter.",
+    t: "End-to-end expertise in AI",
+    b: "From strategy through to execution, we combine deep technical skill with business insight to deliver AI solutions that matter.",
   },
   {
     t: "Proven frameworks and modern platforms",
-    b: "We leverage leading technologies and reusable accelerators to scale faster, reduce risk, and deliver value sooner.",
+    b: "We leverage leading LLMs, agent frameworks, and reusable accelerators to scale faster, reduce risk, and deliver value sooner.",
   },
   {
     t: "Teams that integrate with yours",
@@ -85,7 +80,7 @@ const EVOLVE = [
   },
   {
     t: "Business-outcome driven",
-    b: "We focus on tangible business impact — improved decision-making, cost reduction, new revenue streams, or increased operational agility.",
+    b: "We focus on tangible business impact — faster workflows, better decisions, new revenue streams, or increased operational agility.",
   },
 ] as const;
 
@@ -93,22 +88,22 @@ const DELIVER_STEPS = [
   {
     n: "01",
     name: "Discover",
-    body: "We assess your data landscape, goals, and constraints — mapping use cases, data readiness, and the highest-value opportunities before a line of code is written.",
+    body: "We assess your goals, workflows, and constraints — mapping use cases, integration points, and the highest-value AI opportunities before a line of code is written.",
   },
   {
     n: "02",
     name: "Validate",
-    body: "We prototype fast and test against real data and KPIs, proving value and de-risking the approach before full investment.",
+    body: "We prototype fast and test against real scenarios and KPIs, proving value and de-risking the approach before full investment.",
   },
   {
     n: "03",
     name: "Build",
-    body: "We engineer production-grade data pipelines, models, and applications — secure, observable, and built to integrate with your existing stack.",
+    body: "We engineer production-grade agents, models, and applications — secure, observable, and built to integrate with your existing stack.",
   },
   {
     n: "04",
     name: "Scale",
-    body: "Expand AI and data capabilities across teams with a unified operational model. We optimize performance, enhance governance, build evaluation suites, and enable organizational adoption through training, change management, and multi-use-case rollout.",
+    body: "Expand AI capabilities across teams with a unified operational model. We optimize performance, enhance governance, build evaluation suites, and enable adoption through training and multi-use-case rollout.",
   },
 ] as const;
 
@@ -156,7 +151,7 @@ export function DaiChallenges() {
       <SectionHead
         label="The state of play"
         title="The real global challenges."
-        sub="AI adoption is nearly universal — but value is not. The gap is data, governance, and the ability to scale."
+        sub="AI adoption is nearly universal — but value is not. The gap is governance, integration, and the ability to scale."
         className="mb-14 max-w-[720px]"
       />
       <div className="svc-grid3 grid grid-cols-3 items-start gap-6">
@@ -195,19 +190,18 @@ export function DaiServices() {
         <div>
           <Eyebrow className="mb-[18px]">What we engineer</Eyebrow>
           <h2 className="m-0 text-balance font-bold font-sans text-[clamp(30px,4vw,48px)] text-tangerine-500 leading-tight tracking-[-0.02em]">
-            We deliver end-to-end AI &amp; data services
+            We deliver end-to-end AI services
           </h2>
         </div>
         <div className="pt-1.5">
           <p className="mb-[18px] font-medium font-sans text-[17.5px] text-fg1 leading-normal">
-            We design, build, and operationalize solutions that turn insight
+            We design, build, and operationalize AI solutions that turn ambition
             into intelligent action.
           </p>
           <p className="m-0 font-sans text-base text-fg2 leading-relaxed">
-            Our senior-led teams help organizations modernize data foundations,
-            operationalize AI, and connect the full ecosystem — from pipelines
-            and governance to analytics and automation — to accelerate growth
-            and measurable outcomes.
+            Our senior-led teams help organizations ship agents, models, RAG
+            systems, and automations — from prototype to production — to
+            accelerate growth and measurable outcomes.
           </p>
         </div>
       </div>
@@ -247,9 +241,9 @@ export function DaiServices() {
               Not sure where to start?
             </h3>
             <p className="m-0 max-w-[620px] font-sans text-[15.5px] text-white/70 leading-relaxed">
-              Every organization is different. Let&apos;s map your data
-              maturity, your goals, and where AI can make the biggest impact for
-              your team.
+              Every organization is different. Let&apos;s map your AI goals and
+              where intelligent automation can make the biggest impact for your
+              team.
             </p>
           </div>
           <span className="inline-flex items-center gap-2 whitespace-nowrap font-sans font-semibold text-[15px] text-tangerine-400">
@@ -268,7 +262,7 @@ export function DaiEvolve() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_80%_at_82%_14%,rgba(140,175,255,0.55),transparent_56%)]" />
       <div className="relative mx-auto max-w-[1180px]">
         <h2 className="mx-auto mb-14 max-w-[820px] text-balance text-center font-bold font-sans text-[clamp(30px,4.2vw,52px)] text-white leading-tight tracking-[-0.02em]">
-          Data and AI that evolve with your needs
+          AI that evolves with your needs
         </h2>
         <div className="svc-grid4 grid grid-cols-4 gap-5">
           {EVOLVE.map((c) => (
@@ -294,7 +288,7 @@ export function DaiDeliver() {
   return (
     <StepApproach
       label=""
-      title="How we deliver AI and data innovation"
+      title="How we deliver AI innovation"
       steps={[...DELIVER_STEPS]}
       gradientId="daiDeliverDia"
     />
@@ -390,12 +384,12 @@ export function DaiContact() {
         <div className="svc-contact-grid relative grid grid-cols-[0.92fr_1.08fr] gap-[clamp(36px,5vw,64px)]">
           <div>
             <h2 className="mb-[22px] font-extrabold font-sans text-[clamp(30px,3.8vw,46px)] text-white leading-tight tracking-tight">
-              Let&apos;s build with your data.
+              Let&apos;s build with AI.
             </h2>
             <p className="mb-7 max-w-[420px] font-sans text-base text-white/66 leading-relaxed">
-              Tell us about your data, your goals, and where you want AI to make
-              an impact. We respond within one business day with next steps and
-              a preliminary plan.
+              Tell us about your goals and where you want AI to make an impact. We
+              respond within one business day with next steps and a preliminary
+              plan.
             </p>
           </div>
           <div className="flex items-center rounded-(--r-lg) border border-white/10 bg-white/3 p-[clamp(24px,3vw,32px)]">
