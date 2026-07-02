@@ -40,7 +40,6 @@ export function DaiHero() {
           </div>
         </div>
         <ServiceGlassForm
-          formName="ai-contact"
           title="Start growing your business with us"
           messageLabel="About project"
           messagePlaceholder="A sentence about your AI goals"
