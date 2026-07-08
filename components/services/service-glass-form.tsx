@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 
 interface ServiceGlassFormProps {
   title: string;
+  formName?: string;
   messageLabel?: string;
   messagePlaceholder?: string;
   showNda?: boolean;
@@ -16,6 +17,7 @@ interface ServiceGlassFormProps {
 
 export function ServiceGlassForm({
   title,
+  formName,
   messageLabel = "What do you want to solve?",
   messagePlaceholder = "A sentence about your goal",
   showNda = true,
@@ -26,7 +28,10 @@ export function ServiceGlassForm({
   const [nda, setNda] = useState(false);
 
   return (
-    <div className="relative rounded-(--r-xl) border border-white/22 bg-white/9 p-[clamp(28px,3vw,40px)] shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] backdrop-blur-[18px]">
+    <div
+      data-form-name={formName}
+      className="relative rounded-(--r-xl) border border-white/22 bg-white/9 p-[clamp(28px,3vw,40px)] shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] backdrop-blur-[18px]"
+    >
       <div className="pointer-events-none absolute inset-0 rounded-(--r-xl) bg-linear-to-br from-white/14 to-45% to-transparent" />
       <div className="relative">
         {sent ? (
