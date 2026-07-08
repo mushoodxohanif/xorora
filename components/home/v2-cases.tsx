@@ -72,7 +72,8 @@ function CaseCard({
     >
       <Image
         src={img}
-        alt={title}
+        alt={`${title} — ${tag} case study by Xorora`}
+        title={`${title} — ${statLabel}`}
         fill
         sizes="(max-width: 760px) 100vw, 33vw"
         className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"

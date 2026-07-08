@@ -47,7 +47,8 @@ function IndustryTile({
       >
         <Image
           src={ind.headerBg}
-          alt=""
+          alt={ind.metaTitle.replace(/\s*\|\s*Xorora\s*$/, "")}
+          title={`${ind.name} — ${ind.desc}`}
           fill
           sizes="(max-width: 760px) 50vw, 33vw"
           className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"

@@ -27,6 +27,7 @@ export interface IndustryNavItem {
   desc: string;
   href: string;
   headerBg: string;
+  metaTitle: string;
 }
 
 export async function listPublishedIndustryNavItems(): Promise<
@@ -45,6 +46,7 @@ export async function listPublishedIndustryNavItems(): Promise<
     desc: row.navDescription,
     href: `/industries/${row.slug}`,
     headerBg: row.headerBg,
+    metaTitle: row.metaTitle,
   }));
 }
 

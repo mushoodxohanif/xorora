@@ -20,6 +20,7 @@ export function Wordmark({
           : "/assets/logo-wordmark-light-transparent.svg"
       }
       alt="Xorora"
+      title="Xorora — AI development and custom software partner"
       width={0}
       height={0}
       sizes={`${Math.round(height * 4.2)}px`}

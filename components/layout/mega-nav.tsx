@@ -85,7 +85,8 @@ export function MegaNav({ current, onLetsTalk, nav }: MegaNavProps) {
             >
               <Image
                 src="/assets/nav-logo-full.png"
-                alt="Xorora"
+                alt="Xorora — AI Development Partner"
+                title="Xorora — production AI and custom software development"
                 width={0}
                 height={0}
                 sizes="150px"
@@ -100,7 +101,8 @@ export function MegaNav({ current, onLetsTalk, nav }: MegaNavProps) {
               />
               <Image
                 src="/assets/nav-logo-x.png"
-                alt="Xorora"
+                alt="Xorora logo icon"
+                title="Xorora — AI software development partner"
                 width={0}
                 height={0}
                 sizes="40px"
@@ -443,7 +445,8 @@ function FeaturedCaseStudy({
         <div className="relative mb-4 h-[116px] overflow-hidden rounded-(--r-md) border border-white/12">
           <Image
             src={featured.img}
-            alt=""
+            alt={`${featured.title} — case study by Xorora`}
+            title={featured.desc}
             fill
             sizes="328px"
             className="object-cover object-top-left"
