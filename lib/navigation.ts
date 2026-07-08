@@ -77,6 +77,7 @@ export interface NavFeaturedCaseStudy {
   desc: string;
   img: string;
   href: string;
+  metaTitle: string;
   stats: [string, string][];
 }
 
@@ -272,6 +273,7 @@ export const XO_NAV: SiteNavigation = {
     desc: "How we engineered four role-based portals on one shared backend — turning scattered operations into a commercially-ready product.",
     img: "/assets/mocks/portal-business.webp",
     href: ROUTES.caseStudy("unified-ai-voice-operations"),
+    metaTitle: "Unified AI Voice Operations Case Study | Xorora",
     stats: [
       ["4", "portals"],
       ["16mo", "to production"],

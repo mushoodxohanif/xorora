@@ -1,4 +1,8 @@
 import { ROUTES } from "@/lib/navigation";
+import {
+  caseStudyCardAlt,
+  caseStudyCardTitle,
+} from "@/lib/image-seo";
 import type { CaseStudyListItem } from "./types";
 
 export interface CaseStudyCardData {
@@ -8,6 +12,8 @@ export interface CaseStudyCardData {
   title: string;
   stat: string;
   statLabel: string;
+  imageAlt: string;
+  imageTitle: string;
 }
 
 export function toCaseStudyCard(
@@ -17,17 +23,23 @@ export function toCaseStudyCard(
   const metricIndex = options?.metricIndex ?? 0;
   const metric = study.metrics[metricIndex];
 
+  const tag =
+    options?.tag ??
+    study.tags[0] ??
+    study.subtitle.split("·")[0]?.trim() ??
+    "";
+  const title = options?.title ?? study.title.replace(/\.$/, "");
+  const statLabel = metric?.label ?? "";
+
   return {
     href: ROUTES.caseStudy(study.slug),
     img: study.heroImage,
-    tag:
-      options?.tag ??
-      study.tags[0] ??
-      study.subtitle.split("·")[0]?.trim() ??
-      "",
-    title: options?.title ?? study.title.replace(/\.$/, ""),
+    tag,
+    title,
     stat: metric?.value ?? "",
-    statLabel: metric?.label ?? "",
+    statLabel,
+    imageAlt: caseStudyCardAlt(study.metaTitle, tag),
+    imageTitle: caseStudyCardTitle(statLabel, study.lead),
   };
 }
 
@@ -46,18 +58,27 @@ export interface CaseStudyTileData {
   title: string;
   desc: string;
   stats: [string, string][];
+  imageAlt: string;
+  imageTitle: string;
 }
 
 export function toCaseStudyTile(study: CaseStudyListItem): CaseStudyTileData {
+  const tag = study.tags[0] ?? study.subtitle.split("·")[0]?.trim() ?? "";
+  const title = study.title.replace(/\.$/, "");
   return {
     href: ROUTES.caseStudy(study.slug),
     img: study.heroImage,
     tags: study.tags.slice(0, 2),
-    title: study.title.replace(/\.$/, ""),
+    title,
     desc: study.lead,
     stats: study.metrics
       .slice(0, 2)
       .map((metric) => [metric.value, metric.label] as [string, string]),
+    imageAlt: caseStudyCardAlt(study.metaTitle, tag),
+    imageTitle: caseStudyCardTitle(
+      study.metrics[0]?.label ?? title,
+      study.lead,
+    ),
   };
 }
 

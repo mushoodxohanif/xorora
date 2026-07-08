@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { DynamicLucideIcon, SectionHead } from "@/components/solutions/shared";
+import { losonoImageAltTitle } from "@/lib/image-seo";
 import {
   AgentListCard,
   BetterTogether,
@@ -204,7 +205,8 @@ export function LosonoFeatures() {
         visual={
           <LosonoFrame
             src="/assets/losono/prompt.png"
-            alt="Losono prompt configuration with live preview"
+            alt={losonoImageAltTitle("prompt-config").alt}
+            title={losonoImageAltTitle("prompt-config").title}
             url="app.losono.ai/prompt"
           />
         }
@@ -239,7 +241,8 @@ export function LosonoFeatures() {
         visual={
           <LosonoFrame
             src="/assets/losono/forms.png"
-            alt="Losono pre-chat forms with Lead'em sync"
+            alt={losonoImageAltTitle("pre-chat").alt}
+            title={losonoImageAltTitle("pre-chat").title}
             url="app.losono.ai/forms"
           />
         }

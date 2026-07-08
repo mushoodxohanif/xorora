@@ -155,7 +155,10 @@ export function EmHero() {
             </a>
           </div>
         </div>
-        <ServiceGlassForm title="Tell us about your project" />
+        <ServiceGlassForm
+          formName="engagement-models-contact"
+          title="Tell us about your project"
+        />
       </div>
     </section>
   );
@@ -356,6 +359,8 @@ function EmCaseCard({
   title,
   stat,
   statLabel,
+  imageAlt,
+  imageTitle,
 }: CaseStudyCardData) {
   return (
     <Link
@@ -364,7 +369,8 @@ function EmCaseCard({
     >
       <Image
         src={img}
-        alt={title}
+        alt={imageAlt}
+        title={imageTitle}
         fill
         sizes="33vw"
         className="object-cover transition-transform duration-500 group-hover:scale-105"

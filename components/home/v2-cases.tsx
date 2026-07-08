@@ -58,6 +58,8 @@ function CaseCard({
   title,
   stat,
   statLabel,
+  imageAlt,
+  imageTitle,
 }: CaseStudyCardData) {
   return (
     <Link
@@ -72,8 +74,8 @@ function CaseCard({
     >
       <Image
         src={img}
-        alt={`${title} — ${tag} case study by Xorora`}
-        title={`${title} — ${statLabel}`}
+        alt={imageAlt}
+        title={imageTitle}
         fill
         sizes="(max-width: 760px) 100vw, 33vw"
         className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"

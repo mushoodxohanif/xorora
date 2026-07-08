@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 interface BrowserFrameProps {
   src: string;
   alt: string;
+  title?: string;
   url?: string;
   tilt?: boolean;
   glow?: boolean;
@@ -16,6 +17,7 @@ const TRAFFIC_LIGHTS = ["#FF5F57", "#FEBC2E", "#28C840"] as const;
 export function BrowserFrame({
   src,
   alt,
+  title,
   url = "app.xorora.ai",
   tilt = false,
   glow = false,
@@ -53,6 +55,7 @@ export function BrowserFrame({
       <Image
         src={src}
         alt={alt}
+        title={title}
         width={0}
         height={0}
         sizes="(max-width: 1240px) 100vw, 1240px"

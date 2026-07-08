@@ -36,7 +36,16 @@ export async function IndCaseStudies() {
   );
 }
 
-function CaseTile({ href, img, tags, title, desc, stats }: CaseStudyTileData) {
+function CaseTile({
+  href,
+  img,
+  tags,
+  title,
+  desc,
+  stats,
+  imageAlt,
+  imageTitle,
+}: CaseStudyTileData) {
   return (
     <Link
       href={href}
@@ -52,7 +61,8 @@ function CaseTile({ href, img, tags, title, desc, stats }: CaseStudyTileData) {
       <div className="relative h-[190px] overflow-hidden">
         <Image
           src={img}
-          alt={title}
+          alt={imageAlt}
+          title={imageTitle}
           fill
           sizes="33vw"
           className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"

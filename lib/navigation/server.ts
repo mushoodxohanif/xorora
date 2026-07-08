@@ -19,6 +19,7 @@ function mapFeaturedCaseStudy(
     desc: study.lead,
     img: study.heroImage,
     href: ROUTES.caseStudy(study.slug),
+    metaTitle: study.metaTitle,
     stats: study.metrics
       .slice(0, 2)
       .map((metric) => [metric.value, metric.label]),

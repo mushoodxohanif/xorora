@@ -86,6 +86,7 @@ export interface CaseStudySummary {
 }
 
 export interface CaseStudyListItem extends CaseStudySummary {
+  metaTitle: string;
   metrics: Array<Pick<CaseStudyMetric, "value" | "label">>;
 }
 

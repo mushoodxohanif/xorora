@@ -14,7 +14,10 @@ export function CaseStudyLayout({ study }: CaseStudyLayoutProps) {
     <div className="bg-(--bg)">
       <CaseStudyHero study={study} />
       <CaseStudyMetrics metrics={study.metrics} />
-      <CaseStudySections sections={study.sections} />
+      <CaseStudySections
+        sections={study.sections}
+        primaryTag={study.tags[0] ?? "case study"}
+      />
       <CaseStudyBandCta />
       <CaseStudyFinalCta />
     </div>

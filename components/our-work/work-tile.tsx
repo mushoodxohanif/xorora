@@ -1,6 +1,10 @@
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  caseStudyCardAlt,
+  caseStudyCardTitle,
+} from "@/lib/image-seo";
 import type { CaseStudyListItem } from "@/lib/case-studies/types";
 import { ROUTES } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
@@ -15,6 +19,13 @@ function tileTitle(title: string): string {
 
 export function WorkTile({ study }: WorkTileProps) {
   const stats = study.metrics.slice(0, 2);
+  const tag = study.tags[0] ?? study.subtitle.split("·")[0]?.trim() ?? "";
+  const tileTitleText = tileTitle(study.title);
+  const imageAlt = caseStudyCardAlt(study.metaTitle, tag);
+  const imageTitle = caseStudyCardTitle(
+    stats[0]?.label ?? tileTitleText,
+    study.lead,
+  );
 
   return (
     <Link
@@ -40,7 +51,8 @@ export function WorkTile({ study }: WorkTileProps) {
           <div className="relative h-[200px] overflow-hidden">
             <Image
               src={study.heroImage}
-              alt={tileTitle(study.title)}
+              alt={imageAlt}
+              title={imageTitle}
               fill
               sizes="(max-width: 760px) 100vw, 400px"
               className="object-cover object-top-left transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"

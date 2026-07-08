@@ -231,18 +231,24 @@ export function FloatCard({
   );
 }
 
-export function openLightbox(src: string, alt: string) {
+export function openLightbox(src: string, alt: string, title?: string) {
   window.dispatchEvent(
-    new CustomEvent("le-lightbox", { detail: { src, alt } }),
+    new CustomEvent("le-lightbox", { detail: { src, alt, title } }),
   );
 }
 
 export function Lightbox() {
-  const [data, setData] = useState<{ src: string; alt: string } | null>(null);
+  const [data, setData] = useState<{
+    src: string;
+    alt: string;
+    title?: string;
+  } | null>(null);
 
   useEffect(() => {
     const onOpen = (e: Event) => {
-      const detail = (e as CustomEvent<{ src: string; alt: string }>).detail;
+      const detail = (
+        e as CustomEvent<{ src: string; alt: string; title?: string }>
+      ).detail;
       setData(detail);
     };
     const onKey = (e: KeyboardEvent) => {
@@ -336,6 +342,7 @@ export function Lightbox() {
         <Image
           src={data.src}
           alt={data.alt}
+          title={data.title ?? data.alt}
           width={1920}
           height={1080}
           unoptimized
@@ -379,11 +386,13 @@ export function Lightbox() {
 export function Zoomable({
   src,
   alt,
+  title,
   children,
   style,
 }: {
   src: string;
   alt: string;
+  title?: string;
   children: ReactNode;
   style?: CSSProperties;
 }) {
@@ -392,7 +401,7 @@ export function Zoomable({
       type="button"
       aria-label={`View larger: ${alt}`}
       className="le-zoom"
-      onClick={() => openLightbox(src, alt)}
+      onClick={() => openLightbox(src, alt, title)}
       style={{
         position: "relative",
         cursor: "zoom-in",

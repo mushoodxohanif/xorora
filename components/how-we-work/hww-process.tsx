@@ -20,6 +20,7 @@ import {
 import Image from "next/image";
 import { useState } from "react";
 import type { HwwFlows } from "@/lib/content";
+import { processStepAlt, processStepTitle } from "@/lib/image-seo";
 import { cn } from "@/lib/utils";
 import type { HwwStep } from "./hww-data";
 
@@ -214,7 +215,8 @@ function StepVisual({
     >
       <Image
         src={img}
-        alt={title}
+        alt={processStepAlt(n, title)}
+        title={processStepTitle(title)}
         fill
         sizes="50vw"
         className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"

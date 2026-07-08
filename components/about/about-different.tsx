@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { SignalRule } from "@/components/geometry/signal-rule";
+import { brandLogoAlt } from "@/lib/image-seo";
 import { cn } from "@/lib/utils";
 
 const CARDS: Array<{ icon: LucideIcon; title: string; body: string }> = [
@@ -48,7 +49,8 @@ export function AboutDifferent() {
             <span>Our</span>
             <Image
               src="/assets/nav-logo-x.png"
-              alt="X"
+              alt={brandLogoAlt("icon").alt}
+              title={brandLogoAlt("icon").title}
               width={0}
               height={0}
               sizes="52px"

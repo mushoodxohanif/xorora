@@ -6,6 +6,7 @@ import { SignalRule } from "@/components/geometry/signal-rule";
 export function BrowserFrame({
   src,
   alt,
+  title,
   url = "app.xorora.ai",
   style,
   tilt = false,
@@ -13,6 +14,7 @@ export function BrowserFrame({
 }: {
   src: string;
   alt: string;
+  title?: string;
   url?: string;
   style?: CSSProperties;
   tilt?: boolean;
@@ -97,6 +99,7 @@ export function BrowserFrame({
       <Image
         src={src}
         alt={alt}
+        title={title}
         width={1920}
         height={1080}
         unoptimized

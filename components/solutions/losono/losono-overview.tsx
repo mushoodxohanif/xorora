@@ -7,6 +7,7 @@ import {
   SectionHead,
   scrollToId,
 } from "@/components/solutions/shared";
+import { losonoImageAltTitle } from "@/lib/image-seo";
 import {
   LifecycleFlow,
   LosonoFrame,
@@ -83,7 +84,8 @@ export function LosonoOverview() {
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
           <LosonoFrame
             src="/assets/losono/dashboard.png"
-            alt="Losono dashboard with activity, agent seats, status, and traffic"
+            alt={losonoImageAltTitle("dashboard-overview").alt}
+            title={losonoImageAltTitle("dashboard-overview").title}
             url="app.losono.ai/dashboard"
           />
         </div>

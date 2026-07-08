@@ -7,6 +7,7 @@ import {
   DemoButton,
   Zoomable,
 } from "@/components/solutions/shared";
+import { leademImageAltTitle } from "@/lib/image-seo";
 
 const KANBAN = "/assets/leadem/kanban.png";
 
@@ -205,11 +206,13 @@ export function LeademHero() {
         >
           <Zoomable
             src={KANBAN}
-            alt="Lead'em kanban pipeline with drag-and-drop stage columns"
+            alt={leademImageAltTitle("kanban").alt}
+            title={leademImageAltTitle("kanban").title}
           >
             <BrowserFrame
               src={KANBAN}
-              alt="Lead'em kanban pipeline with drag-and-drop stage columns"
+              alt={leademImageAltTitle("kanban").alt}
+              title={leademImageAltTitle("kanban").title}
               url="app.xorora.com/leadem/pipeline"
               glow
             />

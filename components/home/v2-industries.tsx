@@ -4,6 +4,7 @@ import Link from "next/link";
 import { NavIcon } from "@/components/ui/nav-icon";
 import { listPublishedIndustryNavItems } from "@/lib/industries/queries";
 import type { NavIconName } from "@/lib/navigation";
+import { industryTileAlt, industryTileTitle } from "@/lib/image-seo";
 import { cn } from "@/lib/utils";
 import { DarkHead, DarkSurface, V2Rise } from "./v2-shared";
 
@@ -47,8 +48,8 @@ function IndustryTile({
       >
         <Image
           src={ind.headerBg}
-          alt={ind.metaTitle.replace(/\s*\|\s*Xorora\s*$/, "")}
-          title={`${ind.name} — ${ind.desc}`}
+          alt={industryTileAlt(ind.metaTitle)}
+          title={industryTileTitle(ind.name, ind.desc)}
           fill
           sizes="(max-width: 760px) 50vw, 33vw"
           className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"

@@ -1,4 +1,8 @@
 import type { CaseStudy } from "@/lib/case-studies/types";
+import {
+  caseStudyHeroAlt,
+  caseStudyHeroTitle,
+} from "@/lib/image-seo";
 import { BrowserFrame } from "./browser-frame";
 import { CaseStudyCta } from "./case-study-cta";
 import { CaseStudyMetaBar } from "./case-study-meta-bar";
@@ -110,7 +114,11 @@ export function CaseStudyHero({ study }: CaseStudyHeroProps) {
         <div className="cs-header-art relative">
           <BrowserFrame
             src={study.heroImage}
-            alt={`${study.subtitle} dashboard`}
+            alt={caseStudyHeroAlt(
+              study.metaTitle,
+              study.tags[0] ?? study.subtitle.split("·")[0]?.trim() ?? "case study",
+            )}
+            title={caseStudyHeroTitle(study.title)}
             url={study.heroUrl ?? "app.xorora.ai"}
             glow
           />

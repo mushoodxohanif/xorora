@@ -4,6 +4,7 @@ import { Bot, Plus } from "lucide-react";
 import Image from "next/image";
 import { type CSSProperties, Fragment, type ReactNode } from "react";
 import { DynamicLucideIcon } from "@/components/solutions/shared/lucide-icon";
+import { losonoImageAltTitle } from "@/lib/image-seo";
 import { Zoomable } from "@/components/solutions/shared/product-helpers";
 
 export const OLIVE = "#C8E35A";
@@ -77,16 +78,18 @@ export function LoMark({
 export function LosonoFrame({
   src,
   alt,
+  title,
   url = "app.losono.ai",
   style,
 }: {
   src: string;
   alt: string;
+  title?: string;
   url?: string;
   style?: CSSProperties;
 }) {
   return (
-    <Zoomable src={src} alt={alt} style={{ borderRadius: 14, ...style }}>
+    <Zoomable src={src} alt={alt} title={title} style={{ borderRadius: 14, ...style }}>
       <div
         style={{
           borderRadius: 14,
@@ -159,6 +162,7 @@ export function LosonoFrame({
         <Image
           src={src}
           alt={alt}
+          title={title}
           width={1920}
           height={1080}
           unoptimized
@@ -388,7 +392,8 @@ export function ChatVoiceSplit({ style }: { style?: CSSProperties }) {
       >
         <Image
           src="/assets/losono/widget-chat.png"
-          alt="Losono chat widget"
+          alt={losonoImageAltTitle("chat-widget").alt}
+          title={losonoImageAltTitle("chat-widget").title}
           width={440}
           height={600}
           unoptimized
@@ -447,7 +452,8 @@ export function ChatVoiceSplit({ style }: { style?: CSSProperties }) {
       >
         <Image
           src="/assets/losono/widget-voice.png"
-          alt="Losono voice widget"
+          alt={losonoImageAltTitle("voice-widget").alt}
+          title={losonoImageAltTitle("voice-widget").title}
           width={440}
           height={600}
           unoptimized

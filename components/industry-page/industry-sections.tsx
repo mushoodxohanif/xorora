@@ -17,6 +17,10 @@ import type {
   ServiceItem,
   ServiceRowItem,
 } from "@/lib/industries/types";
+import {
+  caseStudyCardAlt,
+  caseStudyCardTitle,
+} from "@/lib/image-seo";
 import { ROUTES } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 import { AiCard } from "./ai-card";
@@ -863,6 +867,16 @@ function CapabilityIconCard({ item }: { item: CapabilityItem }) {
 }
 
 function FeaturedCaseCard({ caseItem }: { caseItem: FeaturedCaseItem }) {
+  const tag = caseItem.tags[0] ?? "case study";
+  const imageAlt = caseStudyCardAlt(
+    `${caseItem.title} Case Study | Xorora`,
+    tag,
+  );
+  const imageTitle = caseStudyCardTitle(
+    caseItem.metrics[0]?.label ?? caseItem.title,
+    caseItem.description,
+  );
+
   return (
     <Link
       href={ROUTES.caseStudy(caseItem.slug)}
@@ -912,7 +926,8 @@ function FeaturedCaseCard({ caseItem }: { caseItem: FeaturedCaseItem }) {
         <div className="ind-page-feat-media relative min-h-[380px] overflow-hidden">
           <Image
             src={caseItem.image}
-            alt={caseItem.title}
+            alt={imageAlt}
+            title={imageTitle}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 980px) 100vw, 50vw"

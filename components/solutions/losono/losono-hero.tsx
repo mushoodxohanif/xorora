@@ -11,7 +11,13 @@ import {
   scrollToId,
 } from "@/components/solutions/shared";
 import { Button } from "@/components/ui/button";
-import { LosonoFrame, OLIVE, OLIVE_BORDER, OLIVE_SOFT } from "./losono-visuals";
+import { losonoImageAltTitle } from "@/lib/image-seo";
+import {
+  LosonoFrame,
+  OLIVE,
+  OLIVE_BORDER,
+  OLIVE_SOFT,
+} from "./losono-visuals";
 
 export function LosonoHero() {
   const proof = [
@@ -190,7 +196,8 @@ export function LosonoHero() {
         >
           <LosonoFrame
             src="/assets/losono/dashboard.png"
-            alt="Losono dashboard — usage and agent performance"
+            alt={losonoImageAltTitle("dashboard-hero").alt}
+            title={losonoImageAltTitle("dashboard-hero").title}
             url="app.losono.ai/dashboard"
           />
           <div
@@ -208,7 +215,8 @@ export function LosonoHero() {
           >
             <Image
               src="/assets/losono/widget-chat.png"
-              alt="Losono embeddable chat widget"
+              alt={losonoImageAltTitle("chat-widget").alt}
+              title={losonoImageAltTitle("chat-widget").title}
               width={360}
               height={480}
               unoptimized

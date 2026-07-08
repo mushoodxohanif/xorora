@@ -38,6 +38,7 @@ import type {
   CaseStudySection,
   CaseStudySectionContent,
 } from "@/lib/case-studies/types";
+import { caseStudySectionTitle } from "@/lib/image-seo";
 import { cn } from "@/lib/utils";
 import { DarkSection } from "./dark-section";
 import { LightSection } from "./light-section";
@@ -106,7 +107,13 @@ function ChipPills({ chips }: { chips?: string }) {
   );
 }
 
-function OverviewSection({ content }: { content: CaseStudySectionContent }) {
+function OverviewSection({
+  content,
+  primaryTag,
+}: {
+  content: CaseStudySectionContent;
+  primaryTag: string;
+}) {
   return (
     <LightSection bg="var(--indigo-50)">
       <div className="cs-overview-grid grid grid-cols-2 items-center gap-[clamp(36px,5vw,72px)]">
@@ -132,6 +139,7 @@ function OverviewSection({ content }: { content: CaseStudySectionContent }) {
             <BrowserFrame
               src={content.image.src}
               alt={content.image.alt}
+              title={caseStudySectionTitle(content.title, primaryTag)}
               url={content.image.url}
               glow
               tilt
@@ -283,7 +291,13 @@ function PipelineBanner({ pipeline }: { pipeline: string }) {
   );
 }
 
-function SolutionSection({ content }: { content: CaseStudySectionContent }) {
+function SolutionSection({
+  content,
+  primaryTag,
+}: {
+  content: CaseStudySectionContent;
+  primaryTag: string;
+}) {
   const bodyParagraphs = content.subtitle
     ? content.paragraphs
     : content.paragraphs?.slice(1);
@@ -312,6 +326,7 @@ function SolutionSection({ content }: { content: CaseStudySectionContent }) {
           <BrowserFrame
             src={content.image.src}
             alt={content.image.alt}
+            title={caseStudySectionTitle(content.title, primaryTag)}
             url={content.image.url}
             glow
           />
@@ -572,12 +587,18 @@ function ResultsSection({ content }: { content: CaseStudySectionContent }) {
   );
 }
 
-function CaseStudySectionBlock({ section }: { section: CaseStudySection }) {
+function CaseStudySectionBlock({
+  section,
+  primaryTag,
+}: {
+  section: CaseStudySection;
+  primaryTag: string;
+}) {
   const { type, content } = section;
 
   switch (type) {
     case "overview":
-      return <OverviewSection content={content} />;
+      return <OverviewSection content={content} primaryTag={primaryTag} />;
     case "market_context":
       return <MarketContextSection content={content} />;
     case "challenge":
@@ -586,7 +607,7 @@ function CaseStudySectionBlock({ section }: { section: CaseStudySection }) {
       }
       return <ChallengeBulletsSection content={content} />;
     case "solution":
-      return <SolutionSection content={content} />;
+      return <SolutionSection content={content} primaryTag={primaryTag} />;
     case "architecture":
       return <ArchitectureSection content={content} />;
     case "services":
@@ -604,13 +625,19 @@ function CaseStudySectionBlock({ section }: { section: CaseStudySection }) {
 
 export function CaseStudySections({
   sections,
+  primaryTag = "case study",
 }: {
   sections: CaseStudySection[];
+  primaryTag?: string;
 }) {
   return (
     <>
       {sections.map((section) => (
-        <CaseStudySectionBlock key={section.id} section={section} />
+        <CaseStudySectionBlock
+          key={section.id}
+          section={section}
+          primaryTag={primaryTag}
+        />
       ))}
     </>
   );

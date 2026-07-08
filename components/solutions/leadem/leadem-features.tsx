@@ -233,6 +233,7 @@ interface Le2FeatureRowProps {
   tags: string[];
   screenshot?: string;
   alt?: string;
+  imageTitle?: string;
   url?: string;
   custom?: boolean;
   caption: string;
@@ -249,6 +250,7 @@ function Le2FeatureRow({
   tags,
   screenshot,
   alt,
+  imageTitle,
   url,
   custom,
   caption,
@@ -325,8 +327,13 @@ function Le2FeatureRow({
         {custom ? (
           <Le2ImportVisual />
         ) : screenshot && alt ? (
-          <Zoomable src={screenshot} alt={alt}>
-            <BrowserFrame src={screenshot} alt={alt} url={url} />
+          <Zoomable src={screenshot} alt={alt} title={imageTitle}>
+            <BrowserFrame
+              src={screenshot}
+              alt={alt}
+              title={imageTitle}
+              url={url}
+            />
           </Zoomable>
         ) : null}
       </div>
@@ -466,6 +473,7 @@ export function LeademFeatures() {
       ],
       screenshot: "/assets/leadem/campaign.png",
       alt: "Lead\u2019em campaign type builder",
+      imageTitle: "B2B sales CRM schema builder for outreach campaigns",
       url: "app.xorora.com/leadem/campaign-types",
     },
     {
@@ -488,6 +496,7 @@ export function LeademFeatures() {
       tags: ["Drag-and-drop stages", "Inline filters", "Full audit log"],
       screenshot: "/assets/leadem/kanban.png",
       alt: "Lead\u2019em kanban pipeline view",
+      imageTitle: "B2B outreach pipeline — drag-and-drop kanban stages",
       url: "app.xorora.com/leadem/pipeline",
     },
     {
@@ -504,6 +513,7 @@ export function LeademFeatures() {
       ],
       screenshot: "/assets/leadem/icp.png",
       alt: "Lead\u2019em ICP settings panel",
+      imageTitle: "AI-powered lead qualification and ICP scoring",
       url: "app.xorora.com/leadem/icp-settings",
     },
     {
@@ -516,6 +526,7 @@ export function LeademFeatures() {
       tags: ["@mentions & DMs", "Live notifications", "Per-lead threads"],
       screenshot: "/assets/leadem/messages.png",
       alt: "Lead\u2019em real-time messages view",
+      imageTitle: "Google Workspace CRM team collaboration and lead threads",
       url: "app.xorora.com/leadem/messages",
     },
     {
@@ -528,6 +539,7 @@ export function LeademFeatures() {
       tags: ["Gemini drafts", "Lead context", "Saves to lead"],
       screenshot: "/assets/leadem/linkedin.png",
       alt: "Lead\u2019em LinkedIn warming comment tool",
+      imageTitle: "B2B Digital Marketing — LinkedIn outreach automation",
       url: "app.xorora.com/leadem/linkedin-comment",
     },
   ];

@@ -99,6 +99,7 @@ export async function listPublishedCaseStudies(): Promise<CaseStudyListItem[]> {
 
   return rows.map((row) => ({
     ...mapSummary(row),
+    metaTitle: row.metaTitle,
     metrics: metricsByStudyId.get(row.id) ?? [],
   }));
 }

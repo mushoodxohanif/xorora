@@ -59,6 +59,8 @@ function CaseCard({
   title,
   stat,
   statLabel,
+  imageAlt,
+  imageTitle,
 }: CaseStudyCardData) {
   return (
     <Link
@@ -73,7 +75,8 @@ function CaseCard({
     >
       <Image
         src={img}
-        alt={title}
+        alt={imageAlt}
+        title={imageTitle}
         fill
         sizes="(max-width: 900px) 100vw, 50vw"
         className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"

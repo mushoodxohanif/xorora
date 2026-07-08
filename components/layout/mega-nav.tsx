@@ -21,6 +21,7 @@ import {
   ROUTES,
   type SiteNavigation,
 } from "@/lib/navigation";
+import { brandLogoAlt, featuredCaseAlt } from "@/lib/image-seo";
 import { cn } from "@/lib/utils";
 
 type MegaMenu = "Solutions" | "Services" | "Industries" | "Company" | null;
@@ -85,8 +86,8 @@ export function MegaNav({ current, onLetsTalk, nav }: MegaNavProps) {
             >
               <Image
                 src="/assets/nav-logo-full.png"
-                alt="Xorora — AI Development Partner"
-                title="Xorora — production AI and custom software development"
+                alt={brandLogoAlt("full").alt}
+                title={brandLogoAlt("full").title}
                 width={0}
                 height={0}
                 sizes="150px"
@@ -101,8 +102,8 @@ export function MegaNav({ current, onLetsTalk, nav }: MegaNavProps) {
               />
               <Image
                 src="/assets/nav-logo-x.png"
-                alt="Xorora logo icon"
-                title="Xorora — AI software development partner"
+                alt={brandLogoAlt("icon").alt}
+                title={brandLogoAlt("icon").title}
                 width={0}
                 height={0}
                 sizes="40px"
@@ -445,7 +446,7 @@ function FeaturedCaseStudy({
         <div className="relative mb-4 h-[116px] overflow-hidden rounded-(--r-md) border border-white/12">
           <Image
             src={featured.img}
-            alt={`${featured.title} — case study by Xorora`}
+            alt={featuredCaseAlt(featured.metaTitle)}
             title={featured.desc}
             fill
             sizes="328px"

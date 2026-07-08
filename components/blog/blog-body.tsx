@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 import { LightSection } from "@/components/case-study/light-section";
 import { BLOG_CATEGORIES, type BlogCategory, type BlogPost } from "@/lib/blog";
+import { blogImageAlt, blogImageTitle } from "@/lib/image-seo";
 import { cn } from "@/lib/utils";
 
 interface BlogBodyProps {
@@ -131,7 +132,8 @@ function BlogCard({ post, wide }: { post: BlogPost; wide?: boolean }) {
       >
         <Image
           src={post.img}
-          alt={post.title}
+          alt={blogImageAlt(post.title)}
+          title={blogImageTitle(post.excerpt, post.cat)}
           fill
           sizes={wide ? "46vw" : "50vw"}
           className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"

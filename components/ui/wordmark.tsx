@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { brandLogoAlt } from "@/lib/image-seo";
 import { cn } from "@/lib/utils";
 
 interface WordmarkProps {
@@ -12,6 +13,7 @@ export function Wordmark({
   dark = false,
   className,
 }: WordmarkProps) {
+  const { alt, title } = brandLogoAlt("wordmark");
   return (
     <Image
       src={
@@ -19,8 +21,8 @@ export function Wordmark({
           ? "/assets/logo-wordmark-dark-transparent.svg"
           : "/assets/logo-wordmark-light-transparent.svg"
       }
-      alt="Xorora"
-      title="Xorora — AI development and custom software partner"
+      alt={alt}
+      title={title}
       width={0}
       height={0}
       sizes={`${Math.round(height * 4.2)}px`}

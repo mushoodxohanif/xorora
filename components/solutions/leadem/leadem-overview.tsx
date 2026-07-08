@@ -10,6 +10,7 @@ import {
   scrollToId,
   Zoomable,
 } from "@/components/solutions/shared";
+import { leademImageAltTitle } from "@/lib/image-seo";
 
 const DASHBOARD = "/assets/leadem/dashboard.png";
 
@@ -89,11 +90,13 @@ export function LeademOverview() {
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
           <Zoomable
             src={DASHBOARD}
-            alt="Lead'em dashboard — the full feature workspace"
+            alt={leademImageAltTitle("dashboard").alt}
+            title={leademImageAltTitle("dashboard").title}
           >
             <BrowserFrame
               src={DASHBOARD}
-              alt="Lead'em dashboard"
+              alt={leademImageAltTitle("dashboard").alt}
+              title={leademImageAltTitle("dashboard").title}
               url="app.xorora.com/leadem/dashboard"
               glow
             />
