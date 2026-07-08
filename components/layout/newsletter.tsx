@@ -20,8 +20,18 @@ export function Newsletter() {
   }
 
   return (
-    <div className="flex flex-wrap gap-2.5">
+    <form
+      className="flex flex-wrap gap-2.5"
+      onSubmit={(e) => {
+        e.preventDefault();
+        if (!value.trim()) return;
+        setSent(true);
+      }}
+    >
       <input
+        name="email"
+        type="email"
+        required
         value={value}
         onChange={(event) => setValue(event.target.value)}
         onFocus={() => setFocused(true)}
@@ -32,9 +42,9 @@ export function Newsletter() {
           focused ? "border-tangerine-500 shadow-focus" : "border-white/18",
         )}
       />
-      <Button variant="primary" onClick={() => value && setSent(true)}>
+      <Button type="submit" variant="primary">
         Subscribe
       </Button>
-    </div>
+    </form>
   );
 }

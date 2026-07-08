@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Footer } from "@/components/layout/footer";
 import { ConnectedMegaNav, LetsTalkModalProvider } from "@/components/modals";
-import { VoiceWidget } from "@/components/voice/voice-widget";
 import { GA_MEASUREMENT_ID } from "@/lib/analytics";
 import { CLARITY_PROJECT_ID } from "@/lib/clarity";
 import { jetbrainsMono, poppins } from "@/lib/fonts";
+import { TAWK_EMBED_SRC } from "@/lib/tawk";
 import {
   buildFooterColumns,
   buildSiteNavigation,
@@ -48,12 +48,17 @@ export default async function RootLayout({
           <main className="flex flex-1 flex-col">{children}</main>
           <Footer columns={footerColumns} />
         </LetsTalkModalProvider>
-        <VoiceWidget />
-        <Script
-          src="https://losono.xorora.com/embed.js"
-          data-agent="emma"
-          strategy="afterInteractive"
-        />
+        <Script id="tawk-to" strategy="afterInteractive">
+          {`var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='${TAWK_EMBED_SRC}';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();`}
+        </Script>
         <Script id="microsoft-clarity" strategy="afterInteractive">
           {`(function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};

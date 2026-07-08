@@ -76,10 +76,26 @@ export function BlogContact() {
               </p>
             </div>
           ) : (
-            <>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                setSent(true);
+              }}
+            >
               <div className="grid grid-cols-2 gap-4">
-                <BlogField label="Full name" placeholder="Jordan Reyes" />
-                <BlogField label="Work email" placeholder="you@company.com" />
+                <BlogField
+                  name="name"
+                  label="Full name"
+                  placeholder="Jordan Reyes"
+                  required
+                />
+                <BlogField
+                  name="email"
+                  label="Work email"
+                  placeholder="you@company.com"
+                  type="email"
+                  required
+                />
               </div>
               <div className="mt-4">
                 <div className="mb-2 font-sans font-semibold text-[13px] text-fg2">
@@ -108,6 +124,7 @@ export function BlogContact() {
               </div>
               <div className="mt-4">
                 <BlogField
+                  name="message"
                   label="Message"
                   placeholder="Tell us what is on your mind"
                   textarea
@@ -115,19 +132,20 @@ export function BlogContact() {
               </div>
               <div className="mt-[22px] flex flex-wrap items-center justify-between gap-4">
                 <label className="flex cursor-pointer items-center gap-[9px] font-sans text-[13px] text-fg2">
-                  <input type="checkbox" className="h-4 w-4 accent-xo-indigo" />
+                  <input
+                    name="subscribe"
+                    type="checkbox"
+                    value="yes"
+                    className="h-4 w-4 accent-xo-indigo"
+                  />
                   Subscribe me to the monthly dispatch
                 </label>
-                <Button
-                  variant="primary"
-                  size="lg"
-                  onClick={() => setSent(true)}
-                >
+                <Button type="submit" variant="primary" size="lg">
                   Send message
                   <ArrowUpRight className="h-4 w-4" aria-hidden />
                 </Button>
               </div>
-            </>
+            </form>
           )}
         </div>
       </div>
@@ -136,30 +154,42 @@ export function BlogContact() {
 }
 
 function BlogField({
+  name,
   label,
   placeholder,
   textarea,
+  type = "text",
+  required,
 }: {
+  name: string;
   label: string;
   placeholder: string;
   textarea?: boolean;
+  type?: string;
+  required?: boolean;
 }) {
-  const id = label.toLowerCase().replace(/\s+/g, "-");
-
   return (
-    <label htmlFor={id} className="flex flex-col gap-[7px]">
+    <label htmlFor={name} className="flex flex-col gap-[7px]">
       <span className="font-sans font-semibold text-[13px] text-fg2">
         {label}
       </span>
       {textarea ? (
         <textarea
-          id={id}
+          id={name}
+          name={name}
           rows={4}
           placeholder={placeholder}
           className={cn(fieldClass, "resize-none")}
         />
       ) : (
-        <input id={id} placeholder={placeholder} className={fieldClass} />
+        <input
+          id={name}
+          name={name}
+          type={type}
+          required={required}
+          placeholder={placeholder}
+          className={fieldClass}
+        />
       )}
     </label>
   );

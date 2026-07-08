@@ -76,7 +76,14 @@ export function BlogNewsletter() {
                 </p>
               </div>
             ) : (
-              <div className="rounded-[var(--r-lg)] border border-white/12 bg-white/4 p-[clamp(24px,3vw,32px)]">
+              <form
+                className="rounded-[var(--r-lg)] border border-white/12 bg-white/4 p-[clamp(24px,3vw,32px)]"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  if (!email.trim()) return;
+                  setSent(true);
+                }}
+              >
                 <label
                   htmlFor="blog-newsletter-email"
                   className="mb-2 block font-sans font-semibold text-[12.5px] text-white/70"
@@ -85,6 +92,9 @@ export function BlogNewsletter() {
                 </label>
                 <input
                   id="blog-newsletter-email"
+                  name="email"
+                  type="email"
+                  required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   onFocus={() => setFocused(true)}
@@ -97,10 +107,10 @@ export function BlogNewsletter() {
                   )}
                 />
                 <Button
+                  type="submit"
                   variant="primary"
                   size="lg"
                   className="w-full justify-center"
-                  onClick={() => email && setSent(true)}
                 >
                   Get the playbook
                   <ArrowUpRight className="h-4 w-4" aria-hidden />
@@ -108,7 +118,7 @@ export function BlogNewsletter() {
                 <p className="mt-3.5 text-center font-sans text-white/45 text-xs">
                   No spam. Unsubscribe in one click.
                 </p>
-              </div>
+              </form>
             )}
           </div>
         </div>

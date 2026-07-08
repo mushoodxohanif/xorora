@@ -100,18 +100,27 @@ export function WorkContact() {
                 </p>
               </div>
             ) : (
-              <>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setSent(true);
+                }}
+              >
                 <WorkField
+                  name="name"
                   label="Full name"
                   required
                   placeholder="Enter your name"
                 />
                 <WorkField
+                  name="email"
                   label="Email"
                   required
                   placeholder="Enter your email"
+                  type="email"
                 />
                 <WorkField
+                  name="phone"
                   label="Phone number"
                   placeholder="Enter your phone number"
                 />
@@ -141,6 +150,7 @@ export function WorkContact() {
                   </div>
                 </div>
                 <WorkField
+                  name="message"
                   label="Message"
                   required
                   textarea
@@ -149,21 +159,19 @@ export function WorkContact() {
                 <div className="mt-[22px] flex flex-wrap items-center justify-between gap-4">
                   <label className="flex max-w-[240px] cursor-pointer items-center gap-2 font-sans text-[13px] text-fg2">
                     <input
+                      name="subscribe"
                       type="checkbox"
+                      value="yes"
                       className="h-4 w-4 accent-xo-indigo"
                     />
                     Subscribe for technology insights and updates
                   </label>
-                  <Button
-                    variant="primary"
-                    size="lg"
-                    onClick={() => setSent(true)}
-                  >
+                  <Button type="submit" variant="primary" size="lg">
                     Send message
                     <ArrowUpRight className="h-4 w-4" aria-hidden />
                   </Button>
                 </div>
-              </>
+              </form>
             )}
           </div>
         </div>
@@ -173,13 +181,22 @@ export function WorkContact() {
 }
 
 interface WorkFieldProps {
+  name: string;
   label: string;
   placeholder: string;
   textarea?: boolean;
   required?: boolean;
+  type?: string;
 }
 
-function WorkField({ label, placeholder, textarea, required }: WorkFieldProps) {
+function WorkField({
+  name,
+  label,
+  placeholder,
+  textarea,
+  required,
+  type = "text",
+}: WorkFieldProps) {
   const [focused, setFocused] = useState(false);
   const fieldId = useId();
 
@@ -199,6 +216,8 @@ function WorkField({ label, placeholder, textarea, required }: WorkFieldProps) {
       {textarea ? (
         <textarea
           id={fieldId}
+          name={name}
+          required={required}
           rows={4}
           placeholder={placeholder}
           onFocus={() => setFocused(true)}
@@ -208,6 +227,9 @@ function WorkField({ label, placeholder, textarea, required }: WorkFieldProps) {
       ) : (
         <input
           id={fieldId}
+          name={name}
+          type={type}
+          required={required}
           placeholder={placeholder}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}

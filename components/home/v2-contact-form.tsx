@@ -62,22 +62,35 @@ export function V2ContactForm() {
             <div className="mb-3 grid grid-cols-2 gap-3">
               <input
                 required
+                name="firstName"
                 placeholder="First name*"
                 className={fieldClass}
               />
-              <input required placeholder="Last name*" className={fieldClass} />
+              <input
+                required
+                name="lastName"
+                placeholder="Last name*"
+                className={fieldClass}
+              />
             </div>
             <div className="mb-3 grid grid-cols-2 gap-3">
               <input
                 required
+                name="email"
                 type="email"
                 placeholder="Email*"
                 className={fieldClass}
               />
-              <input required placeholder="Phone*" className={fieldClass} />
+              <input
+                required
+                name="phone"
+                placeholder="Phone*"
+                className={fieldClass}
+              />
             </div>
             <textarea
               required
+              name="message"
               placeholder="How can we help you?*"
               rows={5}
               className={cn(fieldClass, "mb-4 resize-y")}

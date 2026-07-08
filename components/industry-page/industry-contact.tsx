@@ -61,16 +61,30 @@ export function IndustryContact({ info }: IndustryContactProps) {
                 </p>
               </div>
             ) : (
-              <>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setSent(true);
+                }}
+              >
                 <div className="grid grid-cols-2 gap-3.5 max-[560px]:grid-cols-1">
-                  <ContactField label="Your name" placeholder="Jordan Reyes" />
                   <ContactField
+                    name="name"
+                    label="Your name"
+                    placeholder="Jordan Reyes"
+                    required
+                  />
+                  <ContactField
+                    name="email"
                     label="Work email"
                     placeholder="you@company.com"
+                    type="email"
+                    required
                   />
                 </div>
                 <div className="mt-3.5">
                   <ContactField
+                    name="message"
                     label="How can we help you?"
                     placeholder="A sentence about your ambition"
                     textarea
@@ -90,16 +104,16 @@ export function IndustryContact({ info }: IndustryContactProps) {
                 />
                 <div className="mt-6">
                   <Button
+                    type="submit"
                     variant="primary"
                     size="lg"
                     className="w-full justify-center"
-                    onClick={() => setSent(true)}
                   >
                     Submit
                     <ArrowUpRight className="h-4 w-4" aria-hidden />
                   </Button>
                 </div>
-              </>
+              </form>
             )}
           </div>
         </div>
@@ -135,30 +149,43 @@ function ContactLine({
 }
 
 function ContactField({
+  name,
   label,
   placeholder,
   textarea,
+  type = "text",
+  required,
 }: {
+  name: string;
   label: string;
   placeholder: string;
   textarea?: boolean;
+  type?: string;
+  required?: boolean;
 }) {
-  const id = label.toLowerCase().replace(/\s+/g, "-");
-
   return (
-    <label htmlFor={id} className="flex flex-col gap-[7px]">
+    <label htmlFor={name} className="flex flex-col gap-[7px]">
       <span className="font-sans font-semibold text-[12.5px] text-white/70">
         {label}
       </span>
       {textarea ? (
         <textarea
-          id={id}
+          id={name}
+          name={name}
+          required={required}
           rows={3}
           placeholder={placeholder}
           className={fieldClass}
         />
       ) : (
-        <input id={id} placeholder={placeholder} className={fieldClass} />
+        <input
+          id={name}
+          name={name}
+          type={type}
+          required={required}
+          placeholder={placeholder}
+          className={fieldClass}
+        />
       )}
     </label>
   );

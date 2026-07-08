@@ -85,13 +85,33 @@ export function IndContact({ industryNames }: { industryNames: string[] }) {
                 </p>
               </div>
             ) : (
-              <>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setSent(true);
+                }}
+              >
                 <div className="grid grid-cols-2 gap-3.5">
-                  <IndField label="Full name" placeholder="Jordan Reyes" />
-                  <IndField label="Work email" placeholder="you@company.com" />
+                  <IndField
+                    name="name"
+                    label="Full name"
+                    placeholder="Jordan Reyes"
+                    required
+                  />
+                  <IndField
+                    name="email"
+                    label="Work email"
+                    placeholder="you@company.com"
+                    type="email"
+                    required
+                  />
                 </div>
                 <div className="mt-3.5 grid grid-cols-2 gap-3.5">
-                  <IndField label="Company" placeholder="Company name" />
+                  <IndField
+                    name="company"
+                    label="Company"
+                    placeholder="Company name"
+                  />
                   <IndSelect
                     value={industry}
                     onChange={setIndustry}
@@ -106,6 +126,7 @@ export function IndContact({ industryNames }: { industryNames: string[] }) {
                 />
                 <div className="mt-3.5">
                   <IndField
+                    name="message"
                     label="How can we help?"
                     placeholder="A sentence about your project"
                     textarea
@@ -113,16 +134,16 @@ export function IndContact({ industryNames }: { industryNames: string[] }) {
                 </div>
                 <div className="mt-6">
                   <Button
+                    type="submit"
                     variant="primary"
                     size="lg"
                     className="w-full justify-center"
-                    onClick={() => setSent(true)}
                   >
                     Submit request
                     <ArrowUpRight className="h-4 w-4" aria-hidden />
                   </Button>
                 </div>
-              </>
+              </form>
             )}
           </div>
         </div>
@@ -132,15 +153,21 @@ export function IndContact({ industryNames }: { industryNames: string[] }) {
 }
 
 function IndField({
+  name,
   label,
   placeholder,
   textarea,
+  type = "text",
+  required,
 }: {
+  name: string;
   label: string;
   placeholder: string;
   textarea?: boolean;
+  type?: string;
+  required?: boolean;
 }) {
-  const id = label.toLowerCase().replace(/\s+/g, "-");
+  const id = name;
 
   return (
     <label htmlFor={id} className="flex flex-col gap-[7px]">
@@ -150,12 +177,21 @@ function IndField({
       {textarea ? (
         <textarea
           id={id}
+          name={name}
+          required={required}
           rows={3}
           placeholder={placeholder}
           className={cn(fieldClass, "resize-none")}
         />
       ) : (
-        <input id={id} placeholder={placeholder} className={fieldClass} />
+        <input
+          id={id}
+          name={name}
+          type={type}
+          required={required}
+          placeholder={placeholder}
+          className={fieldClass}
+        />
       )}
     </label>
   );
@@ -179,6 +215,7 @@ function IndSelect({
       </span>
       <div className="relative">
         <select
+          name="industry"
           value={value}
           onChange={(e) => onChange(e.target.value)}
           onFocus={() => setFocused(true)}

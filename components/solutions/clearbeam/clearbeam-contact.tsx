@@ -150,7 +150,9 @@ export function ClearbeamContact() {
       e.company = "Please enter your product or company name.";
     if (!form.using.trim()) e.using = "Let us know what you use today.";
     setErrors(e);
-    if (Object.keys(e).length === 0) setSent(true);
+    if (Object.keys(e).length === 0) {
+      setSent(true);
+    }
   };
 
   return (
