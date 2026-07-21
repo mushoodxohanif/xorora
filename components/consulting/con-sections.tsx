@@ -17,6 +17,7 @@ export const SERVICES = [
     icon: "brain-circuit",
     name: "AI Consulting Services",
     body: "Where AI actually moves the needle for your business, and where it does not. Use cases, feasibility, and a build plan you can trust.",
+    href: ROUTES.aiConsultation,
   },
   {
     icon: "refresh-cw",
