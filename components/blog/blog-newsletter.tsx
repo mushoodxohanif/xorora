@@ -1,9 +1,10 @@
 "use client";
 
 import { ArrowUpRight, Check, Mail } from "lucide-react";
-import { useState } from "react";
+import { type FormEvent, useState } from "react";
 import { XWatermark } from "@/components/geometry/x-watermark";
 import { Button } from "@/components/ui/button";
+import { FORM_FIELDS, type FieldErrors, validateForm } from "@/lib/forms/validate";
 import { cn } from "@/lib/utils";
 
 const PERKS = [
@@ -19,6 +20,16 @@ export function BlogNewsletter() {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
   const [focused, setFocused] = useState(false);
+  const [errors, setErrors] = useState<FieldErrors>({});
+
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const next = validateForm(event.currentTarget, FORM_FIELDS.newsletter);
+    setErrors(next);
+    if (Object.keys(next).length === 0) {
+      setSent(true);
+    }
+  }
 
   return (
     <section
@@ -77,12 +88,10 @@ export function BlogNewsletter() {
               </div>
             ) : (
               <form
+                name="blog-newsletter"
+                noValidate
                 className="rounded-[var(--r-lg)] border border-white/12 bg-white/4 p-[clamp(24px,3vw,32px)]"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  if (!email.trim()) return;
-                  setSent(true);
-                }}
+                onSubmit={onSubmit}
               >
                 <label
                   htmlFor="blog-newsletter-email"
@@ -94,18 +103,30 @@ export function BlogNewsletter() {
                   id="blog-newsletter-email"
                   name="email"
                   type="email"
-                  required
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (errors.email) setErrors({});
+                  }}
                   onFocus={() => setFocused(true)}
                   onBlur={() => setFocused(false)}
                   placeholder="you@company.com"
+                  aria-invalid={Boolean(errors.email)}
                   className={cn(
                     fieldClass,
                     "mb-3.5",
-                    focused ? "border-tangerine-500" : "border-white/18",
+                    errors.email
+                      ? "border-[var(--danger)]"
+                      : focused
+                        ? "border-tangerine-500"
+                        : "border-white/18",
                   )}
                 />
+                {errors.email ? (
+                  <p className="mb-3.5 font-sans text-[12px] text-[var(--danger)]">
+                    {errors.email}
+                  </p>
+                ) : null}
                 <Button
                   type="submit"
                   variant="primary"

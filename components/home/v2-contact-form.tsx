@@ -1,9 +1,10 @@
 "use client";
 
 import { ArrowRight, Check, Mail, Phone } from "lucide-react";
-import { useState } from "react";
+import { type FormEvent, useState } from "react";
 import { XWatermark } from "@/components/geometry/x-watermark";
 import { Button } from "@/components/ui/button";
+import { FORM_FIELDS, type FieldErrors, validateForm } from "@/lib/forms/validate";
 import { cn } from "@/lib/utils";
 
 const TRUST_ITEMS = [
@@ -22,6 +23,16 @@ const fieldClass =
 
 export function V2ContactForm() {
   const [sent, setSent] = useState(false);
+  const [errors, setErrors] = useState<FieldErrors>({});
+
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const next = validateForm(event.currentTarget, FORM_FIELDS.homeContact);
+    setErrors(next);
+    if (Object.keys(next).length === 0) {
+      setSent(true);
+    }
+  }
 
   return (
     <div className="sticky top-24 overflow-hidden rounded-[var(--r-xl)] bg-navy-900 p-[clamp(28px,3vw,40px)]">
@@ -53,47 +64,39 @@ export function V2ContactForm() {
             </p>
           </div>
         ) : (
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              setSent(true);
-            }}
-          >
+          <form name="home-contact" noValidate onSubmit={onSubmit}>
             <div className="mb-3 grid grid-cols-2 gap-3">
-              <input
-                required
+              <HomeField
                 name="firstName"
                 placeholder="First name*"
-                className={fieldClass}
+                error={errors.firstName}
               />
-              <input
-                required
+              <HomeField
                 name="lastName"
                 placeholder="Last name*"
-                className={fieldClass}
+                error={errors.lastName}
               />
             </div>
             <div className="mb-3 grid grid-cols-2 gap-3">
-              <input
-                required
+              <HomeField
                 name="email"
                 type="email"
                 placeholder="Email*"
-                className={fieldClass}
+                error={errors.email}
               />
-              <input
-                required
+              <HomeField
                 name="phone"
                 placeholder="Phone*"
-                className={fieldClass}
+                error={errors.phone}
               />
             </div>
-            <textarea
-              required
+            <HomeField
               name="message"
               placeholder="How can we help you?*"
+              textarea
               rows={5}
-              className={cn(fieldClass, "mb-4 resize-y")}
+              error={errors.message}
+              className="mb-4"
             />
             <p className="mb-[18px] font-sans text-white/50 text-xs leading-snug">
               By sending this form I confirm that I have read and accept the
@@ -145,6 +148,53 @@ export function V2ContactForm() {
           ))}
         </div>
       </div>
+    </div>
+  );
+}
+
+function HomeField({
+  name,
+  placeholder,
+  error,
+  textarea,
+  type = "text",
+  rows = 4,
+  className,
+}: {
+  name: string;
+  placeholder: string;
+  error?: string;
+  textarea?: boolean;
+  type?: string;
+  rows?: number;
+  className?: string;
+}) {
+  return (
+    <div className={cn("flex flex-col gap-1.5", className)}>
+      {textarea ? (
+        <textarea
+          name={name}
+          placeholder={placeholder}
+          rows={rows}
+          aria-invalid={Boolean(error)}
+          className={cn(
+            fieldClass,
+            "resize-y",
+            error && "border-[var(--danger)]",
+          )}
+        />
+      ) : (
+        <input
+          name={name}
+          type={type}
+          placeholder={placeholder}
+          aria-invalid={Boolean(error)}
+          className={cn(fieldClass, error && "border-[var(--danger)]")}
+        />
+      )}
+      {error ? (
+        <span className="font-sans text-[12px] text-[var(--danger)]">{error}</span>
+      ) : null}
     </div>
   );
 }

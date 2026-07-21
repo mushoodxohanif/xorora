@@ -1,9 +1,10 @@
 "use client";
 
 import { ArrowUpRight, Check, ChevronDown, Mail, Phone, X } from "lucide-react";
-import { useEffect, useId, useState } from "react";
+import { type FormEvent, useEffect, useId, useState } from "react";
 import { XWatermark } from "@/components/geometry/x-watermark";
 import { Button } from "@/components/ui/button";
+import { FORM_FIELDS, type FieldErrors, validateForm } from "@/lib/forms/validate";
 import { cn } from "@/lib/utils";
 
 interface LetsTalkModalProps {
@@ -27,6 +28,7 @@ export function LetsTalkModal({
   const [sent, setSent] = useState(false);
   const [industry, setIndustry] = useState("");
   const [budget, setBudget] = useState<string | null>(null);
+  const [errors, setErrors] = useState<FieldErrors>({});
 
   useEffect(() => {
     if (!open) return;
@@ -50,8 +52,18 @@ export function LetsTalkModal({
       setSent(false);
       setIndustry("");
       setBudget(null);
+      setErrors({});
     }
   }, [open]);
+
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const next = validateForm(event.currentTarget, FORM_FIELDS.contact);
+    setErrors(next);
+    if (Object.keys(next).length === 0) {
+      setSent(true);
+    }
+  }
 
   if (!open) return null;
 
@@ -147,25 +159,20 @@ export function LetsTalkModal({
                 </Button>
               </div>
             ) : (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSent(true);
-                }}
-              >
+              <form name="lets-talk" noValidate onSubmit={onSubmit}>
                 <div className="grid grid-cols-2 gap-3.5">
                   <LtField
                     name="name"
                     label="Full name"
                     placeholder="Jordan Reyes"
-                    required
+                    error={errors.name}
                   />
                   <LtField
                     name="email"
                     label="Work email"
                     placeholder="you@company.com"
                     type="email"
-                    required
+                    error={errors.email}
                   />
                 </div>
                 <div className="mt-3.5 grid grid-cols-2 gap-3.5">
@@ -180,6 +187,7 @@ export function LetsTalkModal({
                     options={industryNames}
                   />
                 </div>
+                <input type="hidden" name="budget" value={budget ?? ""} />
                 <LtChipRow
                   label="Project budget"
                   options={[...BUDGETS]}
@@ -220,21 +228,25 @@ function LtField({
   placeholder,
   textarea,
   type = "text",
-  required,
+  error,
 }: {
   name: string;
   label: string;
   placeholder: string;
   textarea?: boolean;
   type?: string;
-  required?: boolean;
+  error?: string;
 }) {
   const [focused, setFocused] = useState(false);
   const fieldId = useId();
 
   const className = cn(
     "box-border w-full resize-none rounded-[var(--r-md)] border bg-white/4 px-3.5 py-3 font-sans text-[15px] text-white outline-hidden",
-    focused ? "border-tangerine-500 shadow-focus" : "border-white/16",
+    error
+      ? "border-[var(--danger)]"
+      : focused
+        ? "border-tangerine-500 shadow-focus"
+        : "border-white/16",
   );
 
   return (
@@ -249,25 +261,28 @@ function LtField({
         <textarea
           id={fieldId}
           name={name}
-          required={required}
           rows={3}
           placeholder={placeholder}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           className={className}
+          aria-invalid={Boolean(error)}
         />
       ) : (
         <input
           id={fieldId}
           name={name}
           type={type}
-          required={required}
           placeholder={placeholder}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           className={className}
+          aria-invalid={Boolean(error)}
         />
       )}
+      {error ? (
+        <span className="font-sans text-[12px] text-[var(--danger)]">{error}</span>
+      ) : null}
     </div>
   );
 }

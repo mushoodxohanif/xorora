@@ -1,10 +1,15 @@
 "use client";
 
 import { ArrowUpRight, Check, ChevronDown } from "lucide-react";
-import { type ChangeEvent, Fragment, useState } from "react";
+import { type ChangeEvent, type FormEvent, useState } from "react";
 import { XWatermark } from "@/components/geometry/x-watermark";
 import { DynamicLucideIcon } from "@/components/solutions/shared";
 import { Button } from "@/components/ui/button";
+import {
+  FORM_FIELDS,
+  type FieldErrors,
+  validateRequired,
+} from "@/lib/forms/validate";
 import { OLIVE, OLIVE_BORDER, OLIVE_SOFT, OliveLabel } from "./losono-visuals";
 
 type FormState = {
@@ -18,7 +23,7 @@ type FormState = {
   notes: string;
 };
 
-type FormErrors = Partial<Record<keyof FormState, string>>;
+type FormErrors = FieldErrors;
 
 function LosonoField({
   label,
@@ -220,17 +225,13 @@ export function LosonoContact() {
     setErrors((p) => ({ ...p, [name]: undefined }));
   };
 
-  const submit = () => {
-    const e: FormErrors = {};
-    if (!form.name.trim()) e.name = "Please enter your full name.";
-    if (!form.email.trim()) e.email = "Please enter your work email.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      e.email = "Enter a valid email address.";
-    if (!form.company.trim())
-      e.company = "Please enter your company or organization.";
-    if (!form.using.trim()) e.using = "Let us know what you use today.";
-    setErrors(e);
-    if (Object.keys(e).length === 0) {
+  const submit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const next = validateRequired(form, FORM_FIELDS.product, {
+      company: "Please enter your company or organization.",
+    });
+    setErrors(next);
+    if (Object.keys(next).length === 0) {
       setSent(true);
     }
   };
@@ -398,7 +399,7 @@ export function LosonoContact() {
                 </p>
               </div>
             ) : (
-              <Fragment>
+              <form name="losono-contact" noValidate onSubmit={submit}>
                 <div
                   style={{
                     display: "grid",
@@ -480,6 +481,7 @@ export function LosonoContact() {
                     textarea
                   />
                 </div>
+                <input type="hidden" name="voice" value={form.voice} />
                 <div style={{ marginTop: 16 }}>
                   <span
                     style={{
@@ -534,10 +536,10 @@ export function LosonoContact() {
                 </div>
                 <div style={{ marginTop: 24 }}>
                   <Button
+                    type="submit"
                     variant="primary"
                     size="lg"
                     style={{ width: "100%", justifyContent: "center" }}
-                    onClick={submit}
                   >
                     Send Message{" "}
                     <ArrowUpRight style={{ width: 16 }} aria-hidden />
@@ -556,7 +558,7 @@ export function LosonoContact() {
                   Your information is never shared. We respond within one
                   business day.
                 </p>
-              </Fragment>
+              </form>
             )}
           </div>
         </div>

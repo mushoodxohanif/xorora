@@ -1,10 +1,11 @@
 "use client";
 
 import { ArrowUpRight, Check, Quote } from "lucide-react";
-import { useId, useState } from "react";
+import { type FormEvent, useId, useState } from "react";
 import { XWatermark } from "@/components/geometry/x-watermark";
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { FORM_FIELDS, type FieldErrors, validateForm } from "@/lib/forms/validate";
 import { cn } from "@/lib/utils";
 
 const BUDGETS = [
@@ -22,6 +23,19 @@ const CONTACT_DETAILS = [
 export function WorkContact() {
   const [sent, setSent] = useState(false);
   const [budget, setBudget] = useState<string | null>(null);
+  const [errors, setErrors] = useState<FieldErrors>({});
+
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const next = validateForm(
+      event.currentTarget,
+      FORM_FIELDS.contactWithMessage,
+    );
+    setErrors(next);
+    if (Object.keys(next).length === 0) {
+      setSent(true);
+    }
+  }
 
   return (
     <section
@@ -100,17 +114,13 @@ export function WorkContact() {
                 </p>
               </div>
             ) : (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSent(true);
-                }}
-              >
+              <form name="work-contact" noValidate onSubmit={onSubmit}>
                 <WorkField
                   name="name"
                   label="Full name"
                   required
                   placeholder="Enter your name"
+                  error={errors.name}
                 />
                 <WorkField
                   name="email"
@@ -118,12 +128,14 @@ export function WorkContact() {
                   required
                   placeholder="Enter your email"
                   type="email"
+                  error={errors.email}
                 />
                 <WorkField
                   name="phone"
                   label="Phone number"
                   placeholder="Enter your phone number"
                 />
+                <input type="hidden" name="budget" value={budget ?? ""} />
                 <div className="mt-4">
                   <div className="mb-2 font-sans font-semibold text-[13px] text-fg2">
                     Select your budget
@@ -155,6 +167,7 @@ export function WorkContact() {
                   required
                   textarea
                   placeholder="Enter your message"
+                  error={errors.message}
                 />
                 <div className="mt-[22px] flex flex-wrap items-center justify-between gap-4">
                   <label className="flex max-w-[240px] cursor-pointer items-center gap-2 font-sans text-[13px] text-fg2">
@@ -187,6 +200,7 @@ interface WorkFieldProps {
   textarea?: boolean;
   required?: boolean;
   type?: string;
+  error?: string;
 }
 
 function WorkField({
@@ -196,15 +210,18 @@ function WorkField({
   textarea,
   required,
   type = "text",
+  error,
 }: WorkFieldProps) {
   const [focused, setFocused] = useState(false);
   const fieldId = useId();
 
   const fieldClass = cn(
     "w-full rounded-[var(--r-md)] border px-3.5 py-3 font-sans text-[15px] text-fg1 outline-hidden transition-shadow",
-    focused
-      ? "border-tangerine-500 bg-white shadow-focus"
-      : "border-border-strong bg-slate-50",
+    error
+      ? "border-[var(--danger)] bg-white"
+      : focused
+        ? "border-tangerine-500 bg-white shadow-focus"
+        : "border-border-strong bg-slate-50",
   );
 
   return (
@@ -217,11 +234,11 @@ function WorkField({
         <textarea
           id={fieldId}
           name={name}
-          required={required}
           rows={4}
           placeholder={placeholder}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
+          aria-invalid={Boolean(error)}
           className={cn(fieldClass, "resize-none")}
         />
       ) : (
@@ -229,13 +246,16 @@ function WorkField({
           id={fieldId}
           name={name}
           type={type}
-          required={required}
           placeholder={placeholder}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
+          aria-invalid={Boolean(error)}
           className={fieldClass}
         />
       )}
+      {error ? (
+        <span className="font-sans text-[12px] text-[var(--danger)]">{error}</span>
+      ) : null}
     </label>
   );
 }

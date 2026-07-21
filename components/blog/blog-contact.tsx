@@ -1,9 +1,10 @@
 "use client";
 
 import { ArrowUpRight, Check, Mail, Phone } from "lucide-react";
-import { useState } from "react";
+import { type FormEvent, useState } from "react";
 import { SectionHead } from "@/components/case-study/section-head";
 import { Button } from "@/components/ui/button";
+import { FORM_FIELDS, type FieldErrors, validateForm } from "@/lib/forms/validate";
 import { cn } from "@/lib/utils";
 
 const TOPICS = [
@@ -25,6 +26,16 @@ const fieldClass =
 export function BlogContact() {
   const [sent, setSent] = useState(false);
   const [topic, setTopic] = useState("");
+  const [errors, setErrors] = useState<FieldErrors>({});
+
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const next = validateForm(event.currentTarget, FORM_FIELDS.contact);
+    setErrors(next);
+    if (Object.keys(next).length === 0) {
+      setSent(true);
+    }
+  }
 
   return (
     <section
@@ -76,27 +87,23 @@ export function BlogContact() {
               </p>
             </div>
           ) : (
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-              }}
-            >
+            <form name="blog-contact" noValidate onSubmit={onSubmit}>
               <div className="grid grid-cols-2 gap-4">
                 <BlogField
                   name="name"
                   label="Full name"
                   placeholder="Jordan Reyes"
-                  required
+                  error={errors.name}
                 />
                 <BlogField
                   name="email"
                   label="Work email"
                   placeholder="you@company.com"
                   type="email"
-                  required
+                  error={errors.email}
                 />
               </div>
+              <input type="hidden" name="topic" value={topic} />
               <div className="mt-4">
                 <div className="mb-2 font-sans font-semibold text-[13px] text-fg2">
                   What is this about?
@@ -159,14 +166,14 @@ function BlogField({
   placeholder,
   textarea,
   type = "text",
-  required,
+  error,
 }: {
   name: string;
   label: string;
   placeholder: string;
   textarea?: boolean;
   type?: string;
-  required?: boolean;
+  error?: string;
 }) {
   return (
     <label htmlFor={name} className="flex flex-col gap-[7px]">
@@ -179,18 +186,26 @@ function BlogField({
           name={name}
           rows={4}
           placeholder={placeholder}
-          className={cn(fieldClass, "resize-none")}
+          aria-invalid={Boolean(error)}
+          className={cn(
+            fieldClass,
+            "resize-none",
+            error && "border-[var(--danger)]",
+          )}
         />
       ) : (
         <input
           id={name}
           name={name}
           type={type}
-          required={required}
           placeholder={placeholder}
-          className={fieldClass}
+          aria-invalid={Boolean(error)}
+          className={cn(fieldClass, error && "border-[var(--danger)]")}
         />
       )}
+      {error ? (
+        <span className="font-sans text-[12px] text-[var(--danger)]">{error}</span>
+      ) : null}
     </label>
   );
 }

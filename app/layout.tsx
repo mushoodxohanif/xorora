@@ -48,6 +48,11 @@ export default async function RootLayout({
           <main className="flex flex-1 flex-col">{children}</main>
           <Footer columns={footerColumns} />
         </LetsTalkModalProvider>
+        <Script
+          id="hs-script-loader"
+          src="https://js-na2.hs-scripts.com/246820303.js"
+          strategy="afterInteractive"
+        />
         <Script id="tawk-to" strategy="afterInteractive">
           {`var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){

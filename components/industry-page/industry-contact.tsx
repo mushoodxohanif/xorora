@@ -1,9 +1,10 @@
 "use client";
 
 import { ArrowUpRight, Check, Mail, Phone } from "lucide-react";
-import { useState } from "react";
+import { type FormEvent, useState } from "react";
 import { XWatermark } from "@/components/geometry/x-watermark";
 import { Button } from "@/components/ui/button";
+import { FORM_FIELDS, type FieldErrors, validateForm } from "@/lib/forms/validate";
 import type { ContactInfo } from "@/lib/industries/types";
 import { cn } from "@/lib/utils";
 
@@ -18,6 +19,16 @@ export function IndustryContact({ info }: IndustryContactProps) {
   const [sent, setSent] = useState(false);
   const [budget, setBudget] = useState<string | null>(null);
   const [hearAbout, setHearAbout] = useState<string | null>(null);
+  const [errors, setErrors] = useState<FieldErrors>({});
+
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const next = validateForm(event.currentTarget, FORM_FIELDS.contact);
+    setErrors(next);
+    if (Object.keys(next).length === 0) {
+      setSent(true);
+    }
+  }
 
   return (
     <section className="bg-navy-950 px-8 py-[clamp(56px,7vw,96px)]">
@@ -61,25 +72,20 @@ export function IndustryContact({ info }: IndustryContactProps) {
                 </p>
               </div>
             ) : (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSent(true);
-                }}
-              >
+              <form name="industry-contact" noValidate onSubmit={onSubmit}>
                 <div className="grid grid-cols-2 gap-3.5 max-[560px]:grid-cols-1">
                   <ContactField
                     name="name"
                     label="Your name"
                     placeholder="Jordan Reyes"
-                    required
+                    error={errors.name}
                   />
                   <ContactField
                     name="email"
                     label="Work email"
                     placeholder="you@company.com"
                     type="email"
-                    required
+                    error={errors.email}
                   />
                 </div>
                 <div className="mt-3.5">
@@ -90,6 +96,12 @@ export function IndustryContact({ info }: IndustryContactProps) {
                     textarea
                   />
                 </div>
+                <input type="hidden" name="budget" value={budget ?? ""} />
+                <input
+                  type="hidden"
+                  name="hear_about"
+                  value={hearAbout ?? ""}
+                />
                 <ChipRow
                   label="What is your budget for this project?"
                   options={info.budgetOptions}
@@ -154,14 +166,14 @@ function ContactField({
   placeholder,
   textarea,
   type = "text",
-  required,
+  error,
 }: {
   name: string;
   label: string;
   placeholder: string;
   textarea?: boolean;
   type?: string;
-  required?: boolean;
+  error?: string;
 }) {
   return (
     <label htmlFor={name} className="flex flex-col gap-[7px]">
@@ -172,21 +184,24 @@ function ContactField({
         <textarea
           id={name}
           name={name}
-          required={required}
           rows={3}
           placeholder={placeholder}
-          className={fieldClass}
+          aria-invalid={Boolean(error)}
+          className={cn(fieldClass, error && "border-[var(--danger)]")}
         />
       ) : (
         <input
           id={name}
           name={name}
           type={type}
-          required={required}
           placeholder={placeholder}
-          className={fieldClass}
+          aria-invalid={Boolean(error)}
+          className={cn(fieldClass, error && "border-[var(--danger)]")}
         />
       )}
+      {error ? (
+        <span className="font-sans text-[12px] text-[var(--danger)]">{error}</span>
+      ) : null}
     </label>
   );
 }

@@ -1,9 +1,10 @@
 "use client";
 
 import { ArrowUpRight, Check, ChevronDown, Mail, Phone } from "lucide-react";
-import { useState } from "react";
+import { type FormEvent, useState } from "react";
 import { XWatermark } from "@/components/geometry/x-watermark";
 import { Button } from "@/components/ui/button";
+import { FORM_FIELDS, type FieldErrors, validateForm } from "@/lib/forms/validate";
 import { cn } from "@/lib/utils";
 
 const BUDGETS = [
@@ -25,6 +26,16 @@ export function IndContact({ industryNames }: { industryNames: string[] }) {
   const [sent, setSent] = useState(false);
   const [industry, setIndustry] = useState("");
   const [budget, setBudget] = useState<string | null>(null);
+  const [errors, setErrors] = useState<FieldErrors>({});
+
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const next = validateForm(event.currentTarget, FORM_FIELDS.contact);
+    setErrors(next);
+    if (Object.keys(next).length === 0) {
+      setSent(true);
+    }
+  }
 
   return (
     <section
@@ -85,25 +96,20 @@ export function IndContact({ industryNames }: { industryNames: string[] }) {
                 </p>
               </div>
             ) : (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSent(true);
-                }}
-              >
+              <form name="industries-contact" noValidate onSubmit={onSubmit}>
                 <div className="grid grid-cols-2 gap-3.5">
                   <IndField
                     name="name"
                     label="Full name"
                     placeholder="Jordan Reyes"
-                    required
+                    error={errors.name}
                   />
                   <IndField
                     name="email"
                     label="Work email"
                     placeholder="you@company.com"
                     type="email"
-                    required
+                    error={errors.email}
                   />
                 </div>
                 <div className="mt-3.5 grid grid-cols-2 gap-3.5">
@@ -118,6 +124,7 @@ export function IndContact({ industryNames }: { industryNames: string[] }) {
                     options={industryNames}
                   />
                 </div>
+                <input type="hidden" name="budget" value={budget ?? ""} />
                 <ChipRow
                   label="Project budget"
                   options={BUDGETS}
@@ -158,14 +165,14 @@ function IndField({
   placeholder,
   textarea,
   type = "text",
-  required,
+  error,
 }: {
   name: string;
   label: string;
   placeholder: string;
   textarea?: boolean;
   type?: string;
-  required?: boolean;
+  error?: string;
 }) {
   const id = name;
 
@@ -178,21 +185,28 @@ function IndField({
         <textarea
           id={id}
           name={name}
-          required={required}
           rows={3}
           placeholder={placeholder}
-          className={cn(fieldClass, "resize-none")}
+          aria-invalid={Boolean(error)}
+          className={cn(
+            fieldClass,
+            "resize-none",
+            error && "border-[var(--danger)]",
+          )}
         />
       ) : (
         <input
           id={id}
           name={name}
           type={type}
-          required={required}
           placeholder={placeholder}
-          className={fieldClass}
+          aria-invalid={Boolean(error)}
+          className={cn(fieldClass, error && "border-[var(--danger)]")}
         />
       )}
+      {error ? (
+        <span className="font-sans text-[12px] text-[var(--danger)]">{error}</span>
+      ) : null}
     </label>
   );
 }

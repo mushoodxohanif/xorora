@@ -1,9 +1,14 @@
 "use client";
 
 import { ArrowUpRight, Check, ChevronDown, Mail, MapPin } from "lucide-react";
-import { type ChangeEvent, Fragment, useState } from "react";
+import { type ChangeEvent, type FormEvent, useState } from "react";
 import { XWatermark } from "@/components/geometry/x-watermark";
 import { Button } from "@/components/ui/button";
+import {
+  FORM_FIELDS,
+  type FieldErrors,
+  validateRequired,
+} from "@/lib/forms/validate";
 
 interface FormState {
   name: string;
@@ -14,12 +19,7 @@ interface FormState {
   notes: string;
 }
 
-interface FieldErrors {
-  name?: string;
-  email?: string;
-  company?: string;
-  using?: string;
-}
+type FieldErrorsState = FieldErrors;
 
 function LeField({
   label,
@@ -133,7 +133,7 @@ export function LeademContact() {
     notes: "",
   };
   const [form, setForm] = useState<FormState>(blank);
-  const [errors, setErrors] = useState<FieldErrors>({});
+  const [errors, setErrors] = useState<FieldErrorsState>({});
   const [sent, setSent] = useState(false);
   const teams = ["1-5 reps", "6-15 reps", "16-50 reps", "50+ reps"];
   const [selFocus, setSelFocus] = useState(false);
@@ -146,16 +146,11 @@ export function LeademContact() {
     setErrors((p) => ({ ...p, [name]: undefined }));
   };
 
-  const submit = () => {
-    const e: FieldErrors = {};
-    if (!form.name.trim()) e.name = "Please enter your full name.";
-    if (!form.email.trim()) e.email = "Please enter your work email.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      e.email = "Enter a valid email address.";
-    if (!form.company.trim()) e.company = "Please enter your company name.";
-    if (!form.using.trim()) e.using = "Let us know what you use today.";
-    setErrors(e);
-    if (Object.keys(e).length === 0) {
+  const submit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const next = validateRequired(form, FORM_FIELDS.product);
+    setErrors(next);
+    if (Object.keys(next).length === 0) {
       setSent(true);
     }
   };
@@ -327,7 +322,7 @@ export function LeademContact() {
                 </p>
               </div>
             ) : (
-              <Fragment>
+              <form name="leadem-contact" noValidate onSubmit={submit}>
                 <div
                   style={{
                     display: "grid",
@@ -459,10 +454,10 @@ export function LeademContact() {
                 </div>
                 <div style={{ marginTop: 24 }}>
                   <Button
+                    type="submit"
                     variant="primary"
                     size="lg"
                     style={{ width: "100%", justifyContent: "center" }}
-                    onClick={submit}
                   >
                     Send Message{" "}
                     <ArrowUpRight style={{ width: 16 }} aria-hidden />
@@ -481,7 +476,7 @@ export function LeademContact() {
                   Your information is never shared. We will respond within one
                   business day.
                 </p>
-              </Fragment>
+              </form>
             )}
           </div>
         </div>

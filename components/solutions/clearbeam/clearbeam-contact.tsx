@@ -1,9 +1,14 @@
 "use client";
 
 import { ArrowUpRight, Check, ChevronDown, Mail, MapPin } from "lucide-react";
-import { type ChangeEvent, useState } from "react";
+import { type ChangeEvent, type FormEvent, useState } from "react";
 import { XWatermark } from "@/components/geometry/x-watermark";
 import { Button } from "@/components/ui/button";
+import {
+  FORM_FIELDS,
+  type FieldErrors,
+  validateRequired,
+} from "@/lib/forms/validate";
 
 type FormState = {
   name: string;
@@ -14,7 +19,7 @@ type FormState = {
   notes: string;
 };
 
-type FormErrors = Partial<Record<keyof FormState, string>>;
+type FormErrors = FieldErrors;
 
 function ClearbeamField({
   label,
@@ -140,17 +145,13 @@ export function ClearbeamContact() {
     setErrors((p) => ({ ...p, [name]: undefined }));
   };
 
-  const submit = () => {
-    const e: FormErrors = {};
-    if (!form.name.trim()) e.name = "Please enter your full name.";
-    if (!form.email.trim()) e.email = "Please enter your work email.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      e.email = "Enter a valid email address.";
-    if (!form.company.trim())
-      e.company = "Please enter your product or company name.";
-    if (!form.using.trim()) e.using = "Let us know what you use today.";
-    setErrors(e);
-    if (Object.keys(e).length === 0) {
+  const submit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const next = validateRequired(form, FORM_FIELDS.product, {
+      company: "Please enter your product or company name.",
+    });
+    setErrors(next);
+    if (Object.keys(next).length === 0) {
       setSent(true);
     }
   };
@@ -325,7 +326,7 @@ export function ClearbeamContact() {
                 </p>
               </div>
             ) : (
-              <>
+              <form name="clearbeam-contact" noValidate onSubmit={submit}>
                 <div
                   style={{
                     display: "grid",
@@ -457,10 +458,10 @@ export function ClearbeamContact() {
                 </div>
                 <div style={{ marginTop: 24 }}>
                   <Button
+                    type="submit"
                     variant="primary"
                     size="lg"
                     style={{ width: "100%", justifyContent: "center" }}
-                    onClick={submit}
                   >
                     Send Message{" "}
                     <ArrowUpRight style={{ width: 16 }} aria-hidden />
@@ -479,7 +480,7 @@ export function ClearbeamContact() {
                   Your information is never shared. We respond within one
                   business day.
                 </p>
-              </>
+              </form>
             )}
           </div>
         </div>
