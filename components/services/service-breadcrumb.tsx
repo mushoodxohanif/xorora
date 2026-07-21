@@ -4,9 +4,11 @@ import { ROUTES } from "@/lib/navigation";
 
 interface ServiceBreadcrumbProps {
   current: string;
+  /** Optional parent crumb (e.g. Consulting → /consulting) for sub-service pages */
+  parent?: { label: string; href: string };
 }
 
-export function ServiceBreadcrumb({ current }: ServiceBreadcrumbProps) {
+export function ServiceBreadcrumb({ current, parent }: ServiceBreadcrumbProps) {
   return (
     <nav
       aria-label="Breadcrumb"
@@ -19,8 +21,22 @@ export function ServiceBreadcrumb({ current }: ServiceBreadcrumbProps) {
         Home
       </Link>
       <Chevron size={13} className="text-white/40" />
-      <span>Services</span>
-      <Chevron size={13} className="text-white/40" />
+      {parent ? (
+        <>
+          <Link
+            href={parent.href}
+            className="text-white/60 no-underline transition-colors hover:text-white"
+          >
+            {parent.label}
+          </Link>
+          <Chevron size={13} className="text-white/40" />
+        </>
+      ) : (
+        <>
+          <span>Services</span>
+          <Chevron size={13} className="text-white/40" />
+        </>
+      )}
       <span className="font-semibold text-white">{current}</span>
     </nav>
   );

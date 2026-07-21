@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 interface ServiceGlassFormProps {
   title: string;
   formName?: string;
+  nameLabel?: string;
   messageLabel?: string;
   messagePlaceholder?: string;
   showNda?: boolean;
@@ -18,6 +19,7 @@ interface ServiceGlassFormProps {
 export function ServiceGlassForm({
   title,
   formName,
+  nameLabel = "Full Name",
   messageLabel = "What do you want to solve?",
   messagePlaceholder = "A sentence about your goal",
   showNda = true,
@@ -52,7 +54,7 @@ export function ServiceGlassForm({
               {title}
             </h2>
             <div className="grid grid-cols-2 gap-[18px] max-[560px]:grid-cols-1">
-              <HeroField label="Full Name" placeholder="Jordan Reyes" />
+              <HeroField label={nameLabel} placeholder="Jordan Reyes" />
               <HeroField label="Email" placeholder="you@company.com" />
             </div>
             <div className="mt-[18px]">

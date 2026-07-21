@@ -4,12 +4,14 @@ import {
   ServiceFaq,
   StepApproach,
 } from "@/components/services";
+import { ROUTES } from "@/lib/navigation";
 
 export const SERVICES = [
   {
     icon: "compass",
     name: "Discovery Workshop Services",
     body: "A focused Discovery Workshop that turns a vague idea into a costed, de-risked roadmap with clear scope, architecture, and milestones.",
+    href: ROUTES.discoveryWorkshop,
   },
   {
     icon: "brain-circuit",

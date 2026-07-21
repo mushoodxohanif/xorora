@@ -30,7 +30,10 @@ export function ConHero() {
             <ArrowUpRight className="h-4 w-4" aria-hidden />
           </LetsTalkContactLink>
         </div>
-        <ServiceGlassForm title="Book a strategy session" />
+        <ServiceGlassForm
+          formName="consulting-contact"
+          title="Book a strategy session"
+        />
       </div>
     </section>
   );

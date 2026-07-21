@@ -85,6 +85,7 @@ export function IndustryHero({ industry }: IndustryHeroProps) {
 
         <div id="industry-form">
           <ServiceGlassForm
+            formName={`industry-${industry.slug}-contact`}
             title={hero.formTitle}
             messageLabel="About project"
             messagePlaceholder="Tell us what you want to build"
