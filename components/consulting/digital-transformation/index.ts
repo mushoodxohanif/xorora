@@ -1,0 +1,10 @@
+export { DtChallenges } from "./dt-challenges";
+export { DtContact } from "./dt-contact";
+export { DtDeliver } from "./dt-deliver";
+export { DtFaq, DT_FAQS } from "./dt-faq";
+export { DtHero } from "./dt-hero";
+export { DtProcess } from "./dt-process";
+export { DtResults } from "./dt-results";
+export { DtScenarios } from "./dt-scenarios";
+export { DtTech } from "./dt-tech";
+export { DtWhy } from "./dt-why";

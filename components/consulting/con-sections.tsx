@@ -23,6 +23,7 @@ export const SERVICES = [
     icon: "refresh-cw",
     name: "AI Digital Transformation Services",
     body: "A pragmatic modernization strategy that maps legacy systems to a scalable, AI-ready architecture, without a risky big-bang rewrite.",
+    href: ROUTES.digitalTransformation,
   },
 ] as const;
 

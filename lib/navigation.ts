@@ -9,6 +9,7 @@ export const ROUTES = {
   consulting: "/consulting",
   discoveryWorkshop: "/consulting/discovery-workshop-services",
   aiConsultation: "/consulting/ai-consultation-services",
+  digitalTransformation: "/consulting/digital-transformation-services",
   engineering: "/engineering",
   ai: "/ai",
   managedServices: "/managed-services",
@@ -133,7 +134,7 @@ export const XO_NAV: SiteNavigation = {
       items: [
         { label: "Discovery Workshop", href: ROUTES.discoveryWorkshop },
         { label: "AI Consulting", href: ROUTES.aiConsultation },
-        { label: "Digital Transformation", href: ROUTES.consulting },
+        { label: "Digital Transformation", href: ROUTES.digitalTransformation },
       ],
     },
     {
@@ -339,7 +340,7 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
     items: [
       { label: "Discovery Workshop", href: ROUTES.discoveryWorkshop },
       { label: "AI Consulting", href: ROUTES.aiConsultation },
-      { label: "Digital Transformation", href: ROUTES.consulting },
+      { label: "Digital Transformation", href: ROUTES.digitalTransformation },
     ],
   },
   {
