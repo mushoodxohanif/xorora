@@ -45,6 +45,7 @@ export const SERVICES = [
     icon: "cpu",
     name: "AI Software Development Services",
     body: "Applied ML, LLMs, RAG, and agents engineered for your data and domain.",
+    href: ROUTES.aiSoftwareDevelopment,
   },
   {
     icon: "app-window",

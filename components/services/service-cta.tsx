@@ -13,7 +13,7 @@ interface ServiceCtaProps {
   title: string;
   description: string;
   primaryLabel?: string;
-  secondaryLabel?: string;
+  secondaryLabel?: string | null;
 }
 
 export function ServiceCta({
@@ -48,11 +48,13 @@ export function ServiceCta({
             {primaryLabel}
             <ArrowUpRight className="h-4 w-4" aria-hidden />
           </LetsTalkContactLink>
-          <LetsTalkContactLink
-            className={buttonClassName({ variant: "onDark", size: "lg" })}
-          >
-            {secondaryLabel}
-          </LetsTalkContactLink>
+          {secondaryLabel ? (
+            <LetsTalkContactLink
+              className={buttonClassName({ variant: "onDark", size: "lg" })}
+            >
+              {secondaryLabel}
+            </LetsTalkContactLink>
+          ) : null}
         </div>
         <div className="mt-9 flex flex-wrap justify-center gap-x-[clamp(20px,4vw,40px)] gap-y-5">
           {CONTACT_ITEMS.map(({ icon: Icon, value }) => (

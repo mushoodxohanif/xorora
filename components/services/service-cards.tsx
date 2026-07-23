@@ -159,6 +159,10 @@ const OUTCOME_ICONS: Record<string, LucideIcon> = {
   "trending-up": TrendingUp,
   handshake: Handshake,
   gauge: Gauge,
+  cloud: Cloud,
+  cpu: Cpu,
+  rocket: Rocket,
+  layers: Layers,
 };
 
 interface OutcomeGridProps {

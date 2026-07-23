@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 
 interface ServiceGlassFormProps {
   title: string;
+  description?: string;
   formName?: string;
   nameLabel?: string;
   messageLabel?: string;
@@ -19,6 +20,7 @@ interface ServiceGlassFormProps {
 
 export function ServiceGlassForm({
   title,
+  description,
   formName = "service-glass",
   nameLabel = "Full Name",
   messageLabel = "What do you want to solve?",
@@ -61,9 +63,19 @@ export function ServiceGlassForm({
           </div>
         ) : (
           <form name={formName} noValidate onSubmit={onSubmit}>
-            <h2 className="mb-6 font-extrabold font-sans text-[clamp(24px,2.4vw,32px)] text-white leading-tight tracking-[-0.02em]">
+            <h2
+              className={cn(
+                "font-extrabold font-sans text-[clamp(24px,2.4vw,32px)] text-white leading-tight tracking-[-0.02em]",
+                description ? "mb-3" : "mb-6",
+              )}
+            >
               {title}
             </h2>
+            {description ? (
+              <p className="mb-6 m-0 font-sans text-[14.5px] text-white/70 leading-relaxed">
+                {description}
+              </p>
+            ) : null}
             <div className="grid grid-cols-2 gap-[18px] max-[560px]:grid-cols-1">
               <HeroField
                 name="name"
