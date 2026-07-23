@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
-import { SignalField } from "@/components/geometry/signal-field";
+import Image from "next/image";
 import { LightSection } from "@/components/case-study/light-section";
 import { LetsTalkContactLink } from "@/components/modals";
 import { buttonClassName } from "@/lib/button-styles";
@@ -27,17 +27,15 @@ export function IiBenefits() {
             <ArrowUpRight className="h-4 w-4" aria-hidden />
           </LetsTalkContactLink>
         </div>
-        <div className="relative min-h-[280px] overflow-hidden rounded-(--r-lg) border border-border bg-linear-to-br from-navy-700 via-[#15225C] to-[#2C57C9]">
-          <SignalField className="opacity-50" />
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_80%_at_70%_30%,rgba(120,160,255,0.35),transparent_60%)]" />
-          <div className="relative z-10 flex h-full min-h-[280px] flex-col items-center justify-center px-8 py-12 text-center">
-            <p className="m-0 font-mono text-[11px] text-indigo-200/70 uppercase tracking-[0.14em]">
-              Infrastructure
-            </p>
-            <p className="mt-3 max-w-[240px] font-sans font-semibold text-[18px] text-white/90 leading-snug">
-              Secure, agile foundations for multicloud workforces
-            </p>
-          </div>
+        <div className="relative aspect-[4/5] h-full min-h-0 overflow-hidden rounded-(--r-lg) lg:aspect-auto lg:min-h-[360px]">
+          <Image
+            src="/assets/infrastructure/consultancy-datacenter.webp"
+            alt="Engineer working on infrastructure in a data center"
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            priority={false}
+            className="object-cover object-[center_20%]"
+          />
         </div>
       </div>
     </LightSection>

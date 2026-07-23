@@ -30,16 +30,28 @@ const BENEFITS: {
 
 function MulticloudChart() {
   return (
-    <div className="rounded-(--r-lg) border border-white/12 bg-white/4 p-[clamp(24px,2.6vw,32px)]">
+    <div className="flex h-full flex-col rounded-(--r-lg) border border-white/12 bg-white/4 p-[clamp(24px,2.6vw,32px)]">
       <div className="mb-2 font-extrabold font-sans text-[clamp(48px,6vw,72px)] text-white leading-none tracking-[-0.03em]">
         89%
       </div>
       <p className="mb-6 m-0 max-w-[280px] font-sans text-[14px] text-white/68 leading-relaxed">
         of organizations have a multi-cloud strategy
       </p>
+
+      <div
+        className="relative mb-6 flex min-h-[180px] flex-1 flex-col justify-end"
+        aria-hidden
+      >
+        <div className="absolute inset-0 mx-auto w-[min(100%,72px)] rounded-full bg-white/10" />
+        <div
+          className="relative mx-auto w-[min(100%,72px)] rounded-full bg-[#6B7FD7]"
+          style={{ height: "89%" }}
+        />
+      </div>
+
       <svg
         viewBox="0 0 320 28"
-        className="h-7 w-full"
+        className="h-7 w-full shrink-0"
         role="img"
         aria-label="89 percent multi-cloud adoption bar"
       >
@@ -76,7 +88,7 @@ export function IiWhy() {
           onDark
           className="mb-[52px] max-w-[720px]"
         />
-        <div className="grid grid-cols-1 gap-[22px] lg:grid-cols-[1.2fr_0.8fr]">
+        <div className="grid grid-cols-1 items-stretch gap-[22px] lg:grid-cols-[1.2fr_0.8fr]">
           <div className="grid grid-cols-1 gap-[18px] sm:grid-cols-3 lg:grid-cols-1">
             {BENEFITS.map((item) => {
               const Icon = item.icon;
