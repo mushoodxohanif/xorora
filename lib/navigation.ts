@@ -15,6 +15,7 @@ export const ROUTES = {
   managedServices: "/managed-services",
   devops: "/managed-services/devops-services",
   cybersecurity: "/managed-services/cybersecurity-services",
+  itInfrastructure: "/managed-services/it-infrastructure-services",
   marketingServices: "/marketing-services",
   engagementModels: "/engagement-models",
   howWeWork: "/how-we-work",
@@ -169,7 +170,7 @@ export const XO_NAV: SiteNavigation = {
       items: [
         { label: "DevOps", href: ROUTES.devops },
         { label: "Cybersecurity", href: ROUTES.cybersecurity },
-        { label: "IT Infrastructure", href: ROUTES.managedServices },
+        { label: "IT Infrastructure", href: ROUTES.itInfrastructure },
       ],
     },
     {
@@ -351,7 +352,7 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
     items: [
       { label: "DevOps", href: ROUTES.devops },
       { label: "Cybersecurity", href: ROUTES.cybersecurity },
-      { label: "IT Infrastructure", href: ROUTES.managedServices },
+      { label: "IT Infrastructure", href: ROUTES.itInfrastructure },
     ],
   },
   {
