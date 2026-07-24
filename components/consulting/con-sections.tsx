@@ -25,6 +25,12 @@ export const SERVICES = [
     body: "A pragmatic modernization strategy that maps legacy systems to a scalable, AI-ready architecture, without a risky big-bang rewrite.",
     href: ROUTES.digitalTransformation,
   },
+  {
+    icon: "layers",
+    name: "Staff Augmentation Services",
+    body: "Senior engineers embedded in your team. Fill skill gaps, unblock roadmaps, and scale delivery without the hiring overhead.",
+    href: ROUTES.staffAugmentation,
+  },
 ] as const;
 
 const OUTCOMES = [

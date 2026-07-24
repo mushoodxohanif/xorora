@@ -39,7 +39,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     entry(ROUTES.cybersecurity, 0.8),
     entry(ROUTES.itInfrastructure, 0.8),
     entry(ROUTES.marketingServices, 0.8),
-    entry(ROUTES.engagementModels, 0.8),
+    entry(ROUTES.staffAugmentation, 0.8),
     entry(ROUTES.clearbeam, 0.8),
     entry(ROUTES.leadem, 0.8),
     entry(ROUTES.losono, 0.8),

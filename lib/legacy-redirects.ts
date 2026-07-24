@@ -23,7 +23,7 @@ export const LEGACY_REDIRECTS: Record<string, string> = {
   "/Managed Services.html": "/managed-services",
   "/Managed Services v2.html": "/managed-services",
   "/Marketing Services.html": "/marketing-services",
-  "/Engagement Models.html": "/engagement-models",
+  "/Engagement Models.html": "/",
 
   // Industries
   "/Health Tech.html": "/industries/health-tech",

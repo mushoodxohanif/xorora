@@ -18,6 +18,16 @@ const nextConfig: NextConfig = {
         destination: "/ai",
         permanent: true,
       },
+      {
+        source: "/engagement-models",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/engagement-models/staff-augmentation-services",
+        destination: "/consulting/staff-augmentation-services",
+        permanent: true,
+      },
     ];
   },
 };

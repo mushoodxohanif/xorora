@@ -18,7 +18,7 @@ export const ROUTES = {
   cybersecurity: "/managed-services/cybersecurity-services",
   itInfrastructure: "/managed-services/it-infrastructure-services",
   marketingServices: "/marketing-services",
-  engagementModels: "/engagement-models",
+  staffAugmentation: "/consulting/staff-augmentation-services",
   howWeWork: "/how-we-work",
   industries: "/industries",
   ourWork: "/our-work",
@@ -139,6 +139,7 @@ export const XO_NAV: SiteNavigation = {
         { label: "Discovery Workshop", href: ROUTES.discoveryWorkshop },
         { label: "AI Consulting", href: ROUTES.aiConsultation },
         { label: "Digital Transformation", href: ROUTES.digitalTransformation },
+        { label: "Staff Augmentation", href: ROUTES.staffAugmentation },
       ],
     },
     {
@@ -185,16 +186,6 @@ export const XO_NAV: SiteNavigation = {
         { label: "Meta Ads", href: ROUTES.marketingServices },
         { label: "Social Media Management", href: ROUTES.marketingServices },
         { label: "B2B Marketing", href: ROUTES.marketingServices },
-      ],
-    },
-    {
-      name: "Engagement Model",
-      icon: "handshake",
-      href: ROUTES.engagementModels,
-      items: [
-        { label: "Fixed Scope", href: ROUTES.engagementModels },
-        { label: "Variable Scope", href: ROUTES.engagementModels },
-        { label: "Staff Augmentation", href: ROUTES.engagementModels },
       ],
     },
   ],
@@ -345,6 +336,7 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
       { label: "Discovery Workshop", href: ROUTES.discoveryWorkshop },
       { label: "AI Consulting", href: ROUTES.aiConsultation },
       { label: "Digital Transformation", href: ROUTES.digitalTransformation },
+      { label: "Staff Augmentation", href: ROUTES.staffAugmentation },
     ],
   },
   {
@@ -354,15 +346,6 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
       { label: "DevOps", href: ROUTES.devops },
       { label: "Cybersecurity", href: ROUTES.cybersecurity },
       { label: "IT Infrastructure", href: ROUTES.itInfrastructure },
-    ],
-  },
-  {
-    heading: "Engagement Model",
-    href: ROUTES.engagementModels,
-    items: [
-      { label: "Fixed Scope", href: ROUTES.engagementModels },
-      { label: "Variable Scope", href: ROUTES.engagementModels },
-      { label: "Staff Augmentation", href: ROUTES.engagementModels },
     ],
   },
   {
