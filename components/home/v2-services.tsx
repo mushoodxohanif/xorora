@@ -24,7 +24,7 @@ interface ServiceItem {
 
 function buildServices(content: HomeServicesContent): ServiceItem[] {
   return content.order
-    .map((name, i) => {
+    .map((name) => {
       const svc = XO_NAV.services.find((s) => s.name === name);
       const meta = content.meta[name];
       if (!svc || !meta) return null;
@@ -33,10 +33,15 @@ function buildServices(content: HomeServicesContent): ServiceItem[] {
         href: svc.href,
         shape: meta.shape as BlobShape,
         desc: meta.desc,
-        num: String(i + 1).padStart(2, "0"),
       };
     })
-    .filter((s): s is ServiceItem => s !== null);
+    .filter(
+      (s): s is Omit<ServiceItem, "num"> => s !== null,
+    )
+    .map((s, i) => ({
+      ...s,
+      num: String(i + 1).padStart(2, "0"),
+    }));
 }
 
 export async function V2Services() {
