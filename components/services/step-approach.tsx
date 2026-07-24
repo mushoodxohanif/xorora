@@ -40,7 +40,11 @@ export function StepApproach({
             {steps[active]?.n}
           </div>
           <div className="flex justify-center py-6 pb-2">
-            <DiamondStack active={active} gradientId={gradientId} />
+            <DiamondStack
+              active={active}
+              count={steps.length}
+              gradientId={gradientId}
+            />
           </div>
         </div>
         <div className="border-border border-l">

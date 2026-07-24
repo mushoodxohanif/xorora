@@ -12,6 +12,7 @@ export const ROUTES = {
   digitalTransformation: "/consulting/digital-transformation-services",
   engineering: "/engineering",
   aiSoftwareDevelopment: "/engineering/ai-software-development-services",
+  customAppDevelopment: "/engineering/custom-app-development-services",
   ai: "/ai",
   managedServices: "/managed-services",
   devops: "/managed-services/devops-services",
@@ -148,7 +149,7 @@ export const XO_NAV: SiteNavigation = {
       href: ROUTES.engineering,
       items: [
         { label: "AI Software Development", href: ROUTES.aiSoftwareDevelopment },
-        { label: "Custom App Development", href: ROUTES.engineering },
+        { label: "Custom App Development", href: ROUTES.customAppDevelopment },
         { label: "Application Modernization", href: ROUTES.engineering },
         { label: "MVP / POC Development", href: ROUTES.engineering },
         { label: "CMS Development Services", href: ROUTES.engineering },
@@ -294,7 +295,7 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
     href: ROUTES.engineering,
     items: [
       { label: "AI Software Development", href: ROUTES.aiSoftwareDevelopment },
-      { label: "Custom App Development", href: ROUTES.engineering },
+      { label: "Custom App Development", href: ROUTES.customAppDevelopment },
       { label: "Application Modernization", href: ROUTES.engineering },
       { label: "MVP / POC Development", href: ROUTES.engineering },
       { label: "CMS Development Services", href: ROUTES.engineering },

@@ -1,0 +1,11 @@
+export { CadAi } from "./cad-ai";
+export { CadChallenges } from "./cad-challenges";
+export { CadContact } from "./cad-contact";
+export { CadDeliver } from "./cad-deliver";
+export { CadFaq, CAD_FAQS } from "./cad-faq";
+export { CadHero } from "./cad-hero";
+export { CadIndustries } from "./cad-industries";
+export { CadPlatforms } from "./cad-platforms";
+export { CadProcess } from "./cad-process";
+export { CadTech } from "./cad-tech";
+export { CadWhy } from "./cad-why";

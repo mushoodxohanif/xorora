@@ -1,23 +1,29 @@
 interface DiamondStackProps {
   active: number;
+  count?: number;
   gradientId?: string;
 }
 
 export function DiamondStack({
   active,
+  count = 4,
   gradientId = "diaActive",
 }: DiamondStackProps) {
   const cx = 150;
   const rx = 104;
   const ry = 46;
-  const cys = [66, 112, 158, 204];
+  const startY = 66;
+  const gap = count > 4 ? 38 : 46;
+  const cys = Array.from({ length: count }, (_, i) => startY + i * gap);
+  const viewHeight = (cys[count - 1] ?? startY) + ry + 20;
   const path = (cy: number) =>
     `M${cx},${cy - ry} L${cx + rx},${cy} L${cx},${cy + ry} L${cx - rx},${cy} Z`;
-  const order = [0, 1, 2, 3].filter((i) => i !== active).concat(active);
+  const indices = Array.from({ length: count }, (_, i) => i);
+  const order = indices.filter((i) => i !== active).concat(active);
 
   return (
     <svg
-      viewBox="0 0 300 270"
+      viewBox={`0 0 300 ${viewHeight}`}
       width="100%"
       className="max-w-[340px] overflow-visible"
       aria-hidden="true"
@@ -33,7 +39,7 @@ export function DiamondStack({
         return (
           <path
             key={i}
-            d={path(cys[i] ?? 66)}
+            d={path(cys[i] ?? startY)}
             fill={on ? `url(#${gradientId})` : "rgba(70,90,180,0.13)"}
             stroke={on ? "none" : "rgba(70,90,180,0.30)"}
             strokeWidth="1"

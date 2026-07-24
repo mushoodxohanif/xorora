@@ -51,6 +51,7 @@ export const SERVICES = [
     icon: "app-window",
     name: "Custom Mobile App Development Services",
     body: "Web and mobile products built full stack, from interface to infrastructure.",
+    href: ROUTES.customAppDevelopment,
   },
   {
     icon: "layers",
