@@ -57,6 +57,7 @@ export const SERVICES = [
     icon: "layers",
     name: "Legacy Application Modernization Services",
     body: "A flexible, API-first layer over legacy systems so you ship faster without a full rewrite.",
+    href: ROUTES.applicationModernization,
   },
   {
     icon: "rocket",
