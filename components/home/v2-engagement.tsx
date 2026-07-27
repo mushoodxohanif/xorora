@@ -1,4 +1,5 @@
 import { ArrowRight, Check, Users } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { ROUTES } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
@@ -32,9 +33,7 @@ export function V2Engagement() {
           delivery standards, without the hiring overhead.
         </p>
       </div>
-      <div className="max-w-[420px]">
-        <ModelCard {...MODEL} />
-      </div>
+      <ModelCard {...MODEL} />
     </V2Light>
   );
 }
@@ -51,11 +50,11 @@ function ModelCard({
   return (
     <div
       className={cn(
-        "group relative flex flex-col overflow-hidden rounded-[var(--r-lg)] p-[clamp(26px,2.8vw,34px)] transition-all duration-220 ease-in-out",
+        "group relative grid grid-cols-1 overflow-hidden rounded-[var(--r-lg)] transition-all duration-220 ease-in-out md:grid-cols-2",
         "hover:-translate-y-1 border border-border bg-slate-50 hover:border-border-strong hover:shadow-md",
       )}
     >
-      <div className="relative flex h-full flex-col">
+      <div className="relative flex flex-col p-[clamp(26px,2.8vw,34px)]">
         <div className="mb-5 flex items-center justify-between">
           <span className="flex h-[50px] w-[50px] items-center justify-center rounded-[var(--r-md)] bg-indigo-50 text-xo-indigo">
             <Icon className="h-6 w-6" aria-hidden />
@@ -93,6 +92,15 @@ function ModelCard({
             <ArrowRight className="h-[15px] w-[15px]" aria-hidden />
           </Link>
         </div>
+      </div>
+      <div className="relative min-h-[220px] md:min-h-full">
+        <Image
+          src="/assets/home/staff-augmentation.webp"
+          alt="Engineers collaborating at laptops in a shared workspace"
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover"
+        />
       </div>
     </div>
   );
