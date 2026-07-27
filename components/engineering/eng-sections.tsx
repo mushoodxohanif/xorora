@@ -63,6 +63,7 @@ export const SERVICES = [
     icon: "rocket",
     name: "MVP & POC Development Services",
     body: "A focused prototype that proves value and gets you to traction fast.",
+    href: ROUTES.mvpPocDevelopment,
   },
   {
     icon: "file-code-2",
