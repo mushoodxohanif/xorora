@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowRight, Plus } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 import { LightSection } from "@/components/case-study/light-section";
 import { SectionHead } from "@/components/case-study/section-head";
@@ -8,6 +9,7 @@ import { XWatermark } from "@/components/geometry/x-watermark";
 import { LetsTalkContactLink } from "@/components/modals";
 import { ServiceFaq, StepApproach } from "@/components/services";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { ROUTES } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 import { DAI_FAQS } from "./dai-data";
 
@@ -37,6 +39,7 @@ const SERVICES = [
     icon: "bot",
     name: "AI Agent Development Services",
     body: "Autonomous and assistive agents that automate workflows, reason over your systems, and act within guardrails.",
+    href: ROUTES.aiAgentDevelopment,
   },
   {
     icon: "sigma",
@@ -206,24 +209,37 @@ export function DaiServices() {
         </div>
       </div>
       <div className="svc-grid3 grid grid-cols-3 gap-[22px]">
-        {SERVICES.map((s) => (
-          <LetsTalkContactLink
-            key={s.name}
-            className="group relative block h-full cursor-pointer overflow-hidden rounded-(--r-lg) border border-border bg-white p-[clamp(24px,2.6vw,32px)] no-underline shadow-sm transition-all hover:translate-y-[-3px] hover:border-border-strong hover:bg-surface hover:shadow-md"
-          >
-            <div className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-linear-to-r from-indigo-400 to-tangerine-500 transition-transform group-hover:scale-x-100" />
-            <h3 className="mb-2.5 font-sans font-semibold text-[19px] text-fg1 leading-snug">
-              {s.name}
-            </h3>
-            <p className="mb-4 font-sans text-[14.5px] text-fg2 leading-relaxed">
-              {s.body}
-            </p>
-            <span className="inline-flex items-center gap-[7px] font-sans font-semibold text-[13.5px] text-accent group-hover:text-tangerine-600">
-              Learn more
-              <ArrowRight className="h-[15px] w-[15px]" />
-            </span>
-          </LetsTalkContactLink>
-        ))}
+        {SERVICES.map((s) => {
+          const className =
+            "group relative block h-full cursor-pointer overflow-hidden rounded-(--r-lg) border border-border bg-white p-[clamp(24px,2.6vw,32px)] no-underline shadow-sm transition-all hover:translate-y-[-3px] hover:border-border-strong hover:bg-surface hover:shadow-md";
+          const content = (
+            <>
+              <div className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-linear-to-r from-indigo-400 to-tangerine-500 transition-transform group-hover:scale-x-100" />
+              <h3 className="mb-2.5 font-sans font-semibold text-[19px] text-fg1 leading-snug">
+                {s.name}
+              </h3>
+              <p className="mb-4 font-sans text-[14.5px] text-fg2 leading-relaxed">
+                {s.body}
+              </p>
+              <span className="inline-flex items-center gap-[7px] font-sans font-semibold text-[13.5px] text-accent group-hover:text-tangerine-600">
+                Learn more
+                <ArrowRight className="h-[15px] w-[15px]" />
+              </span>
+            </>
+          );
+          if ("href" in s && s.href) {
+            return (
+              <Link key={s.name} href={s.href} className={className}>
+                {content}
+              </Link>
+            );
+          }
+          return (
+            <LetsTalkContactLink key={s.name} className={className}>
+              {content}
+            </LetsTalkContactLink>
+          );
+        })}
       </div>
       <LetsTalkContactLink className="group relative mt-[22px] block cursor-pointer overflow-hidden rounded-(--r-lg) border border-white/10 bg-navy-900 p-[clamp(28px,3.2vw,40px)] no-underline shadow-sm transition-all hover:translate-y-[-3px] hover:shadow-lg">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_120%_at_92%_0%,rgba(70,76,159,0.5),transparent_60%)]" />

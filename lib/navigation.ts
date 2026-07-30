@@ -18,6 +18,7 @@ export const ROUTES = {
   cmsDevelopment: "/engineering/cms-development-services",
   uiUxServices: "/engineering/ui-ux-services",
   ai: "/ai",
+  aiAgentDevelopment: "/ai/ai-agent-development",
   managedServices: "/managed-services",
   devops: "/managed-services/devops-services",
   cybersecurity: "/managed-services/cybersecurity-services",
@@ -165,7 +166,7 @@ export const XO_NAV: SiteNavigation = {
       icon: "bot",
       href: ROUTES.ai,
       items: [
-        { label: "AI Agent Development", href: ROUTES.ai },
+        { label: "AI Agent Development", href: ROUTES.aiAgentDevelopment },
         { label: "ML & Data Science Services", href: ROUTES.ai },
         { label: "Workflow Automation Services", href: ROUTES.ai },
       ],
@@ -310,7 +311,7 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
     heading: "AI",
     href: ROUTES.ai,
     items: [
-      { label: "AI Agent Development", href: ROUTES.ai },
+      { label: "AI Agent Development", href: ROUTES.aiAgentDevelopment },
       { label: "ML & Data Science Services", href: ROUTES.ai },
       { label: "Workflow Automation Services", href: ROUTES.ai },
     ],
