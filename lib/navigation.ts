@@ -16,6 +16,7 @@ export const ROUTES = {
   applicationModernization: "/engineering/application-modernization-services",
   mvpPocDevelopment: "/engineering/mvp-poc-development-services",
   cmsDevelopment: "/engineering/cms-development-services",
+  uiUxServices: "/engineering/ui-ux-services",
   ai: "/ai",
   managedServices: "/managed-services",
   devops: "/managed-services/devops-services",
@@ -156,7 +157,7 @@ export const XO_NAV: SiteNavigation = {
         { label: "Application Modernization", href: ROUTES.applicationModernization },
         { label: "MVP / POC Development", href: ROUTES.mvpPocDevelopment },
         { label: "CMS Development Services", href: ROUTES.cmsDevelopment },
-        { label: "UI/UX Services", href: ROUTES.engineering },
+        { label: "UI/UX Services", href: ROUTES.uiUxServices },
       ],
     },
     {
@@ -302,7 +303,7 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
       { label: "Application Modernization", href: ROUTES.applicationModernization },
       { label: "MVP / POC Development", href: ROUTES.mvpPocDevelopment },
       { label: "CMS Development Services", href: ROUTES.cmsDevelopment },
-      { label: "UI/UX Services", href: ROUTES.engineering },
+      { label: "UI/UX Services", href: ROUTES.uiUxServices },
     ],
   },
   {

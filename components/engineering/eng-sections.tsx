@@ -75,6 +75,7 @@ export const SERVICES = [
     icon: "pen-tool",
     name: "UI/UX Design Services",
     body: "Research-led product design that turns complex workflows into intuitive experiences.",
+    href: ROUTES.uiUxServices,
   },
 ] as const;
 

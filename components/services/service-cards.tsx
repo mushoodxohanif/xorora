@@ -45,6 +45,7 @@ const ICON_MAP: Record<string, LucideIcon> = {
   bot: Bot,
   sigma: Sigma,
   workflow: Workflow,
+  gauge: Gauge,
 };
 
 export interface ServiceCardItem {
@@ -170,9 +171,16 @@ interface OutcomeGridProps {
   title: string;
   sub?: string;
   items: OutcomeCard[];
+  columns?: 3 | 4;
 }
 
-export function OutcomeGrid({ label, title, sub, items }: OutcomeGridProps) {
+export function OutcomeGrid({
+  label,
+  title,
+  sub,
+  items,
+  columns = 4,
+}: OutcomeGridProps) {
   return (
     <section className="relative overflow-hidden bg-navy-900 px-8 py-[clamp(72px,9vw,118px)]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_6%,rgba(91,141,239,0.28)_0%,rgba(39,85,195,0.10)_30%,rgba(1,12,40,0)_62%)]" />
@@ -185,7 +193,12 @@ export function OutcomeGrid({ label, title, sub, items }: OutcomeGridProps) {
           align="center"
           className="mx-auto mb-[52px] max-w-[700px]"
         />
-        <div className="svc-grid4 grid grid-cols-4 gap-[18px]">
+        <div
+          className={cn(
+            "grid gap-[18px]",
+            columns === 3 ? "svc-grid3 grid-cols-3" : "svc-grid4 grid-cols-4",
+          )}
+        >
           {items.map((item) => {
             const Icon = OUTCOME_ICONS[item.icon] ?? Compass;
             return (
