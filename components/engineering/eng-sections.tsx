@@ -69,6 +69,7 @@ export const SERVICES = [
     icon: "file-code-2",
     name: "CMS Development Services",
     body: "Headless and custom CMS builds that give your team control without engineering bottlenecks.",
+    href: ROUTES.cmsDevelopment,
   },
   {
     icon: "pen-tool",
