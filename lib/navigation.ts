@@ -26,6 +26,7 @@ export const ROUTES = {
   cybersecurity: "/managed-services/cybersecurity-services",
   itInfrastructure: "/managed-services/it-infrastructure-services",
   marketingServices: "/marketing-services",
+  seoServices: "/marketing-services/seo-services",
   staffAugmentation: "/consulting/staff-augmentation-services",
   howWeWork: "/how-we-work",
   industries: "/industries",
@@ -197,7 +198,7 @@ export const XO_NAV: SiteNavigation = {
       icon: "megaphone",
       href: ROUTES.marketingServices,
       items: [
-        { label: "SEO", href: ROUTES.marketingServices },
+        { label: "SEO", href: ROUTES.seoServices },
         { label: "Local SEO", href: ROUTES.marketingServices },
         { label: "Google Ads", href: ROUTES.marketingServices },
         { label: "Meta Ads", href: ROUTES.marketingServices },
@@ -337,7 +338,7 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
     heading: "Marketing Services",
     href: ROUTES.marketingServices,
     items: [
-      { label: "SEO", href: ROUTES.marketingServices },
+      { label: "SEO", href: ROUTES.seoServices },
       { label: "Local SEO", href: ROUTES.marketingServices },
       { label: "Google Ads", href: ROUTES.marketingServices },
       { label: "Meta Ads", href: ROUTES.marketingServices },

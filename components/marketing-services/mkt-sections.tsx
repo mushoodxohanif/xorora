@@ -13,12 +13,14 @@ import {
   ThumbsUp,
   TrendingUp,
 } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 import { SignalField } from "@/components/geometry/signal-field";
 import { XWatermark } from "@/components/geometry/x-watermark";
 import { LetsTalkContactLink } from "@/components/modals";
 import { DiamondStack } from "@/components/services/diamond-stack";
 import { buttonClassName } from "@/lib/button-styles";
+import { ROUTES } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 
 function MktEyebrow({
@@ -87,6 +89,7 @@ const SERVICES = [
     body: "Technical SEO, content systems, and authority building that compound organic visibility into a durable acquisition channel.",
     tags: ["TECHNICAL SEO", "CONTENT", "LINK EQUITY"],
     featured: false,
+    href: ROUTES.seoServices,
   },
   {
     icon: MapPin,
@@ -346,52 +349,66 @@ export function MktServices() {
           Channels, built as systems
         </h2>
         <div className="mkt-services-grid grid grid-cols-3 gap-6">
-          {SERVICES.map((s) => (
-            <LetsTalkContactLink
-              key={s.name}
-              className={cn(
-                "group relative flex cursor-pointer flex-col overflow-hidden rounded-2xl p-7 no-underline transition-all hover:translate-y-[-3px]",
-                s.featured
-                  ? "border border-indigo-500 bg-indigo-800 shadow-[inset_0_1px_0_rgba(107,112,182,0.4)]"
-                  : "border border-indigo-900/20 bg-white/2 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] hover:border-indigo-900/45 hover:shadow-lg",
-              )}
-            >
-              {s.featured && (
-                <span className="absolute top-4 right-[18px] font-mono text-[10.5px] text-tangerine-400 tracking-[0.14em]">
-                  FEATURED
-                </span>
-              )}
-              <div className="mb-[18px] flex items-center gap-[13px]">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[10px] border border-[rgba(70,76,159,0.35)] bg-[rgba(70,76,159,0.16)] text-indigo-400">
-                  <s.icon className="h-[21px] w-[21px]" />
-                </span>
-                <span className="font-mono text-[10.5px] text-slate-500 uppercase tracking-[0.12em]">
-                  {s.plain}
-                </span>
-              </div>
-              <h3 className="mb-2.5 font-sans font-semibold text-[19px] text-white leading-snug">
-                {s.name}
-              </h3>
-              <p
-                className={cn(
-                  "mb-[18px] font-sans text-sm leading-relaxed",
-                  s.featured ? "text-white/72" : "text-slate-400",
-                )}
-              >
-                {s.body}
-              </p>
-              <div className="mt-auto flex flex-wrap gap-[7px]">
-                {s.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-md border border-indigo-900/25 bg-indigo-900/12 px-[9px] py-[5px] font-mono text-[10px] text-indigo-300 tracking-[0.06em]"
-                  >
-                    {t}
+          {SERVICES.map((s) => {
+            const className = cn(
+              "group relative flex cursor-pointer flex-col overflow-hidden rounded-2xl p-7 no-underline transition-all hover:translate-y-[-3px]",
+              s.featured
+                ? "border border-indigo-500 bg-indigo-800 shadow-[inset_0_1px_0_rgba(107,112,182,0.4)]"
+                : "border border-indigo-900/20 bg-white/2 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] hover:border-indigo-900/45 hover:shadow-lg",
+            );
+            const content = (
+              <>
+                {s.featured && (
+                  <span className="absolute top-4 right-[18px] font-mono text-[10.5px] text-tangerine-400 tracking-[0.14em]">
+                    FEATURED
                   </span>
-                ))}
-              </div>
-            </LetsTalkContactLink>
-          ))}
+                )}
+                <div className="mb-[18px] flex items-center gap-[13px]">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[10px] border border-[rgba(70,76,159,0.35)] bg-[rgba(70,76,159,0.16)] text-indigo-400">
+                    <s.icon className="h-[21px] w-[21px]" />
+                  </span>
+                  <span className="font-mono text-[10.5px] text-slate-500 uppercase tracking-[0.12em]">
+                    {s.plain}
+                  </span>
+                </div>
+                <h3 className="mb-2.5 font-sans font-semibold text-[19px] text-white leading-snug">
+                  {s.name}
+                </h3>
+                <p
+                  className={cn(
+                    "mb-[18px] font-sans text-sm leading-relaxed",
+                    s.featured ? "text-white/72" : "text-slate-400",
+                  )}
+                >
+                  {s.body}
+                </p>
+                <div className="mt-auto flex flex-wrap gap-[7px]">
+                  {s.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-md border border-indigo-900/25 bg-indigo-900/12 px-[9px] py-[5px] font-mono text-[10px] text-indigo-300 tracking-[0.06em]"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </>
+            );
+
+            if ("href" in s && s.href) {
+              return (
+                <Link key={s.name} href={s.href} className={className}>
+                  {content}
+                </Link>
+              );
+            }
+
+            return (
+              <LetsTalkContactLink key={s.name} className={className}>
+                {content}
+              </LetsTalkContactLink>
+            );
+          })}
         </div>
       </div>
     </section>
