@@ -3,6 +3,7 @@ export { ServiceBreadcrumb } from "./service-breadcrumb";
 export type { OutcomeCard, ServiceCardItem } from "./service-cards";
 export {
   OutcomeGrid,
+  ServiceCard,
   ServiceCardGrid,
 } from "./service-cards";
 export { ServiceCta } from "./service-cta";

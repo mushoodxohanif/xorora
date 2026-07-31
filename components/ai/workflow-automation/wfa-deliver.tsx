@@ -1,4 +1,13 @@
-import { ServiceCardGrid } from "@/components/services";
+"use client";
+
+import { ChevronDown } from "lucide-react";
+import { useState } from "react";
+import { LightSection } from "@/components/case-study/light-section";
+import { SectionHead } from "@/components/case-study/section-head";
+import { ServiceCard } from "@/components/services";
+import { buttonClassName } from "@/lib/button-styles";
+
+const INITIAL_VISIBLE = 6;
 
 const CAPABILITIES = [
   {
@@ -64,17 +73,43 @@ const CAPABILITIES = [
 ] as const;
 
 export function WfaDeliver() {
+  const [expanded, setExpanded] = useState(false);
+  const visible = expanded
+    ? CAPABILITIES
+    : CAPABILITIES.slice(0, INITIAL_VISIBLE);
+
   return (
     <div id="services">
-      <ServiceCardGrid
-        label="Our services"
-        title="Xorora workflow automation services"
-        sub="Streamline operations with workflow automation that lifts efficiency, cuts errors, and transforms tasks through custom workflows, automated approvals, and RPA."
-        items={[...CAPABILITIES]}
-        columns={3}
-        bg="var(--slate-50)"
-        showLearnMore={true}
-      />
+      <LightSection bg="var(--slate-50)">
+        <SectionHead
+          label="Our services"
+          title="Xorora workflow automation services"
+          sub="Streamline operations with workflow automation that lifts efficiency, cuts errors, and transforms tasks through custom workflows, automated approvals, and RPA."
+          className="mb-12"
+        />
+        <div className="svc-grid3 grid grid-cols-3 gap-[22px]">
+          {visible.map((item, i) => (
+            <div
+              key={item.name}
+              className={i >= INITIAL_VISIBLE ? "hero-reveal" : undefined}
+            >
+              <ServiceCard {...item} showLearnMore={true} />
+            </div>
+          ))}
+        </div>
+        {!expanded && (
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setExpanded(true)}
+              className={buttonClassName({ variant: "primary", size: "lg" })}
+            >
+              See more
+              <ChevronDown className="h-4 w-4 animate-bounce" aria-hidden />
+            </button>
+          </div>
+        )}
+      </LightSection>
     </div>
   );
 }

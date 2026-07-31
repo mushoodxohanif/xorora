@@ -112,7 +112,7 @@ export function ServiceCardGrid({
   );
 }
 
-function ServiceCard({
+export function ServiceCard({
   icon,
   name,
   body,
