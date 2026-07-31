@@ -45,6 +45,7 @@ const SERVICES = [
     icon: "sigma",
     name: "ML & Data Science Services",
     body: "Custom models — from forecasting to computer vision — validated against real business outcomes.",
+    href: ROUTES.mlDataScience,
   },
   {
     icon: "workflow",
@@ -403,9 +404,9 @@ export function DaiContact() {
               Let&apos;s build with AI.
             </h2>
             <p className="mb-7 max-w-[420px] font-sans text-base text-white/66 leading-relaxed">
-              Tell us about your goals and where you want AI to make an impact. We
-              respond within one business day with next steps and a preliminary
-              plan.
+              Tell us about your goals and where you want AI to make an impact.
+              We respond within one business day with next steps and a
+              preliminary plan.
             </p>
           </div>
           <div className="flex items-center rounded-(--r-lg) border border-white/10 bg-white/3 p-[clamp(24px,3vw,32px)]">

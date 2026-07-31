@@ -19,6 +19,7 @@ export const ROUTES = {
   uiUxServices: "/engineering/ui-ux-services",
   ai: "/ai",
   aiAgentDevelopment: "/ai/ai-agent-development",
+  mlDataScience: "/ai/ml-data-science-services",
   managedServices: "/managed-services",
   devops: "/managed-services/devops-services",
   cybersecurity: "/managed-services/cybersecurity-services",
@@ -153,9 +154,15 @@ export const XO_NAV: SiteNavigation = {
       icon: "code-2",
       href: ROUTES.engineering,
       items: [
-        { label: "AI Software Development", href: ROUTES.aiSoftwareDevelopment },
+        {
+          label: "AI Software Development",
+          href: ROUTES.aiSoftwareDevelopment,
+        },
         { label: "Custom App Development", href: ROUTES.customAppDevelopment },
-        { label: "Application Modernization", href: ROUTES.applicationModernization },
+        {
+          label: "Application Modernization",
+          href: ROUTES.applicationModernization,
+        },
         { label: "MVP / POC Development", href: ROUTES.mvpPocDevelopment },
         { label: "CMS Development Services", href: ROUTES.cmsDevelopment },
         { label: "UI/UX Services", href: ROUTES.uiUxServices },
@@ -167,7 +174,7 @@ export const XO_NAV: SiteNavigation = {
       href: ROUTES.ai,
       items: [
         { label: "AI Agent Development", href: ROUTES.aiAgentDevelopment },
-        { label: "ML & Data Science Services", href: ROUTES.ai },
+        { label: "ML & Data Science Services", href: ROUTES.mlDataScience },
         { label: "Workflow Automation Services", href: ROUTES.ai },
       ],
     },
@@ -301,7 +308,10 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
     items: [
       { label: "AI Software Development", href: ROUTES.aiSoftwareDevelopment },
       { label: "Custom App Development", href: ROUTES.customAppDevelopment },
-      { label: "Application Modernization", href: ROUTES.applicationModernization },
+      {
+        label: "Application Modernization",
+        href: ROUTES.applicationModernization,
+      },
       { label: "MVP / POC Development", href: ROUTES.mvpPocDevelopment },
       { label: "CMS Development Services", href: ROUTES.cmsDevelopment },
       { label: "UI/UX Services", href: ROUTES.uiUxServices },
@@ -312,7 +322,7 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
     href: ROUTES.ai,
     items: [
       { label: "AI Agent Development", href: ROUTES.aiAgentDevelopment },
-      { label: "ML & Data Science Services", href: ROUTES.ai },
+      { label: "ML & Data Science Services", href: ROUTES.mlDataScience },
       { label: "Workflow Automation Services", href: ROUTES.ai },
     ],
   },
