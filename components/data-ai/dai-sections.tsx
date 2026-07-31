@@ -51,6 +51,7 @@ const SERVICES = [
     icon: "workflow",
     name: "Workflow Automation Services",
     body: "Connect systems and automate processes end-to-end so your teams spend time on judgment, not busywork.",
+    href: ROUTES.workflowAutomation,
   },
   {
     icon: "database-zap",
