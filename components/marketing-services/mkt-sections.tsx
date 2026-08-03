@@ -107,6 +107,7 @@ const SERVICES = [
     body: "Search, Shopping, and Performance Max structured for intent — bid systems and feeds engineered for profitable ROAS.",
     tags: ["SEM", "SHOPPING", "PMAX"],
     featured: false,
+    href: ROUTES.googleAdsServices,
   },
   {
     icon: ThumbsUp,
@@ -115,6 +116,7 @@ const SERVICES = [
     body: "Prospecting and retargeting funnels with creative testing loops that turn cold audiences into measurable pipeline.",
     tags: ["PROSPECTING", "RETARGETING", "CREATIVE"],
     featured: false,
+    href: ROUTES.metaAdsServices,
   },
   {
     icon: Share2,
