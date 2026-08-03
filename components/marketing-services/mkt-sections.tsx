@@ -125,6 +125,7 @@ const SERVICES = [
     body: "Organic presence run as a signal system — content, community, and analytics that feed the rest of the funnel.",
     tags: ["ORGANIC", "COMMUNITY", "ANALYTICS"],
     featured: false,
+    href: ROUTES.socialMediaManagement,
   },
   {
     icon: Briefcase,
