@@ -98,6 +98,7 @@ const SERVICES = [
     body: "Google Business Profile, citations, and review velocity tuned so you own the map pack across every service area.",
     tags: ["GBP", "CITATIONS", "REVIEWS"],
     featured: false,
+    href: ROUTES.localSeoServices,
   },
   {
     icon: BadgeDollarSign,
