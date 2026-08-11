@@ -380,6 +380,44 @@
   }
 }
 
+@keyframes nfOrbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes nfPulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.08);
+  }
+}
+
+.nf-orbit {
+  animation: nfOrbit 28s linear infinite;
+}
+
+.nf-orbit-rev {
+  animation: nfOrbit 18s linear infinite reverse;
+}
+
+.nf-pulse {
+  animation: nfPulse 3.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nf-orbit,
+  .nf-orbit-rev,
+  .nf-pulse {
+    animation: none;
+  }
+}
+
 /* Hero entrance reveal — service + industry hero heading & description.
    Pure CSS so it always runs on load (no hydration flash). */
 @keyframes heroReveal {
