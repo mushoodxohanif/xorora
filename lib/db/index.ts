@@ -7,8 +7,12 @@ export type Database = NeonHttpDatabase<typeof schema>;
 let sqlClient: NeonQueryFunction<false, false> | undefined;
 let database: Database | undefined;
 
+export function hasDatabaseUrl(): boolean {
+  return Boolean(process.env.DATABASE_URL?.trim());
+}
+
 function createDb(): Database {
-  const url = process.env.DATABASE_URL;
+  const url = process.env.DATABASE_URL?.trim();
   if (!url) {
     throw new Error(
       "DATABASE_URL environment variable is not set. Add it to .env.local for local development.",

@@ -1,4 +1,5 @@
 import { getFeaturedCaseStudy } from "@/lib/case-studies";
+import { hasDatabaseUrl } from "@/lib/db";
 import { listPublishedIndustryNavItems } from "@/lib/industries/queries";
 import {
   FOOTER_COLUMNS,
@@ -27,6 +28,10 @@ function mapFeaturedCaseStudy(
 }
 
 export async function buildSiteNavigation(): Promise<SiteNavigation> {
+  if (!hasDatabaseUrl()) {
+    return XO_NAV;
+  }
+
   const [industryItems, featuredStudy] = await Promise.all([
     listPublishedIndustryNavItems(),
     getFeaturedCaseStudy(),
@@ -53,6 +58,10 @@ export async function buildSiteNavigation(): Promise<SiteNavigation> {
 }
 
 export async function listIndustryNavItems(): Promise<NavIndustry[]> {
+  if (!hasDatabaseUrl()) {
+    return XO_NAV.industries;
+  }
+
   const items = await listPublishedIndustryNavItems();
   return items.map((item) => ({
     name: item.name,
@@ -63,6 +72,10 @@ export async function listIndustryNavItems(): Promise<NavIndustry[]> {
 }
 
 export async function listIndustryNames(): Promise<string[]> {
+  if (!hasDatabaseUrl()) {
+    return XO_NAV.industries.map((industry) => industry.name);
+  }
+
   const items = await listPublishedIndustryNavItems();
   return items.map((item) => item.name);
 }
