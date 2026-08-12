@@ -5,3 +5,6 @@
  */
 export const AMAZON_VENDOR_CENTRAL_PATH =
   "/amazon-a-to-z/vendor-central-services";
+
+export const AMAZON_SELLER_CENTRAL_PATH =
+  "/amazon-a-to-z/seller-central-management-services";
