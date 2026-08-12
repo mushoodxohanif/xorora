@@ -1034,3 +1034,172 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* Amazon Vendor Central page motion */
+@keyframes vcReveal {
+  from {
+    opacity: 0;
+    transform: translateY(36px) scale(0.97);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes vcMetricIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes vcGlowPulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes vcLivePulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(110, 231, 183, 0.55);
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 0 6px rgba(110, 231, 183, 0);
+  }
+}
+
+@keyframes vcPanelGrow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.vc-motion .ind-reveal {
+  opacity: 0;
+  transform: translateY(36px) scale(0.97);
+  will-change: opacity, transform, filter;
+}
+
+.vc-motion .ind-reveal.in {
+  animation: vcReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.vc-motion .vc-stagger > .ind-reveal.in:nth-child(1) {
+  animation-delay: 0.02s;
+}
+.vc-motion .vc-stagger > .ind-reveal.in:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.vc-motion .vc-stagger > .ind-reveal.in:nth-child(3) {
+  animation-delay: 0.18s;
+}
+.vc-motion .vc-stagger > .ind-reveal.in:nth-child(4) {
+  animation-delay: 0.26s;
+}
+.vc-motion .vc-stagger > .ind-reveal.in:nth-child(5) {
+  animation-delay: 0.34s;
+}
+.vc-motion .vc-stagger > .ind-reveal.in:nth-child(6) {
+  animation-delay: 0.42s;
+}
+.vc-motion .vc-stagger > .ind-reveal.in:nth-child(7) {
+  animation-delay: 0.5s;
+}
+.vc-motion .vc-stagger > .ind-reveal.in:nth-child(8) {
+  animation-delay: 0.58s;
+}
+.vc-motion .vc-stagger > .ind-reveal.in:nth-child(9) {
+  animation-delay: 0.66s;
+}
+
+.vc-card-lift {
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease,
+    box-shadow 0.35s ease;
+}
+
+.vc-card-lift:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-strong, rgba(15, 23, 42, 0.18));
+  box-shadow: 0 22px 48px -28px rgba(8, 12, 30, 0.45);
+}
+
+.vc-card-lift-dark {
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.vc-card-lift-dark:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.24);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.vc-hero-glow {
+  animation: vcGlowPulse 4.5s ease-in-out infinite;
+}
+
+.vc-hero-panel {
+  animation: vcMetricIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.vc-metric-card {
+  opacity: 0;
+  animation: vcMetricIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.vc-live-dot > span {
+  animation: vcLivePulse 1.8s ease-out infinite;
+}
+
+.vc-motion .ind-reveal.in .vc-step-line {
+  transform-origin: top;
+  animation: vcLineGrow 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+.vc-motion .ind-reveal.in .vc-step-node {
+  animation: vcMetricIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vc-motion .ind-reveal,
+  .vc-motion .ind-reveal.in,
+  .vc-hero-glow,
+  .vc-hero-panel,
+  .vc-metric-card,
+  .vc-live-dot > span,
+  .vc-motion .ind-reveal.in .vc-step-line,
+  .vc-motion .ind-reveal.in .vc-step-node {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    animation: none;
+  }
+
+  .vc-card-lift:hover,
+  .vc-card-lift-dark:hover {
+    transform: none;
+  }
+}

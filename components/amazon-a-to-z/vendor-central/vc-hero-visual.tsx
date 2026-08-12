@@ -1,10 +1,17 @@
 import { AmazonLogo } from "@/components/amazon-a-to-z/vendor-central/amazon-logo";
 
+const METRICS = [
+  { label: "Shipped COGS", value: "First-party", sub: "Revenue engine" },
+  { label: "ROAS", value: "Full-funnel", sub: "DSP + Sponsored" },
+  { label: "Organic rank", value: "Catalog", sub: "A+ Content" },
+  { label: "New-to-brand", value: "Growth", sub: "DSP reach" },
+] as const;
+
 export function VcHeroVisual() {
   return (
     <div className="hero-reveal hero-reveal-2 relative mx-auto w-full max-w-[520px]">
-      <div className="absolute inset-0 rounded-[28px] bg-[#FF9900]/20 blur-3xl" />
-      <div className="relative overflow-hidden rounded-(--r-xl) border border-white/14 bg-[#0B1224]/80 shadow-[0_32px_80px_-28px_rgba(0,0,0,0.55)] backdrop-blur-md">
+      <div className="vc-hero-glow absolute inset-0 rounded-[28px] bg-[#FF9900]/20 blur-3xl" />
+      <div className="vc-hero-panel relative overflow-hidden rounded-(--r-xl) border border-white/14 bg-[#0B1224]/80 shadow-[0_32px_80px_-28px_rgba(0,0,0,0.55)] backdrop-blur-md">
         <div className="flex items-center justify-between border-white/10 border-b px-5 py-3.5">
           <div className="flex items-center gap-3">
             <AmazonLogo className="h-7" />
@@ -12,19 +19,18 @@ export function VcHeroVisual() {
               Vendor Central
             </span>
           </div>
-          <span className="font-mono text-[11px] text-emerald-300">Live</span>
+          <span className="vc-live-dot flex items-center gap-1.5 font-mono text-[11px] text-emerald-300">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" aria-hidden />
+            Live
+          </span>
         </div>
 
         <div className="grid grid-cols-2 gap-3 p-5">
-          {[
-            { label: "Shipped COGS", value: "First-party", sub: "Revenue engine" },
-            { label: "ROAS", value: "Full-funnel", sub: "DSP + Sponsored" },
-            { label: "Organic rank", value: "Catalog", sub: "A+ Content" },
-            { label: "New-to-brand", value: "Growth", sub: "DSP reach" },
-          ].map((metric) => (
+          {METRICS.map((metric, i) => (
             <div
               key={metric.label}
-              className="rounded-(--r-md) border border-white/10 bg-white/5 px-3.5 py-3"
+              className="vc-metric-card rounded-(--r-md) border border-white/10 bg-white/5 px-3.5 py-3"
+              style={{ animationDelay: `${0.35 + i * 0.1}s` }}
             >
               <div className="font-mono text-[10px] text-white/50 uppercase tracking-widest">
                 {metric.label}

@@ -67,15 +67,15 @@ export function VcIncluded() {
       <SectionHead
         title="A complete Amazon Vendor Central management program"
         sub="Every engagement includes the negotiation support, content optimization, advertising management, inventory strategy, and reporting infrastructure needed to build a profitable, scalable first-party presence."
-        className="mb-12 max-w-[760px]"
+        className="ind-reveal mb-12 max-w-[760px]"
       />
-      <div className="svc-grid3 grid grid-cols-3 gap-[22px]">
+      <div className="vc-stagger svc-grid3 grid grid-cols-3 gap-[22px]">
         {CARDS.map((card) => {
           const Icon = card.icon;
           return (
             <div
               key={card.title}
-              className="flex flex-col overflow-hidden rounded-(--r-lg) border border-border bg-surface p-[clamp(24px,2.6vw,32px)]"
+              className="ind-reveal vc-card-lift flex flex-col overflow-hidden rounded-(--r-lg) border border-border bg-surface p-[clamp(24px,2.6vw,32px)]"
             >
               <span className="mb-5 flex h-12 w-12 items-center justify-center rounded-(--r-md) bg-indigo-50 text-xo-indigo">
                 <Icon className="h-6 w-6" aria-hidden />

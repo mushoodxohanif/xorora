@@ -6,9 +6,11 @@ import {
   VcFaq,
   VcHero,
   VcIncluded,
+  VcPortfolio,
   VcProcess,
   VcWhy,
 } from "@/components/amazon-a-to-z/vendor-central";
+import { IndRevealObserver } from "@/components/industries/ind-reveal-observer";
 import { AMAZON_VENDOR_CENTRAL_PATH } from "@/lib/amazon-a-to-z";
 
 export const metadata: Metadata = {
@@ -44,13 +46,15 @@ export const metadata: Metadata = {
 
 export default function AmazonVendorCentralServicesPage() {
   return (
-    <div className="bg-surface">
+    <div className="vc-motion bg-surface">
+      <IndRevealObserver />
       <VcHero />
       <VcChallenge />
       <VcProcess />
       <VcIncluded />
       <VcApproach />
       <VcWhy />
+      <VcPortfolio />
       <VcFaq />
       <VcCta />
     </div>

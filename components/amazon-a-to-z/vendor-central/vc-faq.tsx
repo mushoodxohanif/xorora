@@ -29,10 +29,12 @@ export const VC_FAQS = [
 
 export function VcFaq() {
   return (
-    <ServiceFaq
-      label="Questions"
-      title="Amazon Vendor Central questions"
-      items={[...VC_FAQS]}
-    />
+    <div className="ind-reveal">
+      <ServiceFaq
+        label="Questions"
+        title="Amazon Vendor Central questions"
+        items={[...VC_FAQS]}
+      />
+    </div>
   );
 }

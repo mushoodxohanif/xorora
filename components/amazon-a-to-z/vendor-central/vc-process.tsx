@@ -34,20 +34,20 @@ export function VcProcess() {
         label="Our process"
         title="A Vendor Central process built for profitable growth"
         sub="Our management follows a structured process designed to protect your margins and build compounding revenue. Every engagement moves through a clear progression: auditing the account, optimizing content and advertising, aligning inventory strategy, and improving continually on performance data. The result is a program that turns Amazon from a complex challenge into a reliable revenue engine."
-        className="mb-12 max-w-[760px]"
+        className="ind-reveal mb-12 max-w-[760px]"
       />
-      <ol className="m-0 flex list-none flex-col gap-0 p-0">
+      <ol className="vc-stagger m-0 flex list-none flex-col gap-0 p-0">
         {STEPS.map((step, index) => (
           <li
             key={step.n}
-            className="grid grid-cols-[72px_1fr] gap-[clamp(16px,2.4vw,28px)] md:grid-cols-[88px_1fr]"
+            className="ind-reveal grid grid-cols-[72px_1fr] gap-[clamp(16px,2.4vw,28px)] md:grid-cols-[88px_1fr]"
           >
             <div className="flex flex-col items-center">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-indigo-200 bg-indigo-50 font-mono font-semibold text-sm text-xo-indigo">
+              <span className="vc-step-node flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-indigo-200 bg-indigo-50 font-mono font-semibold text-sm text-xo-indigo">
                 {step.n}
               </span>
               {index < STEPS.length - 1 ? (
-                <span className="mt-2 w-px flex-1 bg-border" aria-hidden />
+                <span className="vc-step-line mt-2 w-px flex-1 bg-border" aria-hidden />
               ) : null}
             </div>
             <div className={index < STEPS.length - 1 ? "pb-10" : "pb-2"}>

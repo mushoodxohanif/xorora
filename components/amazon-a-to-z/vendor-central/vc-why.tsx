@@ -29,15 +29,15 @@ export function VcWhy() {
           title="Why Xorora for Amazon Vendor Central"
           sub="Our Amazon team has deep Vendor Central expertise: vendor negotiation strategy, chargeback dispute management, first-party advertising, and the analytics that first-party sellers need. We're not generalists who added Amazon to a service list. We manage Vendor Central relationships with one focus: profitable revenue growth."
           onDark
-          className="mb-12 max-w-[760px]"
+          className="ind-reveal mb-12 max-w-[760px]"
         />
-        <div className="svc-grid3 grid grid-cols-3 gap-[18px]">
+        <div className="vc-stagger svc-grid3 grid grid-cols-3 gap-[18px]">
           {CARDS.map((card) => {
             const Icon = card.icon;
             return (
               <div
                 key={card.title}
-                className="relative overflow-hidden rounded-(--r-lg) border border-white/12 bg-white/4 p-[clamp(22px,2.4vw,28px)]"
+                className="ind-reveal vc-card-lift-dark relative overflow-hidden rounded-(--r-lg) border border-white/12 bg-white/4 p-[clamp(22px,2.4vw,28px)]"
               >
                 <span className="mb-[18px] flex h-11 w-11 items-center justify-center rounded-(--r-md) border border-indigo-300/32 bg-indigo-900/28 text-indigo-300">
                   <Icon className="h-[22px] w-[22px]" aria-hidden />

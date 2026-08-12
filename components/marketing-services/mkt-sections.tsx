@@ -134,6 +134,7 @@ const SERVICES = [
     body: "Account-based programs and full-funnel demand gen wired to your CRM — attribution from first touch to closed revenue.",
     tags: ["ABM", "DEMAND GEN", "ATTRIBUTION"],
     featured: true,
+    href: ROUTES.b2bMarketingServices,
   },
 ] as const;
 
@@ -399,18 +400,10 @@ export function MktServices() {
               </>
             );
 
-            if ("href" in s && s.href) {
-              return (
-                <Link key={s.name} href={s.href} className={className}>
-                  {content}
-                </Link>
-              );
-            }
-
             return (
-              <LetsTalkContactLink key={s.name} className={className}>
+              <Link key={s.name} href={s.href} className={className}>
                 {content}
-              </LetsTalkContactLink>
+              </Link>
             );
           })}
         </div>

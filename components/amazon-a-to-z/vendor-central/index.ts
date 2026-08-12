@@ -5,5 +5,6 @@ export { VcCta } from "./vc-cta";
 export { VcFaq, VC_FAQS } from "./vc-faq";
 export { VcHero } from "./vc-hero";
 export { VcIncluded } from "./vc-included";
+export { VcPortfolio } from "./vc-portfolio";
 export { VcProcess } from "./vc-process";
 export { VcWhy } from "./vc-why";
