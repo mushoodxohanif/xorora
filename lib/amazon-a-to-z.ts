@@ -13,3 +13,5 @@ export const AMAZON_ACCOUNT_MANAGEMENT_PATH =
   "/amazon-a-to-z/account-management-services";
 
 export const AMAZON_SEO_SERVICES_PATH = "/amazon-a-to-z/amazon-seo-services";
+
+export const AMAZON_DSP_SERVICES_PATH = "/amazon-a-to-z/amazon-dsp-services";
