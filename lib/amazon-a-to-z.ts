@@ -11,3 +11,5 @@ export const AMAZON_SELLER_CENTRAL_PATH =
 
 export const AMAZON_ACCOUNT_MANAGEMENT_PATH =
   "/amazon-a-to-z/account-management-services";
+
+export const AMAZON_SEO_SERVICES_PATH = "/amazon-a-to-z/amazon-seo-services";
