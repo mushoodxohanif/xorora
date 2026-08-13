@@ -8,3 +8,6 @@ export const AMAZON_VENDOR_CENTRAL_PATH =
 
 export const AMAZON_SELLER_CENTRAL_PATH =
   "/amazon-a-to-z/seller-central-management-services";
+
+export const AMAZON_ACCOUNT_MANAGEMENT_PATH =
+  "/amazon-a-to-z/account-management-services";
