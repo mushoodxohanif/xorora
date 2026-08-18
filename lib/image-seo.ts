@@ -1,6 +1,9 @@
 import { getPageKeywords, stripBrandSuffix } from "@/lib/seo-keywords";
 
-function ensureDistinct(alt: string, title: string): { alt: string; title: string } {
+function ensureDistinct(
+  alt: string,
+  title: string,
+): { alt: string; title: string } {
   if (alt === title && process.env.NODE_ENV === "development") {
     console.warn(`[image-seo] alt and title are identical: "${alt}"`);
   }
@@ -12,9 +15,7 @@ export function imageAltTitle(opts: {
   secondary: string;
   context?: string;
 }): { alt: string; title: string } {
-  const alt = opts.context
-    ? `${opts.primary} — ${opts.context}`
-    : opts.primary;
+  const alt = opts.context ? `${opts.primary} — ${opts.context}` : opts.primary;
   const title = opts.secondary;
   return ensureDistinct(alt, title);
 }
@@ -52,9 +53,10 @@ export function industryTileTitle(name: string, desc: string): string {
   return `${name} — ${desc}`;
 }
 
-export function brandLogoAlt(
-  variant: "full" | "icon" | "wordmark",
-): { alt: string; title: string } {
+export function brandLogoAlt(variant: "full" | "icon" | "wordmark"): {
+  alt: string;
+  title: string;
+} {
   const [primary, secondary] = getPageKeywords("brand");
   switch (variant) {
     case "full":
@@ -81,9 +83,8 @@ export function blogImageAlt(title: string): string {
 }
 
 export function blogImageTitle(excerpt: string, category: string): string {
-  const trimmed =
-    excerpt.length > 80 ? `${excerpt.slice(0, 77)}...` : excerpt;
-  return trimmed || `${category} — production AI insights`;
+  const trimmed = excerpt.length > 80 ? `${excerpt.slice(0, 77)}...` : excerpt;
+  return trimmed || `${category} — Xorora engineering blog`;
 }
 
 export function processStepAlt(stepNum: string, stepTitle: string): string {
@@ -103,10 +104,7 @@ export function losonoImageAltTitle(
     | "chat-widget"
     | "voice-widget",
 ): { alt: string; title: string } {
-  const pairs: Record<
-    typeof variant,
-    { alt: string; title: string }
-  > = {
+  const pairs: Record<typeof variant, { alt: string; title: string }> = {
     "dashboard-hero": {
       alt: "AI agent platform dashboard — usage and agent performance",
       title: "Conversational AI and workflow automation — Losono by Xorora",
@@ -135,9 +133,10 @@ export function losonoImageAltTitle(
   return pairs[variant];
 }
 
-export function leademImageAltTitle(
-  variant: "kanban" | "dashboard",
-): { alt: string; title: string } {
+export function leademImageAltTitle(variant: "kanban" | "dashboard"): {
+  alt: string;
+  title: string;
+} {
   const pairs: Record<typeof variant, { alt: string; title: string }> = {
     kanban: {
       alt: "B2B sales CRM kanban pipeline — drag-and-drop stages",

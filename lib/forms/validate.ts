@@ -9,6 +9,7 @@ export const FORM_FIELDS = {
   homeContact: ["firstName", "lastName", "email", "phone", "message"] as const,
   product: ["name", "email", "company", "using"] as const,
   newsletter: ["email"] as const,
+  quote: ["name", "email", "requirement"] as const,
 };
 
 const DEFAULT_MESSAGES: Record<string, string> = {
@@ -20,15 +21,14 @@ const DEFAULT_MESSAGES: Record<string, string> = {
   company: "Please enter your company name.",
   message: "Please enter a message.",
   using: "Let us know what you use today.",
+  requirement: "Please describe your requirement.",
 };
 
 export function isValidEmail(email: string): boolean {
   return EMAIL_REGEX.test(email.trim());
 }
 
-export function getFormValues(
-  form: HTMLFormElement,
-): Record<string, string> {
+export function getFormValues(form: HTMLFormElement): Record<string, string> {
   const data = new FormData(form);
   const values: Record<string, string> = {};
 

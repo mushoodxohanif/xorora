@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { listPublishedBlogPosts } from "@/lib/blog";
 import { listPublishedCaseStudies } from "@/lib/case-studies";
 import { getAllIndustrySlugs } from "@/lib/industries";
 import { ROUTES } from "@/lib/navigation";
@@ -20,9 +21,10 @@ function entry(
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [industrySlugs, caseStudies] = await Promise.all([
+  const [industrySlugs, caseStudies, posts] = await Promise.all([
     getAllIndustrySlugs(),
     listPublishedCaseStudies(),
+    listPublishedBlogPosts(),
   ]);
 
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -75,5 +77,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     entry(ROUTES.caseStudy(study.slug), 0.7, study.publishedAt ?? undefined),
   );
 
-  return [...staticRoutes, ...industryRoutes, ...caseStudyRoutes];
+  const blogPostRoutes: MetadataRoute.Sitemap = posts.map((post) =>
+    entry(ROUTES.blogPost(post.slug), 0.7, post.publishedAt ?? post.updatedAt),
+  );
+
+  return [
+    ...staticRoutes,
+    ...industryRoutes,
+    ...caseStudyRoutes,
+    ...blogPostRoutes,
+  ];
 }

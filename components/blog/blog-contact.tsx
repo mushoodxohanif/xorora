@@ -4,7 +4,11 @@ import { ArrowUpRight, Check, Mail, Phone } from "lucide-react";
 import { type FormEvent, useState } from "react";
 import { SectionHead } from "@/components/case-study/section-head";
 import { Button } from "@/components/ui/button";
-import { FORM_FIELDS, type FieldErrors, validateForm } from "@/lib/forms/validate";
+import {
+  type FieldErrors,
+  FORM_FIELDS,
+  validateForm,
+} from "@/lib/forms/validate";
 import { cn } from "@/lib/utils";
 
 const TOPICS = [
@@ -204,7 +208,9 @@ function BlogField({
         />
       )}
       {error ? (
-        <span className="font-sans text-[12px] text-[var(--danger)]">{error}</span>
+        <span className="font-sans text-[12px] text-[var(--danger)]">
+          {error}
+        </span>
       ) : null}
     </label>
   );

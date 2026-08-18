@@ -24,13 +24,13 @@ export function BlogHeader() {
         <h1 className="mb-[22px] text-balance font-extrabold font-sans text-[clamp(38px,5.6vw,68px)] text-white leading-none tracking-[-0.03em]">
           Field notes on shipping&nbsp;
           <span className="bg-linear-to-r from-[#C3C6EC] via-[#8E94E0] to-tangerine-400 bg-clip-text text-transparent">
-            production AI
+            production software
           </span>
           <span className="text-tangerine-400">.</span>
         </h1>
         <p className="mx-auto max-w-[560px] font-sans text-[clamp(17px,2vw,20px)] text-white/74 leading-relaxed">
-          Engineering practices, product thinking, and lessons from the systems
-          we build. No hype, just what works.
+          Software development, Python, and AI — comparisons, practices, and
+          lessons from the systems we build.
         </p>
       </div>
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-indigo-300/40 to-transparent" />

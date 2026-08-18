@@ -2,10 +2,12 @@
 
 import { ArrowRight, Rss } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { LightSection } from "@/components/case-study/light-section";
 import { BLOG_CATEGORIES, type BlogCategory, type BlogPost } from "@/lib/blog";
 import { blogImageAlt, blogImageTitle } from "@/lib/image-seo";
+import { ROUTES } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 
 interface BlogBodyProps {
@@ -116,9 +118,10 @@ export function BlogBody({ posts }: BlogBodyProps) {
 
 function BlogCard({ post, wide }: { post: BlogPost; wide?: boolean }) {
   return (
-    <article
+    <Link
+      href={ROUTES.blogPost(post.slug)}
       className={cn(
-        "group flex overflow-hidden rounded-(--r-lg) border border-border bg-surface shadow-xs",
+        "group flex overflow-hidden rounded-(--r-lg) border border-border bg-surface no-underline shadow-xs",
         "transition-all duration-220 ease-in-out",
         "hover:translate-y-[-3px] hover:border-border-strong hover:shadow-md",
         wide ? "blog-card-wide col-span-2 flex-row" : "flex-col",
@@ -175,6 +178,6 @@ function BlogCard({ post, wide }: { post: BlogPost; wide?: boolean }) {
           <ArrowRight className="h-[15px] w-[15px]" aria-hidden />
         </span>
       </div>
-    </article>
+    </Link>
   );
 }

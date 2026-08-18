@@ -753,6 +753,10 @@
 }
 
 /* Blog page */
+.blog-post-toc-mobile {
+  display: none;
+}
+
 @media (max-width: 960px) {
   .blog-body-grid,
   .blog-news-grid,
@@ -776,6 +780,22 @@
   .blog-card-media {
     width: 100%;
     min-height: 190px;
+  }
+
+  .blog-post-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-post-toc {
+    position: static;
+  }
+
+  .blog-post-toc-desktop {
+    display: none;
+  }
+
+  .blog-post-toc-mobile {
+    display: block;
   }
 }
 

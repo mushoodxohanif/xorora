@@ -8,16 +8,10 @@ export interface BlogPost {
   date: string;
   img: string;
   featured: boolean;
+  publishedAt: Date | null;
+  updatedAt: Date;
 }
 
-export const BLOG_CATEGORIES = [
-  "All posts",
-  "AI Engineering",
-  "Product",
-  "Cloud & Security",
-  "Industry",
-  "Case Notes",
-  "Company",
-] as const;
+export const BLOG_CATEGORIES = ["All posts", "Software Development"] as const;
 
 export type BlogCategory = (typeof BLOG_CATEGORIES)[number];

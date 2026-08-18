@@ -16,6 +16,8 @@ export const SEO_KEYWORDS = {
     "CMS development services",
     "UI/UX design services",
     "python web development services",
+    "top python web development company",
+    "best python development company",
   ],
   ai: [
     "AI Agent Development Services",

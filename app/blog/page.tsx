@@ -7,10 +7,18 @@ import {
 } from "@/components/blog";
 import { listPublishedBlogPosts } from "@/lib/blog";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Blog | Xorora",
   description:
-    "Field notes on shipping production AI from the Xorora team. Engineering practices, product thinking, and lessons from the systems we build.",
+    "Engineering notes on software development, Python, and production AI from the Xorora team. Comparisons, practices, and lessons from the systems we build.",
+  keywords: [
+    "software development blog",
+    "python development companies",
+    "top python web development company",
+  ],
+  alternates: { canonical: "/blog" },
 };
 
 export default async function BlogPage() {
