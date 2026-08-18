@@ -17,6 +17,7 @@ export const ROUTES = {
   mvpPocDevelopment: "/engineering/mvp-poc-development-services",
   cmsDevelopment: "/engineering/cms-development-services",
   uiUxServices: "/engineering/ui-ux-services",
+  pythonWebDevelopment: "/python-web-development-services",
   ai: "/ai",
   aiAgentDevelopment: "/ai/ai-agent-development",
   mlDataScience: "/ai/ml-data-science-services",
