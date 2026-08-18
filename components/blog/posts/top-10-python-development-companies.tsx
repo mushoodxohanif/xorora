@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { GetQuoteButton } from "@/components/blog/post";
 import type { BlogArticleMeta } from "@/lib/blog/article-types";
@@ -99,6 +100,7 @@ interface CompanyProfile {
   rate: string;
   minProject: string;
   knownFor: string;
+  snapshot: string;
   paragraphs: string[];
   capabilities: string[];
   consideration: string;
@@ -116,6 +118,7 @@ const COMPANIES: CompanyProfile[] = [
     rate: "Contact for rate",
     minProject: "$10,000+",
     knownFor: "AI-driven Python systems, SaaS backends",
+    snapshot: "/assets/blog/companies/xorora.png",
     href: ROUTES.pythonWebDevelopment,
     paragraphs: [
       "Xorora is a US-based AI development partner built for teams that need software to reach production, not just a demo. Its Python work spans Django and FastAPI backends, Flask microservices, REST API development, and the data and AI/ML layers that increasingly sit behind modern SaaS products.",
@@ -144,6 +147,7 @@ const COMPANIES: CompanyProfile[] = [
     rate: "$50–99/hr",
     minProject: "$25,000+",
     knownFor: "Web and product development",
+    snapshot: "/assets/blog/companies/perpetual.png",
     paragraphs: [
       "Perpetual runs as a full-stack software and product studio out of New York, with delivery support in India. Python sits inside a broader offering that includes UX/UI design and product strategy rather than standing alone as the company's headline service.",
       "Public project references include work for Reuters Insider, the commercial real estate platform Biproxi, and Roo, a veterinary staffing marketplace. That range points to a team comfortable moving between media, real estate, and healthcare-adjacent clients.",
@@ -167,6 +171,7 @@ const COMPANIES: CompanyProfile[] = [
     rate: "$50–99/hr",
     minProject: "$25,000+",
     knownFor: "Enterprise software delivery",
+    snapshot: "/assets/blog/companies/eleks.png",
     paragraphs: [
       "ELEKS is one of the largest and longest-running companies in this comparison, with a US office in Chicago and more than 1,000 employees globally. Its Clutch profile shows over 1,000 delivered projects and more than 120 active accounts, figures that put it in a different weight class than most boutique Python shops.",
       "Python work at ELEKS typically comes bundled with data engineering, QA, and cloud infrastructure rather than sold as a standalone line item, which fits companies that need several disciplines coordinated under one roof.",
@@ -190,6 +195,7 @@ const COMPANIES: CompanyProfile[] = [
     rate: "Contact for rate",
     minProject: "Contact",
     knownFor: "Enterprise data, AI, and BI",
+    snapshot: "/assets/blog/companies/sciencesoft.png",
     paragraphs: [
       "ScienceSoft has been operating since 1989 and has built a broad IT consulting practice around data, AI, and enterprise software. Its Python offering explicitly names Django, Flask, and Celery, and the company positions Python primarily as infrastructure for analytics, business intelligence, and machine learning products.",
       "Industries served include healthcare, banking, retail, manufacturing, and oil and gas, which reflects a consulting practice built for regulated, data-heavy environments rather than fast-moving startups.",
@@ -213,6 +219,7 @@ const COMPANIES: CompanyProfile[] = [
     rate: "$25–49/hr",
     minProject: "$10,000+",
     knownFor: "Custom software and AI",
+    snapshot: "/assets/blog/companies/a3logics.png",
     paragraphs: [
       "A3Logics is a US-headquartered software company with delivery operations in India and a Clutch-listed team of 250–999 people. Its Python capability sits inside a wider portfolio that covers AI, mobile, blockchain, and cloud development, so most projects blend Python with at least one other technology area.",
       "Public examples include healthcare platforms, EHS software, and API integration work, which suggests a team used to working inside existing systems rather than only greenfield builds.",
@@ -235,6 +242,7 @@ const COMPANIES: CompanyProfile[] = [
     rate: "Verify directly",
     minProject: "$25,000+",
     knownFor: "Enterprise engineering at scale",
+    snapshot: "/assets/blog/companies/grid-dynamics.png",
     paragraphs: [
       "Grid Dynamics is an enterprise engineering firm where Python shows up mainly inside data engineering, machine learning, and large-scale backend work rather than as a marketed specialty. The company also has historical ties to Daxx, a staffing-focused engineering brand that appeared in earlier Python comparisons, so older rate figures tied to that name should be verified rather than assumed current.",
       "Clients span retail, financial services, healthcare, and telecommunications, industries where Grid Dynamics' scale and enterprise process tend to matter more than in a small application build.",
@@ -257,6 +265,7 @@ const COMPANIES: CompanyProfile[] = [
     rate: "$50–99/hr",
     minProject: "$25,000+",
     knownFor: "Python and AI staff augmentation",
+    snapshot: "/assets/blog/companies/uvik-software.png",
     paragraphs: [
       "Uvik is one of the more Python-focused companies on this list, built around staff augmentation with senior Python, AI, and data engineers rather than fixed-scope project delivery. Its Clutch rating currently sits at 5.0 from more than 30 reviews.",
       "Public project references include data protection platforms, legal operations tools, and messaging systems, all areas where embedded senior engineers matter more than a large delivery team.",
@@ -279,6 +288,7 @@ const COMPANIES: CompanyProfile[] = [
     rate: "$100–149/hr",
     minProject: "$50,000+",
     knownFor: "Custom digital products",
+    snapshot: "/assets/blog/companies/expedition-co.png",
     paragraphs: [
       "Expedition Co. is a California-based product studio that builds custom software with AI, big data, and cloud components layered on top of a Python-capable engineering base. Public work includes a content management system for Hyundai and a mobile app for CoffeeNow, both larger consumer-facing builds rather than internal tools.",
     ],
@@ -300,6 +310,7 @@ const COMPANIES: CompanyProfile[] = [
     rate: "$50–99/hr",
     minProject: "$50,000+",
     knownFor: "Custom software and engineering",
+    snapshot: "/assets/blog/companies/dev-pro.png",
     paragraphs: [
       "Dev.Pro runs a distributed delivery model with a US base in Charlotte, and Python is one part of a broader stack that also covers DevOps, IoT, blockchain, and cloud engineering. Referenced projects include a healthcare communication platform, a blockchain-based financial system, and hospitality point-of-sale software.",
     ],
@@ -321,6 +332,7 @@ const COMPANIES: CompanyProfile[] = [
     rate: "$150–199/hr",
     minProject: "$25,000+",
     knownFor: "Software, cloud, and data solutions",
+    snapshot: "/assets/blog/companies/emergent-software.png",
     paragraphs: [
       "Emergent Software carries the highest published hourly rate in this comparison, built around custom software, cloud, data, and Microsoft-oriented engineering out of Minneapolis. Its Clutch rating is 4.9 from 35 reviews, and referenced clients include Kalahari Resorts and Compeer Financial.",
     ],
@@ -760,6 +772,21 @@ function CompanySection({ company }: { company: CompanyProfile }) {
           </h2>
         </div>
       </div>
+
+      <figure className="relative mb-6 overflow-hidden rounded-(--r-lg) border border-border bg-slate-100">
+        <Image
+          src={company.snapshot}
+          alt={`${company.name} homepage`}
+          title={`${company.name} website homepage snapshot`}
+          width={1200}
+          height={675}
+          sizes="(max-width: 1180px) 100vw, 760px"
+          className="h-auto w-full object-cover object-top"
+        />
+        <figcaption className="sr-only">
+          Homepage snapshot of {company.name}
+        </figcaption>
+      </figure>
 
       <dl className="mb-6 grid gap-3 sm:grid-cols-2">
         <MetaItem label="Location" value={company.location} />
