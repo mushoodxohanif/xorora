@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { GetQuoteButton } from "@/components/blog/post";
 import type { BlogArticleMeta } from "@/lib/blog/article-types";
 import { ROUTES } from "@/lib/navigation";
@@ -87,12 +88,29 @@ interface CompanyProfile {
   minProject: string;
   knownFor: string;
   snapshot?: string;
-  paragraphs: string[];
+  paragraphs: ReactNode[];
   capabilities: string[];
-  consideration: string;
+  consideration: ReactNode;
   suitedFor?: string;
   href?: string;
   hrefLabel?: string;
+}
+
+function TextLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      className="font-semibold text-accent no-underline hover:text-tangerine-600"
+    >
+      {children}
+    </Link>
+  );
 }
 
 const COMPANIES: CompanyProfile[] = [
@@ -109,8 +127,38 @@ const COMPANIES: CompanyProfile[] = [
     href: ROUTES.nodejsWebDevelopment,
     hrefLabel: "Node.js web development services",
     paragraphs: [
-      "Xorora is a US-based AI development partner that treats Node.js as core infrastructure for real-time, event-driven systems rather than a generic backend choice. Its Node.js and custom app development work covers Express and NestJS APIs, Fastify services, GraphQL and REST endpoints, WebSocket-based real-time features, and microservices architecture built to hold up under production load.",
-      "The distinguishing pattern in Xorora's recent work is event-driven delivery: a real-time SaaS event monitoring system built for instant, full-context alerting from ingestion to notification, a real-time compliance intelligence platform that turns regulatory changes into live alerts instead of periodic reports, and a multi-portal SaaS backend serving four role-specific portals from one shared architecture. Publicly cited results from that body of work include a 3.5x median speed-up compared to building the same system in-house and 99.9% uptime across deployed systems.",
+      <>
+        Xorora is a US-based AI development partner that treats Node.js as core
+        infrastructure for real-time, event-driven systems rather than a generic
+        backend choice. Its{" "}
+        <TextLink href={ROUTES.customAppDevelopment}>
+          Node.js and custom app development
+        </TextLink>{" "}
+        work covers Express and NestJS APIs, Fastify services, GraphQL and REST
+        endpoints, WebSocket-based real-time features, and microservices
+        architecture built to hold up under production load.
+      </>,
+      <>
+        The distinguishing pattern in Xorora&apos;s recent work is event-driven
+        delivery: a{" "}
+        <TextLink href={ROUTES.caseStudy("real-time-saas-event-monitoring")}>
+          real-time SaaS event monitoring system
+        </TextLink>{" "}
+        built for instant, full-context alerting from ingestion to notification,
+        a{" "}
+        <TextLink href={ROUTES.caseStudy("real-time-compliance-intelligence")}>
+          real-time compliance intelligence platform
+        </TextLink>{" "}
+        that turns regulatory changes into live alerts instead of periodic
+        reports, and a{" "}
+        <TextLink href={ROUTES.caseStudy("unified-ai-voice-operations")}>
+          multi-portal SaaS backend
+        </TextLink>{" "}
+        serving four role-specific portals from one shared architecture.
+        Publicly cited results from that body of work include a 3.5x median
+        speed-up compared to building the same system in-house and 99.9% uptime
+        across deployed systems.
+      </>,
     ],
     capabilities: [
       "Node.js application development",
@@ -121,8 +169,23 @@ const COMPANIES: CompanyProfile[] = [
       "Microservices architecture",
       "Cloud-native deployment",
     ],
-    consideration:
-      "Xorora's $10,000 minimum keeps the door open for a single scoped API or a proof-of-concept build, not only large enterprise programs. Because pricing isn't published as a fixed range, get a written estimate against your actual architecture before comparing it to other companies on rate alone. Teams that already have Node.js engineers in place and just need to add real-time or event-driven expertise can also look at staff augmentation instead of a full project handoff.",
+    consideration: (
+      <>
+        Xorora&apos;s $10,000 minimum keeps the door open for a single scoped
+        API or a{" "}
+        <TextLink href={ROUTES.mvpPocDevelopment}>
+          proof-of-concept build
+        </TextLink>
+        , not only large enterprise programs. Because pricing isn&apos;t
+        published as a fixed range,{" "}
+        <TextLink href={ROUTES.home}>get a written estimate</TextLink> against
+        your actual architecture before comparing it to other companies on rate
+        alone. Teams that already have Node.js engineers in place and just need
+        to add real-time or event-driven expertise can also look at{" "}
+        <TextLink href={ROUTES.staffAugmentation}>staff augmentation</TextLink>{" "}
+        instead of a full project handoff.
+      </>
+    ),
     suitedFor:
       "Startups and mid-market teams that need a production-grade, real-time Node.js system, not a prototype that stalls under real traffic",
   },
@@ -203,7 +266,16 @@ const COMPANIES: CompanyProfile[] = [
     knownFor: "Regulated-industry, compliance-focused builds",
     snapshot: "/assets/blog/companies/sciencesoft.png",
     paragraphs: [
-      "ScienceSoft applies a structured process, architecture review, security assessment, and compliance alignment before development starts, which fits companies in regulated industries where a Node.js API touches sensitive data. That same methodical approach also makes it one of the slower-moving options on this list.",
+      <>
+        ScienceSoft applies a structured process, architecture review, security
+        assessment, and compliance alignment before development starts, which
+        fits companies in{" "}
+        <TextLink href={ROUTES.industry("fintech")}>
+          regulated industries
+        </TextLink>{" "}
+        where a Node.js API touches sensitive data. That same methodical
+        approach also makes it one of the slower-moving options on this list.
+      </>,
     ],
     capabilities: [
       "Node.js for regulated industries",
@@ -233,8 +305,14 @@ const COMPANIES: CompanyProfile[] = [
       "SaaS and marketplace platforms",
       "Event-driven architecture",
     ],
-    consideration:
-      "Sized for product companies and scale-ups, not enterprise transformation programs with multi-vendor coordination requirements.",
+    consideration: (
+      <>
+        Sized for product companies and{" "}
+        <TextLink href={ROUTES.industry("startups")}>scale-ups</TextLink>, not
+        enterprise transformation programs with multi-vendor coordination
+        requirements.
+      </>
+    ),
   },
   {
     id: "sloboda-studio",
@@ -747,8 +825,8 @@ function CompanySection({ company }: { company: CompanyProfile }) {
         <MetaItem label="Average hourly rate" value={company.rate} />
       </dl>
 
-      {company.paragraphs.map((paragraph) => (
-        <p key={paragraph.slice(0, 40)} className={cn(bodyClass, "mb-4")}>
+      {company.paragraphs.map((paragraph, index) => (
+        <p key={index} className={cn(bodyClass, "mb-4")}>
           {paragraph}
         </p>
       ))}
