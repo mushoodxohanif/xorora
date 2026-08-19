@@ -135,6 +135,7 @@ const COMPANIES: CompanyProfile[] = [
     rate: "$50–99/hr",
     minProject: "$200,000+",
     knownFor: "Enterprise Node.js at global scale",
+    snapshot: "/assets/blog/companies/epam.png",
     paragraphs: [
       "EPAM is one of the largest software engineering companies in the world, publicly listed and staffed by more than 55,000 engineers. Node.js work here sits inside much larger enterprise transformation programs, typically running alongside Java, Python, and .NET for financial services, healthcare, media, and retail clients that need multi-geography delivery under strict compliance requirements.",
     ],
@@ -156,6 +157,7 @@ const COMPANIES: CompanyProfile[] = [
     rate: "$50–99/hr",
     minProject: "$50,000+",
     knownFor: "API platforms, digital transformation",
+    snapshot: "/assets/blog/companies/intellectsoft.png",
     paragraphs: [
       "Intellectsoft pairs US-based account management with Eastern Europe-based engineering, and its Node.js work generally falls into two buckets: greenfield API platforms replacing a legacy backend, and full product builds where Node.js, cloud infrastructure, and a web or mobile frontend ship together as one engagement.",
     ],
@@ -177,6 +179,7 @@ const COMPANIES: CompanyProfile[] = [
     rate: "$25–49/hr",
     minProject: "$25,000+",
     knownFor: "Product execution on defined scope",
+    snapshot: "/assets/blog/companies/cleveroad.png",
     paragraphs: [
       "Cleveroad runs a 250+ engineer delivery team across backend, frontend, mobile, and QA, with Node.js used for REST APIs, real-time features, and microservices inside web and mobile product builds for US, UK, and Western European clients.",
     ],
@@ -220,6 +223,7 @@ const COMPANIES: CompanyProfile[] = [
     rate: "$25–49/hr",
     minProject: "$25,000+",
     knownFor: "JavaScript-stack product delivery",
+    snapshot: "/assets/blog/companies/relevant-software.png",
     paragraphs: [
       "Relevant Software has built its practice specifically around the JavaScript stack: Node.js or NestJS on the backend, React or Next.js on the frontend, which keeps both sides of the API boundary handled by engineers speaking the same technical language.",
     ],
@@ -241,6 +245,7 @@ const COMPANIES: CompanyProfile[] = [
     rate: "$25–49/hr",
     minProject: "$15,000+",
     knownFor: "Startup MVP builds",
+    snapshot: "/assets/blog/companies/sloboda-studio.png",
     paragraphs: [
       "Sloboda Studio is built for early-stage speed: MVP builds, API prototypes, and founder-facing product backends using Node.js or NestJS with a React or Next.js frontend, aimed at startups moving from a defined spec to working software fast.",
     ],
@@ -262,6 +267,7 @@ const COMPANIES: CompanyProfile[] = [
     rate: "$50–99/hr",
     minProject: "$75,000+",
     knownFor: "Full product builds, fintech and healthtech",
+    snapshot: "/assets/blog/companies/miquido.png",
     paragraphs: [
       "Miquido builds complete digital products — design, Node.js backend, and mobile or web frontend — for fintech, healthcare, and media clients where the backend sits at the center of a complex integration layer connecting apps, third-party APIs, and internal data systems.",
     ],
