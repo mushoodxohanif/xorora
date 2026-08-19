@@ -17,6 +17,8 @@ export const metadata: Metadata = {
     "software development blog",
     "python development companies",
     "top python web development company",
+    "top node js development company",
+    "node.js development companies",
   ],
   alternates: { canonical: "/blog" },
 };
