@@ -139,7 +139,7 @@ function BlogCard({ post, wide }: { post: BlogPost; wide?: boolean }) {
           title={blogImageTitle(post.excerpt, post.cat)}
           fill
           sizes={wide ? "46vw" : "50vw"}
-          className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+          className="object-contain transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
         />
         <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-[rgba(8,12,30,0.1)] to-[rgba(8,12,30,0.45)]" />
         <span className="absolute top-3.5 left-3.5 rounded-pill border border-white/18 bg-[rgba(8,12,30,0.55)] px-[11px] py-[5px] font-mono text-[10.5px] text-white tracking-[0.08em] backdrop-blur-sm">
