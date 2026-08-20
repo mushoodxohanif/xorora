@@ -773,7 +773,7 @@ function CompanySection({ company }: { company: CompanyProfile }) {
         </div>
       </div>
 
-      <figure className="relative mb-6 overflow-hidden rounded-(--r-lg) border border-border bg-slate-100">
+      <figure className="relative z-0 mb-6 overflow-hidden rounded-(--r-lg) border border-border bg-slate-100">
         <Image
           src={company.snapshot}
           alt={`${company.name} homepage`}

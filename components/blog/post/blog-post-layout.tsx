@@ -27,7 +27,7 @@ export function BlogPostLayout({
   return (
     <BlogQuoteModalProvider source={post.slug}>
       <article className="bg-surface">
-        <header className="px-8 pt-[clamp(48px,7vw,88px)] pb-8">
+        <header className="px-8 pt-[clamp(120px,14vw,160px)] pb-8">
           <div className="mx-auto max-w-[1180px]">
             <div className="mb-5 flex flex-wrap items-center gap-2.5 font-sans text-[13px] text-fg3">
               <span className="rounded-pill border border-indigo-200 bg-indigo-50 px-2.5 py-1 font-mono text-[11px] text-xo-indigo tracking-[0.08em]">
@@ -50,7 +50,7 @@ export function BlogPostLayout({
         </header>
 
         <div className="px-8 pb-10">
-          <div className="relative mx-auto aspect-[16/9] max-w-[1180px] overflow-hidden rounded-(--r-xl) border border-border bg-navy-950">
+          <div className="relative z-0 mx-auto aspect-[16/9] max-w-[1180px] overflow-hidden rounded-(--r-xl) border border-border bg-navy-950">
             <Image
               src={post.img}
               alt={blogImageAlt(post.title)}
@@ -65,14 +65,14 @@ export function BlogPostLayout({
 
         <div className="px-8 pb-[clamp(48px,6vw,80px)]">
           <div className="blog-post-grid mx-auto grid max-w-[1180px] grid-cols-[240px_1fr] items-start gap-[clamp(28px,4vw,56px)]">
-            <aside className="blog-post-toc sticky top-[100px]">
+            <aside className="blog-post-toc sticky top-[110px] z-30 isolate">
               <BlogToc items={article.toc} />
               <div className="blog-post-toc-desktop">
                 <BlogShare url={url} title={article.seoTitle} />
                 <BlogAiSummary summary={article.aiSummary} />
               </div>
             </aside>
-            <div className="min-w-0">
+            <div className="relative z-0 min-w-0">
               <div className="blog-post-toc-mobile">
                 <BlogShare url={url} title={article.seoTitle} />
                 <BlogAiSummary summary={article.aiSummary} />
