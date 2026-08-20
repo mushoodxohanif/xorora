@@ -11,6 +11,17 @@ export interface BlogSeedPost {
 
 export const BLOG_POSTS: BlogSeedPost[] = [
   {
+    slug: "top-5-laravel-development-companies-2026",
+    cat: "Software Development",
+    title: "Top 5 Laravel Development Companies for 2026",
+    excerpt:
+      "A region-by-region comparison of 5 Laravel development companies for 2026 — evaluated on Laravel expertise, client reputation, and delivery track record.",
+    read: "11 min",
+    date: "Aug 20, 2026",
+    img: "/assets/blog/top-5-laravel-development-companies-2026.png",
+    featured: true,
+  },
+  {
     slug: "top-nodejs-development-companies-2026",
     cat: "Software Development",
     title: "Top Node.js Development Companies (2026)",
@@ -19,7 +30,6 @@ export const BLOG_POSTS: BlogSeedPost[] = [
     read: "12 min",
     date: "Aug 19, 2026",
     img: "/assets/blog/top-nodejs-development-companies-2026.png",
-    featured: true,
   },
   {
     slug: "top-10-python-development-companies-in-usa-2026",

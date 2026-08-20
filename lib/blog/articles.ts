@@ -1,5 +1,10 @@
 import type { ComponentType } from "react";
 import {
+  TOP_5_LARAVEL_META,
+  TOP_5_LARAVEL_SLUG,
+  Top5LaravelArticle,
+} from "@/components/blog/posts/top-5-laravel-development-companies";
+import {
   TOP_10_PYTHON_META,
   TOP_10_PYTHON_SLUG,
   Top10PythonArticle,
@@ -22,6 +27,10 @@ export interface BlogArticleDefinition extends BlogArticleMeta {
 }
 
 const BLOG_ARTICLES: Record<string, BlogArticleDefinition> = {
+  [TOP_5_LARAVEL_SLUG]: {
+    ...TOP_5_LARAVEL_META,
+    Article: Top5LaravelArticle,
+  },
   [TOP_NODEJS_SLUG]: {
     ...TOP_NODEJS_META,
     Article: TopNodejsArticle,
