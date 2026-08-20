@@ -769,11 +769,11 @@
   }
 
   .blog-posts-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
   }
 
   .blog-card-wide {
-    grid-column: span 1;
     flex-direction: column;
   }
 

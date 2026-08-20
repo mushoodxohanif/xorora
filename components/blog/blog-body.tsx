@@ -101,13 +101,9 @@ export function BlogBody({ posts }: BlogBodyProps) {
               {filteredPosts.length === 1 ? "" : "s"}
             </span>
           </div>
-          <div className="blog-posts-grid grid grid-cols-2 gap-[22px]">
+          <div className="blog-posts-grid flex flex-col gap-[22px]">
             {filteredPosts.map((post) => (
-              <BlogCard
-                key={post.id}
-                post={post}
-                wide={Boolean(post.featured && category === "All posts")}
-              />
+              <BlogCard key={post.id} post={post} />
             ))}
           </div>
         </div>
@@ -116,29 +112,23 @@ export function BlogBody({ posts }: BlogBodyProps) {
   );
 }
 
-function BlogCard({ post, wide }: { post: BlogPost; wide?: boolean }) {
+function BlogCard({ post }: { post: BlogPost }) {
   return (
     <Link
       href={ROUTES.blogPost(post.slug)}
       className={cn(
-        "group flex overflow-hidden rounded-(--r-lg) border border-border bg-surface no-underline shadow-xs",
+        "blog-card-wide group flex flex-row overflow-hidden rounded-(--r-lg) border border-border bg-surface no-underline shadow-xs",
         "transition-all duration-220 ease-in-out",
         "hover:translate-y-[-3px] hover:border-border-strong hover:shadow-md",
-        wide ? "blog-card-wide col-span-2 flex-row" : "flex-col",
       )}
     >
-      <div
-        className={cn(
-          "relative shrink-0 overflow-hidden bg-[#080C1E]",
-          wide ? "blog-card-media min-h-[240px] w-[46%]" : "h-[190px] w-full",
-        )}
-      >
+      <div className="blog-card-media relative min-h-[240px] w-[46%] shrink-0 overflow-hidden bg-[#080C1E]">
         <Image
           src={post.img}
           alt={blogImageAlt(post.title)}
           title={blogImageTitle(post.excerpt, post.cat)}
           fill
-          sizes={wide ? "46vw" : "50vw"}
+          sizes="46vw"
           className="object-contain transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
         />
         <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-[rgba(8,12,30,0.1)] to-[rgba(8,12,30,0.45)]" />
@@ -146,31 +136,16 @@ function BlogCard({ post, wide }: { post: BlogPost; wide?: boolean }) {
           {post.cat}
         </span>
       </div>
-      <div
-        className={cn(
-          "flex flex-1 flex-col justify-center",
-          wide ? "p-[clamp(26px,3vw,40px)]" : "px-[22px] pt-[22px] pb-6",
-        )}
-      >
+      <div className="flex flex-1 flex-col justify-center p-[clamp(26px,3vw,40px)]">
         <div className="mb-3 flex items-center gap-2.5 font-sans text-[12.5px] text-fg3">
           <span>{post.date}</span>
           <span className="h-[3px] w-[3px] rounded-full bg-slate-300" />
           <span>{post.read} read</span>
         </div>
-        <h3
-          className={cn(
-            "mb-2.5 font-sans font-semibold text-fg1 leading-snug tracking-[-0.01em]",
-            wide ? "text-[clamp(22px,2.4vw,28px)]" : "text-[18.5px]",
-          )}
-        >
+        <h3 className="mb-2.5 font-sans font-semibold text-[clamp(22px,2.4vw,28px)] text-fg1 leading-snug tracking-[-0.01em]">
           {post.title}
         </h3>
-        <p
-          className={cn(
-            "m-0 line-clamp-2 font-sans text-fg2 leading-relaxed",
-            wide ? "line-clamp-3 text-[15.5px]" : "text-sm",
-          )}
-        >
+        <p className="m-0 line-clamp-3 font-sans text-[15.5px] text-fg2 leading-relaxed">
           {post.excerpt}
         </p>
         <span className="mt-4 inline-flex items-center gap-[7px] font-sans font-semibold text-accent text-sm transition-colors duration-150 group-hover:text-tangerine-600">
