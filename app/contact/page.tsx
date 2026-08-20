@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
-import { ContactFormPanel } from "@/components/contact/contact-form-panel";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { ContactPageSection } from "@/components/contact/contact-page-section";
+import { SignalRule } from "@/components/geometry/signal-rule";
 import { XWatermark } from "@/components/geometry/x-watermark";
-import { SITE_EMAIL, SITE_OFFICES, SITE_PHONES } from "@/lib/contact";
+import { buttonClassName } from "@/lib/button-styles";
+import {
+  SITE_EMAIL,
+  SITE_OFFICES,
+  SITE_PHONES,
+} from "@/lib/contact";
 import { ROUTES } from "@/lib/navigation";
-import { listIndustryNames } from "@/lib/navigation/server";
 import { SITE_URL } from "@/lib/site-url";
 
 export const dynamic = "force-dynamic";
@@ -70,9 +77,7 @@ const breadcrumbJsonLd = {
   ],
 };
 
-export default async function ContactPage() {
-  const industryNames = await listIndustryNames();
-
+export default function ContactPage() {
   return (
     <div className="bg-surface">
       <script
@@ -85,22 +90,40 @@ export default async function ContactPage() {
         // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <section className="bg-navy-950 px-8 py-[clamp(56px,8vw,104px)]">
-        <div className="relative mx-auto max-w-[1180px] overflow-hidden rounded-(--r-xl) border border-white/10 bg-navy-900 p-[clamp(32px,4.5vw,60px)]">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_90%_at_90%_0%,rgba(70,76,159,0.4),transparent_58%)]" />
-          <XWatermark
-            size={420}
-            color="rgba(120,150,240,0.05)"
-            className="bottom-[-180px] left-[-120px]"
+
+      <ContactPageSection />
+
+      <section className="relative overflow-hidden bg-navy-950 px-5 py-[clamp(64px,8vw,104px)] sm:px-8">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_90%_at_50%_0%,rgba(70,76,159,0.42),transparent_60%)]" />
+        <XWatermark
+          size={520}
+          color="rgba(120,150,240,0.05)"
+          className="-translate-x-1/2 bottom-[-220px] left-1/2"
+        />
+        <div className="relative mx-auto max-w-[720px] text-center">
+          <SignalRule
+            color="var(--tangerine-400)"
+            className="mb-[26px] justify-center"
           />
-          <div className="relative">
-            <ContactFormPanel
-              industryNames={industryNames}
-              formName="contact-page"
-              titleId="contact-page-title"
-              showOffices
-            />
-          </div>
+          <h2 className="mb-[18px] text-balance font-extrabold font-sans text-[clamp(28px,4.2vw,44px)] text-white leading-tight tracking-tight">
+            Explore what we build
+            <span className="text-tangerine-400">.</span>
+          </h2>
+          <p className="mx-auto mb-8 max-w-[520px] font-sans text-[clamp(15px,1.8vw,18px)] text-white/70 leading-relaxed">
+            From AI software and custom apps to modernization and managed
+            delivery — see the services we engineer for high-stakes teams.
+          </p>
+          <Link
+            href={ROUTES.engineering}
+            className={buttonClassName({
+              variant: "primary",
+              size: "lg",
+              className: "justify-center",
+            })}
+          >
+            View our services
+            <ArrowUpRight className="h-4 w-4" aria-hidden />
+          </Link>
         </div>
       </section>
     </div>
