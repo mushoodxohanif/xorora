@@ -19,6 +19,7 @@ export const ROUTES = {
   uiUxServices: "/engineering/ui-ux-services",
   pythonWebDevelopment: "/python-web-development-services",
   nodejsWebDevelopment: "/nodejs-web-development-services",
+  laravelWebsiteDevelopment: "/laravel-website-development-services",
   ai: "/ai",
   aiAgentDevelopment: "/ai/ai-agent-development",
   mlDataScience: "/ai/ml-data-science-services",
