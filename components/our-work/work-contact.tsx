@@ -5,7 +5,12 @@ import { type FormEvent, useId, useState } from "react";
 import { XWatermark } from "@/components/geometry/x-watermark";
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { FORM_FIELDS, type FieldErrors, validateForm } from "@/lib/forms/validate";
+import { SITE_EMAIL, SITE_EMAIL_HREF, SITE_PHONES } from "@/lib/contact";
+import {
+  type FieldErrors,
+  FORM_FIELDS,
+  validateForm,
+} from "@/lib/forms/validate";
 import { cn } from "@/lib/utils";
 
 const BUDGETS = [
@@ -16,8 +21,12 @@ const BUDGETS = [
 ] as const;
 
 const CONTACT_DETAILS = [
-  { label: "Sales & general", value: "info@xorora.com" },
-  { label: "Call us", value: "+92-332-0555328" },
+  { label: "Sales & general", value: SITE_EMAIL, href: SITE_EMAIL_HREF },
+  ...SITE_PHONES.map((phone) => ({
+    label: phone.label,
+    value: phone.display,
+    href: phone.href,
+  })),
 ] as const;
 
 export function WorkContact() {
@@ -63,11 +72,7 @@ export function WorkContact() {
                   </div>
                   <div className="font-sans font-semibold text-base text-white">
                     <a
-                      href={
-                        item.value.includes("@")
-                          ? `mailto:${item.value}`
-                          : `tel:${item.value.replace(/[^\d+]/g, "")}`
-                      }
+                      href={item.href}
                       className="no-underline transition-colors hover:text-tangerine-400"
                     >
                       {item.value}
@@ -254,7 +259,9 @@ function WorkField({
         />
       )}
       {error ? (
-        <span className="font-sans text-[12px] text-[var(--danger)]">{error}</span>
+        <span className="font-sans text-[12px] text-[var(--danger)]">
+          {error}
+        </span>
       ) : null}
     </label>
   );

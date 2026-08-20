@@ -1,10 +1,15 @@
 "use client";
 
-import { ArrowUpRight, Check, ChevronDown, Mail, Phone } from "lucide-react";
+import { ArrowUpRight, Check, ChevronDown } from "lucide-react";
 import { type FormEvent, useState } from "react";
+import { ContactChannels } from "@/components/contact/contact-channels";
 import { XWatermark } from "@/components/geometry/x-watermark";
 import { Button } from "@/components/ui/button";
-import { FORM_FIELDS, type FieldErrors, validateForm } from "@/lib/forms/validate";
+import {
+  type FieldErrors,
+  FORM_FIELDS,
+  validateForm,
+} from "@/lib/forms/validate";
 import { cn } from "@/lib/utils";
 
 const BUDGETS = [
@@ -12,11 +17,6 @@ const BUDGETS = [
   "$25k – $50k",
   "$50k – $100k",
   "> $100k",
-] as const;
-
-const CONTACT_ITEMS = [
-  { icon: Mail, value: "info@xorora.com" },
-  { icon: Phone, value: "+92-332-0555328" },
 ] as const;
 
 const fieldClass =
@@ -58,28 +58,7 @@ export function IndContact({ industryNames }: { industryNames: string[] }) {
               Share a few details and our team will get back within one business
               day with next steps and a preliminary estimate.
             </p>
-            <div className="mt-auto flex flex-col gap-3.5">
-              {CONTACT_ITEMS.map(({ icon: Icon, value }) => (
-                <div
-                  key={value}
-                  className="flex items-center gap-3 font-sans text-[15px] text-white/85"
-                >
-                  <span className="flex h-9 w-9 items-center justify-center rounded-(--r-md) border border-white/12 bg-white/6 text-tangerine-400">
-                    <Icon className="h-[17px] w-[17px]" aria-hidden />
-                  </span>
-                  <a
-                    href={
-                      value.includes("@")
-                        ? `mailto:${value}`
-                        : `tel:${value.replace(/[^\d+]/g, "")}`
-                    }
-                    className="transition-colors hover:text-tangerine-400"
-                  >
-                    {value}
-                  </a>
-                </div>
-              ))}
-            </div>
+            <ContactChannels tone="onDark" withIconWrap className="mt-auto" />
           </div>
 
           <div className="rounded-(--r-lg) border border-white/10 bg-white/3 p-[clamp(24px,3vw,32px)]">
@@ -205,7 +184,9 @@ function IndField({
         />
       )}
       {error ? (
-        <span className="font-sans text-[12px] text-[var(--danger)]">{error}</span>
+        <span className="font-sans text-[12px] text-[var(--danger)]">
+          {error}
+        </span>
       ) : null}
     </label>
   );

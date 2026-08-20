@@ -1,8 +1,9 @@
 "use client";
 
-import { ArrowUpRight, Check, Mail, Phone } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { type FormEvent, useState } from "react";
 import { SectionHead } from "@/components/case-study/section-head";
+import { ContactChannels } from "@/components/contact/contact-channels";
 import { Button } from "@/components/ui/button";
 import {
   type FieldErrors,
@@ -17,11 +18,6 @@ const TOPICS = [
   "Press or media",
   "Careers",
   "Something else",
-] as const;
-
-const CONTACT_ITEMS = [
-  { icon: Mail, value: "info@xorora.com" },
-  { icon: Phone, value: "+92-332-0555328" },
 ] as const;
 
 const fieldClass =
@@ -53,28 +49,7 @@ export function BlogContact() {
             title="Have a topic or a project in mind?"
             sub="Pitch a guest post, ask a question about something we wrote, or start a conversation about working together."
           />
-          <div className="mt-7 flex flex-col gap-3.5">
-            {CONTACT_ITEMS.map(({ icon: Icon, value }) => (
-              <div
-                key={value}
-                className="flex items-center gap-3 font-sans text-[15px] text-fg1"
-              >
-                <span className="flex h-[38px] w-[38px] items-center justify-center rounded-(--r-md) bg-indigo-50 text-xo-indigo">
-                  <Icon className="h-[18px] w-[18px]" aria-hidden />
-                </span>
-                <a
-                  href={
-                    value.includes("@")
-                      ? `mailto:${value}`
-                      : `tel:${value.replace(/[^\d+]/g, "")}`
-                  }
-                  className="transition-colors hover:text-xo-indigo"
-                >
-                  {value}
-                </a>
-              </div>
-            ))}
-          </div>
+          <ContactChannels tone="onLight" withIconWrap className="mt-7" />
         </div>
 
         <div className="rounded-(--r-xl) border border-border bg-surface p-[clamp(28px,3.5vw,44px)] shadow-sm">

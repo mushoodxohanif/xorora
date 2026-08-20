@@ -1,15 +1,11 @@
-import { ArrowUpRight, Mail, Phone } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { ContactChannelsInline } from "@/components/contact/contact-channels";
 import { SignalRule } from "@/components/geometry/signal-rule";
 import { XWatermark } from "@/components/geometry/x-watermark";
 import { LetsTalkContactLink } from "@/components/modals";
 import { buttonClassName } from "@/lib/button-styles";
 import { ROUTES } from "@/lib/navigation";
-
-const CONTACT_ITEMS = [
-  { icon: Mail, value: "info@xorora.com" },
-  { icon: Phone, value: "+92-332-0555328" },
-] as const;
 
 const RELATED = [
   { label: "Node.js web development", href: ROUTES.nodejsWebDevelopment },
@@ -57,29 +53,7 @@ export function LwdContact() {
             See our work
           </Link>
         </div>
-        <div className="mt-9 flex flex-wrap justify-center gap-x-[clamp(20px,4vw,40px)] gap-y-5">
-          {CONTACT_ITEMS.map(({ icon: Icon, value }) => (
-            <div
-              key={value}
-              className="flex items-center gap-2.5 font-sans text-[15px] text-white/82"
-            >
-              <Icon
-                className="h-[17px] w-[17px] text-tangerine-400"
-                aria-hidden
-              />
-              <a
-                href={
-                  value.includes("@")
-                    ? `mailto:${value}`
-                    : `tel:${value.replace(/[^\d+]/g, "")}`
-                }
-                className="transition-colors hover:text-tangerine-400"
-              >
-                {value}
-              </a>
-            </div>
-          ))}
-        </div>
+        <ContactChannelsInline className="mt-9" />
         <nav
           aria-label="Related services"
           className="mt-10 flex flex-wrap justify-center gap-x-5 gap-y-2 border-white/10 border-t pt-8"

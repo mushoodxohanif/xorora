@@ -1,10 +1,15 @@
 "use client";
 
-import { ArrowUpRight, Check, Mail, Phone } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { type FormEvent, useState } from "react";
+import { ContactChannels } from "@/components/contact/contact-channels";
 import { XWatermark } from "@/components/geometry/x-watermark";
 import { Button } from "@/components/ui/button";
-import { FORM_FIELDS, type FieldErrors, validateForm } from "@/lib/forms/validate";
+import {
+  type FieldErrors,
+  FORM_FIELDS,
+  validateForm,
+} from "@/lib/forms/validate";
 import type { ContactInfo } from "@/lib/industries/types";
 import { cn } from "@/lib/utils";
 
@@ -52,10 +57,7 @@ export function IndustryContact({ info }: IndustryContactProps) {
                 {paragraph}
               </p>
             ))}
-            <div className="mt-auto flex flex-col gap-3.5">
-              <ContactLine icon={Mail} value={info.email} />
-              <ContactLine icon={Phone} value={info.phone} />
-            </div>
+            <ContactChannels tone="onDark" withIconWrap className="mt-auto" />
           </div>
 
           <div className="rounded-[var(--r-lg)] border border-white/10 bg-white/3 p-[clamp(24px,3vw,32px)]">
@@ -134,32 +136,6 @@ export function IndustryContact({ info }: IndustryContactProps) {
   );
 }
 
-function ContactLine({
-  icon: Icon,
-  value,
-}: {
-  icon: typeof Mail;
-  value: string;
-}) {
-  return (
-    <div className="flex items-center gap-3 font-sans text-[15px] text-white/85">
-      <span className="flex h-9 w-9 items-center justify-center rounded-[var(--r-md)] border border-white/12 bg-white/6 text-tangerine-400">
-        <Icon className="h-[17px] w-[17px]" aria-hidden />
-      </span>
-      <a
-        href={
-          value.includes("@")
-            ? `mailto:${value}`
-            : `tel:${value.replace(/[^\d+]/g, "")}`
-        }
-        className="transition-colors hover:text-tangerine-400"
-      >
-        {value}
-      </a>
-    </div>
-  );
-}
-
 function ContactField({
   name,
   label,
@@ -200,7 +176,9 @@ function ContactField({
         />
       )}
       {error ? (
-        <span className="font-sans text-[12px] text-[var(--danger)]">{error}</span>
+        <span className="font-sans text-[12px] text-[var(--danger)]">
+          {error}
+        </span>
       ) : null}
     </label>
   );

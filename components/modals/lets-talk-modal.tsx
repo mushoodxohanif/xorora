@@ -1,11 +1,9 @@
 "use client";
 
-import { ArrowUpRight, Check, ChevronDown, Mail, Phone, X } from "lucide-react";
-import { type FormEvent, useEffect, useId, useState } from "react";
+import { X } from "lucide-react";
+import { useEffect } from "react";
+import { ContactFormPanel } from "@/components/contact/contact-form-panel";
 import { XWatermark } from "@/components/geometry/x-watermark";
-import { Button } from "@/components/ui/button";
-import { FORM_FIELDS, type FieldErrors, validateForm } from "@/lib/forms/validate";
-import { cn } from "@/lib/utils";
 
 interface LetsTalkModalProps {
   open: boolean;
@@ -13,23 +11,11 @@ interface LetsTalkModalProps {
   industryNames: string[];
 }
 
-const BUDGETS = [
-  "up to $25k",
-  "$25k – $50k",
-  "$50k – $100k",
-  "> $100k",
-] as const;
-
 export function LetsTalkModal({
   open,
   onClose,
   industryNames,
 }: LetsTalkModalProps) {
-  const [sent, setSent] = useState(false);
-  const [industry, setIndustry] = useState("");
-  const [budget, setBudget] = useState<string | null>(null);
-  const [errors, setErrors] = useState<FieldErrors>({});
-
   useEffect(() => {
     if (!open) return;
 
@@ -46,24 +32,6 @@ export function LetsTalkModal({
       document.body.style.overflow = prev;
     };
   }, [open, onClose]);
-
-  useEffect(() => {
-    if (!open) {
-      setSent(false);
-      setIndustry("");
-      setBudget(null);
-      setErrors({});
-    }
-  }, [open]);
-
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const next = validateForm(event.currentTarget, FORM_FIELDS.contact);
-    setErrors(next);
-    if (Object.keys(next).length === 0) {
-      setSent(true);
-    }
-  }
 
   if (!open) return null;
 
@@ -103,277 +71,14 @@ export function LetsTalkModal({
           <X className="h-5 w-5" aria-hidden />
         </button>
 
-        <div className="lt-grid relative grid max-h-[92vh] grid-cols-[0.92fr_1.08fr] gap-[clamp(32px,5vw,64px)] overflow-y-auto p-[clamp(32px,4.5vw,60px)]">
-          <div className="flex flex-col">
-            <h2
-              id="lets-talk-title"
-              className="m-0 mb-[22px] font-extrabold font-sans text-[clamp(30px,3.8vw,46px)] text-white leading-[1.04] tracking-tight"
-            >
-              Tell us about your project.
-            </h2>
-            <p className="m-0 mb-7 max-w-[420px] font-sans text-base text-white/66 leading-[1.7]">
-              Share a few details and our team will get back within one business
-              day with next steps and a preliminary estimate.
-            </p>
-            <div className="mt-auto flex flex-col gap-3.5">
-              {[
-                { icon: Mail, value: "info@xorora.com" },
-                { icon: Phone, value: "+92-332-0555328" },
-              ].map(({ icon: Icon, value }) => (
-                <div
-                  key={value}
-                  className="flex items-center gap-3 font-sans text-[15px] text-white/85"
-                >
-                  <span className="flex h-9 w-9 items-center justify-center rounded-(--r-md) border border-white/12 bg-white/6 text-tangerine-400">
-                    <Icon className="h-[17px] w-[17px]" aria-hidden />
-                  </span>
-                  <a
-                    href={
-                      value.includes("@")
-                        ? `mailto:${value}`
-                        : `tel:${value.replace(/[^\d+]/g, "")}`
-                    }
-                    className="transition-colors hover:text-tangerine-400"
-                  >
-                    {value}
-                  </a>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-(--r-lg) border border-white/10 bg-white/3 p-[clamp(24px,3vw,32px)]">
-            {sent ? (
-              <div className="py-14 text-center">
-                <div className="mx-auto mb-[18px] flex h-14 w-14 items-center justify-center rounded-full bg-[rgba(46,158,107,0.18)] text-success">
-                  <Check className="h-7 w-7" aria-hidden />
-                </div>
-                <h3 className="m-0 mb-2 font-bold font-sans text-[22px] text-white">
-                  Request received
-                </h3>
-                <p className="m-0 mb-[22px] font-sans text-[15px] text-white/65">
-                  We will reach out within one business day.
-                </p>
-                <Button variant="onDark" onClick={onClose}>
-                  Close
-                </Button>
-              </div>
-            ) : (
-              <form name="lets-talk" noValidate onSubmit={onSubmit}>
-                <div className="grid grid-cols-2 gap-3.5">
-                  <LtField
-                    name="name"
-                    label="Full name"
-                    placeholder="Jordan Reyes"
-                    error={errors.name}
-                  />
-                  <LtField
-                    name="email"
-                    label="Work email"
-                    placeholder="you@company.com"
-                    type="email"
-                    error={errors.email}
-                  />
-                </div>
-                <div className="mt-3.5 grid grid-cols-2 gap-3.5">
-                  <LtField
-                    name="company"
-                    label="Company"
-                    placeholder="Company name"
-                  />
-                  <LtSelect
-                    value={industry}
-                    onChange={setIndustry}
-                    options={industryNames}
-                  />
-                </div>
-                <input type="hidden" name="budget" value={budget ?? ""} />
-                <LtChipRow
-                  label="Project budget"
-                  options={[...BUDGETS]}
-                  value={budget}
-                  onPick={setBudget}
-                />
-                <div className="mt-3.5">
-                  <LtField
-                    name="message"
-                    label="How can we help?"
-                    placeholder="A sentence about your project"
-                    textarea
-                  />
-                </div>
-                <div className="mt-6">
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    size="lg"
-                    className="w-full justify-center"
-                  >
-                    Submit request
-                    <ArrowUpRight className="h-4 w-4" aria-hidden />
-                  </Button>
-                </div>
-              </form>
-            )}
-          </div>
+        <div className="relative max-h-[92vh] overflow-y-auto p-[clamp(32px,4.5vw,60px)]">
+          <ContactFormPanel
+            industryNames={industryNames}
+            formName="lets-talk"
+            titleId="lets-talk-title"
+            onSuccessAction={{ label: "Close", onClick: onClose }}
+          />
         </div>
-      </div>
-    </div>
-  );
-}
-
-function LtField({
-  name,
-  label,
-  placeholder,
-  textarea,
-  type = "text",
-  error,
-}: {
-  name: string;
-  label: string;
-  placeholder: string;
-  textarea?: boolean;
-  type?: string;
-  error?: string;
-}) {
-  const [focused, setFocused] = useState(false);
-  const fieldId = useId();
-
-  const className = cn(
-    "box-border w-full resize-none rounded-[var(--r-md)] border bg-white/4 px-3.5 py-3 font-sans text-[15px] text-white outline-hidden",
-    error
-      ? "border-[var(--danger)]"
-      : focused
-        ? "border-tangerine-500 shadow-focus"
-        : "border-white/16",
-  );
-
-  return (
-    <div className="flex flex-col gap-[7px]">
-      <label
-        htmlFor={fieldId}
-        className="font-sans font-semibold text-[12.5px] text-white/70"
-      >
-        {label}
-      </label>
-      {textarea ? (
-        <textarea
-          id={fieldId}
-          name={name}
-          rows={3}
-          placeholder={placeholder}
-          onFocus={() => setFocused(true)}
-          onBlur={() => setFocused(false)}
-          className={className}
-          aria-invalid={Boolean(error)}
-        />
-      ) : (
-        <input
-          id={fieldId}
-          name={name}
-          type={type}
-          placeholder={placeholder}
-          onFocus={() => setFocused(true)}
-          onBlur={() => setFocused(false)}
-          className={className}
-          aria-invalid={Boolean(error)}
-        />
-      )}
-      {error ? (
-        <span className="font-sans text-[12px] text-[var(--danger)]">{error}</span>
-      ) : null}
-    </div>
-  );
-}
-
-function LtSelect({
-  value,
-  onChange,
-  options,
-}: {
-  value: string;
-  onChange: (value: string) => void;
-  options: string[];
-}) {
-  const [focused, setFocused] = useState(false);
-  const selectId = useId();
-
-  return (
-    <div className="flex flex-col gap-[7px]">
-      <label
-        htmlFor={selectId}
-        className="font-sans font-semibold text-[12.5px] text-white/70"
-      >
-        Industry
-      </label>
-      <div className="relative">
-        <select
-          id={selectId}
-          name="industry"
-          value={value}
-          onChange={(event) => onChange(event.target.value)}
-          onFocus={() => setFocused(true)}
-          onBlur={() => setFocused(false)}
-          className={cn(
-            "box-border w-full cursor-pointer appearance-none rounded-(--r-md) border bg-white/4 py-3 pr-[38px] pl-3.5 font-sans text-[15px] outline-hidden",
-            focused ? "border-tangerine-500 shadow-focus" : "border-white/16",
-            value ? "text-white" : "text-white/50",
-          )}
-        >
-          <option value="" className="text-xo-ink">
-            Select industry
-          </option>
-          {options.map((option) => (
-            <option key={option} value={option} className="text-xo-ink">
-              {option}
-            </option>
-          ))}
-        </select>
-        <ChevronDown
-          className="-translate-y-1/2 pointer-events-none absolute top-1/2 right-[13px] h-4 w-4 text-white/50"
-          aria-hidden
-        />
-      </div>
-    </div>
-  );
-}
-
-function LtChipRow({
-  label,
-  options,
-  value,
-  onPick,
-}: {
-  label: string;
-  options: string[];
-  value: string | null;
-  onPick: (value: string) => void;
-}) {
-  return (
-    <div className="mt-[18px]">
-      <div className="mb-2.5 font-sans font-semibold text-[12.5px] text-white/70">
-        {label}
-      </div>
-      <div className="flex flex-wrap gap-[9px]">
-        {options.map((option) => {
-          const active = value === option;
-          return (
-            <button
-              key={option}
-              type="button"
-              onClick={() => onPick(option)}
-              className={cn(
-                "cursor-pointer rounded-pill border px-[15px] py-2 font-medium font-sans text-[13.5px] transition-all duration-150",
-                active
-                  ? "border-tangerine-500 bg-[rgba(242,107,33,0.14)] text-tangerine-400"
-                  : "border-white/16 bg-white/3 text-white/75",
-              )}
-            >
-              {option}
-            </button>
-          );
-        })}
       </div>
     </div>
   );

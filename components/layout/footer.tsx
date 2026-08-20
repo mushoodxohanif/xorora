@@ -1,6 +1,5 @@
 import { Linkedin, MapPin, Youtube } from "lucide-react";
 import Link from "next/link";
-import { LetsTalkContactLink } from "@/components/modals/lets-talk-modal-provider";
 import { Wordmark } from "@/components/ui/wordmark";
 import { FOOTER_OFFICES, type FooterColumn } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
@@ -43,20 +42,6 @@ export function Footer({ columns }: FooterProps) {
                       >
                         {item.label}
                       </Link>
-                    );
-                  }
-
-                  if (item.action === "contact") {
-                    return (
-                      <LetsTalkContactLink
-                        key={item.label}
-                        className={cn(
-                          footerLinkClass,
-                          "border-0 bg-transparent p-0 text-left",
-                        )}
-                      >
-                        {item.label}
-                      </LetsTalkContactLink>
                     );
                   }
 

@@ -1,3 +1,4 @@
+import { SITE_EMAIL, SITE_PHONES } from "@/lib/contact";
 import type { IndustriesRecord } from "./types";
 
 export { INDUSTRY_SLUGS } from "./types";
@@ -1310,8 +1311,8 @@ const INDUSTRIES: IndustriesRecord = {
             "We will sign an NDA if required, carefully analyze your request, and prepare a preliminary estimate.",
             "Then we meet to discuss your needs, answer questions, and align on next steps.",
           ],
-          email: "info@xorora.com",
-          phone: "+92-332-0555328",
+          email: SITE_EMAIL,
+          phone: SITE_PHONES[0].display,
           budgetOptions: [
             "up to $10k",
             "$10k – $20k",

@@ -1,8 +1,9 @@
 "use client";
 
-import { ArrowUpRight, Check, Mail, Minus, Phone, Plus } from "lucide-react";
+import { ArrowUpRight, Check, Minus, Plus } from "lucide-react";
 import { useState } from "react";
 import { LightSection } from "@/components/case-study/light-section";
+import { ContactChannels } from "@/components/contact/contact-channels";
 import { XWatermark } from "@/components/geometry/x-watermark";
 import { LetsTalkContactLink } from "@/components/modals";
 import type { FaqItem } from "@/lib/content";
@@ -12,11 +13,6 @@ const TRUST_ITEMS = [
   "NDA available",
   "No sales pressure",
   "Free consultation",
-] as const;
-
-const CONTACT_ITEMS = [
-  { icon: Phone, value: "+92-332-0555328" },
-  { icon: Mail, value: "info@xorora.com" },
 ] as const;
 
 interface AboutFAQProps {
@@ -106,26 +102,11 @@ export function AboutFAQ({ faqs }: AboutFAQProps) {
                 </span>
               ))}
             </div>
-            <div className="mt-[26px] flex flex-col gap-3 border-white/10 border-t pt-6">
-              {CONTACT_ITEMS.map(({ icon: Icon, value }) => (
-                <div
-                  key={value}
-                  className="flex items-center gap-[11px] font-sans text-[14.5px] text-white/85"
-                >
-                  <Icon className="h-4 w-4 text-tangerine-400" aria-hidden />
-                  <a
-                    href={
-                      value.includes("@")
-                        ? `mailto:${value}`
-                        : `tel:${value.replace(/[^\d+]/g, "")}`
-                    }
-                    className="transition-colors hover:text-tangerine-400"
-                  >
-                    {value}
-                  </a>
-                </div>
-              ))}
-            </div>
+            <ContactChannels
+              tone="onDark"
+              className="mt-[26px] border-white/10 border-t pt-6"
+              itemClassName="gap-[11px] text-[14.5px]"
+            />
           </div>
         </div>
       </div>

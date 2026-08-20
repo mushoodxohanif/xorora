@@ -66,6 +66,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     entry(ROUTES.howWeWork, 0.7),
     entry(ROUTES.ourWork, 0.7),
     entry(ROUTES.industries, 0.7),
+    entry(ROUTES.contact, 0.7),
     entry(ROUTES.blog, 0.7),
     entry("/privacy", 0.3),
     entry("/terms", 0.3),

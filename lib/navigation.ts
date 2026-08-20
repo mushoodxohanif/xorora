@@ -6,6 +6,7 @@ export const ROUTES = {
   home: "/",
   about: "/about",
   blog: "/blog",
+  contact: "/contact",
   consulting: "/consulting",
   discoveryWorkshop: "/consulting/discovery-workshop-services",
   aiConsultation: "/consulting/ai-consultation-services",
@@ -313,8 +314,7 @@ export interface FooterColumn {
   heading: string;
   href?: string;
   items: Array<
-    | { label: string; href: string }
-    | { label: string; action: "contact" | "top" }
+    { label: string; href: string } | { label: string; action: "top" }
   >;
 }
 
@@ -391,14 +391,9 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
       { label: "Blogs", href: ROUTES.blog },
       { label: "How we Work", href: ROUTES.howWeWork },
       { label: "Our Work", href: ROUTES.ourWork },
-      { label: "Contact us", action: "contact" },
+      { label: "Contact us", href: ROUTES.contact },
     ],
   },
 ];
 
-export const FOOTER_OFFICES = [
-  {
-    city: "Pakistan",
-    addr: "Plot # 606, Block F2, Phase 1 Johar Town, Lahore, 54000",
-  },
-] as const;
+export { SITE_OFFICES as FOOTER_OFFICES } from "@/lib/contact";

@@ -1,21 +1,21 @@
 "use client";
 
-import { ArrowRight, Check, Mail, Phone } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { type FormEvent, useState } from "react";
+import { ContactChannels } from "@/components/contact/contact-channels";
 import { XWatermark } from "@/components/geometry/x-watermark";
 import { Button } from "@/components/ui/button";
-import { FORM_FIELDS, type FieldErrors, validateForm } from "@/lib/forms/validate";
+import {
+  type FieldErrors,
+  FORM_FIELDS,
+  validateForm,
+} from "@/lib/forms/validate";
 import { cn } from "@/lib/utils";
 
 const TRUST_ITEMS = [
   "NDA available",
   "No sales pressure",
   "Free consultation",
-] as const;
-
-const CONTACT_ITEMS = [
-  { icon: Phone, value: "+92-332-0555328" },
-  { icon: Mail, value: "info@xorora.com" },
 ] as const;
 
 const fieldClass =
@@ -127,26 +127,11 @@ export function V2ContactForm() {
             </span>
           ))}
         </div>
-        <div className="mt-6 flex flex-wrap gap-x-[26px] gap-y-3 border-white/10 border-t pt-[22px]">
-          {CONTACT_ITEMS.map(({ icon: Icon, value }) => (
-            <div
-              key={value}
-              className="flex items-center gap-[11px] font-sans text-[14.5px] text-white/85"
-            >
-              <Icon className="h-4 w-4 text-tangerine-400" aria-hidden />
-              <a
-                href={
-                  value.includes("@")
-                    ? `mailto:${value}`
-                    : `tel:${value.replace(/[^\d+]/g, "")}`
-                }
-                className="transition-colors hover:text-tangerine-400"
-              >
-                {value}
-              </a>
-            </div>
-          ))}
-        </div>
+        <ContactChannels
+          tone="onDark"
+          className="mt-6 flex-row flex-wrap gap-x-[26px] gap-y-3 border-white/10 border-t pt-[22px]"
+          itemClassName="gap-[11px] text-[14.5px]"
+        />
       </div>
     </div>
   );
@@ -193,7 +178,9 @@ function HomeField({
         />
       )}
       {error ? (
-        <span className="font-sans text-[12px] text-[var(--danger)]">{error}</span>
+        <span className="font-sans text-[12px] text-[var(--danger)]">
+          {error}
+        </span>
       ) : null}
     </div>
   );
