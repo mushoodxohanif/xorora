@@ -18,6 +18,9 @@ export const SEO_KEYWORDS = {
     "python web development services",
     "top python web development company",
     "best python development company",
+    "custom .net development company",
+    "custom .net development services",
+    "custom .net development",
   ],
   ai: [
     "AI Agent Development Services",
