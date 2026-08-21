@@ -1,6 +1,6 @@
 import { ArrowDown, Check } from "lucide-react";
-import { AmazonLogo } from "@/components/amazon-a-to-z/vendor-central/amazon-logo";
 import { AmHeroVisual } from "@/components/amazon-a-to-z/account-management/am-hero-visual";
+import { AmazonLogo } from "@/components/amazon-a-to-z/vendor-central/amazon-logo";
 import { SignalField } from "@/components/geometry/signal-field";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { buttonClassName } from "@/lib/button-styles";
@@ -33,7 +33,7 @@ export function AmHero() {
             Xorora acts as your Amazon operations arm, handling the essential
             channel tasks that keep your account running smoothly.
           </p>
-          <ul className="hero-reveal hero-reveal-2 mb-8 m-0 flex max-w-[540px] list-none flex-col gap-2 p-0">
+          <ul className="hero-reveal hero-reveal-2 m-0 mb-8 flex max-w-[540px] list-none flex-col gap-2 p-0">
             {INCLUDES.map((item) => (
               <li key={item} className="flex items-start gap-2.5">
                 <Check

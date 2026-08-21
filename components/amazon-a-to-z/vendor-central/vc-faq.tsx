@@ -3,7 +3,7 @@ import { ServiceFaq } from "@/components/services";
 export const VC_FAQS = [
   {
     q: "What is Amazon Vendor Central and how is it different from Seller Central?",
-    a: "Vendor Central is invite-only and first-party: you sell wholesale to Amazon, and Amazon sells to customers as the retailer. Seller Central is third-party, where you sell to customers directly and control pricing. Vendor Central trades some control for scale and the \"Ships from and sold by Amazon\" trust signal.",
+    a: 'Vendor Central is invite-only and first-party: you sell wholesale to Amazon, and Amazon sells to customers as the retailer. Seller Central is third-party, where you sell to customers directly and control pricing. Vendor Central trades some control for scale and the "Ships from and sold by Amazon" trust signal.',
   },
   {
     q: "Can you help us recover Amazon Vendor Central chargebacks?",

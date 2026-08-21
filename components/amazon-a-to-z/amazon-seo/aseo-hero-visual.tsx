@@ -2,9 +2,24 @@ import { AmazonLogo } from "@/components/amazon-a-to-z/vendor-central/amazon-log
 
 const ORBIT = [
   { name: "Keywords", top: "0%", left: "50%", translate: "-translate-x-1/2" },
-  { name: "Listings", top: "50%", left: "100%", translate: "-translate-x-1/2 -translate-y-1/2" },
-  { name: "A+ Content", top: "100%", left: "50%", translate: "-translate-x-1/2 -translate-y-full" },
-  { name: "Rank", top: "50%", left: "0%", translate: "-translate-x-1/2 -translate-y-1/2" },
+  {
+    name: "Listings",
+    top: "50%",
+    left: "100%",
+    translate: "-translate-x-1/2 -translate-y-1/2",
+  },
+  {
+    name: "A+ Content",
+    top: "100%",
+    left: "50%",
+    translate: "-translate-x-1/2 -translate-y-full",
+  },
+  {
+    name: "Rank",
+    top: "50%",
+    left: "0%",
+    translate: "-translate-x-1/2 -translate-y-1/2",
+  },
 ] as const;
 
 export function AseoHeroVisual() {
@@ -54,12 +69,12 @@ export function AseoHeroVisual() {
         />
       </svg>
 
-      <div className="absolute top-1/2 left-1/2 z-10 flex h-[132px] w-[132px] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border-2 border-tangerine-400 bg-[#0B1224] shadow-[0_12px_40px_-12px_rgba(8,12,40,0.55)]">
+      <div className="-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 z-10 flex h-[132px] w-[132px] flex-col items-center justify-center rounded-full border-2 border-tangerine-400 bg-[#0B1224] shadow-[0_12px_40px_-12px_rgba(8,12,40,0.55)]">
         <AmazonLogo className="mb-1 h-5" />
         <span className="font-mono text-[10px] text-tangerine-400 uppercase tracking-[0.14em]">
           Core
         </span>
-        <span className="mt-0.5 font-sans font-bold text-[15px] text-white">
+        <span className="mt-0.5 font-bold font-sans text-[15px] text-white">
           Amazon SEO
         </span>
       </div>

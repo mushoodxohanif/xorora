@@ -1,8 +1,8 @@
 import {
-  type LucideIcon,
   Building2,
   GraduationCap,
   Layers,
+  type LucideIcon,
   Rocket,
   Timer,
 } from "lucide-react";

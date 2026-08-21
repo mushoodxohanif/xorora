@@ -15,3 +15,9 @@ export const AMAZON_ACCOUNT_MANAGEMENT_PATH =
 export const AMAZON_SEO_SERVICES_PATH = "/amazon-a-to-z/amazon-seo-services";
 
 export const AMAZON_DSP_SERVICES_PATH = "/amazon-a-to-z/amazon-dsp-services";
+
+export const AMAZON_LISTING_OPTIMIZATION_PATH =
+  "/amazon-a-to-z/listing-optimization-services";
+
+export const AMAZON_PRODUCT_HUNTING_PATH =
+  "/amazon-a-to-z/product-hunting-and-sourcing-services";

@@ -1,8 +1,8 @@
+export { AseoChallenge } from "./aseo-challenge";
+export { AseoCta } from "./aseo-cta";
+export { ASEO_FAQS, AseoFaq } from "./aseo-faq";
 export { AseoHero } from "./aseo-hero";
 export { AseoHeroVisual } from "./aseo-hero-visual";
-export { AseoResults } from "./aseo-results";
 export { AseoProcess } from "./aseo-process";
-export { AseoChallenge } from "./aseo-challenge";
+export { AseoResults } from "./aseo-results";
 export { AseoWhy } from "./aseo-why";
-export { AseoFaq, ASEO_FAQS } from "./aseo-faq";
-export { AseoCta } from "./aseo-cta";

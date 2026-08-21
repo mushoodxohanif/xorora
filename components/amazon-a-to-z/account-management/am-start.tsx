@@ -5,7 +5,11 @@ import { type FormEvent, useId, useState } from "react";
 import { LightSection } from "@/components/case-study/light-section";
 import { SectionHead } from "@/components/case-study/section-head";
 import { Button } from "@/components/ui/button";
-import { FORM_FIELDS, type FieldErrors, validateForm } from "@/lib/forms/validate";
+import {
+  type FieldErrors,
+  FORM_FIELDS,
+  validateForm,
+} from "@/lib/forms/validate";
 import { cn } from "@/lib/utils";
 
 const STEPS = [
@@ -32,9 +36,13 @@ export function AmStart() {
 
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const next = validateForm(event.currentTarget, FORM_FIELDS.contactWithMessage, {
-      message: "Please enter your Amazon store or brand.",
-    });
+    const next = validateForm(
+      event.currentTarget,
+      FORM_FIELDS.contactWithMessage,
+      {
+        message: "Please enter your Amazon store or brand.",
+      },
+    );
     setErrors(next);
     if (Object.keys(next).length === 0) {
       setSent(true);
@@ -49,7 +57,7 @@ export function AmStart() {
         className="ind-reveal mb-12 max-w-[760px]"
       />
 
-      <ol className="vc-stagger mb-12 m-0 grid list-none grid-cols-1 gap-[22px] p-0 md:grid-cols-3">
+      <ol className="vc-stagger m-0 mb-12 grid list-none grid-cols-1 gap-[22px] p-0 md:grid-cols-3">
         {STEPS.map((step) => (
           <li
             key={step.n}
@@ -180,7 +188,9 @@ function AuditField({
         aria-invalid={Boolean(error)}
       />
       {error ? (
-        <span className="font-sans text-[12px] text-[var(--danger)]">{error}</span>
+        <span className="font-sans text-[12px] text-[var(--danger)]">
+          {error}
+        </span>
       ) : null}
     </label>
   );

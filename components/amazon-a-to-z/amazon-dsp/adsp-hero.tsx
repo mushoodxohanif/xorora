@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
-import { AmazonLogo } from "@/components/amazon-a-to-z/vendor-central/amazon-logo";
 import { AdspHeroVisual } from "@/components/amazon-a-to-z/amazon-dsp/adsp-hero-visual";
+import { AmazonLogo } from "@/components/amazon-a-to-z/vendor-central/amazon-logo";
 import { SignalField } from "@/components/geometry/signal-field";
 import { LetsTalkContactLink } from "@/components/modals";
 import { Eyebrow } from "@/components/ui/eyebrow";

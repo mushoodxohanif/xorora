@@ -1,4 +1,4 @@
-import { type LucideIcon, EyeOff, SearchX, TrendingDown } from "lucide-react";
+import { EyeOff, type LucideIcon, SearchX, TrendingDown } from "lucide-react";
 import { SectionHead } from "@/components/case-study/section-head";
 
 const CARDS: { icon: LucideIcon; title: string; body: string }[] = [

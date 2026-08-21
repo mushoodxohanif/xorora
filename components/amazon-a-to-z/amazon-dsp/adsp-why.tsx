@@ -1,4 +1,4 @@
-import { type LucideIcon, Crosshair, Layers, Megaphone } from "lucide-react";
+import { Crosshair, Layers, type LucideIcon, Megaphone } from "lucide-react";
 import { SectionHead } from "@/components/case-study/section-head";
 
 const CARDS: { icon: LucideIcon; title: string; body: string }[] = [

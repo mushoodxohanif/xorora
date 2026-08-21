@@ -1,10 +1,10 @@
+export { AdspApproach } from "./adsp-approach";
+export { AdspChallenge } from "./adsp-challenge";
+export { AdspCta } from "./adsp-cta";
+export { ADSP_FAQS, AdspFaq } from "./adsp-faq";
 export { AdspHero } from "./adsp-hero";
 export { AdspHeroVisual } from "./adsp-hero-visual";
-export { AdspChallenge } from "./adsp-challenge";
-export { AdspProcess } from "./adsp-process";
 export { AdspIncluded } from "./adsp-included";
-export { AdspApproach } from "./adsp-approach";
-export { AdspWhy } from "./adsp-why";
 export { AdspJourney } from "./adsp-journey";
-export { AdspFaq, ADSP_FAQS } from "./adsp-faq";
-export { AdspCta } from "./adsp-cta";
+export { AdspProcess } from "./adsp-process";
+export { AdspWhy } from "./adsp-why";

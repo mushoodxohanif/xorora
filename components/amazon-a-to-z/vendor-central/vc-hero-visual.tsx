@@ -20,7 +20,10 @@ export function VcHeroVisual() {
             </span>
           </div>
           <span className="vc-live-dot flex items-center gap-1.5 font-mono text-[11px] text-emerald-300">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" aria-hidden />
+            <span
+              className="h-1.5 w-1.5 rounded-full bg-emerald-300"
+              aria-hidden
+            />
             Live
           </span>
         </div>

@@ -47,7 +47,10 @@ export function AdspProcess() {
                 {step.n}
               </span>
               {index < STEPS.length - 1 ? (
-                <span className="vc-step-line mt-2 w-px flex-1 bg-border" aria-hidden />
+                <span
+                  className="vc-step-line mt-2 w-px flex-1 bg-border"
+                  aria-hidden
+                />
               ) : null}
             </div>
             <div className={index < STEPS.length - 1 ? "pb-10" : "pb-2"}>

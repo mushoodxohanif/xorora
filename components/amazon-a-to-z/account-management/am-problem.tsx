@@ -22,7 +22,7 @@ export function AmProblem() {
             title="Running your Amazon business shouldn't run your life"
             className="ind-reveal mb-6 max-w-[640px]"
           />
-          <p className="ind-reveal mb-8 m-0 max-w-[640px] font-sans text-[16px] text-fg2 leading-relaxed">
+          <p className="ind-reveal m-0 mb-8 max-w-[640px] font-sans text-[16px] text-fg2 leading-relaxed">
             Between juggling PPC campaigns, managing inventory, optimizing
             listings, monitoring compliance, and handling customer service, most
             sellers end up drowning in operational tasks instead of focusing on
@@ -55,7 +55,10 @@ export function AmProblem() {
                 </span>
               </div>
               <span className="vc-live-dot flex items-center gap-1.5 font-mono text-[11px] text-emerald-300">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" aria-hidden />
+                <span
+                  className="h-1.5 w-1.5 rounded-full bg-emerald-300"
+                  aria-hidden
+                />
                 Live
               </span>
             </div>

@@ -1,9 +1,9 @@
 import {
-  type LucideIcon,
+  Building2,
   Factory,
   Home,
+  type LucideIcon,
   ShoppingBag,
-  Building2,
   UtensilsCrossed,
 } from "lucide-react";
 import { LightSection } from "@/components/case-study/light-section";

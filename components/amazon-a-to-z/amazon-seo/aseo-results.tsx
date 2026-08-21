@@ -1,8 +1,8 @@
 "use client";
 
+import { VcStatCounter } from "@/components/amazon-a-to-z/vendor-central/vc-stat-counter";
 import { LightSection } from "@/components/case-study/light-section";
 import { SectionHead } from "@/components/case-study/section-head";
-import { VcStatCounter } from "@/components/amazon-a-to-z/vendor-central/vc-stat-counter";
 
 const STATS = [
   {

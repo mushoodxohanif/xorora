@@ -2,7 +2,7 @@ export { AmazonLogo } from "./amazon-logo";
 export { VcApproach } from "./vc-approach";
 export { VcChallenge } from "./vc-challenge";
 export { VcCta } from "./vc-cta";
-export { VcFaq, VC_FAQS } from "./vc-faq";
+export { VC_FAQS, VcFaq } from "./vc-faq";
 export { VcHero } from "./vc-hero";
 export { VcIncluded } from "./vc-included";
 export { VcPortfolio } from "./vc-portfolio";

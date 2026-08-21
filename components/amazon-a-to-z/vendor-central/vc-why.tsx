@@ -1,4 +1,4 @@
-import { type LucideIcon, BarChart3, Layers, TrendingUp } from "lucide-react";
+import { BarChart3, Layers, type LucideIcon, TrendingUp } from "lucide-react";
 import { SectionHead } from "@/components/case-study/section-head";
 
 const CARDS: { icon: LucideIcon; title: string; body: string }[] = [

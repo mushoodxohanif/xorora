@@ -90,7 +90,7 @@ export function AmHow() {
               {CASE_TYPES.map((type) => (
                 <li
                   key={type}
-                  className="rounded-(--r-md) border border-white/14 bg-white/8 px-3 py-2 font-sans font-medium text-[13px] text-white/88"
+                  className="rounded-(--r-md) border border-white/14 bg-white/8 px-3 py-2 font-medium font-sans text-[13px] text-white/88"
                 >
                   {type}
                 </li>

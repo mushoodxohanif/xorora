@@ -1,9 +1,9 @@
 import {
-  type LucideIcon,
   BarChart3,
   FileText,
   Globe2,
   Layers,
+  type LucideIcon,
   Megaphone,
   Package,
   ShieldAlert,

@@ -4,7 +4,11 @@ import { ArrowUpRight, Check } from "lucide-react";
 import { type FormEvent, useId, useState } from "react";
 import { LightSection } from "@/components/case-study/light-section";
 import { Button } from "@/components/ui/button";
-import { FORM_FIELDS, type FieldErrors, validateForm } from "@/lib/forms/validate";
+import {
+  type FieldErrors,
+  FORM_FIELDS,
+  validateForm,
+} from "@/lib/forms/validate";
 import { cn } from "@/lib/utils";
 
 export function ScAudit() {
@@ -13,9 +17,13 @@ export function ScAudit() {
 
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const next = validateForm(event.currentTarget, FORM_FIELDS.contactWithMessage, {
-      message: "Please enter your Amazon store or brand.",
-    });
+    const next = validateForm(
+      event.currentTarget,
+      FORM_FIELDS.contactWithMessage,
+      {
+        message: "Please enter your Amazon store or brand.",
+      },
+    );
     setErrors(next);
     if (Object.keys(next).length === 0) {
       setSent(true);
@@ -33,8 +41,8 @@ export function ScAudit() {
             Our free audit reviews your Seller Central account health, inventory
             performance, listings, compliance risks, and reporting gaps,
             uncovering issues that could be costing you time or revenue.
-            You&apos;ll get a clear picture of where your account stands and what
-            needs attention next.
+            You&apos;ll get a clear picture of where your account stands and
+            what needs attention next.
           </p>
         </div>
 
@@ -57,11 +65,7 @@ export function ScAudit() {
                 </p>
               </div>
             ) : (
-              <form
-                name="seller-central-audit"
-                noValidate
-                onSubmit={onSubmit}
-              >
+              <form name="seller-central-audit" noValidate onSubmit={onSubmit}>
                 <h3 className="mb-6 font-extrabold font-sans text-[clamp(20px,2vw,24px)] text-fg1 leading-tight tracking-[-0.02em]">
                   Claim your free audit
                 </h3>
@@ -146,7 +150,9 @@ function AuditField({
         aria-invalid={Boolean(error)}
       />
       {error ? (
-        <span className="font-sans text-[12px] text-[var(--danger)]">{error}</span>
+        <span className="font-sans text-[12px] text-[var(--danger)]">
+          {error}
+        </span>
       ) : null}
     </label>
   );

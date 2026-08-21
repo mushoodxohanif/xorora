@@ -2,9 +2,24 @@ import { AmazonLogo } from "@/components/amazon-a-to-z/vendor-central/amazon-log
 
 const ORBIT = [
   { name: "Display", top: "0%", left: "50%", translate: "-translate-x-1/2" },
-  { name: "Video", top: "50%", left: "100%", translate: "-translate-x-1/2 -translate-y-1/2" },
-  { name: "Audio", top: "100%", left: "50%", translate: "-translate-x-1/2 -translate-y-full" },
-  { name: "Audience", top: "50%", left: "0%", translate: "-translate-x-1/2 -translate-y-1/2" },
+  {
+    name: "Video",
+    top: "50%",
+    left: "100%",
+    translate: "-translate-x-1/2 -translate-y-1/2",
+  },
+  {
+    name: "Audio",
+    top: "100%",
+    left: "50%",
+    translate: "-translate-x-1/2 -translate-y-full",
+  },
+  {
+    name: "Audience",
+    top: "50%",
+    left: "0%",
+    translate: "-translate-x-1/2 -translate-y-1/2",
+  },
 ] as const;
 
 export function AdspHeroVisual() {
@@ -60,7 +75,7 @@ export function AdspHeroVisual() {
         />
       </svg>
 
-      <div className="absolute top-1/2 left-1/2 z-10 flex h-[132px] w-[132px] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border-2 border-tangerine-400 bg-[#0B1224] shadow-[0_12px_40px_-12px_rgba(8,12,40,0.55)]">
+      <div className="-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 z-10 flex h-[132px] w-[132px] flex-col items-center justify-center rounded-full border-2 border-tangerine-400 bg-[#0B1224] shadow-[0_12px_40px_-12px_rgba(8,12,40,0.55)]">
         <AmazonLogo className="mb-1 h-5" />
         <span className="rounded-pill bg-white/10 px-2 py-0.5 font-mono text-[10px] text-white/85 uppercase tracking-[0.16em]">
           DSP
