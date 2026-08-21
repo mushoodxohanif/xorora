@@ -3,6 +3,8 @@ import {
   caseStudyHeroAlt,
   caseStudyHeroTitle,
 } from "@/lib/image-seo";
+import { cn } from "@/lib/utils";
+import { AmazonListingFrame } from "./amazon-listing-frame";
 import { BrowserFrame } from "./browser-frame";
 import { CaseStudyCta } from "./case-study-cta";
 import { CaseStudyMetaBar } from "./case-study-meta-bar";
@@ -43,6 +45,9 @@ function GradientTitle({ title }: { title: string }) {
 }
 
 function heroBadge(study: CaseStudy): string {
+  if (study.category === "amazon") {
+    return "Amazon AU · 2.5 ROAS";
+  }
   if (study.slug === "unified-ai-voice-operations") {
     return "4 portals · live in production";
   }
@@ -56,8 +61,9 @@ function heroBadge(study: CaseStudy): string {
 }
 
 export function CaseStudyHero({ study }: CaseStudyHeroProps) {
-  const headerMetrics = study.metrics.slice(0, 3);
+  const headerMetrics = study.metrics.slice(0, study.category === "amazon" ? 2 : 3);
   const [primaryTag, ...restTags] = study.tags;
+  const isAmazon = study.category === "amazon";
 
   return (
     <section className="relative overflow-hidden bg-navy-900">
@@ -72,8 +78,15 @@ export function CaseStudyHero({ study }: CaseStudyHeroProps) {
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(1,12,40,0.4)_0%,rgba(1,12,40,0)_24%,rgba(2,6,15,0.85)_100%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(78%_70%_at_80%_2%,rgba(91,141,239,0.22),transparent_60%)]" />
 
-      <div className="cs-header-grid relative mx-auto grid max-w-[1240px] grid-cols-[1.05fr_0.95fr] items-center gap-[clamp(40px,5vw,72px)] px-8 py-[clamp(120px,12vw,150px)] pb-[clamp(68px,8vw,108px)]">
-        <div>
+      <div
+        className={cn(
+          "cs-header-grid relative mx-auto grid max-w-[1240px] items-center gap-[clamp(36px,4vw,64px)] px-8 py-[clamp(120px,12vw,150px)] pb-[clamp(68px,8vw,108px)]",
+          isAmazon
+            ? "grid-cols-[1.35fr_0.65fr]"
+            : "grid-cols-[1.05fr_0.95fr]",
+        )}
+      >
+        <div className="min-w-0">
           <div className="mb-7 inline-flex items-center gap-3 rounded-pill border border-white/18 bg-white/6 py-2 pr-2 pl-4 backdrop-blur-[6px]">
             {primaryTag && (
               <span className="font-sans font-semibold text-[13px] text-white/90">
@@ -111,18 +124,40 @@ export function CaseStudyHero({ study }: CaseStudyHeroProps) {
           <CaseStudyCta />
         </div>
 
-        <div className="cs-header-art relative">
-          <BrowserFrame
-            src={study.heroImage}
-            alt={caseStudyHeroAlt(
-              study.metaTitle,
-              study.tags[0] ?? study.subtitle.split("·")[0]?.trim() ?? "case study",
-            )}
-            title={caseStudyHeroTitle(study.title)}
-            url={study.heroUrl ?? "app.xorora.ai"}
-            glow
-          />
-          <div className="absolute bottom-[-22px] left-[-22px] flex items-center gap-2.5 rounded-(--r-md) border border-white/12 bg-navy-950 px-[18px] py-3 text-white shadow-lg">
+        <div
+          className={cn(
+            "cs-header-art relative",
+            isAmazon && "mx-auto w-full max-w-[400px] justify-self-end",
+          )}
+        >
+          {isAmazon ? (
+            <AmazonListingFrame
+              src={study.heroImage}
+              alt={caseStudyHeroAlt(
+                study.metaTitle,
+                study.tags[0] ??
+                  study.subtitle.split("·")[0]?.trim() ??
+                  "case study",
+              )}
+              title={caseStudyHeroTitle(study.title)}
+              marketplace={study.heroUrl ?? "amazon.com.au"}
+              size="hero"
+            />
+          ) : (
+            <BrowserFrame
+              src={study.heroImage}
+              alt={caseStudyHeroAlt(
+                study.metaTitle,
+                study.tags[0] ??
+                  study.subtitle.split("·")[0]?.trim() ??
+                  "case study",
+              )}
+              title={caseStudyHeroTitle(study.title)}
+              url={study.heroUrl ?? "app.xorora.ai"}
+              glow
+            />
+          )}
+          <div className="absolute bottom-[-18px] left-[-12px] flex items-center gap-2.5 rounded-(--r-md) border border-white/12 bg-navy-950 px-[16px] py-2.5 text-white shadow-lg">
             <span className="h-2 w-2 rounded-full bg-success shadow-[0_0_8px_var(--success)]" />
             <span className="font-mono text-xs">{heroBadge(study)}</span>
           </div>

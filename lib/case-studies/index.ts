@@ -9,6 +9,7 @@ export type {
   ArchitectureItem,
   BulletItem,
   CaseStudy,
+  CaseStudyCategory,
   CaseStudyListItem,
   CaseStudyMetric,
   CaseStudySection,
@@ -18,5 +19,7 @@ export type {
   CaseStudySummary,
   ChallengeSolutionPair,
   MetaItem,
+  SectionImage,
+  SectionVideo,
   ServiceItem,
 } from "./types";

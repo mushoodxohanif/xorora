@@ -41,9 +41,10 @@ export function WorkHeader() {
           </span>
         </h1>
         <p className="mx-auto mb-[38px] max-w-[600px] font-sans text-[clamp(17px,2vw,20px)] text-white/72 leading-relaxed">
-          Production AI and software, engineered end-to-end. A look at what
-          we&apos;ve built with ambitious teams, from the first prototype to the
-          system their business runs on.
+          Production software, AI platforms, and marketplace launches —
+          engineered end-to-end. A look at what we&apos;ve built and scaled with
+          ambitious teams, from the first prototype to the system their business
+          runs on.
         </p>
         <WorkHeaderActions />
       </div>

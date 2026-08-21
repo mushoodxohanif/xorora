@@ -19,6 +19,7 @@ function mapSummary(row: typeof caseStudies.$inferSelect): CaseStudySummary {
     title: row.title,
     subtitle: row.subtitle,
     tags: row.tags,
+    category: row.category,
     lead: row.lead,
     heroImage: row.heroImage,
     headerBg: row.headerBg,

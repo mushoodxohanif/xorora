@@ -1,4 +1,5 @@
 import type {
+  CaseStudyCategory,
   CaseStudySectionContent,
   CaseStudySectionType,
 } from "@/lib/case-studies/types";
@@ -19,6 +20,7 @@ export interface SeedCaseStudy {
   title: string;
   subtitle: string;
   tags: string[];
+  category: CaseStudyCategory;
   lead: string;
   heroImage: string;
   headerBg: string;
@@ -37,6 +39,7 @@ export const seedCaseStudies: SeedCaseStudy[] = [
     title: "From fragmented tools to unified AI voice operations.",
     subtitle: "AI Voice Automation · B2B SaaS",
     tags: ["AI Voice Automation", "B2B SaaS"],
+    category: "development",
     lead: "A B2B AI voice company had powerful voice-agent technology — but no platform to deploy, monitor, and scale it. Xorora engineered four purpose-built portals on one shared backend, turning scattered operations into a commercially-ready product.",
     heroImage: "/assets/mocks/portal-business.webp",
     headerBg: "/assets/header-bg.jpg",
@@ -231,6 +234,7 @@ export const seedCaseStudies: SeedCaseStudy[] = [
     title: "Turning regulatory chaos into real-time compliance intelligence.",
     subtitle: 'RegTech · AI Automation · FinTech — "Regula"',
     tags: ["RegTech", "AI Automation", "FinTech"],
+    category: "development",
     lead: "Legacy RegTech left emerging markets behind. Xorora built an automation-first, AI-powered platform that monitors regulators continuously, scores business impact, and alerts compliance teams in under an hour.",
     heroImage: "/assets/regula/dashboard.webp",
     headerBg: "/assets/regula/header-bg.jpg",
@@ -442,6 +446,7 @@ export const seedCaseStudies: SeedCaseStudy[] = [
       "Real-time SaaS event monitoring. From blind spots to instant visibility.",
     subtitle: 'SaaS Monitoring · Real-Time Analytics · API-First — "PingPanda"',
     tags: ["SaaS Monitoring", "Real-Time Analytics", "API-First"],
+    category: "development",
     lead: "SaaS teams move fast — but without real-time visibility, they always react late. Xorora built a lightweight, API-first event notifier: ingest a typed event, get an instant Discord alert with full context. No dashboards to configure, no blind spots.",
     heroImage: "/assets/pingpanda/dashboard.webp",
     headerBg: "/assets/pingpanda/header-bg.jpg",
@@ -627,6 +632,269 @@ export const seedCaseStudies: SeedCaseStudy[] = [
             },
           ],
           quote: "Send an event. Get an alert. Never miss a moment.",
+        },
+      },
+    ],
+  },
+  {
+    slug: "amazon-au-product-launch",
+    title: "From Empty Storefront to 2.5 ROAS: An Amazon AU Launch",
+    subtitle: "Amazon AU · Product Launch · PPC",
+    tags: ["Amazon AU", "Product Launch", "PPC"],
+    category: "amazon",
+    lead: "A new-to-Amazon brand entered Amazon Australia with a demand-validated multi-unit card tracker, a conversion-ready listing, Brand Registry assets, and a disciplined $20/day Sponsored Products plan — reaching 2.5 ROAS in about five weeks.",
+    heroImage:
+      "/assets/case-studies/amazon-au-product-launch/hero.webp",
+    headerBg: "/assets/header-bg.jpg",
+    heroUrl: "amazon.com.au",
+    featured: false,
+    sortOrder: 4,
+    metaTitle:
+      "Amazon AU Product Launch Case Study — 2.5 ROAS | Xorora",
+    metaDescription:
+      "How Xorora launched a card tracker on Amazon Australia — product hunting, listing optimization, Brand Registry A+ content, and Sponsored Products — from empty storefront to 2.5 ROAS.",
+    metrics: [
+      {
+        value: "2.5",
+        label: "ROAS on Sponsored Products",
+      },
+      {
+        value: "$1,756.80",
+        label: "Attributed sales in the launch window",
+      },
+      {
+        value: "$20/day",
+        label: "Controlled daily Sponsored Products budget",
+      },
+      {
+        value: "~5 wks",
+        label: "Empty storefront to profitable launch",
+      },
+    ],
+    sections: [
+      {
+        type: "overview",
+        content: {
+          label: "Overview",
+          title: "Launching into Amazon Australia with proof, not hope",
+          paragraphs: [
+            "The brief was straightforward and unforgiving: stand up a new Amazon AU storefront for a slim card tracker, validate demand before scaling spend, and turn a cold listing into profitable Sponsored Products performance.",
+            "Xorora ran the full marketplace build — product hunting through listing, Brand Registry and A+ modules, then a tightly capped PPC plan — so creative, catalog, and ads compounded instead of competing.",
+          ],
+          meta: [
+            { label: "Market", value: "Amazon Australia" },
+            { label: "Seller profile", value: "New-to-Amazon" },
+            { label: "Ad plan", value: "$20/day Sponsored Products" },
+            { label: "Engagement", value: "~5-week launch sprint" },
+          ],
+          image: {
+            src: "/assets/case-studies/amazon-au-product-launch/hero.webp",
+            alt: "Card tracker product hero still used on the Amazon AU listing",
+            url: "amazon.com.au",
+          },
+        },
+      },
+      {
+        type: "challenge",
+        content: {
+          label: "The challenge",
+          title: "Wrong product means wasted spend",
+          lead: "On Amazon, creative polish cannot rescue a SKU the market does not want — and aggressive PPC only accelerates the loss.",
+          paragraphs: [
+            "The client needed a multi-unit offer with clear demand signals on Amazon AU, not a speculative single SKU. Without validated product–market fit, Brand Registry assets and ad budget would burn before the listing ever had a chance.",
+          ],
+          bullets: [
+            "Empty storefront with no catalog history, reviews, or organic rank to lean on.",
+            "High risk of launching an unvalidated product and learning too late through paid traffic.",
+            "Listing and A+ needed to read as premium hardware, not a bare bullet dump.",
+            "PPC had to prove return on a hard $20/day Sponsored Products ceiling.",
+          ],
+        },
+      },
+      {
+        type: "market_context",
+        content: {
+          layout: "asset-showcase",
+          label: "Listing Optimization",
+          title: "Images engineered to convert cold Amazon traffic",
+          subtitle:
+            "Above-the-fold proof first — then secondary frames that answer the objections Sponsored Products traffic always brings.",
+          paragraphs: [
+            "We built the listing like a conversion funnel, not a photo dump: a clean main still for the search grid, then feature modules that prove tech, durability, charging, Find My / Find Hub reach across Australia, and wallet fit.",
+          ],
+          meta: [
+            { label: "Module", value: "Main + 5 secondary" },
+            { label: "Intent", value: "Cold SP traffic" },
+            { label: "Market", value: "Amazon AU" },
+          ],
+          bullets: [
+            {
+              title: "Above fold",
+              body: "Hero still reads as premium hardware in the search grid — no lifestyle clutter competing with the ASIN click.",
+            },
+            {
+              title: "Objection stack",
+              body: "Secondary frames pre-answer “does it work with Find My?”, water resistance, wireless charging, and real wallet fit.",
+            },
+            {
+              title: "AU-native proof",
+              body: "Find Anywhere module pins Sydney and Melbourne so shoppers see local network relevance, not generic global stock.",
+            },
+          ],
+          image: {
+            src: "/assets/case-studies/amazon-au-product-launch/listing-05-find-anywhere.webp",
+            alt: "Find it Anywhere listing showing Apple Find My and Android Find Hub with AU map pins",
+            url: "amazon.com.au",
+          },
+          gallery: [
+            {
+              src: "/assets/case-studies/amazon-au-product-launch/hero.webp",
+              alt: "Main listing still — geometric card tracker on white",
+            },
+            {
+              src: "/assets/case-studies/amazon-au-product-launch/listing-01-tech.webp",
+              alt: "Exploded listing module — chipset, battery, wireless charging coil",
+            },
+            {
+              src: "/assets/case-studies/amazon-au-product-launch/listing-03-water-resistant.webp",
+              alt: "Water-resistant listing proof with beaded droplets",
+            },
+            {
+              src: "/assets/case-studies/amazon-au-product-launch/listing-04-wireless-charging.webp",
+              alt: "Wireless charging listing still on a charging pad",
+            },
+            {
+              src: "/assets/case-studies/amazon-au-product-launch/listing-06-wallet.webp",
+              alt: "Lifestyle listing — card tracker sliding from a leather wallet",
+            },
+          ],
+        },
+      },
+      {
+        type: "solution",
+        content: {
+          label: "How Xorora solved it",
+          title: "One connected build: hunt → list → brand → PPC",
+          subtitle:
+            "Every phase fed the next — demand-validated inventory, a shopper-ready listing, Brand Registry A+ modules, then disciplined Sponsored Products.",
+          paragraphs: [
+            "We treated the launch as a single system: find a multi-unit card tracker with AU demand, build listing images shoppers actually scroll, register the brand and ship A+ modules that carry the story, then open Sponsored Products only when the catalog could convert.",
+            "Listing creative sat upstream of ads — so every dollar of the $20/day Sponsored Products plan hit a page already built to convert.",
+          ],
+          pipeline:
+            "Launch pipeline: 01 Product hunting (demand-validated multi-unit) → 02 Listing optimization (main + secondary images) → 03 Brand assets (Registry + A+) → 04 Sponsored Products ($20/day).",
+        },
+      },
+      {
+        type: "architecture",
+        content: {
+          label: "How it was built",
+          title: "Four phases, one storefront",
+          subtitle:
+            "Marketplace execution — not a SaaS rebuild. Each phase had a clear deliverable and a proof artifact shoppers or ads could use immediately.",
+          items: [
+            {
+              title: "Product hunting",
+              icon: "sparkles",
+              body: "Demand-validated multi-unit card tracker brief for Amazon AU — selected for fit, margin, and search intent before creative or ads started.",
+            },
+            {
+              title: "Listing optimization",
+              icon: "layout-dashboard",
+              body: "Main image plus secondary frames covering tech, durability, charging, Find My / Find Hub, and wallet lifestyle — built to convert cold traffic.",
+            },
+            {
+              title: "Brand assets",
+              icon: "shield-check",
+              body: "Brand Registry unlock and desktop A+ modules that carry comparison, trust, and lifestyle narrative beyond bare bullets.",
+            },
+            {
+              title: "Sponsored Products",
+              icon: "zap",
+              body: "Hard $20/day SP budget with structure tuned to the validated ASIN — protecting ROAS while the listing collected early conversion data.",
+            },
+          ],
+          gallery: [
+            {
+              src: "/assets/case-studies/amazon-au-product-launch/aplus-01-never-lose.webp",
+              alt: "A+ desktop module — Never lose what matters, golf lifestyle with wallet insert",
+            },
+            {
+              src: "/assets/case-studies/amazon-au-product-launch/aplus-02-travel-easy.webp",
+              alt: "A+ desktop module — Drop in, travel easy, tracker into a bag pocket",
+            },
+            {
+              src: "/assets/case-studies/amazon-au-product-launch/aplus-03-always-know.webp",
+              alt: "A+ desktop module — Always know, never guess, with iOS and Android tracking UI",
+            },
+            {
+              src: "/assets/case-studies/amazon-au-product-launch/aplus-04-track-anywhere.webp",
+              alt: "A+ desktop module — Track anywhere, tracker on suitcase handle in city street",
+            },
+            {
+              src: "/assets/case-studies/amazon-au-product-launch/aplus-05-total-control.webp",
+              alt: "A+ desktop module — Designed for total control, cinematic product still",
+            },
+          ],
+        },
+      },
+      {
+        type: "outcomes",
+        content: {
+          label: "Measurable Outcomes",
+          title: "From cold traffic to 2.5 ROAS",
+          subtitle:
+            "With listing and brand assets in place, Sponsored Products had something to sell. Lifetime PPC in the launch window hit 2.5 ROAS on $1,756.80 attributed sales — including a strong recent five-day stretch that confirmed the system was compounding.",
+          bullets: [
+            {
+              title: "2.5 ROAS",
+              body: "Sponsored Products returned $2.50 for every $1 of ad spend in the launch window.",
+            },
+            {
+              title: "$1,756.80 sales",
+              body: "Attributed revenue while the storefront was still building early history.",
+            },
+            {
+              title: "$20/day discipline",
+              body: "Budget stayed capped — efficiency came from catalog and structure, not spend inflation.",
+            },
+            {
+              title: "~5 weeks",
+              body: "Empty Amazon AU storefront to profitable launch cadence.",
+            },
+          ],
+          video: {
+            src: "/assets/case-studies/amazon-au-product-launch/product-15s.mp4",
+            poster:
+              "/assets/case-studies/amazon-au-product-launch/video-poster.webp",
+            title: "Card tracker · 15s product film",
+          },
+        },
+      },
+      {
+        type: "results",
+        content: {
+          label: "The result",
+          title: "A storefront that earns its ads",
+          subtitle:
+            "Amazon AU did not need another flashy agency deck — it needed a connected launch. Demand validation, listing proof, Brand Registry A+, and capped Sponsored Products turned an empty seller account into a measurable 2.5 ROAS system.",
+          bullets: [
+            {
+              title: "Product chosen for the market",
+              body: "Multi-unit card tracker selected against AU demand signals before creative or PPC spend.",
+            },
+            {
+              title: "Listing and brand ready to convert",
+              body: "Shopper-facing stills and A+ modules carried the hardware story past bare bullets.",
+            },
+            {
+              title: "PPC that protected return",
+              body: "A $20/day Sponsored Products plan scaled only what the catalog could defend.",
+            },
+          ],
+          quote: "Hunt. List. Brand. Then spend. 2.5 ROAS.",
+          chips:
+            "Services: Product Hunting · Listing Optimization · Launch · Brand Assets · PPC",
         },
       },
     ],

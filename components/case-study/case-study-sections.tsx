@@ -17,6 +17,10 @@ import {
   Zap,
 } from "lucide-react";
 import { BrowserFrame } from "@/components/case-study/browser-frame";
+import { AmazonAssetShowcase } from "@/components/case-study/amazon-asset-showcase";
+import { AmazonListingFrame } from "@/components/case-study/amazon-listing-frame";
+import { CaseStudyGallery } from "@/components/case-study/case-study-gallery";
+import { CaseStudyVideo } from "@/components/case-study/case-study-video";
 import { XWatermark } from "@/components/geometry/x-watermark";
 
 const ARCH_ICONS: Record<string, LucideIcon> = {
@@ -88,12 +92,18 @@ function MetaGrid({
   );
 }
 
-function ChipPills({ chips }: { chips?: string }) {
+function ChipPills({
+  chips,
+  className,
+}: {
+  chips?: string;
+  className?: string;
+}) {
   const items = parseChips(chips);
   if (items.length === 0) return null;
 
   return (
-    <div className="mt-7 flex flex-wrap gap-2.5">
+    <div className={cn("mt-7 flex flex-wrap gap-2.5", className)}>
       {items.map((item) => (
         <span
           key={item}
@@ -110,10 +120,73 @@ function ChipPills({ chips }: { chips?: string }) {
 function OverviewSection({
   content,
   primaryTag,
+  amazon,
 }: {
   content: CaseStudySectionContent;
   primaryTag: string;
+  amazon?: boolean;
 }) {
+  const media =
+    content.gallery && content.gallery.length > 0 ? (
+      <CaseStudyGallery
+        images={content.gallery}
+        amazon={amazon}
+        caption="Listing proof"
+      />
+    ) : content.image ? (
+      amazon ? (
+        <div className="mx-auto w-full max-w-[520px]">
+          <AmazonListingFrame
+            src={content.image.src}
+            alt={content.image.alt}
+            title={caseStudySectionTitle(content.title, primaryTag)}
+            marketplace={content.image.url ?? "amazon.com.au"}
+          />
+        </div>
+      ) : (
+        <BrowserFrame
+          src={content.image.src}
+          alt={content.image.alt}
+          title={caseStudySectionTitle(content.title, primaryTag)}
+          url={content.image.url}
+          glow
+          tilt
+        />
+      )
+    ) : null;
+
+  if (amazon) {
+    return (
+      <LightSection bg="var(--indigo-50)">
+        <div className="mx-auto max-w-[720px] text-center">
+          <SectionHead
+            label={content.label}
+            title={content.title ?? "The big picture"}
+            titleSize="clamp(30px,4vw,48px)"
+            align="center"
+          />
+          {content.paragraphs?.map((paragraph) => (
+            <p
+              key={paragraph.slice(0, 40)}
+              className="mt-7 font-sans text-[16.5px] text-fg2 leading-[1.7] first:mt-7"
+            >
+              {paragraph}
+            </p>
+          ))}
+          <ChipPills chips={content.chips} className="justify-center" />
+        </div>
+        {content.meta && (
+          <div className="mx-auto mt-10 max-w-[820px]">
+            <MetaGrid meta={content.meta} />
+          </div>
+        )}
+        {media && (
+          <div className="mt-[clamp(40px,5vw,64px)]">{media}</div>
+        )}
+      </LightSection>
+    );
+  }
+
   return (
     <LightSection bg="var(--indigo-50)">
       <div className="cs-overview-grid grid grid-cols-2 items-center gap-[clamp(36px,5vw,72px)]">
@@ -134,18 +207,7 @@ function OverviewSection({
           <ChipPills chips={content.chips} />
           {content.meta && <MetaGrid meta={content.meta} />}
         </div>
-        {content.image && (
-          <div className="cs-overview-art">
-            <BrowserFrame
-              src={content.image.src}
-              alt={content.image.alt}
-              title={caseStudySectionTitle(content.title, primaryTag)}
-              url={content.image.url}
-              glow
-              tilt
-            />
-          </div>
-        )}
+        {media && <div className="cs-overview-art">{media}</div>}
       </div>
     </LightSection>
   );
@@ -156,6 +218,22 @@ function MarketContextSection({
 }: {
   content: CaseStudySectionContent;
 }) {
+  if (content.layout === "asset-showcase" && content.image) {
+    return (
+      <AmazonAssetShowcase
+        label={content.label}
+        title={content.title ?? "Listing optimization"}
+        subtitle={content.subtitle}
+        paragraphs={content.paragraphs}
+        bullets={content.bullets}
+        meta={content.meta}
+        image={content.image}
+        gallery={content.gallery}
+        marketplace={content.image.url ?? "amazon.com.au"}
+      />
+    );
+  }
+
   return (
     <LightSection>
       <SectionHead
@@ -294,13 +372,81 @@ function PipelineBanner({ pipeline }: { pipeline: string }) {
 function SolutionSection({
   content,
   primaryTag,
+  amazon,
 }: {
   content: CaseStudySectionContent;
   primaryTag: string;
+  amazon?: boolean;
 }) {
   const bodyParagraphs = content.subtitle
     ? content.paragraphs
     : content.paragraphs?.slice(1);
+
+  if (amazon) {
+    return (
+      <DarkSection bloom="50% 8%" id="solution">
+        <div className="mx-auto max-w-[720px] text-center">
+          <SectionHead
+            label={content.label}
+            title={content.title ?? "How Xorora solved it"}
+            sub={content.subtitle ?? content.paragraphs?.[0]}
+            onDark
+            align="center"
+            className="mb-8"
+          />
+          <div className="flex flex-col gap-5 text-left">
+            {bodyParagraphs?.map((paragraph) => (
+              <p
+                key={paragraph.slice(0, 40)}
+                className="m-0 font-sans text-base text-white/72 leading-[1.72]"
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </div>
+
+        {content.gallery && content.gallery.length > 0 && (
+          <div className="mt-[clamp(44px,5vw,72px)]">
+            <CaseStudyGallery
+              images={content.gallery}
+              onDark
+              amazon
+              aspect="square"
+              caption="Listing images · what shoppers saw"
+            />
+          </div>
+        )}
+
+        {content.image && !content.gallery?.length && (
+          <div className="mx-auto mt-[clamp(44px,5vw,72px)] w-full max-w-[520px]">
+            <AmazonListingFrame
+              src={content.image.src}
+              alt={content.image.alt}
+              title={caseStudySectionTitle(content.title, primaryTag)}
+              marketplace={content.image.url ?? "amazon.com.au"}
+              onDark
+            />
+          </div>
+        )}
+
+        {content.video && (
+          <div className="mt-[clamp(36px,4vw,56px)]">
+            <CaseStudyVideo
+              src={content.video.src}
+              poster={content.video.poster}
+              title={content.video.title}
+              onDark
+              amazon
+            />
+          </div>
+        )}
+
+        {content.pipeline && <PipelineBanner pipeline={content.pipeline} />}
+        <ChipPills chips={content.chips} />
+      </DarkSection>
+    );
+  }
 
   return (
     <DarkSection bloom="50% 8%" id="solution">
@@ -311,7 +457,21 @@ function SolutionSection({
         onDark
         className="mb-11"
       />
-      {content.image ? (
+      {content.gallery && content.gallery.length > 0 ? (
+        <div className="cs-overview-grid mb-[clamp(44px,5vw,64px)] grid grid-cols-2 items-center gap-[clamp(28px,4vw,52px)]">
+          <div className="flex flex-col gap-5">
+            {bodyParagraphs?.map((paragraph) => (
+              <p
+                key={paragraph.slice(0, 40)}
+                className="m-0 font-sans text-base text-white/72 leading-[1.72]"
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
+          <CaseStudyGallery images={content.gallery} onDark amazon={false} />
+        </div>
+      ) : content.image ? (
         <div className="cs-overview-grid mb-[clamp(44px,5vw,64px)] grid grid-cols-2 items-center gap-[clamp(28px,4vw,52px)]">
           <div className="flex flex-col gap-5">
             {bodyParagraphs?.map((paragraph) => (
@@ -346,6 +506,17 @@ function SolutionSection({
           </div>
         )
       )}
+      {content.video && (
+        <div className="mb-[clamp(36px,4vw,52px)]">
+          <CaseStudyVideo
+            src={content.video.src}
+            poster={content.video.poster}
+            title={content.video.title}
+            onDark
+            amazon={false}
+          />
+        </div>
+      )}
       {content.pipeline && <PipelineBanner pipeline={content.pipeline} />}
       <ChipPills chips={content.chips} />
     </DarkSection>
@@ -354,8 +525,10 @@ function SolutionSection({
 
 function ArchitectureSection({
   content,
+  amazon,
 }: {
   content: CaseStudySectionContent;
+  amazon?: boolean;
 }) {
   return (
     <DarkSection bloom="50% 12%" id="architecture">
@@ -364,9 +537,15 @@ function ArchitectureSection({
         title={content.title ?? "Architecture"}
         sub={content.subtitle}
         onDark
+        align={amazon ? "center" : "left"}
         className="mb-14"
       />
-      <div className="relative overflow-hidden rounded-[var(--r-xl)] border border-white/10 bg-[rgba(3,9,24,.5)] p-[clamp(24px,3.5vw,48px)]">
+      <div
+        className={cn(
+          "relative overflow-hidden rounded-[var(--r-xl)] border border-white/10 bg-[rgba(3,9,24,.5)] p-[clamp(24px,3.5vw,48px)]",
+          amazon && "mx-auto max-w-[820px]",
+        )}
+      >
         <XWatermark
           size={420}
           color="rgba(120,150,240,0.05)"
@@ -408,6 +587,28 @@ function ArchitectureSection({
           })}
         </div>
       </div>
+      {content.gallery && content.gallery.length > 0 && (
+        <div className="mt-[clamp(48px,6vw,80px)]">
+          <CaseStudyGallery
+            images={content.gallery}
+            onDark
+            amazon={amazon}
+            aspect={amazon ? "wide" : "square"}
+            caption={amazon ? "Brand assets · A+ Content (Desktop)" : undefined}
+          />
+        </div>
+      )}
+      {content.video && (
+        <div className="mt-[clamp(36px,4vw,56px)]">
+          <CaseStudyVideo
+            src={content.video.src}
+            poster={content.video.poster}
+            title={content.video.title}
+            onDark
+            amazon={amazon}
+          />
+        </div>
+      )}
     </DarkSection>
   );
 }
@@ -474,25 +675,52 @@ function TechSection({ content }: { content: CaseStudySectionContent }) {
 
 const OUTCOME_ICONS: LucideIcon[] = [ArrowUpRight, Check, AlertCircle];
 
-function OutcomesSection({ content }: { content: CaseStudySectionContent }) {
+function OutcomesSection({
+  content,
+  amazon,
+}: {
+  content: CaseStudySectionContent;
+  amazon?: boolean;
+}) {
   const bullets = content.bullets?.map(normalizeBullet) ?? [];
+  const hasMedia =
+    Boolean(content.video) ||
+    Boolean(content.gallery && content.gallery.length > 0);
 
   return (
     <DarkSection bloom="20% 0%">
-      <div className="cs-outcomes-grid grid grid-cols-[0.92fr_1.08fr] items-center gap-[clamp(36px,5vw,72px)]">
-        <div>
+      <div
+        className={cn(
+          "cs-outcomes-grid grid items-center gap-[clamp(36px,5vw,72px)]",
+          amazon
+            ? "grid-cols-1"
+            : "grid-cols-[0.92fr_1.08fr]",
+        )}
+      >
+        <div className={amazon ? "mx-auto max-w-[720px] text-center" : undefined}>
           <SectionHead
             label={content.label}
             title={content.title ?? "Measurable outcomes"}
             onDark
+            align={amazon ? "center" : "left"}
           />
           {content.subtitle && (
-            <p className="mt-[26px] font-sans text-[16.5px] text-white/66 leading-[1.7]">
+            <p
+              className={cn(
+                "mt-[26px] font-sans text-[16.5px] text-white/66 leading-[1.7]",
+                amazon && "mx-auto max-w-[620px]",
+              )}
+            >
               {content.subtitle}
             </p>
           )}
         </div>
-        <div className="cs-outcome-cards grid grid-cols-2 gap-3.5">
+        <div
+          className={cn(
+            "cs-outcome-cards grid gap-3.5",
+            amazon ? "mx-auto max-w-[900px] grid-cols-2 sm:grid-cols-4" : "grid-cols-2",
+          )}
+        >
           {bullets.map((item, index) => {
             const Icon = OUTCOME_ICONS[index % OUTCOME_ICONS.length];
             return (
@@ -516,6 +744,26 @@ function OutcomesSection({ content }: { content: CaseStudySectionContent }) {
           })}
         </div>
       </div>
+      {hasMedia && (
+        <div className="mt-[clamp(48px,6vw,80px)] flex flex-col gap-10">
+          {content.gallery && content.gallery.length > 0 && (
+            <CaseStudyGallery
+              images={content.gallery}
+              onDark
+              amazon={amazon}
+            />
+          )}
+          {content.video && (
+            <CaseStudyVideo
+              src={content.video.src}
+              poster={content.video.poster}
+              title={content.video.title}
+              onDark
+              amazon={amazon}
+            />
+          )}
+        </div>
+      )}
     </DarkSection>
   );
 }
@@ -546,7 +794,13 @@ function QuoteBanner({ quote }: { quote: string }) {
   );
 }
 
-function ResultsSection({ content }: { content: CaseStudySectionContent }) {
+function ResultsSection({
+  content,
+  amazon,
+}: {
+  content: CaseStudySectionContent;
+  amazon?: boolean;
+}) {
   const bullets = content.bullets?.map(normalizeBullet) ?? [];
 
   return (
@@ -582,7 +836,24 @@ function ResultsSection({ content }: { content: CaseStudySectionContent }) {
           </div>
         ))}
       </div>
+      {content.gallery && content.gallery.length > 0 && (
+        <div className="mb-9">
+          <CaseStudyGallery images={content.gallery} amazon={amazon} />
+        </div>
+      )}
+      {content.video && (
+        <div className="mb-9">
+          <CaseStudyVideo
+            src={content.video.src}
+            poster={content.video.poster}
+            title={content.video.title}
+            onDark={false}
+            amazon={amazon}
+          />
+        </div>
+      )}
       {content.quote && <QuoteBanner quote={content.quote} />}
+      <ChipPills chips={content.chips} />
     </LightSection>
   );
 }
@@ -590,15 +861,23 @@ function ResultsSection({ content }: { content: CaseStudySectionContent }) {
 function CaseStudySectionBlock({
   section,
   primaryTag,
+  amazon,
 }: {
   section: CaseStudySection;
   primaryTag: string;
+  amazon?: boolean;
 }) {
   const { type, content } = section;
 
   switch (type) {
     case "overview":
-      return <OverviewSection content={content} primaryTag={primaryTag} />;
+      return (
+        <OverviewSection
+          content={content}
+          primaryTag={primaryTag}
+          amazon={amazon}
+        />
+      );
     case "market_context":
       return <MarketContextSection content={content} />;
     case "challenge":
@@ -607,17 +886,23 @@ function CaseStudySectionBlock({
       }
       return <ChallengeBulletsSection content={content} />;
     case "solution":
-      return <SolutionSection content={content} primaryTag={primaryTag} />;
+      return (
+        <SolutionSection
+          content={content}
+          primaryTag={primaryTag}
+          amazon={amazon}
+        />
+      );
     case "architecture":
-      return <ArchitectureSection content={content} />;
+      return <ArchitectureSection content={content} amazon={amazon} />;
     case "services":
       return <ServicesSection content={content} />;
     case "tech":
       return <TechSection content={content} />;
     case "outcomes":
-      return <OutcomesSection content={content} />;
+      return <OutcomesSection content={content} amazon={amazon} />;
     case "results":
-      return <ResultsSection content={content} />;
+      return <ResultsSection content={content} amazon={amazon} />;
     default:
       return null;
   }
@@ -626,9 +911,11 @@ function CaseStudySectionBlock({
 export function CaseStudySections({
   sections,
   primaryTag = "case study",
+  amazon = false,
 }: {
   sections: CaseStudySection[];
   primaryTag?: string;
+  amazon?: boolean;
 }) {
   return (
     <>
@@ -637,6 +924,7 @@ export function CaseStudySections({
           key={section.id}
           section={section}
           primaryTag={primaryTag}
+          amazon={amazon}
         />
       ))}
     </>
