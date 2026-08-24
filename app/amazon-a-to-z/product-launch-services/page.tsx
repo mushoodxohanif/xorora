@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AmazonCaseStudySection } from "@/components/amazon-a-to-z/amazon-case-study-section";
 import {
   PlsAdsExpertise,
   PlsBanner,
@@ -54,6 +55,7 @@ export default function AmazonProductLaunchServicesPage() {
       <PlsServices />
       <PlsBanner />
       <PlsBuild />
+      <AmazonCaseStudySection />
       <PlsProcess />
       <PlsAdsExpertise />
       <PlsWhy />

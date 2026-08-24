@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AmazonCaseStudySection } from "@/components/amazon-a-to-z/amazon-case-study-section";
 import {
   VcApproach,
   VcChallenge,
@@ -52,6 +53,7 @@ export default function AmazonVendorCentralServicesPage() {
       <VcChallenge />
       <VcProcess />
       <VcIncluded />
+      <AmazonCaseStudySection />
       <VcApproach />
       <VcWhy />
       <VcPortfolio />

@@ -24,3 +24,6 @@ export const AMAZON_PRODUCT_HUNTING_PATH =
 
 export const AMAZON_PRODUCT_LAUNCH_PATH =
   "/amazon-a-to-z/product-launch-services";
+
+export const AMAZON_A_PLUS_CONTENT_PATH =
+  "/amazon-a-to-z/a-plus-content-services";

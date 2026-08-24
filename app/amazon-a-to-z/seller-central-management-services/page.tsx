@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AmazonCaseStudySection } from "@/components/amazon-a-to-z/amazon-case-study-section";
 import {
   ScAudit,
   ScChallenge,
@@ -51,6 +52,7 @@ export default function AmazonSellerCentralManagementServicesPage() {
       <ScChallenge />
       <ScIncluded />
       <ScHow />
+      <AmazonCaseStudySection />
       <ScAudit />
       <ScWho />
       <ScFaq />

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AmazonCaseStudySection } from "@/components/amazon-a-to-z/amazon-case-study-section";
 import {
   AmCta,
   AmFaq,
@@ -50,6 +51,7 @@ export default function AmazonAccountManagementServicesPage() {
       <AmProblem />
       <AmWho />
       <AmHow />
+      <AmazonCaseStudySection />
       <AmStart />
       <AmFaq />
       <AmCta />

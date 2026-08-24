@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AmazonCaseStudySection } from "@/components/amazon-a-to-z/amazon-case-study-section";
 import {
   AloAdvantage,
   AloBenefits,
@@ -52,6 +53,7 @@ export default function AmazonListingOptimizationServicesPage() {
       <AloStandout />
       <AloBenefits />
       <AloAdvantage />
+      <AmazonCaseStudySection />
       <AloIncluded />
       <AloFoundation />
       <AloOptimize />

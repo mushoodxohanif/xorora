@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AmazonCaseStudySection } from "@/components/amazon-a-to-z/amazon-case-study-section";
 import {
   AphCta,
   AphFaq,
@@ -55,6 +56,7 @@ export default function AmazonProductHuntingServicesPage() {
       <AphWhat />
       <AphWhy />
       <AphIncluded />
+      <AmazonCaseStudySection />
       <AphInventory />
       <AphProcess />
       <AphTrust />

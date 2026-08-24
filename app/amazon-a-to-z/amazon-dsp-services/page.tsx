@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AmazonCaseStudySection } from "@/components/amazon-a-to-z/amazon-case-study-section";
 import {
   AdspApproach,
   AdspChallenge,
@@ -52,6 +53,7 @@ export default function AmazonDspServicesPage() {
       <AdspChallenge />
       <AdspProcess />
       <AdspIncluded />
+      <AmazonCaseStudySection />
       <AdspApproach />
       <AdspWhy />
       <AdspJourney />
