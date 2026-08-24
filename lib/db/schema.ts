@@ -19,6 +19,11 @@ export const caseStudyStatusEnum = pgEnum("case_study_status", [
   "published",
 ]);
 
+export const caseStudyCategoryEnum = pgEnum("case_study_category", [
+  "development",
+  "amazon",
+]);
+
 export const caseStudySectionTypeEnum = pgEnum("case_study_section_type", [
   "overview",
   "market_context",
@@ -37,6 +42,7 @@ export const caseStudies = pgTable("case_studies", {
   title: text("title").notNull(),
   subtitle: text("subtitle").notNull(),
   tags: text("tags").array().notNull().default([]),
+  category: caseStudyCategoryEnum("category").notNull().default("development"),
   lead: text("lead").notNull(),
   heroImage: text("hero_image").notNull(),
   headerBg: text("header_bg").notNull(),

@@ -617,8 +617,13 @@
   .cs-overview-grid,
   .cs-cs-row,
   .cs-outcomes-grid,
-  .cs-results-head {
+  .cs-results-head,
+  .cs-amazon-showcase {
     grid-template-columns: 1fr;
+  }
+
+  .cs-amazon-showcase > :first-child {
+    order: -1;
   }
 
   .cs-metrics-grid {

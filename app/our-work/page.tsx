@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Our Work — Case Studies | Xorora",
   description:
-    "Production AI and software, engineered end-to-end. Explore case studies from unified AI voice operations to real-time compliance and event monitoring platforms.",
+    "Production software, AI platforms, and Amazon marketplace launches. Explore case studies across development and Amazon AU growth work.",
 };
 
 export default async function OurWorkPage() {

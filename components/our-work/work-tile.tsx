@@ -38,27 +38,56 @@ export function WorkTile({ study }: WorkTileProps) {
     >
       <div className="relative overflow-hidden bg-navy-900 px-[22px] pt-[22px]">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(90%_80%_at_80%_0%,rgba(91,141,239,0.28),transparent_60%)]" />
-        <div className="relative overflow-hidden rounded-t-[10px] border border-white/10 border-b-0 shadow-[0_-10px_40px_rgba(2,6,15,0.4)]">
-          <div className="flex items-center gap-1.5 bg-[#070D22] px-3 py-[9px]">
-            {["#FF5F57", "#FEBC2E", "#28C840"].map((color) => (
-              <span
-                key={color}
-                className="h-2 w-2 rounded-full opacity-90"
-                style={{ background: color }}
+        {study.category === "amazon" ? (
+          <div className="relative overflow-hidden rounded-t-[10px] border border-white/10 border-b-0 shadow-[0_-10px_40px_rgba(2,6,15,0.4)]">
+            <div className="flex items-center gap-2 bg-[#131921] px-3 py-[9px]">
+              <Image
+                src="/amazon/amazon.svg"
+                alt=""
+                width={72}
+                height={22}
+                unoptimized
+                className="h-[18px] w-auto"
               />
-            ))}
+              <span className="ml-auto font-mono text-[10px] text-white/45">
+                amazon.com.au
+              </span>
+            </div>
+            <div className="relative h-[200px] overflow-hidden bg-white">
+              <Image
+                src={study.heroImage}
+                alt={imageAlt}
+                title={imageTitle}
+                fill
+                sizes="(max-width: 760px) 100vw, 400px"
+                quality={90}
+                className="object-contain object-center p-4 transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+              />
+            </div>
           </div>
-          <div className="relative h-[200px] overflow-hidden">
-            <Image
-              src={study.heroImage}
-              alt={imageAlt}
-              title={imageTitle}
-              fill
-              sizes="(max-width: 760px) 100vw, 400px"
-              className="object-cover object-top-left transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
-            />
+        ) : (
+          <div className="relative overflow-hidden rounded-t-[10px] border border-white/10 border-b-0 shadow-[0_-10px_40px_rgba(2,6,15,0.4)]">
+            <div className="flex items-center gap-1.5 bg-[#070D22] px-3 py-[9px]">
+              {["#FF5F57", "#FEBC2E", "#28C840"].map((color) => (
+                <span
+                  key={color}
+                  className="h-2 w-2 rounded-full opacity-90"
+                  style={{ background: color }}
+                />
+              ))}
+            </div>
+            <div className="relative h-[200px] overflow-hidden">
+              <Image
+                src={study.heroImage}
+                alt={imageAlt}
+                title={imageTitle}
+                fill
+                sizes="(max-width: 760px) 100vw, 400px"
+                className="object-cover object-top-left transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+              />
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       <div className="flex grow flex-col p-[clamp(24px,2.5vw,30px)]">

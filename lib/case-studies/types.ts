@@ -1,9 +1,12 @@
 import type {
+  caseStudyCategoryEnum,
   caseStudySectionTypeEnum,
   caseStudyStatusEnum,
 } from "@/lib/db/schema";
 
 export type CaseStudyStatus = (typeof caseStudyStatusEnum.enumValues)[number];
+export type CaseStudyCategory =
+  (typeof caseStudyCategoryEnum.enumValues)[number];
 export type CaseStudySectionType =
   (typeof caseStudySectionTypeEnum.enumValues)[number];
 
@@ -39,6 +42,12 @@ export interface SectionImage {
   url?: string;
 }
 
+export interface SectionVideo {
+  src: string;
+  poster?: string;
+  title?: string;
+}
+
 export interface CaseStudySectionContent {
   label?: string;
   title?: string;
@@ -54,6 +63,10 @@ export interface CaseStudySectionContent {
   services?: ServiceItem[];
   quote?: string;
   image?: SectionImage;
+  gallery?: SectionImage[];
+  video?: SectionVideo;
+  /** Presentation hint for Amazon / media-led sections. */
+  layout?: "default" | "asset-showcase";
 }
 
 export interface CaseStudyMetric {
@@ -77,6 +90,7 @@ export interface CaseStudySummary {
   title: string;
   subtitle: string;
   tags: string[];
+  category: CaseStudyCategory;
   lead: string;
   heroImage: string;
   headerBg: string;
