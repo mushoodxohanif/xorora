@@ -101,7 +101,7 @@ export function BlogBody({ posts }: BlogBodyProps) {
               {filteredPosts.length === 1 ? "" : "s"}
             </span>
           </div>
-          <div className="blog-posts-grid flex flex-col gap-[22px]">
+          <div className="blog-posts-grid grid grid-cols-1 gap-[clamp(16px,2.5vw,22px)] sm:grid-cols-2">
             {filteredPosts.map((post) => (
               <BlogCard key={post.id} post={post} />
             ))}
@@ -117,18 +117,18 @@ function BlogCard({ post }: { post: BlogPost }) {
     <Link
       href={ROUTES.blogPost(post.slug)}
       className={cn(
-        "blog-card-wide group flex flex-row overflow-hidden rounded-(--r-lg) border border-border bg-surface no-underline shadow-xs",
+        "blog-card group flex h-full flex-col overflow-hidden rounded-(--r-lg) border border-border bg-surface no-underline shadow-xs",
         "transition-all duration-220 ease-in-out",
         "hover:translate-y-[-3px] hover:border-border-strong hover:shadow-md",
       )}
     >
-      <div className="blog-card-media relative min-h-[240px] w-[46%] shrink-0 overflow-hidden bg-[#080C1E]">
+      <div className="blog-card-media relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-[#080C1E]">
         <Image
           src={post.img}
           alt={blogImageAlt(post.title)}
           title={blogImageTitle(post.excerpt, post.cat)}
           fill
-          sizes="46vw"
+          sizes="(max-width: 640px) 100vw, (max-width: 960px) 50vw, 33vw"
           className="object-contain transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
         />
         <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-[rgba(8,12,30,0.1)] to-[rgba(8,12,30,0.45)]" />
@@ -136,16 +136,16 @@ function BlogCard({ post }: { post: BlogPost }) {
           {post.cat}
         </span>
       </div>
-      <div className="flex flex-1 flex-col justify-center p-[clamp(26px,3vw,40px)]">
-        <div className="mb-3 flex items-center gap-2.5 font-sans text-[12.5px] text-fg3">
+      <div className="flex flex-1 flex-col p-[clamp(20px,2.5vw,28px)]">
+        <div className="mb-2.5 flex items-center gap-2.5 font-sans text-[12.5px] text-fg3">
           <span>{post.date}</span>
           <span className="h-[3px] w-[3px] rounded-full bg-slate-300" />
           <span>{post.read} read</span>
         </div>
-        <h3 className="mb-2.5 font-sans font-semibold text-[clamp(22px,2.4vw,28px)] text-fg1 leading-snug tracking-[-0.01em]">
+        <h3 className="mb-2 font-sans font-semibold text-[clamp(18px,2vw,22px)] text-fg1 leading-snug tracking-[-0.01em]">
           {post.title}
         </h3>
-        <p className="m-0 line-clamp-3 font-sans text-[15.5px] text-fg2 leading-relaxed">
+        <p className="m-0 line-clamp-3 flex-1 font-sans text-[14.5px] text-fg2 leading-relaxed">
           {post.excerpt}
         </p>
         <span className="mt-4 inline-flex items-center gap-[7px] font-sans font-semibold text-accent text-sm transition-colors duration-150 group-hover:text-tangerine-600">

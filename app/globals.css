@@ -773,20 +773,6 @@
     position: static;
   }
 
-  .blog-posts-grid {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .blog-card-wide {
-    flex-direction: column;
-  }
-
-  .blog-card-media {
-    width: 100%;
-    min-height: 190px;
-  }
-
   .blog-post-grid {
     grid-template-columns: 1fr;
   }
