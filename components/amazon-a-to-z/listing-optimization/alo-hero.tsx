@@ -1,10 +1,7 @@
-import { ArrowUpRight } from "lucide-react";
-import { AloHeroVisual } from "@/components/amazon-a-to-z/listing-optimization/alo-hero-visual";
+import { AmazonLeadForm } from "@/components/amazon-a-to-z/amazon-lead-form";
 import { AmazonLogo } from "@/components/amazon-a-to-z/vendor-central/amazon-logo";
 import { SignalField } from "@/components/geometry/signal-field";
-import { LetsTalkContactLink } from "@/components/modals";
 import { Eyebrow } from "@/components/ui/eyebrow";
-import { buttonClassName } from "@/lib/button-styles";
 
 export function AloHero() {
   return (
@@ -12,8 +9,8 @@ export function AloHero() {
       <SignalField className="opacity-60" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_90%_at_88%_30%,rgba(120,160,255,0.5)_0%,rgba(60,100,220,0.18)_34%,transparent_64%)]" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-indigo-300/50 to-transparent" />
-      <div className="svc-header-grid relative z-10 mx-auto grid max-w-[1240px] grid-cols-[1.08fr_0.92fr] items-center gap-[clamp(40px,5vw,72px)] px-8 py-[clamp(96px,11vw,140px)] pb-[clamp(64px,7vw,96px)]">
-        <div>
+      <div className="svc-header-grid relative z-10 mx-auto grid max-w-[1240px] grid-cols-[1.08fr_0.92fr] items-start gap-[clamp(40px,5vw,72px)] px-8 py-[clamp(96px,11vw,140px)] pb-[clamp(64px,7vw,96px)]">
+        <div className="pt-2">
           <Eyebrow onDark className="hero-reveal mb-5">
             Product listing optimization
           </Eyebrow>
@@ -28,14 +25,6 @@ export function AloHero() {
             Boost visibility, lower ad costs, and drive consistent sales with
             expertly crafted Amazon product listings.
           </p>
-          <div className="hero-reveal hero-reveal-2 mb-7">
-            <LetsTalkContactLink
-              className={buttonClassName({ variant: "light", size: "lg" })}
-            >
-              Let&apos;s team up
-              <ArrowUpRight className="h-4 w-4" aria-hidden />
-            </LetsTalkContactLink>
-          </div>
           <div className="hero-reveal hero-reveal-2 flex items-center gap-2.5">
             <AmazonLogo className="h-6" />
             <span className="font-sans text-[13.5px] text-white/55">
@@ -43,7 +32,13 @@ export function AloHero() {
             </span>
           </div>
         </div>
-        <AloHeroVisual />
+        <div className="hero-reveal hero-reveal-2">
+          <AmazonLeadForm
+            formName="listing-optimization-lead"
+            title="Let's team up"
+            submitLabel="Send message"
+          />
+        </div>
       </div>
     </section>
   );

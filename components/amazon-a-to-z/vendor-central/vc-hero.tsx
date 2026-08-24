@@ -1,8 +1,7 @@
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown } from "lucide-react";
+import { AmazonLeadForm } from "@/components/amazon-a-to-z/amazon-lead-form";
 import { AmazonLogo } from "@/components/amazon-a-to-z/vendor-central/amazon-logo";
-import { VcHeroVisual } from "@/components/amazon-a-to-z/vendor-central/vc-hero-visual";
 import { SignalField } from "@/components/geometry/signal-field";
-import { LetsTalkContactLink } from "@/components/modals";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { buttonClassName } from "@/lib/button-styles";
 
@@ -12,8 +11,8 @@ export function VcHero() {
       <SignalField className="opacity-60" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_90%_at_88%_30%,rgba(120,160,255,0.5)_0%,rgba(60,100,220,0.18)_34%,transparent_64%)]" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-indigo-300/50 to-transparent" />
-      <div className="svc-header-grid relative z-10 mx-auto grid max-w-[1240px] grid-cols-[1.08fr_0.92fr] items-center gap-[clamp(40px,5vw,72px)] px-8 py-[clamp(96px,11vw,140px)] pb-[clamp(64px,7vw,96px)]">
-        <div>
+      <div className="svc-header-grid relative z-10 mx-auto grid max-w-[1240px] grid-cols-[1.08fr_0.92fr] items-start gap-[clamp(40px,5vw,72px)] px-8 py-[clamp(96px,11vw,140px)] pb-[clamp(64px,7vw,96px)]">
+        <div className="pt-2">
           <Eyebrow onDark className="hero-reveal mb-5">
             Amazon A to Z Services
           </Eyebrow>
@@ -32,13 +31,7 @@ export function VcHero() {
             Central brands navigate the platform, protect their margins, and
             build a profitable first-party presence.
           </p>
-          <div className="hero-reveal hero-reveal-2 mb-7 flex flex-wrap items-center gap-3.5">
-            <LetsTalkContactLink
-              className={buttonClassName({ variant: "light", size: "lg" })}
-            >
-              Get a proposal
-              <ArrowUpRight className="h-4 w-4" aria-hidden />
-            </LetsTalkContactLink>
+          <div className="hero-reveal hero-reveal-2 mb-7">
             <a
               href="#our-process"
               className={buttonClassName({ variant: "onDark", size: "lg" })}
@@ -54,7 +47,13 @@ export function VcHero() {
             </span>
           </div>
         </div>
-        <VcHeroVisual />
+        <div className="hero-reveal hero-reveal-2">
+          <AmazonLeadForm
+            formName="vendor-central-lead"
+            title="Get a proposal"
+            submitLabel="Send message"
+          />
+        </div>
       </div>
     </section>
   );

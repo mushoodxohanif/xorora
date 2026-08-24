@@ -769,8 +769,9 @@ function OutcomesSection({
 }
 
 function QuoteBanner({ quote }: { quote: string }) {
+  // Split on sentence periods only — keep decimals like 2.44 / 2.5 intact.
   const parts = quote
-    .split(".")
+    .split(/(?<!\d)\.(?!\d)/)
     .map((part) => part.trim())
     .filter(Boolean);
 

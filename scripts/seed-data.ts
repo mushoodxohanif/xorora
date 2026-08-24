@@ -899,4 +899,267 @@ export const seedCaseStudies: SeedCaseStudy[] = [
       },
     ],
   },
+  {
+    slug: "amazon-au-laundry-bag-launch",
+    title: "Laundry Bag Set: An Amazon AU Launch at 2.44 ROAS",
+    subtitle: "Amazon AU · Product Launch · PPC",
+    tags: ["Amazon AU", "Product Launch", "PPC"],
+    category: "amazon",
+    lead: "With the brand's first product already live, Xorora sourced and launched a second: a laundry bag set for delicates — reaching 2.44 ROAS on a $30/day Sponsored Products campaign one month into the brand's Amazon presence.",
+    heroImage:
+      "/assets/case-studies/amazon-au-laundry-bag-launch/hero.webp",
+    headerBg: "/assets/header-bg.jpg",
+    heroUrl: "amazon.com.au",
+    featured: false,
+    sortOrder: 5,
+    metaTitle: "Amazon Laundry Bag Launch Case Study | Xorora",
+    metaDescription:
+      "See how Xorora took an Amazon AU laundry bag set from sourcing to a live PPC campaign generating a 2.44 ROAS across product hunting and listing optimization.",
+    metrics: [
+      {
+        value: "2.44",
+        label: "ROAS on Sponsored Products",
+      },
+      {
+        value: "$271.20",
+        label: "Attributed sales since campaign launch",
+      },
+      {
+        value: "$30/day",
+        label: "Sponsored Products daily budget",
+      },
+      {
+        value: "1 mo in",
+        label: "Brand already live before this SKU's PPC",
+      },
+    ],
+    sections: [
+      {
+        type: "overview",
+        content: {
+          label: "Overview",
+          title:
+            "A second SKU with Brand Registry, assets, and process already in place",
+          paragraphs: [
+            "With the brand's first product already live, Xorora sourced and launched a second: a laundry bag set for delicates. This case study covers what changed the second time — when Brand Registry, brand assets, and a proven process were already in place before the product ever touched a listing.",
+            "The campaign launched as Sponsored Products with automatic targeting and a $30 daily budget, a month after the first product's campaign had already validated the brand's PPC structure in the AU market.",
+          ],
+          meta: [
+            { label: "Market", value: "Amazon Australia" },
+            { label: "Seller profile", value: "Second SKU" },
+            { label: "Ad plan", value: "$30/day Sponsored Products" },
+            { label: "Window", value: "Since 15 Aug 2026" },
+          ],
+          image: {
+            src: "/assets/case-studies/amazon-au-laundry-bag-launch/hero.webp",
+            alt: "Elvra 7-piece mesh laundry bag set — Amazon AU main listing still",
+            url: "amazon.com.au",
+          },
+        },
+      },
+      {
+        type: "challenge",
+        content: {
+          label: "The challenge",
+          title: "Second product, same cold-traffic problem",
+          lead: "Launching a second product under an existing brand carries a different risk than the first — infrastructure helps, but a new SKU still has to earn its own demand.",
+          paragraphs: [
+            "The brand infrastructure exists, but a new SKU still needs its own demand validation, its own keyword strategy, and its own listing built to convert cold traffic. Reusing the first product's shortcuts would have wasted the head start the brand had already earned.",
+          ],
+          bullets: [
+            "Brand history existed — the new ASIN still had no reviews or organic rank of its own.",
+            "Category demand and feature completeness had to be validated again, not assumed from the first launch.",
+            "Keyword strategy and listing copy needed laundry-care research, not reused terms from the first product.",
+            "PPC still had to prove return on a disciplined $30/day Sponsored Products ceiling.",
+          ],
+        },
+      },
+      {
+        type: "market_context",
+        content: {
+          layout: "asset-showcase",
+          label: "Listing Optimization",
+          title: "Images built to convert cold Amazon traffic",
+          subtitle:
+            "Above-the-fold proof first — then secondary frames that answer the objections Sponsored Products traffic always brings.",
+          paragraphs: [
+            "The listing was built to the same front-end and back-end optimization standards as the first product: image SOPs, keyword-driven title and bullet points, and backend search terms from category-specific keyword research rather than reused terms from the first launch.",
+          ],
+          meta: [
+            { label: "Module", value: "Main + 5 secondary" },
+            { label: "Intent", value: "Cold SP traffic" },
+            { label: "Market", value: "Amazon AU" },
+          ],
+          bullets: [
+            {
+              title: "Above fold",
+              body: "Hero still shows the full seven-piece set on white — set completeness reads instantly in the search grid.",
+            },
+            {
+              title: "Objection stack",
+              body: "Secondary frames pre-answer sizes, snag-resistant zipper covers, wash protection, and everyday capacity.",
+            },
+            {
+              title: "Category-native keywords",
+              body: "Backend search terms came from laundry-care research — not a copy-paste of the first product's index terms.",
+            },
+          ],
+          image: {
+            src: "/assets/case-studies/amazon-au-laundry-bag-launch/listing-04-secure-zip.webp",
+            alt: "Secure Zip listing module — zipper pull tucked into protective cover",
+            url: "amazon.com.au",
+          },
+          gallery: [
+            {
+              src: "/assets/case-studies/amazon-au-laundry-bag-launch/hero.webp",
+              alt: "Main listing still — 7-piece mesh laundry bag set on white",
+            },
+            {
+              src: "/assets/case-studies/amazon-au-laundry-bag-launch/listing-01-sized.webp",
+              alt: "Sized for Everything You Own — dimension callouts across three bag sizes",
+            },
+            {
+              src: "/assets/case-studies/amazon-au-laundry-bag-launch/listing-02-every-size.webp",
+              alt: "Every Size, Sorted — Large 3pc, Medium 3pc, Small 1pc",
+            },
+            {
+              src: "/assets/case-studies/amazon-au-laundry-bag-launch/listing-03-protects-wash.webp",
+              alt: "Protects Through Every Wash — cylindrical bag submerged with shoes inside",
+            },
+            {
+              src: "/assets/case-studies/amazon-au-laundry-bag-launch/listing-05-everyday.webp",
+              alt: "A Neat Fit for Everyday Clothes — mesh bag filled with folded garments",
+            },
+          ],
+        },
+      },
+      {
+        type: "solution",
+        content: {
+          label: "How Xorora solved it",
+          title: "Same disciplined process — with brand assets already earned",
+          subtitle:
+            "Product hunting and sourcing, listing optimization, then PPC — but Brand Registry, A+, and the Brand Store were already in place at the account level.",
+          paragraphs: [
+            "Xorora ran the same disciplined process as the first launch, but with brand assets already established rather than built from zero. The chosen product filled a gap in the AU laundry care category: a heavy-duty, breathable mesh laundry bag set built to protect delicates during machine washing.",
+            "That head start shortened the pre-PPC runway the first product had to build from scratch — so Sponsored Products dollars hit a page that could convert sooner.",
+          ],
+          pipeline:
+            "Launch pipeline: 01 Product hunting (opportunity score + risk factors) → 02 Listing optimization (main + secondary + category keywords) → 03 Brand assets inherited (Registry + A+ + Store) → 04 Sponsored Products ($30/day auto targeting).",
+        },
+      },
+      {
+        type: "architecture",
+        content: {
+          label: "How it was built",
+          title: "Four phases, one connected launch",
+          subtitle:
+            "Marketplace execution with a second-SKU advantage — each phase had a clear deliverable shoppers or ads could use immediately.",
+          items: [
+            {
+              title: "Product hunting",
+              icon: "sparkles",
+              body: "Validated against the same opportunity score and risk framework as the first launch. The seven-piece set stood out on completeness — three sizes, snag-resistant zipper covers, and tear-resistant stitching competitors offered only partially.",
+            },
+            {
+              title: "Listing optimization",
+              icon: "layout-dashboard",
+              body: "Image SOPs, keyword-driven title and bullets, and backend search terms built from laundry-care research — not reused from the first ASIN.",
+            },
+            {
+              title: "Brand assets",
+              icon: "shield-check",
+              body: "No new Brand Registry work — the listing inherited the existing A+ Content framework and Brand Store secured during the first launch.",
+            },
+            {
+              title: "Sponsored Products",
+              icon: "zap",
+              body: "Automatic targeting, $30 daily budget, launched a month after the first campaign had already validated the brand's PPC structure in AU.",
+            },
+          ],
+          gallery: [
+            {
+              src: "/assets/case-studies/amazon-au-laundry-bag-launch/aplus-01-size-every-wash.webp",
+              alt: "A+ desktop module — A size for every wash, lifestyle with eucalyptus and linens",
+            },
+            {
+              src: "/assets/case-studies/amazon-au-laundry-bag-launch/aplus-02-module-1.webp",
+              alt: "A+ desktop module 1 — laundry bag brand story",
+            },
+            {
+              src: "/assets/case-studies/amazon-au-laundry-bag-launch/aplus-03-module-2.webp",
+              alt: "A+ desktop module 2 — feature and lifestyle narrative",
+            },
+            {
+              src: "/assets/case-studies/amazon-au-laundry-bag-launch/aplus-04-module-3.webp",
+              alt: "A+ desktop module 3 — product proof and comparison",
+            },
+            {
+              src: "/assets/case-studies/amazon-au-laundry-bag-launch/aplus-05-module-4.webp",
+              alt: "A+ desktop module 4 — closing brand module",
+            },
+          ],
+        },
+      },
+      {
+        type: "outcomes",
+        content: {
+          label: "Measurable Outcomes",
+          title: "2.44 ROAS from a second-SKU campaign",
+          subtitle:
+            "Lifetime since campaign launch (15 Aug 2026 to present): Sponsored Products returned $2.44 for every $1 of ad spend — $271.20 attributed sales on $111.13 spend.",
+          bullets: [
+            {
+              title: "2.44 ROAS",
+              body: "Sponsored Products returned $2.44 for every $1 of ad spend since campaign launch.",
+            },
+            {
+              title: "$271.20 sales",
+              body: "Attributed revenue on 16 purchases while the new ASIN was still building early history.",
+            },
+            {
+              title: "$1.71 avg CPC",
+              body: "65 clicks at 1.12% CTR — efficiency on a hard $30/day automatic-targeting plan.",
+            },
+            {
+              title: "$111.13 spend",
+              body: "Controlled spend against the $30/day ceiling — return came from catalog readiness, not budget inflation.",
+            },
+          ],
+          video: {
+            src: "/assets/case-studies/amazon-au-laundry-bag-launch/product-15s.mp4",
+            poster:
+              "/assets/case-studies/amazon-au-laundry-bag-launch/video-poster.webp",
+            title: "Laundry bag set · 15s product film",
+          },
+        },
+      },
+      {
+        type: "results",
+        content: {
+          label: "The result",
+          title: "Infrastructure doing the work the first launch earned",
+          subtitle:
+            "The second product converted faster and cheaper than the first — at a CPC nearly 20% lower and a ROAS almost half again as strong. That's not the product being inherently easier to sell. It's Brand Registry, content, and store already doing work the first campaign had to earn from a standing start.",
+          bullets: [
+            {
+              title: "Product chosen for completeness",
+              body: "Seven-piece mesh set selected against AU laundry-care demand and feature gaps competitors left open.",
+            },
+            {
+              title: "Listing ready; brand already unlocked",
+              body: "Shopper-facing stills plus inherited A+ and Brand Store shortened the runway to PPC.",
+            },
+            {
+              title: "PPC that protected return",
+              body: "A $30/day automatic Sponsored Products plan scaled only what the new ASIN could defend.",
+            },
+          ],
+          quote: "Second SKU. Same system. 2.44 ROAS.",
+          chips:
+            "Services: Product Hunting · Listing Optimization · Product Launch · PPC",
+        },
+      },
+    ],
+  },
 ];

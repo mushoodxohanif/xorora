@@ -10,6 +10,15 @@ export const FORM_FIELDS = {
   product: ["name", "email", "company", "using"] as const,
   newsletter: ["email"] as const,
   quote: ["name", "email", "requirement"] as const,
+  amazonLead: [
+    "name",
+    "email",
+    "company",
+    "phone",
+    "amazonStore",
+    "budget",
+    "message",
+  ] as const,
 };
 
 const DEFAULT_MESSAGES: Record<string, string> = {
@@ -22,6 +31,8 @@ const DEFAULT_MESSAGES: Record<string, string> = {
   message: "Please enter a message.",
   using: "Let us know what you use today.",
   requirement: "Please describe your requirement.",
+  amazonStore: "Please enter your Amazon store URL.",
+  budget: "Please enter your monthly marketing budget.",
 };
 
 export function isValidEmail(email: string): boolean {

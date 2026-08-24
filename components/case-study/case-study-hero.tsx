@@ -46,7 +46,8 @@ function GradientTitle({ title }: { title: string }) {
 
 function heroBadge(study: CaseStudy): string {
   if (study.category === "amazon") {
-    return "Amazon AU · 2.5 ROAS";
+    const roas = study.metrics[0]?.value;
+    return roas ? `Amazon AU · ${roas} ROAS` : "Amazon AU";
   }
   if (study.slug === "unified-ai-voice-operations") {
     return "4 portals · live in production";

@@ -21,3 +21,6 @@ export const AMAZON_LISTING_OPTIMIZATION_PATH =
 
 export const AMAZON_PRODUCT_HUNTING_PATH =
   "/amazon-a-to-z/product-hunting-and-sourcing-services";
+
+export const AMAZON_PRODUCT_LAUNCH_PATH =
+  "/amazon-a-to-z/product-launch-services";
