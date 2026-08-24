@@ -5,6 +5,11 @@ import {
   NetVsJavaArticle,
 } from "@/components/blog/posts/net-vs-java-comparison";
 import {
+  TOP_3_DJANGO_META,
+  TOP_3_DJANGO_SLUG,
+  Top3DjangoArticle,
+} from "@/components/blog/posts/top-3-django-development-companies";
+import {
   TOP_5_LARAVEL_META,
   TOP_5_LARAVEL_SLUG,
   Top5LaravelArticle,
@@ -32,6 +37,10 @@ export interface BlogArticleDefinition extends BlogArticleMeta {
 }
 
 const BLOG_ARTICLES: Record<string, BlogArticleDefinition> = {
+  [TOP_3_DJANGO_SLUG]: {
+    ...TOP_3_DJANGO_META,
+    Article: Top3DjangoArticle,
+  },
   [NET_VS_JAVA_SLUG]: {
     ...NET_VS_JAVA_META,
     Article: NetVsJavaArticle,

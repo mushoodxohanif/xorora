@@ -11,6 +11,17 @@ export interface BlogSeedPost {
 
 export const BLOG_POSTS: BlogSeedPost[] = [
   {
+    slug: "top-3-django-development-companies-2026",
+    cat: "Software Development",
+    title: "Top 3 Django Development Companies",
+    excerpt:
+      "A close look at 3 Django development companies, evaluated on real technical depth, track record, and client fit, including Xorora at #1.",
+    read: "10 min",
+    date: "Aug 24, 2026",
+    img: "/assets/blog/top-3-django-development-companies-2026.png",
+    featured: true,
+  },
+  {
     slug: "net-vs-java-comparison-use-cases-pros-and-cons",
     cat: "Software Development",
     title: ".NET vs Java: Comparison, use cases, pros and cons",
@@ -19,7 +30,6 @@ export const BLOG_POSTS: BlogSeedPost[] = [
     read: "12 min",
     date: "Aug 24, 2026",
     img: "/assets/blog/net-vs-java-comparison.png",
-    featured: true,
   },
   {
     slug: "top-5-laravel-development-companies-2026",
