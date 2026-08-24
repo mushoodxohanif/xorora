@@ -22,6 +22,8 @@ export const ROUTES = {
   nodejsWebDevelopment: "/nodejs-web-development-services",
   laravelWebsiteDevelopment: "/laravel-website-development-services",
   customDotnetDevelopment: "/custom-dotnet-development",
+  /** Unlisted SEO landing — do not add to XO_NAV or FOOTER_COLUMNS */
+  djangoDevelopmentCompany: "/django-development-company",
   ai: "/ai",
   aiAgentDevelopment: "/ai/ai-agent-development",
   mlDataScience: "/ai/ml-data-science-services",

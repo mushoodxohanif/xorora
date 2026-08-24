@@ -40,6 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     entry(ROUTES.nodejsWebDevelopment, 0.8),
     entry(ROUTES.laravelWebsiteDevelopment, 0.8),
     entry(ROUTES.customDotnetDevelopment, 0.8),
+    entry(ROUTES.djangoDevelopmentCompany, 0.8),
     entry(ROUTES.consulting, 0.8),
     entry(ROUTES.discoveryWorkshop, 0.8),
     entry(ROUTES.aiConsultation, 0.8),

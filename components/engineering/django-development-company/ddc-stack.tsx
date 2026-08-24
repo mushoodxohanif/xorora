@@ -1,58 +1,64 @@
 import Image from "next/image";
-import Link from "next/link";
 import { LightSection } from "@/components/case-study/light-section";
 import { SectionHead } from "@/components/case-study/section-head";
 import { imageAltTitle } from "@/lib/image-seo";
-import { ROUTES } from "@/lib/navigation";
 
 type Logo =
   | { name: string; src: string }
   | { name: string; abbr: string; color: string };
 
-const FRAMEWORKS = [
+const DECISIONS = [
   {
-    name: "Django",
-    body: "When the system has real domain complexity. Admin, ORM, auth, and migrations arrive built in, so budget goes to your business logic instead of rebuilding scaffolding. Our default for platforms with users, roles, and workflows.",
-    depthHref: ROUTES.djangoDevelopmentCompany,
-    depthLabel: "Django development",
+    name: "DRF or Django Ninja",
+    body: "DRF when the API is large, the team is familiar with it, and you need the ecosystem of third-party packages built around it. Ninja when you want async views, Pydantic schemas, and less ceremony per endpoint. Ninja is the better new-project default for API-first systems. DRF is the safer answer for teams already fluent in it.",
   },
   {
-    name: "FastAPI",
-    body: "When the system is primarily an API, or when concurrency is the constraint. Async throughout, typed request and response models, and OpenAPI documentation generated from the code itself. Our default for services under load and for anything serving model inference.",
+    name: "HTMX or a separate frontend",
+    body: "Django templates with HTMX give you interactive interfaces without a second codebase, a second language, or a second team. This is the highest-leverage decision on most Django projects and it is usually made by default rather than deliberately. A separate React or Vue frontend when there is a mobile client too, or when the interface genuinely warrants it.",
   },
   {
-    name: "Flask",
-    body: "When the surface is small and the deployment is tight. A focused service doing one job does not need Django's footprint.",
+    name: "Celery and Postgres",
+    body: "Celery for anything outside the request. Redis as broker for most workloads, with idempotent tasks and monitoring from the first release rather than after the first silent failure. Postgres, effectively always — Django's Postgres-specific features are worth more than database portability you will never use.",
   },
 ] as const;
 
 const GROUPS: { title: string; logos: Logo[] }[] = [
   {
-    title: "Frameworks",
+    title: "Framework",
     logos: [
-      { name: "Python", src: "/assets/tech-stack/python.svg" },
-      { name: "Django", src: "/assets/tech-stack/django.svg" },
-      { name: "FastAPI", src: "/assets/tech-stack/fastapi.svg" },
-      { name: "Flask", src: "/assets/tech-stack/flask.svg" },
+      { name: "Django LTS", src: "/assets/tech-stack/django.svg" },
+      { name: "Python 3.12+", src: "/assets/tech-stack/python.svg" },
       { name: "Django REST Framework", abbr: "DR", color: "#A30000" },
+      { name: "Django Ninja", abbr: "NJ", color: "#0E7C66" },
+      { name: "Wagtail", abbr: "WG", color: "#2E1F5E" },
     ],
   },
   {
-    title: "Async & queues",
+    title: "Frontend",
+    logos: [
+      { name: "Django templates", abbr: "DT", color: "#092E20" },
+      { name: "HTMX", abbr: "HX", color: "#3D72D7" },
+      { name: "Alpine", abbr: "AL", color: "#77C1D2" },
+      { name: "React", src: "/assets/tech-stack/react.svg" },
+      { name: "Vue", src: "/assets/tech-stack/vue.svg" },
+    ],
+  },
+  {
+    title: "Async",
     logos: [
       { name: "Celery", src: "/assets/tech-stack/celery.svg" },
       { name: "Redis", src: "/assets/tech-stack/redis.svg" },
-      { name: "RabbitMQ", src: "/assets/tech-stack/rabbitmq.svg" },
-      { name: "asyncio", abbr: "as", color: "#3776AB" },
+      { name: "Django Channels", abbr: "CH", color: "#092E20" },
+      { name: "ASGI", abbr: "AS", color: "#3776AB" },
     ],
   },
   {
     title: "Data",
     logos: [
       { name: "PostgreSQL", src: "/assets/tech-stack/postgresql.svg" },
-      { name: "MongoDB", src: "/assets/tech-stack/mongodb.svg" },
+      { name: "Redis", src: "/assets/tech-stack/redis.svg" },
       { name: "Elasticsearch", src: "/assets/tech-stack/elasticsearch.svg" },
-      { name: "pandas", src: "/assets/tech-stack/pandas.svg" },
+      { name: "django-storages", abbr: "ST", color: "#092E20" },
     ],
   },
   {
@@ -68,31 +74,32 @@ const GROUPS: { title: string; logos: Logo[] }[] = [
   {
     title: "Quality",
     logos: [
-      { name: "pytest", src: "/assets/tech-stack/pytest.svg" },
-      { name: "mypy", abbr: "my", color: "#1F425F" },
+      { name: "pytest-django", src: "/assets/tech-stack/pytest.svg" },
+      { name: "factory_boy", abbr: "FB", color: "#3776AB" },
       { name: "ruff", abbr: "rf", color: "#D7FF64" },
+      { name: "mypy", abbr: "my", color: "#1F425F" },
       { name: "Sentry", src: "/assets/tech-stack/sentry.svg" },
     ],
   },
 ];
 
 const gridSeo = imageAltTitle({
-  primary: "Python web development stack",
-  secondary: "Django, FastAPI, Flask, Celery, PostgreSQL",
-  context: "Django, FastAPI, Flask, Celery, PostgreSQL",
+  primary: "Django stack",
+  secondary: "DRF, Django Ninja, Celery, HTMX, Wagtail, PostgreSQL",
+  context: "DRF, Django Ninja, Celery, HTMX, Wagtail, PostgreSQL",
 });
 
-export function PwdStack() {
+export function DdcStack() {
   return (
     <LightSection bg="var(--slate-50)">
       <SectionHead
         label="Tech & tools"
-        title="Our Python web development stack"
-        sub="We pick the framework for the constraint, not the habit. Any Python web development company can list Django and FastAPI. The useful question is when each one wins."
+        title="Our Django development stack"
+        sub="You've chosen Django, so the useful questions are the ones inside it."
         className="mb-10 max-w-[760px]"
       />
       <div className="mb-12 grid gap-4 md:grid-cols-3">
-        {FRAMEWORKS.map((item) => (
+        {DECISIONS.map((item) => (
           <div
             key={item.name}
             className="rounded-(--r-lg) border border-border bg-white p-[clamp(22px,2.4vw,28px)]"
@@ -102,28 +109,10 @@ export function PwdStack() {
             </h3>
             <p className="m-0 font-sans text-[14.5px] text-fg2 leading-relaxed">
               {item.body}
-              {"depthHref" in item && item.depthHref ? (
-                <>
-                  {" "}
-                  For specialist depth, see our{" "}
-                  <Link
-                    href={item.depthHref}
-                    className="font-semibold text-accent no-underline hover:text-tangerine-600"
-                  >
-                    {item.depthLabel}
-                  </Link>{" "}
-                  page.
-                </>
-              ) : null}
             </p>
           </div>
         ))}
       </div>
-      <p className="mb-10 max-w-[720px] font-sans text-[15.5px] text-fg2 leading-relaxed">
-        Most systems we ship run more than one. A Django core with a FastAPI
-        service handling inference or high-throughput endpoints is a common
-        shape, and a deliberate one.
-      </p>
       <div className="flex flex-col gap-8" title={gridSeo.title}>
         {GROUPS.map((group) => (
           <div key={group.title}>
@@ -133,7 +122,7 @@ export function PwdStack() {
             <ul className="m-0 grid list-none grid-cols-2 gap-3 p-0 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {group.logos.map((logo) => (
                 <li
-                  key={logo.name}
+                  key={`${group.title}-${logo.name}`}
                   className="flex items-center gap-3.5 rounded-(--r-md) border border-border bg-white px-5 py-4"
                 >
                   <span className="relative flex h-8 w-8 shrink-0 items-center justify-center">
@@ -153,7 +142,8 @@ export function PwdStack() {
                         style={{
                           background: `${logo.color}1A`,
                           borderColor: `${logo.color}40`,
-                          color: logo.color === "#D7FF64" ? "#3F4A00" : logo.color,
+                          color:
+                            logo.color === "#D7FF64" ? "#3F4A00" : logo.color,
                         }}
                         title={logo.name}
                       >
