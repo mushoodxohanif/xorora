@@ -38,6 +38,7 @@ export const HOME_SERVICE_META = {
     "Managed Services",
     "Consulting",
     "Marketing Services",
+    "Amazon A to Z Services",
   ],
   meta: {
     AI: {
@@ -59,6 +60,10 @@ export const HOME_SERVICE_META = {
     "Marketing Services": {
       shape: "comet",
       desc: "Demand and growth, measured and compounding across every channel.",
+    },
+    "Amazon A to Z Services": {
+      shape: "hex",
+      desc: "End-to-end Amazon growth — sourcing, listings, launch, PPC, DSP, and account ops under one team.",
     },
   },
 } as const;

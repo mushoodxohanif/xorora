@@ -71,6 +71,8 @@ const ICON_MAP: Record<string, LucideIcon> = {
   "check-circle": CheckCircle,
   "scan-text": ScanText,
   "shield-check": ShieldCheck,
+  handshake: Handshake,
+  "trending-up": TrendingUp,
 };
 
 export interface ServiceCardItem {

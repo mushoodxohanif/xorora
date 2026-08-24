@@ -1,3 +1,17 @@
+import {
+  AMAZON_ACCOUNT_MANAGEMENT_PATH,
+  AMAZON_A_PLUS_CONTENT_PATH,
+  AMAZON_A_TO_Z_PATH,
+  AMAZON_DSP_SERVICES_PATH,
+  AMAZON_LISTING_OPTIMIZATION_PATH,
+  AMAZON_PPC_ADVERTISING_PATH,
+  AMAZON_PRODUCT_HUNTING_PATH,
+  AMAZON_PRODUCT_LAUNCH_PATH,
+  AMAZON_SELLER_CENTRAL_PATH,
+  AMAZON_SEO_SERVICES_PATH,
+  AMAZON_VENDOR_CENTRAL_PATH,
+} from "@/lib/amazon-a-to-z";
+
 /**
  * Shared site navigation data — App Router paths (replaces window.XO_NAV).
  */
@@ -222,6 +236,41 @@ export const XO_NAV: SiteNavigation = {
         { label: "B2B Marketing", href: ROUTES.b2bMarketingServices },
       ],
     },
+    {
+      name: "Amazon A to Z Services",
+      icon: "shopping-cart",
+      href: AMAZON_A_TO_Z_PATH,
+      items: [
+        {
+          label: "Product Hunting & Sourcing",
+          href: AMAZON_PRODUCT_HUNTING_PATH,
+        },
+        {
+          label: "Listing Optimization Services",
+          href: AMAZON_LISTING_OPTIMIZATION_PATH,
+        },
+        {
+          label: "Product Launch Services",
+          href: AMAZON_PRODUCT_LAUNCH_PATH,
+        },
+        { label: "A+ Content", href: AMAZON_A_PLUS_CONTENT_PATH },
+        { label: "SEO Services", href: AMAZON_SEO_SERVICES_PATH },
+        { label: "PPC Services", href: AMAZON_PPC_ADVERTISING_PATH },
+        { label: "DSP Services", href: AMAZON_DSP_SERVICES_PATH },
+        {
+          label: "Seller Central Management",
+          href: AMAZON_SELLER_CENTRAL_PATH,
+        },
+        {
+          label: "Account Management",
+          href: AMAZON_ACCOUNT_MANAGEMENT_PATH,
+        },
+        {
+          label: "Vendor Central Services",
+          href: AMAZON_VENDOR_CENTRAL_PATH,
+        },
+      ],
+    },
   ],
   industries: [
     {
@@ -359,6 +408,37 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
       { label: "Meta Ads", href: ROUTES.metaAdsServices },
       { label: "Social Media Management", href: ROUTES.socialMediaManagement },
       { label: "B2B Marketing", href: ROUTES.b2bMarketingServices },
+    ],
+  },
+  {
+    heading: "Amazon A to Z",
+    href: AMAZON_A_TO_Z_PATH,
+    items: [
+      {
+        label: "Product Hunting & Sourcing",
+        href: AMAZON_PRODUCT_HUNTING_PATH,
+      },
+      {
+        label: "Listing Optimization",
+        href: AMAZON_LISTING_OPTIMIZATION_PATH,
+      },
+      { label: "Product Launch", href: AMAZON_PRODUCT_LAUNCH_PATH },
+      { label: "A+ Content", href: AMAZON_A_PLUS_CONTENT_PATH },
+      { label: "Amazon SEO", href: AMAZON_SEO_SERVICES_PATH },
+      { label: "Amazon PPC", href: AMAZON_PPC_ADVERTISING_PATH },
+      { label: "Amazon DSP", href: AMAZON_DSP_SERVICES_PATH },
+      {
+        label: "Seller Central Management",
+        href: AMAZON_SELLER_CENTRAL_PATH,
+      },
+      {
+        label: "Account Management",
+        href: AMAZON_ACCOUNT_MANAGEMENT_PATH,
+      },
+      {
+        label: "Vendor Central",
+        href: AMAZON_VENDOR_CENTRAL_PATH,
+      },
     ],
   },
   {

@@ -148,7 +148,7 @@ export function V2Eyebrow({
   );
 }
 
-type BlobShape = "star" | "ring" | "cluster" | "chevron" | "comet";
+type BlobShape = "star" | "ring" | "cluster" | "chevron" | "comet" | "hex";
 
 export function ServiceBlob({
   shape,
@@ -206,6 +206,12 @@ export function ServiceBlob({
       {shape === "comet" && (
         <path
           d="M54 10 C58 30 46 54 24 56 C12 57 4 49 6 37 C32 36 40 26 40 10 C40 6 50 4 54 10 Z"
+          fill={`url(#${id})`}
+        />
+      )}
+      {shape === "hex" && (
+        <path
+          d="M32 4 L56 18 L56 46 L32 60 L8 46 L8 18 Z"
           fill={`url(#${id})`}
         />
       )}

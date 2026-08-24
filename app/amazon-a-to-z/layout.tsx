@@ -2,13 +2,11 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   robots: {
-    index: false,
-    follow: false,
-    nocache: true,
+    index: true,
+    follow: true,
     googleBot: {
-      index: false,
-      follow: false,
-      noimageindex: true,
+      index: true,
+      follow: true,
     },
   },
 };

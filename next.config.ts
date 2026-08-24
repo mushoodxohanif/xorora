@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "flagcdn.com",
+      },
     ],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 2400],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -29,14 +33,6 @@ const nextConfig: NextConfig = {
         source: "/engagement-models/staff-augmentation-services",
         destination: "/consulting/staff-augmentation-services",
         permanent: true,
-      },
-    ];
-  },
-  async headers() {
-    return [
-      {
-        source: "/amazon-a-to-z/:path*",
-        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
     ];
   },

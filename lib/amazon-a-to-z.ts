@@ -1,8 +1,10 @@
 /**
- * Unlisted Amazon A to Z paths.
- * Do not add these to sitemap.ts, XO_NAV, FOOTER_COLUMNS, hub SERVICE arrays,
- * or lib/seo-keywords.ts. Reachable by direct URL only.
+ * Amazon A to Z service paths.
+ * Public / indexable: included in XO_NAV, FOOTER_COLUMNS, sitemap, and
+ * seo-keywords. See also `lib/amazon-a-to-z-seo.ts`.
  */
+export const AMAZON_A_TO_Z_PATH = "/amazon-a-to-z";
+
 export const AMAZON_VENDOR_CENTRAL_PATH =
   "/amazon-a-to-z/vendor-central-services";
 
@@ -27,3 +29,6 @@ export const AMAZON_PRODUCT_LAUNCH_PATH =
 
 export const AMAZON_A_PLUS_CONTENT_PATH =
   "/amazon-a-to-z/a-plus-content-services";
+
+export const AMAZON_PPC_ADVERTISING_PATH =
+  "/amazon-a-to-z/ppc-advertising-services";

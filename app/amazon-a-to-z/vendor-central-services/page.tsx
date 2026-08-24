@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
 import { AmazonCaseStudySection } from "@/components/amazon-a-to-z/amazon-case-study-section";
 import {
+  VC_FAQS,
   VcApproach,
   VcChallenge,
   VcCta,
@@ -13,41 +13,61 @@ import {
 } from "@/components/amazon-a-to-z/vendor-central";
 import { IndRevealObserver } from "@/components/industries/ind-reveal-observer";
 import { AMAZON_VENDOR_CENTRAL_PATH } from "@/lib/amazon-a-to-z";
+import {
+  amazonFaqJsonLd,
+  amazonPageMetadata,
+  amazonServiceBreadcrumbJsonLd,
+  amazonServiceJsonLd,
+} from "@/lib/amazon-a-to-z-seo";
 
-export const metadata: Metadata = {
-  title: "Amazon Vendor Central Services | Xorora",
-  description:
-    "Xorora manages Amazon Vendor Central end to end, protecting margins through negotiation, A+ content, advertising, and inventory strategy for first-party brands.",
-  robots: {
-    index: false,
-    follow: false,
-    nocache: true,
-    googleBot: {
-      index: false,
-      follow: false,
-      noimageindex: true,
-    },
-  },
-  alternates: { canonical: AMAZON_VENDOR_CENTRAL_PATH },
-  openGraph: {
-    title: "Amazon Vendor Central Services | Xorora",
-    description:
-      "Xorora manages Amazon Vendor Central end to end, protecting margins through negotiation, A+ content, advertising, and inventory strategy for first-party brands.",
-    url: AMAZON_VENDOR_CENTRAL_PATH,
-    siteName: "Xorora",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Amazon Vendor Central Services | Xorora",
-    description:
-      "Xorora manages Amazon Vendor Central end to end, protecting margins through negotiation, A+ content, advertising, and inventory strategy for first-party brands.",
-  },
-};
+const TITLE = "Amazon Vendor Central Services | Xorora";
+const DESCRIPTION =
+  "Xorora manages Amazon Vendor Central end to end, protecting margins through negotiation, A+ content, advertising, and inventory strategy for first-party brands.";
+const SERVICE_NAME = "Amazon Vendor Central Services";
+
+export const metadata = amazonPageMetadata({
+  title: TITLE,
+  description: DESCRIPTION,
+  path: AMAZON_VENDOR_CENTRAL_PATH,
+  keywords: [
+    "Amazon Vendor Central services",
+    "Vendor Central management",
+    "Amazon 1P vendor agency",
+    "Amazon Vendor Central advertising",
+    "Amazon chargeback management",
+    "Amazon Vendor Central negotiation",
+  ],
+});
+
+const serviceJsonLd = amazonServiceJsonLd({
+  name: SERVICE_NAME,
+  description: DESCRIPTION,
+  path: AMAZON_VENDOR_CENTRAL_PATH,
+});
+const breadcrumbJsonLd = amazonServiceBreadcrumbJsonLd(
+  SERVICE_NAME,
+  AMAZON_VENDOR_CENTRAL_PATH,
+);
+const faqJsonLd = amazonFaqJsonLd(VC_FAQS);
 
 export default function AmazonVendorCentralServicesPage() {
   return (
     <div className="vc-motion bg-surface">
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <IndRevealObserver />
       <VcHero />
       <VcChallenge />

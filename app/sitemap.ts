@@ -1,4 +1,6 @@
 import type { MetadataRoute } from "next";
+import { AMAZON_A_TO_Z_PATH } from "@/lib/amazon-a-to-z";
+import { AMAZON_INDEXED_PATHS } from "@/lib/amazon-a-to-z-seo";
 import { listPublishedBlogPosts } from "@/lib/blog";
 import { listPublishedCaseStudies } from "@/lib/case-studies";
 import { getAllIndustrySlugs } from "@/lib/industries";
@@ -60,6 +62,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     entry(ROUTES.metaAdsServices, 0.8),
     entry(ROUTES.socialMediaManagement, 0.8),
     entry(ROUTES.b2bMarketingServices, 0.8),
+    ...AMAZON_INDEXED_PATHS.map((path) =>
+      entry(path, path === AMAZON_A_TO_Z_PATH ? 0.85 : 0.8),
+    ),
     entry(ROUTES.staffAugmentation, 0.8),
     entry(ROUTES.clearbeam, 0.8),
     entry(ROUTES.leadem, 0.8),

@@ -12,7 +12,7 @@ import {
   type V2RiseProps,
 } from "./v2-shared";
 
-type BlobShape = "star" | "ring" | "cluster" | "chevron" | "comet";
+type BlobShape = "star" | "ring" | "cluster" | "chevron" | "comet" | "hex";
 
 interface ServiceItem {
   name: string;
@@ -20,6 +20,55 @@ interface ServiceItem {
   shape: BlobShape;
   desc: string;
   num: string;
+}
+
+const HOME_SERVICE_DEFAULTS: HomeServicesContent = {
+  order: [
+    "AI",
+    "Engineering",
+    "Managed Services",
+    "Consulting",
+    "Marketing Services",
+    "Amazon A to Z Services",
+  ],
+  meta: {
+    AI: {
+      shape: "star",
+      desc: "Applied ML, LLMs, RAG and agents — engineered for your domain. We turn unstructured chaos into models your business can trust.",
+    },
+    Engineering: {
+      shape: "ring",
+      desc: "Full-stack delivery — custom software and AI, engineered to ship and built to scale.",
+    },
+    "Managed Services": {
+      shape: "cluster",
+      desc: "Keep production secure, observed, and always on — DevOps, security, and infrastructure.",
+    },
+    Consulting: {
+      shape: "chevron",
+      desc: "Turn ambition into a costed, de-risked roadmap with senior engineering advice.",
+    },
+    "Marketing Services": {
+      shape: "comet",
+      desc: "Demand and growth, measured and compounding across every channel.",
+    },
+    "Amazon A to Z Services": {
+      shape: "hex",
+      desc: "End-to-end Amazon growth — sourcing, listings, launch, PPC, DSP, and account ops under one team.",
+    },
+  },
+};
+
+/** Ensure AI + Amazon tiles appear even if CMS seed is stale. */
+function resolveHomeServices(content: HomeServicesContent): HomeServicesContent {
+  const order = [...content.order];
+  for (const name of HOME_SERVICE_DEFAULTS.order) {
+    if (!order.includes(name)) order.push(name);
+  }
+  return {
+    order,
+    meta: { ...HOME_SERVICE_DEFAULTS.meta, ...content.meta },
+  };
 }
 
 function buildServices(content: HomeServicesContent): ServiceItem[] {
@@ -45,10 +94,12 @@ function buildServices(content: HomeServicesContent): ServiceItem[] {
 }
 
 export async function V2Services() {
-  const content =
-    await requireSiteContent<HomeServicesContent>("home:services");
+  const content = resolveHomeServices(
+    await requireSiteContent<HomeServicesContent>("home:services"),
+  );
   const services = buildServices(content);
   const [featured, ...rest] = services;
+  const featuredRowSpan = Math.max(2, Math.ceil(rest.length / 2));
 
   return (
     <DarkSurface bloom="82% 4%" base="#070D20">
@@ -72,7 +123,7 @@ export async function V2Services() {
         </V2Rise>
       </div>
       <div className="v2-svc-bento gridrows-[-1fr_1fr] grid grid-cols-[1.18fr_1fr_1fr] gap-[18px]">
-        <ServiceFeatured svc={featured} />
+        <ServiceFeatured svc={featured} rowSpan={featuredRowSpan} />
         {rest.map((svc, i) => (
           <ServiceTile key={svc.name} svc={svc} delay={i * 60} />
         ))}
@@ -81,7 +132,13 @@ export async function V2Services() {
   );
 }
 
-function ServiceFeatured({ svc }: { svc: ServiceItem }) {
+function ServiceFeatured({
+  svc,
+  rowSpan,
+}: {
+  svc: ServiceItem;
+  rowSpan: number;
+}) {
   return (
     <Link
       href={svc.href}
@@ -91,7 +148,7 @@ function ServiceFeatured({ svc }: { svc: ServiceItem }) {
         "shadow-[0_24px_60px_-40px_rgba(2,8,30,0.6)]",
         "hover:-translate-y-1 hover:border-[rgba(120,150,240,0.4)] hover:shadow-[0_40px_80px_-36px_rgba(2,8,30,0.8)]",
       )}
-      style={{ gridRow: "1 / span 2" }}
+      style={{ gridRow: `1 / span ${rowSpan}` }}
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_60%_at_80%_6%,rgba(70,96,200,0.4),transparent_58%)]" />
       <XWatermark
