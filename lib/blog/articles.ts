@@ -1,5 +1,10 @@
 import type { ComponentType } from "react";
 import {
+  NET_VS_JAVA_META,
+  NET_VS_JAVA_SLUG,
+  NetVsJavaArticle,
+} from "@/components/blog/posts/net-vs-java-comparison";
+import {
   TOP_5_LARAVEL_META,
   TOP_5_LARAVEL_SLUG,
   Top5LaravelArticle,
@@ -27,6 +32,10 @@ export interface BlogArticleDefinition extends BlogArticleMeta {
 }
 
 const BLOG_ARTICLES: Record<string, BlogArticleDefinition> = {
+  [NET_VS_JAVA_SLUG]: {
+    ...NET_VS_JAVA_META,
+    Article: NetVsJavaArticle,
+  },
   [TOP_5_LARAVEL_SLUG]: {
     ...TOP_5_LARAVEL_META,
     Article: Top5LaravelArticle,

@@ -11,6 +11,17 @@ export interface BlogSeedPost {
 
 export const BLOG_POSTS: BlogSeedPost[] = [
   {
+    slug: "net-vs-java-comparison-use-cases-pros-and-cons",
+    cat: "Software Development",
+    title: ".NET vs Java: Comparison, use cases, pros and cons",
+    excerpt:
+      ".NET vs Java compared on performance, cost, use cases, and AI integration. A practical, no-hype guide to help you pick the right stack for your next project.",
+    read: "12 min",
+    date: "Aug 24, 2026",
+    img: "/assets/blog/net-vs-java-comparison.png",
+    featured: true,
+  },
+  {
     slug: "top-5-laravel-development-companies-2026",
     cat: "Software Development",
     title: "Top 5 Laravel Development Companies for 2026",
@@ -19,7 +30,6 @@ export const BLOG_POSTS: BlogSeedPost[] = [
     read: "11 min",
     date: "Aug 20, 2026",
     img: "/assets/blog/top-5-laravel-development-companies-2026.png",
-    featured: true,
   },
   {
     slug: "top-nodejs-development-companies-2026",
