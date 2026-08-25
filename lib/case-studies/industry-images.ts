@@ -33,8 +33,8 @@ export const INDUSTRY_CASE_IMAGES: Record<string, CaseStudyImageSet> = {
       alt: "Cargo ship and port freight operations",
     },
     overview: {
-      src: q("photo-1566576912321-d58ddd7a6088"),
-      alt: "Shipping packages staged for carrier rate comparison",
+      src: q("photo-1578575437130-527eed3abbec"),
+      alt: "Freight carrier truck ready for rate comparison and dispatch",
     },
     why: {
       src: q("photo-1494412685616-a5d310fbb07d", 1200),
