@@ -16,14 +16,32 @@ import {
   Workflow,
   Zap,
 } from "lucide-react";
-import { BrowserFrame } from "@/components/case-study/browser-frame";
+import Image from "next/image";
+import Link from "next/link";
 import { AmazonAssetShowcase } from "@/components/case-study/amazon-asset-showcase";
 import { AmazonListingFrame } from "@/components/case-study/amazon-listing-frame";
+import { BrowserFrame } from "@/components/case-study/browser-frame";
 import { CaseStudyGallery } from "@/components/case-study/case-study-gallery";
 import { CaseStudyVideo } from "@/components/case-study/case-study-video";
 import { ErdDiagram } from "@/components/case-study/erd-diagram";
 import { XWatermark } from "@/components/geometry/x-watermark";
+import {
+  industryHref,
+  serviceHref,
+  splitServiceNames,
+} from "@/lib/case-studies/meta-links";
 import { techIconUrl } from "@/lib/case-studies/tech-icons";
+import type {
+  BulletItem,
+  CaseStudySection,
+  CaseStudySectionContent,
+} from "@/lib/case-studies/types";
+import { whyMattersImage } from "@/lib/case-studies/why-images";
+import { caseStudySectionTitle } from "@/lib/image-seo";
+import { cn } from "@/lib/utils";
+import { DarkSection } from "./dark-section";
+import { LightSection } from "./light-section";
+import { SectionHead } from "./section-head";
 
 const ARCH_ICONS: Record<string, LucideIcon> = {
   "layout-dashboard": LayoutDashboard,
@@ -38,17 +56,6 @@ const ARCH_ICONS: Record<string, LucideIcon> = {
   zap: Zap,
   cloud: Cloud,
 };
-
-import type {
-  BulletItem,
-  CaseStudySection,
-  CaseStudySectionContent,
-} from "@/lib/case-studies/types";
-import { caseStudySectionTitle } from "@/lib/image-seo";
-import { cn } from "@/lib/utils";
-import { DarkSection } from "./dark-section";
-import { LightSection } from "./light-section";
-import { SectionHead } from "./section-head";
 
 function parseChips(chips?: string): string[] {
   if (!chips) return [];
@@ -70,6 +77,58 @@ function normalizeBullet(bullet: BulletItem | string): {
   return bullet;
 }
 
+function MetaGridValue({ label, value }: { label: string; value: string }) {
+  if (label === "Industry") {
+    const href = industryHref(value);
+    if (href) {
+      return (
+        <Link
+          href={href}
+          className="mt-1 inline-block font-sans font-semibold text-[15px] text-fg1 underline decoration-border-strong underline-offset-4 transition-colors hover:text-xo-indigo hover:decoration-xo-indigo"
+        >
+          {value}
+        </Link>
+      );
+    }
+  }
+
+  if (label === "Services") {
+    const names = splitServiceNames(value);
+    return (
+      <div className="mt-1 flex flex-wrap items-center gap-x-1.5 gap-y-1 font-sans font-semibold text-[15px] text-fg1">
+        {names.map((name, index) => {
+          const href = serviceHref(name);
+          return (
+            <span key={name} className="inline-flex items-center gap-1.5">
+              {href ? (
+                <Link
+                  href={href}
+                  className="underline decoration-border-strong underline-offset-4 transition-colors hover:text-xo-indigo hover:decoration-xo-indigo"
+                >
+                  {name}
+                </Link>
+              ) : (
+                <span>{name}</span>
+              )}
+              {index < names.length - 1 && (
+                <span className="text-fg3" aria-hidden>
+                  ·
+                </span>
+              )}
+            </span>
+          );
+        })}
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-1 font-sans font-semibold text-[15px] text-fg1">
+      {value}
+    </div>
+  );
+}
+
 function MetaGrid({
   meta,
 }: {
@@ -85,9 +144,7 @@ function MetaGrid({
           <div className="font-mono text-[10.5px] text-fg3 uppercase tracking-[0.12em]">
             {item.label}
           </div>
-          <div className="mt-1 font-sans font-semibold text-[15px] text-fg1">
-            {item.value}
-          </div>
+          <MetaGridValue label={item.label} value={item.value} />
         </div>
       ))}
     </div>
@@ -182,9 +239,7 @@ function OverviewSection({
             <MetaGrid meta={content.meta} />
           </div>
         )}
-        {media && (
-          <div className="mt-[clamp(40px,5vw,64px)]">{media}</div>
-        )}
+        {media && <div className="mt-[clamp(40px,5vw,64px)]">{media}</div>}
       </LightSection>
     );
   }
@@ -267,7 +322,7 @@ function ChallengePairsSection({
         label={content.label}
         title={content.title ?? "Where it broke, and how we fixed it"}
         sub={content.subtitle}
-        className="mb-14"
+        className="mb-8"
       />
       <div className="flex flex-col gap-[22px]">
         {content.pairs?.map((pair, index) => (
@@ -465,7 +520,7 @@ function SolutionSection({
         title={content.title ?? "How Xorora solved it"}
         sub={content.subtitle ?? content.paragraphs?.[0]}
         onDark
-        className="mb-11"
+        className="mb-8"
       />
       {content.gallery && content.gallery.length > 0 ? (
         <div className="cs-overview-grid mb-[clamp(44px,5vw,64px)] grid grid-cols-2 items-center gap-[clamp(28px,4vw,52px)]">
@@ -570,23 +625,28 @@ function ArchitectureSection({
   const isErd = content.layout === "erd" && content.erd;
 
   return (
-    <DarkSection bloom="50% 12%" id="architecture">
+    <DarkSection
+      bloom="50% 12%"
+      id="architecture"
+      pad="clamp(40px,5vw,64px) 32px"
+    >
       <SectionHead
         label={content.label}
         title={content.title ?? (isErd ? "Core data model" : "Architecture")}
         sub={content.subtitle}
         onDark
         align={amazon ? "center" : "left"}
-        className="mb-14"
+        className="mb-7"
       />
       <div
         className={cn(
-          "relative overflow-hidden rounded-[var(--r-xl)] border border-white/10 bg-[rgba(3,9,24,.5)] p-[clamp(24px,3.5vw,48px)]",
+          "relative overflow-hidden rounded-[var(--r-xl)] border border-white/10 bg-[rgba(3,9,24,.5)]",
+          isErd ? "p-[clamp(16px,2vw,28px)]" : "p-[clamp(20px,3vw,36px)]",
           amazon && !isErd && "mx-auto max-w-[820px]",
         )}
       >
         <XWatermark
-          size={420}
+          size={isErd ? 280 : 420}
           color="rgba(120,150,240,0.05)"
           className="right-[-120px] bottom-[-160px]"
         />
@@ -635,7 +695,7 @@ function ArchitectureSection({
         </div>
       </div>
       {content.gallery && content.gallery.length > 0 && (
-        <div className="mt-[clamp(48px,6vw,80px)]">
+        <div className="mt-[clamp(32px,4vw,56px)]">
           <CaseStudyGallery
             images={content.gallery}
             onDark
@@ -646,7 +706,7 @@ function ArchitectureSection({
         </div>
       )}
       {content.video && (
-        <div className="mt-[clamp(36px,4vw,56px)]">
+        <div className="mt-[clamp(28px,3.5vw,48px)]">
           <CaseStudyVideo
             src={content.video.src}
             poster={content.video.poster}
@@ -667,7 +727,7 @@ function ServicesSection({ content }: { content: CaseStudySectionContent }) {
         label={content.label}
         title={content.title ?? "Xorora services utilized"}
         titleSize="clamp(28px,3.6vw,44px)"
-        className="mb-11"
+        className="mb-8"
       />
       <div className="grid gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
         {content.services?.map((service) => (
@@ -695,8 +755,8 @@ function TechSection({ content }: { content: CaseStudySectionContent }) {
     parseChips(content.chips).map((body) => ({ body }));
 
   return (
-    <section className="overflow-hidden border-border border-t bg-slate-50 py-[clamp(72px,9vw,118px)]">
-      <div className="mx-auto mb-12 max-w-[1180px] px-8">
+    <section className="overflow-hidden border-border border-t bg-slate-50 py-[clamp(48px,6vw,80px)]">
+      <div className="mx-auto mb-8 max-w-[1180px] px-8">
         <SectionHead
           label={content.label ?? "Engineering"}
           title={content.title ?? "The technology stack"}
@@ -758,12 +818,12 @@ function OutcomesSection({
       <div
         className={cn(
           "cs-outcomes-grid grid items-center gap-[clamp(36px,5vw,72px)]",
-          amazon
-            ? "grid-cols-1"
-            : "grid-cols-[0.92fr_1.08fr]",
+          amazon ? "grid-cols-1" : "grid-cols-[0.92fr_1.08fr]",
         )}
       >
-        <div className={amazon ? "mx-auto max-w-[720px] text-center" : undefined}>
+        <div
+          className={amazon ? "mx-auto max-w-[720px] text-center" : undefined}
+        >
           <SectionHead
             label={content.label}
             title={content.title ?? "Measurable outcomes"}
@@ -784,7 +844,9 @@ function OutcomesSection({
         <div
           className={cn(
             "cs-outcome-cards grid gap-3.5",
-            amazon ? "mx-auto max-w-[900px] grid-cols-2 sm:grid-cols-4" : "grid-cols-2",
+            amazon
+              ? "mx-auto max-w-[900px] grid-cols-2 sm:grid-cols-4"
+              : "grid-cols-2",
           )}
         >
           {bullets.map((item, index) => {
@@ -813,11 +875,7 @@ function OutcomesSection({
       {hasMedia && (
         <div className="mt-[clamp(48px,6vw,80px)] flex flex-col gap-10">
           {content.gallery && content.gallery.length > 0 && (
-            <CaseStudyGallery
-              images={content.gallery}
-              onDark
-              amazon={amazon}
-            />
+            <CaseStudyGallery images={content.gallery} onDark amazon={amazon} />
           )}
           {content.video && (
             <CaseStudyVideo
@@ -864,78 +922,151 @@ function QuoteBanner({ quote }: { quote: string }) {
 function ResultsSection({
   content,
   amazon,
+  slug,
 }: {
   content: CaseStudySectionContent;
   amazon?: boolean;
+  slug?: string;
 }) {
   const bullets = content.bullets?.map(normalizeBullet) ?? [];
   const paragraphs = content.paragraphs ?? [];
+  const stockImage = slug ? whyMattersImage(slug) : null;
+  const isWhyMatters =
+    Boolean(stockImage) &&
+    paragraphs.length > 0 &&
+    bullets.length === 0 &&
+    !content.gallery?.length &&
+    !content.video;
 
   return (
     <LightSection>
-      <div className="cs-results-head mb-12 grid grid-cols-2 items-end gap-[clamp(24px,4vw,56px)]">
-        <SectionHead
-          label={content.label}
-          title={content.title ?? "Results obtained"}
-        />
-        {content.subtitle && (
-          <p className="m-0 font-sans text-[17px] text-fg2 leading-[1.6]">
-            {content.subtitle}
-          </p>
-        )}
-      </div>
-      {paragraphs.length > 0 && (
-        <div className="mb-9 max-w-[820px] space-y-5">
-          {paragraphs.map((paragraph) => (
-            <p
-              key={paragraph.slice(0, 40)}
-              className="m-0 font-sans text-[16.5px] text-fg2 leading-[1.7]"
-            >
-              {paragraph}
-            </p>
-          ))}
-        </div>
-      )}
-      {bullets.length > 0 && (
-        <div className="mb-9 grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-5">
-          {bullets.map((item) => (
-            <div
-              key={item.title ?? item.body.slice(0, 40)}
-              className="rounded-[var(--r-lg)] border border-border bg-slate-50 p-[clamp(26px,3vw,34px)]"
-            >
-              <span className="mb-[22px] flex h-[46px] w-[46px] items-center justify-center rounded-full bg-indigo-50 text-xo-indigo">
-                <Check className="h-6 w-6" aria-hidden />
-              </span>
-              {item.title && (
-                <h3 className="m-0 mb-3 font-sans font-semibold text-[19px] text-fg1 leading-[1.25]">
-                  {item.title}
-                </h3>
-              )}
-              <p className="m-0 font-sans text-[15px] text-fg2 leading-[1.6]">
-                {item.body}
+      {isWhyMatters && stockImage ? (
+        <div className="cs-overview-grid grid grid-cols-2 items-center gap-[clamp(28px,4vw,56px)]">
+          <div>
+            <SectionHead
+              label={content.label}
+              title={content.title ?? "Results obtained"}
+              className="mb-6"
+            />
+            {content.subtitle && (
+              <p className="mb-5 font-sans text-[17px] text-fg2 leading-[1.6]">
+                {content.subtitle}
               </p>
+            )}
+            <div className="space-y-5">
+              {paragraphs.map((paragraph) => (
+                <p
+                  key={paragraph.slice(0, 40)}
+                  className="m-0 font-sans text-[16.5px] text-fg2 leading-[1.7]"
+                >
+                  {paragraph}
+                </p>
+              ))}
             </div>
-          ))}
+            {content.quote && (
+              <div className="mt-8">
+                <QuoteBanner quote={content.quote} />
+              </div>
+            )}
+            <ChipPills chips={content.chips} />
+          </div>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[var(--r-xl)] border border-border shadow-sm">
+            <Image
+              src={stockImage.src}
+              alt={stockImage.alt}
+              fill
+              sizes="(max-width: 900px) 100vw, 520px"
+              className="object-cover"
+            />
+          </div>
         </div>
+      ) : (
+        <>
+          <div className="cs-results-head mb-8 grid grid-cols-2 items-end gap-[clamp(24px,4vw,56px)]">
+            <SectionHead
+              label={content.label}
+              title={content.title ?? "Results obtained"}
+            />
+            {content.subtitle && (
+              <p className="m-0 font-sans text-[17px] text-fg2 leading-[1.6]">
+                {content.subtitle}
+              </p>
+            )}
+          </div>
+          {paragraphs.length > 0 && (
+            <div
+              className={cn(
+                "mb-8 space-y-5",
+                stockImage
+                  ? "cs-overview-grid grid grid-cols-2 items-start gap-[clamp(24px,4vw,48px)]"
+                  : "max-w-[820px]",
+              )}
+            >
+              <div className="space-y-5">
+                {paragraphs.map((paragraph) => (
+                  <p
+                    key={paragraph.slice(0, 40)}
+                    className="m-0 font-sans text-[16.5px] text-fg2 leading-[1.7]"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+              {stockImage && (
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[var(--r-xl)] border border-border shadow-sm">
+                  <Image
+                    src={stockImage.src}
+                    alt={stockImage.alt}
+                    fill
+                    sizes="(max-width: 900px) 100vw, 520px"
+                    className="object-cover"
+                  />
+                </div>
+              )}
+            </div>
+          )}
+          {bullets.length > 0 && (
+            <div className="mb-8 grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-5">
+              {bullets.map((item) => (
+                <div
+                  key={item.title ?? item.body.slice(0, 40)}
+                  className="rounded-[var(--r-lg)] border border-border bg-slate-50 p-[clamp(26px,3vw,34px)]"
+                >
+                  <span className="mb-[22px] flex h-[46px] w-[46px] items-center justify-center rounded-full bg-indigo-50 text-xo-indigo">
+                    <Check className="h-6 w-6" aria-hidden />
+                  </span>
+                  {item.title && (
+                    <h3 className="m-0 mb-3 font-sans font-semibold text-[19px] text-fg1 leading-[1.25]">
+                      {item.title}
+                    </h3>
+                  )}
+                  <p className="m-0 font-sans text-[15px] text-fg2 leading-[1.6]">
+                    {item.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+          {content.gallery && content.gallery.length > 0 && (
+            <div className="mb-8">
+              <CaseStudyGallery images={content.gallery} amazon={amazon} />
+            </div>
+          )}
+          {content.video && (
+            <div className="mb-8">
+              <CaseStudyVideo
+                src={content.video.src}
+                poster={content.video.poster}
+                title={content.video.title}
+                onDark={false}
+                amazon={amazon}
+              />
+            </div>
+          )}
+          {content.quote && <QuoteBanner quote={content.quote} />}
+          <ChipPills chips={content.chips} />
+        </>
       )}
-      {content.gallery && content.gallery.length > 0 && (
-        <div className="mb-9">
-          <CaseStudyGallery images={content.gallery} amazon={amazon} />
-        </div>
-      )}
-      {content.video && (
-        <div className="mb-9">
-          <CaseStudyVideo
-            src={content.video.src}
-            poster={content.video.poster}
-            title={content.video.title}
-            onDark={false}
-            amazon={amazon}
-          />
-        </div>
-      )}
-      {content.quote && <QuoteBanner quote={content.quote} />}
-      <ChipPills chips={content.chips} />
     </LightSection>
   );
 }
@@ -944,10 +1075,12 @@ function CaseStudySectionBlock({
   section,
   primaryTag,
   amazon,
+  slug,
 }: {
   section: CaseStudySection;
   primaryTag: string;
   amazon?: boolean;
+  slug?: string;
 }) {
   const { type, content } = section;
 
@@ -984,7 +1117,7 @@ function CaseStudySectionBlock({
     case "outcomes":
       return <OutcomesSection content={content} amazon={amazon} />;
     case "results":
-      return <ResultsSection content={content} amazon={amazon} />;
+      return <ResultsSection content={content} amazon={amazon} slug={slug} />;
     default:
       return null;
   }
@@ -994,10 +1127,12 @@ export function CaseStudySections({
   sections,
   primaryTag = "case study",
   amazon = false,
+  slug,
 }: {
   sections: CaseStudySection[];
   primaryTag?: string;
   amazon?: boolean;
+  slug?: string;
 }) {
   return (
     <>
@@ -1007,6 +1142,7 @@ export function CaseStudySections({
           section={section}
           primaryTag={primaryTag}
           amazon={amazon}
+          slug={slug}
         />
       ))}
     </>

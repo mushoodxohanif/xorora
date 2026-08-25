@@ -16,7 +16,7 @@ export function LightSection({
   return (
     <section
       id={id}
-      className={cn("px-8 py-[clamp(72px,9vw,118px)]", className)}
+      className={cn("px-8 py-[clamp(48px,6vw,80px)]", className)}
       style={{ background: bg }}
     >
       <div className="mx-auto max-w-[1180px]">{children}</div>

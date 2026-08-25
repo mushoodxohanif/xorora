@@ -18,6 +18,7 @@ export function CaseStudyLayout({ study }: CaseStudyLayoutProps) {
         sections={study.sections}
         primaryTag={study.tags[0] ?? "case study"}
         amazon={study.category === "amazon"}
+        slug={study.slug}
       />
       <CaseStudyBandCta />
       <CaseStudyFinalCta />

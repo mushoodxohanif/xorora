@@ -87,7 +87,7 @@ export function ErdDiagram({
                   >
                     <span
                       className={cn(
-                        "mt-0.5 shrink-0 font-sans text-[9px] font-bold uppercase tracking-[0.08em]",
+                        "mt-0.5 shrink-0 font-bold font-sans text-[9px] uppercase tracking-[0.08em]",
                         pk
                           ? onDark
                             ? "text-tangerine-300"
@@ -115,7 +115,7 @@ export function ErdDiagram({
       {relationships && relationships.length > 0 && (
         <div
           className={cn(
-            "mt-6 rounded-[var(--r-lg)] border p-5",
+            "mt-4 rounded-[var(--r-lg)] border p-4",
             onDark
               ? "border-white/10 bg-white/[0.03]"
               : "border-border bg-slate-50",

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="Mirth Connect">
+  <rect width="24" height="24" rx="4" fill="#1B6CA8"/>
+  <path fill="#fff" d="M5 12a7 7 0 0 1 7-7v2.2a4.8 4.8 0 1 0 4.8 4.8H19A7 7 0 0 1 5 12z"/>
+  <circle cx="16.2" cy="7.8" r="2.1" fill="#7EC8F2"/>
+  <path fill="#fff" d="M8.2 11.2h2.4v6.3H8.2zm3.4 2.1h2.4v4.2h-2.4zm3.4-3.5h2.4v7.7h-2.4z"/>
+</svg>

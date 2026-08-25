@@ -1,104 +1,124 @@
 /**
- * Maps display tech names to Simple Icons slugs (cdn.simpleicons.org).
- * Fallback: generic "code" glyph via Lucide in the UI.
+ * Maps display tech names → icon URLs.
+ * Prefer local assets under /assets/tech-stack and /assets/ml-platforms;
+ * fall back to custom SVGs, then Simple Icons CDN.
  */
 
-const TECH_ICON_SLUGS: Record<string, string> = {
-  "node.js": "nodedotjs",
-  nodejs: "nodedotjs",
-  node: "nodedotjs",
-  postgresql: "postgresql",
-  postgres: "postgresql",
-  python: "python",
-  django: "django",
-  flask: "flask",
-  fastapi: "fastapi",
-  aws: "amazonaws",
-  "amazon web services": "amazonaws",
-  docker: "docker",
-  "github actions": "githubactions",
-  github: "github",
-  react: "react",
-  "next.js": "nextdotjs",
-  nextjs: "nextdotjs",
-  typescript: "typescript",
-  javascript: "javascript",
-  redis: "redis",
-  kafka: "apachekafka",
-  "apache kafka": "apachekafka",
-  elasticsearch: "elasticsearch",
-  graphql: "graphql",
-  rest: "fastapi",
-  "rest api": "fastapi",
-  terraform: "terraform",
-  kubernetes: "kubernetes",
-  azure: "microsoftazure",
-  gcp: "googlecloud",
-  "google cloud": "googlecloud",
-  openai: "openai",
-  langchain: "langchain",
-  pytorch: "pytorch",
-  tensorflow: "tensorflow",
-  scikit: "scikitlearn",
-  "scikit-learn": "scikitlearn",
-  pandas: "pandas",
-  spark: "apachespark",
-  "apache spark": "apachespark",
-  mongodb: "mongodb",
-  mysql: "mysql",
-  prisma: "prisma",
-  drizzle: "drizzle",
-  vercel: "vercel",
-  stripe: "stripe",
-  firebase: "firebase",
-  supabase: "supabase",
-  tailwind: "tailwindcss",
-  "tailwind css": "tailwindcss",
-  vue: "vuedotjs",
-  "vue.js": "vuedotjs",
-  angular: "angular",
-  ".net": "dotnet",
-  "asp.net": "dotnet",
-  csharp: "csharp",
-  "c#": "csharp",
-  java: "openjdk",
-  spring: "spring",
-  "spring boot": "springboot",
-  fhir: "hl7fhir",
-  hl7: "hl7fhir",
-  celery: "celery",
-  rabbitmq: "rabbitmq",
-  nginx: "nginx",
-  linux: "linux",
-  go: "go",
-  golang: "go",
-  rust: "rust",
-  svelte: "svelte",
-  shopify: "shopify",
-  snowflake: "snowflake",
-  databricks: "databricks",
-  huggingface: "huggingface",
-  "hugging face": "huggingface",
-  pinecone: "pinecone",
-  weaviate: "weaviate",
-  "ci/cd": "githubactions",
-  edi: "apachekafka",
+const TECH_LOCAL: Record<string, string> = {
+  "node.js": "/assets/tech-stack/nodejs.svg",
+  nodejs: "/assets/tech-stack/nodejs.svg",
+  node: "/assets/tech-stack/nodejs.svg",
+  postgresql: "/assets/tech-stack/postgresql.svg",
+  postgres: "/assets/tech-stack/postgresql.svg",
+  python: "/assets/tech-stack/python.svg",
+  django: "/assets/tech-stack/django.svg",
+  flask: "/assets/tech-stack/flask.svg",
+  fastapi: "/assets/tech-stack/fastapi.svg",
+  aws: "/assets/tech-stack/aws.svg",
+  "amazon web services": "/assets/tech-stack/aws.svg",
+  docker: "/assets/tech-stack/docker.svg",
+  "github actions": "/assets/tech-stack/githubactions.svg",
+  github: "/assets/tech-stack/githubactions.svg",
+  react: "/assets/tech-stack/react.svg",
+  "next.js": "/assets/tech-stack/nextjs.svg",
+  nextjs: "/assets/tech-stack/nextjs.svg",
+  typescript: "/assets/tech-stack/javascript.svg",
+  javascript: "/assets/tech-stack/javascript.svg",
+  redis: "/assets/tech-stack/redis.svg",
+  elasticsearch: "/assets/tech-stack/elasticsearch.svg",
+  graphql: "/assets/tech-stack/graphql.svg",
+  azure: "/assets/tech-stack/azure.svg",
+  gcp: "/assets/tech-stack/google-cloud.svg",
+  "google cloud": "/assets/tech-stack/google-cloud.svg",
+  openai: "/assets/tech-stack/openai.svg",
+  pytorch: "/assets/tech-stack/pytorch.svg",
+  tensorflow: "/assets/tech-stack/tensorflow.svg",
+  pandas: "/assets/tech-stack/pandas.svg",
+  mongodb: "/assets/tech-stack/mongodb.svg",
+  mysql: "/assets/tech-stack/sql.svg",
+  sql: "/assets/tech-stack/sql.svg",
+  shopify: "/assets/tech-stack/shopify.svg",
+  celery: "/assets/tech-stack/celery.svg",
+  rabbitmq: "/assets/tech-stack/rabbitmq.svg",
+  go: "/assets/tech-stack/go.svg",
+  golang: "/assets/tech-stack/go.svg",
+  java: "/assets/tech-stack/java.svg",
+  spring: "/assets/tech-stack/spring.svg",
+  ".net": "/assets/tech-stack/dotnet.svg",
+  "asp.net": "/assets/tech-stack/dotnet.svg",
+  csharp: "/assets/tech-stack/csharp.svg",
+  "c#": "/assets/tech-stack/csharp.svg",
+  vue: "/assets/tech-stack/vue.svg",
+  "vue.js": "/assets/tech-stack/vue.svg",
+  angular: "/assets/tech-stack/angular.svg",
+  kubernetes: "/assets/ml-platforms/kubernetes.svg",
+  "scikit-learn": "/assets/ml-platforms/scikit-learn.svg",
+  scikit: "/assets/ml-platforms/scikit-learn.svg",
+  spark: "/assets/ml-platforms/apache-spark.svg",
+  "apache spark": "/assets/ml-platforms/apache-spark.svg",
+  snowflake: "/assets/ml-platforms/snowflake.svg",
+  databricks: "/assets/ml-platforms/databricks.svg",
+  huggingface: "/assets/ml-platforms/huggingface.svg",
+  "hugging face": "/assets/ml-platforms/huggingface.svg",
+  xgboost: "/assets/ml-platforms/xgboost.png",
+  fhir: "/assets/tech/fhir.svg",
+  "fhir r4": "/assets/tech/fhir.svg",
+  hl7: "/assets/tech/fhir.svg",
+  "mirth connect": "/assets/tech/mirth.svg",
+  shap: "/assets/tech/shap.svg",
+  kafka: "/assets/tech/kafka.svg",
+  "apache kafka": "/assets/tech/kafka.svg",
+  segment: "/assets/tech/segment.svg",
+  vercel: "/assets/tech/vercel.svg",
+  stripe: "/assets/tech/stripe.svg",
 };
 
-export function techIconSlug(name: string): string | null {
-  const key = name.trim().toLowerCase();
-  if (TECH_ICON_SLUGS[key]) return TECH_ICON_SLUGS[key];
+/** Simple Icons CDN fallbacks for anything without a local file. */
+const TECH_CDN_SLUGS: Record<string, string> = {
+  prisma: "prisma",
+  drizzle: "drizzle",
+  supabase: "supabase",
+  firebase: "firebase",
+  langchain: "langchain",
+  pinecone: "pinecone",
+  weaviate: "weaviate",
+  terraform: "terraform",
+  nginx: "nginx",
+  linux: "linux",
+  rust: "rust",
+  svelte: "svelte",
+  tailwind: "tailwindcss",
+  "tailwind css": "tailwindcss",
+};
 
-  // Match when tech name is a prefix of a longer bullet ("Python (Django)")
-  for (const [alias, slug] of Object.entries(TECH_ICON_SLUGS)) {
-    if (key.startsWith(alias) || key.includes(` ${alias}`) || key.includes(`(${alias}`)) {
-      return slug;
+function resolveLocal(key: string): string | null {
+  if (TECH_LOCAL[key]) return TECH_LOCAL[key];
+  for (const [alias, path] of Object.entries(TECH_LOCAL)) {
+    if (
+      key === alias ||
+      key.startsWith(`${alias} `) ||
+      key.includes(`(${alias}`)
+    ) {
+      return path;
     }
   }
   return null;
 }
 
+export function techIconSlug(name: string): string | null {
+  const key = name.trim().toLowerCase();
+  if (TECH_CDN_SLUGS[key]) return TECH_CDN_SLUGS[key];
+  for (const [alias, slug] of Object.entries(TECH_CDN_SLUGS)) {
+    if (key.startsWith(alias) || key.includes(alias)) return slug;
+  }
+  return null;
+}
+
 export function techIconUrl(name: string): string | null {
+  const key = name.trim().toLowerCase();
+  const local = resolveLocal(key);
+  if (local) return local;
+
   const slug = techIconSlug(name);
   if (!slug) return null;
   return `https://cdn.simpleicons.org/${slug}`;

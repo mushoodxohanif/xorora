@@ -12,7 +12,7 @@ export function DarkSection({
   children,
   bloom = "70% 0%",
   id,
-  pad = "clamp(72px,9vw,118px) 32px",
+  pad = "clamp(48px,6vw,80px) 32px",
   className,
 }: DarkSectionProps) {
   return (
