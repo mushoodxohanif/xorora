@@ -1,12 +1,12 @@
 import {
   MappedCaseStudyCarousel,
-  toMappedSlides,
 } from "@/components/case-study/mapped-case-study-carousel";
 import {
   INDUSTRY_CASE_STUDIES,
   SERVICE_CASE_STUDIES,
 } from "@/lib/case-studies/page-placements";
 import { listPublishedCaseStudiesBySlugs } from "@/lib/case-studies/queries";
+import { toMappedSlides } from "@/lib/case-studies/to-mapped-slides";
 
 interface RelatedCaseStudiesProps {
   industrySlug?: string;
