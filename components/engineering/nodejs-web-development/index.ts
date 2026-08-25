@@ -8,7 +8,6 @@ export { NODEJS_WEB_FAQS, NwdFaq } from "./nwd-faq";
 export { NwdHero } from "./nwd-hero";
 export { NwdIndustries } from "./nwd-industries";
 export { NwdMidCta } from "./nwd-mid-cta";
-export { NwdPortfolio } from "./nwd-portfolio";
 export { NwdProcess } from "./nwd-process";
 export { NwdProof } from "./nwd-proof";
 export { NwdStack } from "./nwd-stack";

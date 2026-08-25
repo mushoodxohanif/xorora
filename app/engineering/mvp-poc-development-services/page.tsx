@@ -11,6 +11,7 @@ import {
   MvpScenarios,
   MvpWhy,
 } from "@/components/engineering/mvp-poc-development";
+import { RelatedCaseStudies } from "@/components/case-study/related-case-studies";
 import { SITE_URL } from "@/lib/site-url";
 
 const META_DESCRIPTION =
@@ -118,6 +119,11 @@ export default function MvpPocDevelopmentServicesPage() {
       <MvpWhy />
       <MvpProcess />
       <MvpPrinciples />
+      <RelatedCaseStudies
+        servicePath="/engineering/mvp-poc-development-services"
+        title="MVP & POC case studies"
+        sub="Ideas validated fast and taken toward production — one study at a time."
+      />
       <MvpFaq />
       <MvpContact />
     </div>

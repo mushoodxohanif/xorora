@@ -11,6 +11,7 @@ import {
   AcProcess,
   AcWhy,
 } from "@/components/consulting/ai-consultation";
+import { RelatedCaseStudies } from "@/components/case-study/related-case-studies";
 import { SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = {
@@ -119,6 +120,11 @@ export default function AiConsultationServicesPage() {
       <AcIndustries />
       <AcWhy />
       <AcDifference />
+      <RelatedCaseStudies
+        servicePath="/consulting/ai-consultation-services"
+        title="AI consultation case studies"
+        sub="Strategy-to-delivery AI engagements — one study at a time."
+      />
       <AcFaq />
       <AcContact />
     </div>

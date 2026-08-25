@@ -8,7 +8,6 @@ export { DdcFaq, DJANGO_DEV_FAQS } from "./ddc-faq";
 export { DdcHero } from "./ddc-hero";
 export { DdcIndustries } from "./ddc-industries";
 export { DdcMidCta } from "./ddc-mid-cta";
-export { DdcPortfolio } from "./ddc-portfolio";
 export { DdcProcess } from "./ddc-process";
 export { DdcProof } from "./ddc-proof";
 export { DdcStack } from "./ddc-stack";

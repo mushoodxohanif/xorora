@@ -21,7 +21,9 @@ import { AmazonAssetShowcase } from "@/components/case-study/amazon-asset-showca
 import { AmazonListingFrame } from "@/components/case-study/amazon-listing-frame";
 import { CaseStudyGallery } from "@/components/case-study/case-study-gallery";
 import { CaseStudyVideo } from "@/components/case-study/case-study-video";
+import { ErdDiagram } from "@/components/case-study/erd-diagram";
 import { XWatermark } from "@/components/geometry/x-watermark";
+import { techIconUrl } from "@/lib/case-studies/tech-icons";
 
 const ARCH_ICONS: Record<string, LucideIcon> = {
   "layout-dashboard": LayoutDashboard,
@@ -530,11 +532,13 @@ function ArchitectureSection({
   content: CaseStudySectionContent;
   amazon?: boolean;
 }) {
+  const isErd = content.layout === "erd" && content.erd;
+
   return (
     <DarkSection bloom="50% 12%" id="architecture">
       <SectionHead
         label={content.label}
-        title={content.title ?? "Architecture"}
+        title={content.title ?? (isErd ? "Core data model" : "Architecture")}
         sub={content.subtitle}
         onDark
         align={amazon ? "center" : "left"}
@@ -543,7 +547,7 @@ function ArchitectureSection({
       <div
         className={cn(
           "relative overflow-hidden rounded-[var(--r-xl)] border border-white/10 bg-[rgba(3,9,24,.5)] p-[clamp(24px,3.5vw,48px)]",
-          amazon && "mx-auto max-w-[820px]",
+          amazon && !isErd && "mx-auto max-w-[820px]",
         )}
       >
         <XWatermark
@@ -552,39 +556,47 @@ function ArchitectureSection({
           className="right-[-120px] bottom-[-160px]"
         />
         <div className="relative">
-          {content.items?.map((item, index) => {
-            const Icon = (item.icon && ARCH_ICONS[item.icon]) || Layers;
-            return (
-              <div key={item.title}>
-                {index > 0 && (
-                  <div className="flex justify-center" aria-hidden>
-                    <div className="h-7 w-px bg-linear-to-b from-indigo-400/10 to-indigo-400/60" />
-                  </div>
-                )}
-                <div className="relative overflow-hidden rounded-[var(--r-lg)] border border-white/12 bg-white/[0.035] p-5">
-                  <div className="absolute inset-x-0 top-0 h-[3px] bg-linear-to-r from-indigo-400 to-indigo-700" />
-                  <div className="flex items-start gap-4">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--r-md)] border border-indigo-300/30 bg-indigo-500/20 text-indigo-300">
-                      <Icon className="h-5 w-5" aria-hidden />
-                    </span>
-                    <div className="min-w-0">
-                      <div className="flex flex-wrap items-center gap-2.5">
-                        <span className="font-mono text-[11px] text-tangerine-400">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <span className="font-sans font-semibold text-base text-white leading-[1.1]">
-                          {item.title}
-                        </span>
+          {isErd && content.erd ? (
+            <ErdDiagram
+              entities={content.erd.entities}
+              relationships={content.erd.relationships}
+              onDark
+            />
+          ) : (
+            content.items?.map((item, index) => {
+              const Icon = (item.icon && ARCH_ICONS[item.icon]) || Layers;
+              return (
+                <div key={item.title}>
+                  {index > 0 && (
+                    <div className="flex justify-center" aria-hidden>
+                      <div className="h-7 w-px bg-linear-to-b from-indigo-400/10 to-indigo-400/60" />
+                    </div>
+                  )}
+                  <div className="relative overflow-hidden rounded-[var(--r-lg)] border border-white/12 bg-white/[0.035] p-5">
+                    <div className="absolute inset-x-0 top-0 h-[3px] bg-linear-to-r from-indigo-400 to-indigo-700" />
+                    <div className="flex items-start gap-4">
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--r-md)] border border-indigo-300/30 bg-indigo-500/20 text-indigo-300">
+                        <Icon className="h-5 w-5" aria-hidden />
+                      </span>
+                      <div className="min-w-0">
+                        <div className="flex flex-wrap items-center gap-2.5">
+                          <span className="font-mono text-[11px] text-tangerine-400">
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
+                          <span className="font-sans font-semibold text-base text-white leading-[1.1]">
+                            {item.title}
+                          </span>
+                        </div>
+                        <p className="m-0 mt-2 font-mono text-[11.5px] text-white/55 leading-[1.7]">
+                          {item.body}
+                        </p>
                       </div>
-                      <p className="m-0 mt-2 font-mono text-[11.5px] text-white/55 leading-[1.7]">
-                        {item.body}
-                      </p>
                     </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })
+          )}
         </div>
       </div>
       {content.gallery && content.gallery.length > 0 && (
@@ -658,16 +670,35 @@ function TechSection({ content }: { content: CaseStudySectionContent }) {
         />
       </div>
       <div className="mx-auto flex max-w-[1180px] flex-wrap justify-center gap-4 px-8">
-        {items.map((item) => (
-          <div
-            key={item.body}
-            className="flex shrink-0 items-center gap-3 rounded-[var(--r-md)] border border-border bg-white px-6 py-[15px] shadow-xs"
-          >
-            <span className="whitespace-nowrap font-sans font-semibold text-[15px] text-fg1">
-              {item.title ?? item.body}
-            </span>
-          </div>
-        ))}
+        {items.map((item) => {
+          const label = item.title ?? item.body;
+          const iconUrl = techIconUrl(label);
+          return (
+            <div
+              key={item.body}
+              className="flex shrink-0 items-center gap-3 rounded-[var(--r-md)] border border-border bg-white px-6 py-[15px] shadow-xs"
+            >
+              {iconUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={iconUrl}
+                  alt=""
+                  width={22}
+                  height={22}
+                  className="h-[22px] w-[22px] shrink-0 object-contain"
+                  loading="lazy"
+                />
+              ) : (
+                <span className="flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-[5px] bg-indigo-50 text-xo-indigo">
+                  <Layers className="h-3.5 w-3.5" aria-hidden />
+                </span>
+              )}
+              <span className="whitespace-nowrap font-sans font-semibold text-[15px] text-fg1">
+                {label}
+              </span>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

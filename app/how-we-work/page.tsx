@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import {
-  HwwCases,
   HwwContact,
   HwwHero,
   HwwProcess,
@@ -65,7 +64,6 @@ export default async function HowWeWorkPage() {
       <HwwHero />
       <HwwReasons />
       <HwwProcess flows={flows} />
-      <HwwCases />
       <HwwContact />
     </div>
   );

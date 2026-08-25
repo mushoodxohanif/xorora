@@ -11,6 +11,7 @@ import {
   WfaVelocity,
   WfaWhy,
 } from "@/components/ai/workflow-automation";
+import { RelatedCaseStudies } from "@/components/case-study/related-case-studies";
 import { SITE_URL } from "@/lib/site-url";
 
 const META_TITLE = "AI Workflow Automation Services | Xorora";
@@ -119,6 +120,11 @@ export default function WorkflowAutomationPage() {
       <WfaVelocity />
       <WfaIndustries />
       <WfaStack />
+      <RelatedCaseStudies
+        servicePath="/ai/workflow-automation-services"
+        title="Workflow automation case studies"
+        sub="Processes automated end to end — one study at a time."
+      />
       <WfaFaq />
       <WfaContact />
     </div>

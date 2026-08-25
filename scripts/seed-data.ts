@@ -3,6 +3,7 @@ import type {
   CaseStudySectionContent,
   CaseStudySectionType,
 } from "@/lib/case-studies/types";
+import { seedIndustryCaseStudies } from "@/lib/case-studies/industry-case-studies-data";
 
 export interface SeedMetric {
   value: string;
@@ -1162,4 +1163,5 @@ export const seedCaseStudies: SeedCaseStudy[] = [
       },
     ],
   },
+  ...seedIndustryCaseStudies,
 ];

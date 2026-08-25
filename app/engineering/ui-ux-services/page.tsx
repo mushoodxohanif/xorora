@@ -7,10 +7,10 @@ import {
   UiuxHero,
   UiuxIndustries,
   UiuxProcess,
-  UiuxResults,
   UiuxTech,
   UiuxWhy,
 } from "@/components/engineering/ui-ux-design";
+import { RelatedCaseStudies } from "@/components/case-study/related-case-studies";
 import { SITE_URL } from "@/lib/site-url";
 
 const META_TITLE = "UI/UX Design Services | Xorora";
@@ -116,7 +116,11 @@ export default function UiUxServicesPage() {
       <UiuxDeliver />
       <UiuxProcess />
       <UiuxWhy />
-      <UiuxResults />
+      <RelatedCaseStudies
+        servicePath="/engineering/ui-ux-services"
+        title="UI/UX case studies"
+        sub="Design work that shaped product outcomes — one study at a time."
+      />
       <UiuxTech />
       <UiuxIndustries />
       <UiuxFaq />

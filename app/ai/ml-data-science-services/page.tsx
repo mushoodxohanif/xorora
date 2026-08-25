@@ -9,6 +9,7 @@ import {
   MdsHero,
   MdsProcess,
 } from "@/components/ai/ml-data-science";
+import { RelatedCaseStudies } from "@/components/case-study/related-case-studies";
 import { SITE_URL } from "@/lib/site-url";
 
 const META_TITLE = "Machine Learning & Data Science Services | Xorora";
@@ -115,6 +116,11 @@ export default function MlDataSciencePage() {
       <MdsProcess />
       <MdsAccelerators />
       <MdsEcosystem />
+      <RelatedCaseStudies
+        servicePath="/ai/ml-data-science-services"
+        title="ML & data science case studies"
+        sub="Models and analytics that drove decisions — one study at a time."
+      />
       <MdsFaq />
       <MdsContact />
     </div>

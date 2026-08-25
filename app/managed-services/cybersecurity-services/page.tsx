@@ -11,6 +11,7 @@ import {
   CyThreatLandscape,
   CyWhy,
 } from "@/components/managed-services/cybersecurity";
+import { RelatedCaseStudies } from "@/components/case-study/related-case-studies";
 import { SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = {
@@ -119,6 +120,11 @@ export default function CybersecurityServicesPage() {
       <CyWhy />
       <CyTech />
       <CyIndustries />
+      <RelatedCaseStudies
+        servicePath="/managed-services/cybersecurity-services"
+        title="Cybersecurity case studies"
+        sub="Security and compliance work in production systems — one study at a time."
+      />
       <CyFaq />
       <CyContact />
     </div>

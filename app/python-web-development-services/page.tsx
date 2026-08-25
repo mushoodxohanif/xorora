@@ -11,7 +11,6 @@ import {
   PwdHero,
   PwdIndustries,
   PwdMidCta,
-  PwdPortfolio,
   PwdProcess,
   PwdProof,
   PwdStack,
@@ -124,7 +123,6 @@ export default function PythonWebDevelopmentServicesPage() {
       <PwdDeliver />
       <PwdStack />
       <PwdArchitecture />
-      <PwdPortfolio />
       <PwdIndustries />
       <PwdMidCta />
       <PwdCost />

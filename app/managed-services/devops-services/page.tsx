@@ -11,6 +11,7 @@ import {
   DoTech,
   DoWhy,
 } from "@/components/managed-services/devops";
+import { RelatedCaseStudies } from "@/components/case-study/related-case-studies";
 import { SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = {
@@ -119,6 +120,11 @@ export default function DevOpsServicesPage() {
       <DoMidCta />
       <DoWhy />
       <DoTech />
+      <RelatedCaseStudies
+        servicePath="/managed-services/devops-services"
+        title="DevOps case studies"
+        sub="Pipelines and platforms that shipped faster — one study at a time."
+      />
       <DoFaq />
       <DoContact />
     </div>

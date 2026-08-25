@@ -4,7 +4,6 @@ export {
   EngContact,
   EngIndustries,
   EngOutcomes,
-  EngResults,
   EngServices,
   EngTechStack,
 } from "./eng-sections";

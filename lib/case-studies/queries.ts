@@ -11,6 +11,10 @@ import type {
   CaseStudySectionContent,
   CaseStudySummary,
 } from "./types";
+import {
+  getStaticIndustryCaseStudyBySlug,
+  mergeCaseStudyListItems,
+} from "./static-industry";
 
 function mapSummary(row: typeof caseStudies.$inferSelect): CaseStudySummary {
   return {
@@ -70,39 +74,45 @@ async function loadCaseStudyWithRelations(
 }
 
 export async function listPublishedCaseStudies(): Promise<CaseStudyListItem[]> {
-  const rows = await db
-    .select()
-    .from(caseStudies)
-    .where(eq(caseStudies.status, "published"))
-    .orderBy(asc(caseStudies.sortOrder));
+  try {
+    const rows = await db
+      .select()
+      .from(caseStudies)
+      .where(eq(caseStudies.status, "published"))
+      .orderBy(asc(caseStudies.sortOrder));
 
-  if (rows.length === 0) {
-    return [];
+    if (rows.length === 0) {
+      return mergeCaseStudyListItems([]);
+    }
+
+    const studyIds = rows.map((row) => row.id);
+    const metricRows = await db
+      .select()
+      .from(caseStudyMetrics)
+      .where(inArray(caseStudyMetrics.caseStudyId, studyIds))
+      .orderBy(asc(caseStudyMetrics.sortOrder));
+
+    const metricsByStudyId = new Map<
+      string,
+      Array<{ value: string; label: string }>
+    >();
+
+    for (const metric of metricRows) {
+      const existing = metricsByStudyId.get(metric.caseStudyId) ?? [];
+      existing.push({ value: metric.value, label: metric.label });
+      metricsByStudyId.set(metric.caseStudyId, existing);
+    }
+
+    const dbItems = rows.map((row) => ({
+      ...mapSummary(row),
+      metaTitle: row.metaTitle,
+      metrics: metricsByStudyId.get(row.id) ?? [],
+    }));
+
+    return mergeCaseStudyListItems(dbItems);
+  } catch {
+    return mergeCaseStudyListItems([]);
   }
-
-  const studyIds = rows.map((row) => row.id);
-  const metricRows = await db
-    .select()
-    .from(caseStudyMetrics)
-    .where(inArray(caseStudyMetrics.caseStudyId, studyIds))
-    .orderBy(asc(caseStudyMetrics.sortOrder));
-
-  const metricsByStudyId = new Map<
-    string,
-    Array<{ value: string; label: string }>
-  >();
-
-  for (const metric of metricRows) {
-    const existing = metricsByStudyId.get(metric.caseStudyId) ?? [];
-    existing.push({ value: metric.value, label: metric.label });
-    metricsByStudyId.set(metric.caseStudyId, existing);
-  }
-
-  return rows.map((row) => ({
-    ...mapSummary(row),
-    metaTitle: row.metaTitle,
-    metrics: metricsByStudyId.get(row.id) ?? [],
-  }));
 }
 
 export async function getFeaturedCaseStudy(): Promise<CaseStudy | null> {
@@ -125,15 +135,35 @@ export async function getFeaturedCaseStudy(): Promise<CaseStudy | null> {
 export async function getCaseStudyBySlug(
   slug: string,
 ): Promise<CaseStudy | null> {
-  const [study] = await db
-    .select()
-    .from(caseStudies)
-    .where(and(eq(caseStudies.slug, slug), eq(caseStudies.status, "published")))
-    .limit(1);
+  try {
+    const [study] = await db
+      .select()
+      .from(caseStudies)
+      .where(
+        and(eq(caseStudies.slug, slug), eq(caseStudies.status, "published")),
+      )
+      .limit(1);
 
-  if (!study) {
-    return null;
+    if (study) {
+      return loadCaseStudyWithRelations(study);
+    }
+  } catch {
+    // Fall through to static industry data.
   }
 
-  return loadCaseStudyWithRelations(study);
+  return getStaticIndustryCaseStudyBySlug(slug);
+}
+
+export async function listPublishedCaseStudiesBySlugs(
+  slugs: string[],
+): Promise<CaseStudyListItem[]> {
+  if (slugs.length === 0) {
+    return [];
+  }
+
+  const all = await listPublishedCaseStudies();
+  const bySlug = new Map(all.map((study) => [study.slug, study]));
+  return slugs
+    .map((slug) => bySlug.get(slug))
+    .filter((study): study is CaseStudyListItem => Boolean(study));
 }

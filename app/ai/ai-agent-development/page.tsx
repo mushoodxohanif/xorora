@@ -11,6 +11,7 @@ import {
   AadTech,
   AadWhy,
 } from "@/components/ai/ai-agent-development";
+import { RelatedCaseStudies } from "@/components/case-study/related-case-studies";
 import { SITE_URL } from "@/lib/site-url";
 
 const META_TITLE = "AI Agent Development Services | Xorora";
@@ -119,6 +120,11 @@ export default function AiAgentDevelopmentPage() {
       <AadPillars />
       <AadIndustries />
       <AadTech />
+      <RelatedCaseStudies
+        servicePath="/ai/ai-agent-development"
+        title="AI agent development case studies"
+        sub="Agents and copilots that reached production — one study at a time."
+      />
       <AadFaq />
       <AadContact />
     </div>

@@ -8,9 +8,9 @@ import {
   DwHero,
   DwMidCta,
   DwProcess,
-  DwResults,
   DwWhy,
 } from "@/components/consulting/discovery-workshop";
+import { RelatedCaseStudies } from "@/components/case-study/related-case-studies";
 import { SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = {
@@ -117,8 +117,12 @@ export default function DiscoveryWorkshopServicesPage() {
       <DwDeliver />
       <DwMidCta />
       <DwProcess />
-      <DwResults />
       <DwWhy />
+      <RelatedCaseStudies
+        servicePath="/consulting/discovery-workshop-services"
+        title="Discovery workshop case studies"
+        sub="Engagements where discovery came first — one study at a time."
+      />
       <DwFaq />
       <DwContact />
     </div>

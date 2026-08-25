@@ -11,6 +11,7 @@ import {
   AmsTech,
   AmsWhy,
 } from "@/components/engineering/application-modernization";
+import { RelatedCaseStudies } from "@/components/case-study/related-case-studies";
 import { SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = {
@@ -119,6 +120,11 @@ export default function ApplicationModernizationServicesPage() {
       <AmsWhy />
       <AmsTech />
       <AmsIndustries />
+      <RelatedCaseStudies
+        servicePath="/engineering/application-modernization-services"
+        title="Application modernization case studies"
+        sub="Legacy systems brought forward without breaking the business — one study at a time."
+      />
       <AmsFaq />
       <AmsContact />
     </div>

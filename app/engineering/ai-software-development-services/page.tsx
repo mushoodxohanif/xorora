@@ -8,10 +8,10 @@ import {
   AsdHero,
   AsdIndustries,
   AsdProcess,
-  AsdResults,
   AsdTech,
   AsdWhy,
 } from "@/components/engineering/ai-software-development";
+import { RelatedCaseStudies } from "@/components/case-study/related-case-studies";
 import { SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = {
@@ -119,7 +119,11 @@ export default function AiSoftwareDevelopmentServicesPage() {
       <AsdDeliver />
       <AsdTech />
       <AsdWhy />
-      <AsdResults />
+      <RelatedCaseStudies
+        servicePath="/engineering/ai-software-development-services"
+        title="AI software development case studies"
+        sub="Production AI systems we shipped — one study at a time."
+      />
       <AsdProcess />
       <AsdIndustries />
       <AsdFaq />

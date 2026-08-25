@@ -10,6 +10,7 @@ import {
   CmsTech,
   CmsWhy,
 } from "@/components/engineering/cms-development";
+import { RelatedCaseStudies } from "@/components/case-study/related-case-studies";
 import { SITE_URL } from "@/lib/site-url";
 
 const META_TITLE = "Custom CMS Development Services | Xorora";
@@ -117,6 +118,11 @@ export default function CmsDevelopmentServicesPage() {
       <CmsWhy />
       <CmsIndustries />
       <CmsTech />
+      <RelatedCaseStudies
+        servicePath="/engineering/cms-development-services"
+        title="CMS development case studies"
+        sub="Content platforms that scale across channels — one study at a time."
+      />
       <CmsFaq />
       <CmsContact />
     </div>

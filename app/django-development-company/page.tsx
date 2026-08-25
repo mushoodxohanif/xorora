@@ -10,7 +10,6 @@ import {
   DdcHero,
   DdcIndustries,
   DdcMidCta,
-  DdcPortfolio,
   DdcProcess,
   DdcProof,
   DdcStack,
@@ -131,7 +130,6 @@ export default function DjangoDevelopmentCompanyPage() {
       <DdcDeliver />
       <DdcStack />
       <DdcArchitecture />
-      <DdcPortfolio />
       <DdcIndustries />
       <DdcMidCta />
       <DdcCost />

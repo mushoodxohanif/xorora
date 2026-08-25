@@ -13,6 +13,7 @@ import {
   CadTech,
   CadWhy,
 } from "@/components/engineering/custom-app-development";
+import { RelatedCaseStudies } from "@/components/case-study/related-case-studies";
 import { SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = {
@@ -123,6 +124,11 @@ export default function CustomAppDevelopmentServicesPage() {
       <CadWhy />
       <CadTech />
       <CadIndustries />
+      <RelatedCaseStudies
+        servicePath="/engineering/custom-app-development-services"
+        title="Custom app development case studies"
+        sub="Apps built around real business requirements — one study at a time."
+      />
       <CadFaq />
       <CadContact />
     </div>

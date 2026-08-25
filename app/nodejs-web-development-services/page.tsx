@@ -11,7 +11,6 @@ import {
   NwdHero,
   NwdIndustries,
   NwdMidCta,
-  NwdPortfolio,
   NwdProcess,
   NwdProof,
   NwdStack,
@@ -129,7 +128,6 @@ export default function NodejsWebDevelopmentServicesPage() {
       <NwdDeliver />
       <NwdStack />
       <NwdArchitecture />
-      <NwdPortfolio />
       <NwdIndustries />
       <NwdMidCta />
       <NwdCost />

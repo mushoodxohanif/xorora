@@ -7,11 +7,11 @@ import {
   DT_FAQS,
   DtHero,
   DtProcess,
-  DtResults,
   DtScenarios,
   DtTech,
   DtWhy,
 } from "@/components/consulting/digital-transformation";
+import { RelatedCaseStudies } from "@/components/case-study/related-case-studies";
 import { SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = {
@@ -120,7 +120,11 @@ export default function DigitalTransformationServicesPage() {
       <DtTech />
       <DtWhy />
       <DtScenarios />
-      <DtResults />
+      <RelatedCaseStudies
+        servicePath="/consulting/digital-transformation-services"
+        title="Digital transformation case studies"
+        sub="Modernization and platform work that moved businesses forward — one study at a time."
+      />
       <DtFaq />
       <DtContact />
     </div>

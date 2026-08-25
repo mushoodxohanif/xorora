@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import {
-  IndCaseStudies,
   IndContact,
   IndGrid,
   IndHeader,
@@ -23,7 +22,6 @@ export default async function IndustriesPage() {
       <IndRevealObserver />
       <IndHeader />
       <IndGrid />
-      <IndCaseStudies />
       <IndProcess />
       <IndContact industryNames={industryNames} />
     </div>

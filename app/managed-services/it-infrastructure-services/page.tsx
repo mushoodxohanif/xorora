@@ -10,6 +10,7 @@ import {
   IiShift,
   IiWhy,
 } from "@/components/managed-services/it-infrastructure";
+import { RelatedCaseStudies } from "@/components/case-study/related-case-studies";
 import { SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = {
@@ -117,6 +118,11 @@ export default function ItInfrastructureServicesPage() {
       <IiProcess />
       <IiWhy />
       <IiBenefits />
+      <RelatedCaseStudies
+        servicePath="/managed-services/it-infrastructure-services"
+        title="IT infrastructure case studies"
+        sub="Infrastructure and cloud setups that held under load — one study at a time."
+      />
       <IiFaq />
       <IiContact />
     </div>

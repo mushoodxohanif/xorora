@@ -8,7 +8,6 @@ export { PYTHON_WEB_FAQS, PwdFaq } from "./pwd-faq";
 export { PwdHero } from "./pwd-hero";
 export { PwdIndustries } from "./pwd-industries";
 export { PwdMidCta } from "./pwd-mid-cta";
-export { PwdPortfolio } from "./pwd-portfolio";
 export { PwdProcess } from "./pwd-process";
 export { PwdProof } from "./pwd-proof";
 export { PwdStack } from "./pwd-stack";

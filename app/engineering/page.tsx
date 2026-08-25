@@ -5,7 +5,6 @@ import {
   EngHero,
   EngIndustries,
   EngOutcomes,
-  EngResults,
   EngServices,
   EngTechStack,
 } from "@/components/engineering";
@@ -100,7 +99,6 @@ export default function EngineeringPage() {
       <EngHero />
       <EngServices />
       <EngOutcomes />
-      <EngResults />
       <EngTechStack />
       <EngApproach />
       <EngIndustries />

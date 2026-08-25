@@ -12,6 +12,7 @@ import {
   SaTech,
   SaWhy,
 } from "@/components/consulting/staff-augmentation";
+import { RelatedCaseStudies } from "@/components/case-study/related-case-studies";
 import { SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = {
@@ -123,6 +124,11 @@ export default function StaffAugmentationServicesPage() {
       <SaTech />
       <SaDifference />
       <SaKickoff />
+      <RelatedCaseStudies
+        servicePath="/consulting/staff-augmentation-services"
+        title="Staff augmentation case studies"
+        sub="Where embedded engineers unblocked delivery — one study at a time."
+      />
       <SaFaq />
       <SaContact />
     </div>

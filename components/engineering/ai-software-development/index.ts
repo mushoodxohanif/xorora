@@ -5,6 +5,5 @@ export { AsdFaq, ASD_FAQS } from "./asd-faq";
 export { AsdHero } from "./asd-hero";
 export { AsdIndustries } from "./asd-industries";
 export { AsdProcess } from "./asd-process";
-export { AsdResults } from "./asd-results";
 export { AsdTech } from "./asd-tech";
 export { AsdWhy } from "./asd-why";

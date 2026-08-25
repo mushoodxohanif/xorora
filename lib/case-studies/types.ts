@@ -65,8 +65,13 @@ export interface CaseStudySectionContent {
   image?: SectionImage;
   gallery?: SectionImage[];
   video?: SectionVideo;
-  /** Presentation hint for Amazon / media-led sections. */
-  layout?: "default" | "asset-showcase";
+  /** Rough ERD / data-model diagram data for architecture sections. */
+  erd?: {
+    entities: Array<{ name: string; fields: string[] }>;
+    relationships?: string[];
+  };
+  /** Presentation hint for Amazon / media-led / ERD sections. */
+  layout?: "default" | "asset-showcase" | "erd";
 }
 
 export interface CaseStudyMetric {

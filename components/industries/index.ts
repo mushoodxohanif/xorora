@@ -1,4 +1,3 @@
-export { IndCaseStudies } from "./ind-case-studies";
 export { IndContact } from "./ind-contact";
 export { IndGrid } from "./ind-grid";
 export { IndHeader } from "./ind-header";

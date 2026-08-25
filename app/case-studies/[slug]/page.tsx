@@ -53,7 +53,11 @@ function buildJsonLd(study: CaseStudy, slug: string) {
     "@type": "Article",
     headline: study.title,
     description: study.metaDescription,
-    image: study.heroImage ? `${SITE_URL}${study.heroImage}` : undefined,
+    image: study.heroImage
+      ? study.heroImage.startsWith("http")
+        ? study.heroImage
+        : `${SITE_URL}${study.heroImage}`
+      : undefined,
     keywords: study.tags.join(", "),
     datePublished: study.publishedAt?.toISOString(),
     dateModified: study.updatedAt.toISOString(),
