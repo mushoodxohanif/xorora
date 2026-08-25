@@ -323,6 +323,7 @@ function ChallengeBulletsSection({
           <SectionHead
             label={content.label}
             title={content.title ?? "The challenge"}
+            sub={content.subtitle}
           />
           {content.lead && (
             <p className="mt-[26px] mb-[18px] font-medium font-sans text-[18px] text-fg1 leading-[1.6]">
@@ -339,19 +340,26 @@ function ChallengeBulletsSection({
           ))}
         </div>
         <div className="flex flex-col gap-3">
-          {content.bullets?.map((bullet) => {
+          {content.bullets?.map((bullet, index) => {
             const item = normalizeBullet(bullet);
             return (
               <div
-                key={item.body.slice(0, 40)}
+                key={`${item.title ?? ""}-${item.body.slice(0, 40)}`}
                 className="flex items-start gap-4 rounded-[var(--r-lg)] border border-border bg-slate-50 px-5 py-[18px]"
               >
-                <span className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[var(--r-md)] border border-border bg-white text-slate-500">
-                  <AlertCircle className="h-[19px] w-[19px]" aria-hidden />
+                <span className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[var(--r-md)] border border-border bg-white font-mono text-[12px] text-slate-500">
+                  {String(index + 1).padStart(2, "0")}
                 </span>
-                <p className="m-0 self-center font-sans text-[15px] text-fg2 leading-[1.55]">
-                  {item.body}
-                </p>
+                <div className="min-w-0 self-center">
+                  {item.title && (
+                    <h3 className="m-0 mb-1.5 font-sans font-semibold text-[15.5px] text-fg1 leading-snug">
+                      {item.title}
+                    </h3>
+                  )}
+                  <p className="m-0 font-sans text-[15px] text-fg2 leading-[1.55]">
+                    {item.body}
+                  </p>
+                </div>
               </div>
             );
           })}
@@ -507,6 +515,33 @@ function SolutionSection({
             ))}
           </div>
         )
+      )}
+      {content.bullets && content.bullets.length > 0 && (
+        <div className="mb-[clamp(36px,4vw,52px)] grid gap-4 sm:grid-cols-2">
+          {content.bullets.map((bullet, index) => {
+            const item = normalizeBullet(bullet);
+            return (
+              <div
+                key={`${item.title ?? ""}-${item.body.slice(0, 40)}`}
+                className="rounded-[var(--r-lg)] border border-white/12 bg-white/[0.04] p-5"
+              >
+                <div className="mb-3 flex items-center gap-2.5">
+                  <span className="font-mono text-[11px] text-tangerine-400">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  {item.title && (
+                    <h3 className="m-0 font-sans font-semibold text-[16px] text-white leading-snug">
+                      {item.title}
+                    </h3>
+                  )}
+                </div>
+                <p className="m-0 font-sans text-[14.5px] text-white/70 leading-[1.65]">
+                  {item.body}
+                </p>
+              </div>
+            );
+          })}
+        </div>
       )}
       {content.video && (
         <div className="mb-[clamp(36px,4vw,52px)]">
@@ -834,6 +869,7 @@ function ResultsSection({
   amazon?: boolean;
 }) {
   const bullets = content.bullets?.map(normalizeBullet) ?? [];
+  const paragraphs = content.paragraphs ?? [];
 
   return (
     <LightSection>
@@ -848,26 +884,40 @@ function ResultsSection({
           </p>
         )}
       </div>
-      <div className="mb-9 grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-5">
-        {bullets.map((item) => (
-          <div
-            key={item.title ?? item.body.slice(0, 40)}
-            className="rounded-[var(--r-lg)] border border-border bg-slate-50 p-[clamp(26px,3vw,34px)]"
-          >
-            <span className="mb-[22px] flex h-[46px] w-[46px] items-center justify-center rounded-full bg-indigo-50 text-xo-indigo">
-              <Check className="h-6 w-6" aria-hidden />
-            </span>
-            {item.title && (
-              <h3 className="m-0 mb-3 font-sans font-semibold text-[19px] text-fg1 leading-[1.25]">
-                {item.title}
-              </h3>
-            )}
-            <p className="m-0 font-sans text-[15px] text-fg2 leading-[1.6]">
-              {item.body}
+      {paragraphs.length > 0 && (
+        <div className="mb-9 max-w-[820px] space-y-5">
+          {paragraphs.map((paragraph) => (
+            <p
+              key={paragraph.slice(0, 40)}
+              className="m-0 font-sans text-[16.5px] text-fg2 leading-[1.7]"
+            >
+              {paragraph}
             </p>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
+      {bullets.length > 0 && (
+        <div className="mb-9 grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-5">
+          {bullets.map((item) => (
+            <div
+              key={item.title ?? item.body.slice(0, 40)}
+              className="rounded-[var(--r-lg)] border border-border bg-slate-50 p-[clamp(26px,3vw,34px)]"
+            >
+              <span className="mb-[22px] flex h-[46px] w-[46px] items-center justify-center rounded-full bg-indigo-50 text-xo-indigo">
+                <Check className="h-6 w-6" aria-hidden />
+              </span>
+              {item.title && (
+                <h3 className="m-0 mb-3 font-sans font-semibold text-[19px] text-fg1 leading-[1.25]">
+                  {item.title}
+                </h3>
+              )}
+              <p className="m-0 font-sans text-[15px] text-fg2 leading-[1.6]">
+                {item.body}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
       {content.gallery && content.gallery.length > 0 && (
         <div className="mb-9">
           <CaseStudyGallery images={content.gallery} amazon={amazon} />
