@@ -19,12 +19,12 @@ export const INDUSTRY_CASE_IMAGES: Record<string, CaseStudyImageSet> = {
       alt: "Warehouse logistics and freight operations",
     },
     overview: {
-      src: q("photo-1605745340209-9f4d543cdeda"),
-      alt: "Logistics team coordinating shipments in a depot",
+      src: q("photo-1553413077-190dd305871c"),
+      alt: "Logistics warehouse coordinating outbound freight",
     },
     why: {
-      src: q("photo-1578574577315-52ac87545dbd", 1200),
-      alt: "Freight trucks staged at a logistics depot",
+      src: q("photo-1580674285054-bed31e145f59", 1200),
+      alt: "Packed freight ready for carrier pickup",
     },
   },
   "carrier-rate-automation-logistics": {
@@ -33,8 +33,8 @@ export const INDUSTRY_CASE_IMAGES: Record<string, CaseStudyImageSet> = {
       alt: "Cargo ship and port freight operations",
     },
     overview: {
-      src: q("photo-1590674899484-d5640e854936"),
-      alt: "Shipping containers stacked at a freight terminal",
+      src: q("photo-1566576912321-d58ddd7a6088"),
+      alt: "Shipping packages staged for carrier rate comparison",
     },
     why: {
       src: q("photo-1494412685616-a5d310fbb07d", 1200),
