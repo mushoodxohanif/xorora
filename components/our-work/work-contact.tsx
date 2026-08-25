@@ -1,9 +1,8 @@
 "use client";
 
-import { ArrowUpRight, Check, Quote } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { type FormEvent, useId, useState } from "react";
 import { XWatermark } from "@/components/geometry/x-watermark";
-import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { SITE_EMAIL, SITE_EMAIL_HREF, SITE_PHONES } from "@/lib/contact";
 import {
@@ -64,7 +63,7 @@ export function WorkContact() {
               Share your ambition with the team that ships
               <span className="text-tangerine-400">.</span>
             </h2>
-            <div className="mb-10 flex flex-wrap gap-[clamp(28px,4vw,52px)]">
+            <div className="flex flex-wrap gap-[clamp(28px,4vw,52px)]">
               {CONTACT_DETAILS.map((item) => (
                 <div key={item.label}>
                   <div className="mb-2 font-mono text-[11px] text-white/45 uppercase tracking-widest">
@@ -80,28 +79,6 @@ export function WorkContact() {
                   </div>
                 </div>
               ))}
-            </div>
-            <div className="mt-auto">
-              <Quote
-                className="mb-3.5 h-[26px] w-[26px] text-tangerine-400"
-                aria-hidden
-              />
-              <p className="m-0 mb-5 max-w-[460px] font-sans text-base text-white/80 leading-[1.65]">
-                &ldquo;Xorora became an extension of our team. They engineered
-                with us — pragmatic, fast, and genuinely invested in the
-                outcome. A rare development partner.&rdquo;
-              </p>
-              <div className="flex items-center gap-3">
-                <Avatar name="Priya Anand" size={44} ring />
-                <div>
-                  <div className="font-sans font-semibold text-[15px] text-white">
-                    Priya Anand
-                  </div>
-                  <div className="font-sans text-[13px] text-white/55">
-                    VP Risk, Northwind
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 

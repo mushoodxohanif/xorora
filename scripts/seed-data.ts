@@ -1,9 +1,10 @@
+import { withUniqueIndustryImageList } from "@/lib/case-studies/apply-industry-images";
+import { seedIndustryCaseStudies } from "@/lib/case-studies/industry-case-studies-data";
 import type {
   CaseStudyCategory,
   CaseStudySectionContent,
   CaseStudySectionType,
 } from "@/lib/case-studies/types";
-import { seedIndustryCaseStudies } from "@/lib/case-studies/industry-case-studies-data";
 
 export interface SeedMetric {
   value: string;
@@ -644,14 +645,12 @@ export const seedCaseStudies: SeedCaseStudy[] = [
     tags: ["Amazon AU", "Product Launch", "PPC"],
     category: "amazon",
     lead: "A new-to-Amazon brand entered Amazon Australia with a demand-validated multi-unit card tracker, a conversion-ready listing, Brand Registry assets, and a disciplined $20/day Sponsored Products plan — reaching 2.5 ROAS in about five weeks.",
-    heroImage:
-      "/assets/case-studies/amazon-au-product-launch/hero.webp",
+    heroImage: "/assets/case-studies/amazon-au-product-launch/hero.webp",
     headerBg: "/assets/header-bg.jpg",
     heroUrl: "amazon.com.au",
     featured: false,
     sortOrder: 4,
-    metaTitle:
-      "Amazon AU Product Launch Case Study — 2.5 ROAS | Xorora",
+    metaTitle: "Amazon AU Product Launch Case Study — 2.5 ROAS | Xorora",
     metaDescription:
       "How Xorora launched a card tracker on Amazon Australia — product hunting, listing optimization, Brand Registry A+ content, and Sponsored Products — from empty storefront to 2.5 ROAS.",
     metrics: [
@@ -907,8 +906,7 @@ export const seedCaseStudies: SeedCaseStudy[] = [
     tags: ["Amazon AU", "Product Launch", "PPC"],
     category: "amazon",
     lead: "With the brand's first product already live, Xorora sourced and launched a second: a laundry bag set for delicates — reaching 2.44 ROAS on a $30/day Sponsored Products campaign one month into the brand's Amazon presence.",
-    heroImage:
-      "/assets/case-studies/amazon-au-laundry-bag-launch/hero.webp",
+    heroImage: "/assets/case-studies/amazon-au-laundry-bag-launch/hero.webp",
     headerBg: "/assets/header-bg.jpg",
     heroUrl: "amazon.com.au",
     featured: false,
@@ -1163,5 +1161,5 @@ export const seedCaseStudies: SeedCaseStudy[] = [
       },
     ],
   },
-  ...seedIndustryCaseStudies,
+  ...withUniqueIndustryImageList(seedIndustryCaseStudies),
 ];

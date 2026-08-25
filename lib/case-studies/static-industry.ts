@@ -1,16 +1,19 @@
+import { withUniqueIndustryImages } from "./apply-industry-images";
+import { seedIndustryCaseStudies } from "./industry-case-studies-data";
 import type {
   CaseStudy,
   CaseStudyListItem,
   CaseStudyMetric,
   CaseStudySection,
 } from "./types";
-import { seedIndustryCaseStudies } from "./industry-case-studies-data";
 
 const FIXED_PUBLISHED_AT = new Date("2026-08-01T00:00:00.000Z");
 const FIXED_CREATED_AT = new Date("2026-08-01T00:00:00.000Z");
 
+const industryStudies = seedIndustryCaseStudies.map(withUniqueIndustryImages);
+
 function toListItem(
-  study: (typeof seedIndustryCaseStudies)[number],
+  study: (typeof industryStudies)[number],
 ): CaseStudyListItem {
   return {
     id: `static-${study.slug}`,
@@ -33,9 +36,7 @@ function toListItem(
   };
 }
 
-function toFullStudy(
-  study: (typeof seedIndustryCaseStudies)[number],
-): CaseStudy {
+function toFullStudy(study: (typeof industryStudies)[number]): CaseStudy {
   const metrics: CaseStudyMetric[] = study.metrics.map((metric, index) => ({
     id: `static-${study.slug}-metric-${index}`,
     value: metric.value,
@@ -64,7 +65,7 @@ function toFullStudy(
 }
 
 export function listStaticIndustryCaseStudies(): CaseStudyListItem[] {
-  return seedIndustryCaseStudies
+  return industryStudies
     .slice()
     .sort((a, b) => a.sortOrder - b.sortOrder)
     .map(toListItem);
@@ -73,7 +74,7 @@ export function listStaticIndustryCaseStudies(): CaseStudyListItem[] {
 export function getStaticIndustryCaseStudyBySlug(
   slug: string,
 ): CaseStudy | null {
-  const study = seedIndustryCaseStudies.find((item) => item.slug === slug);
+  const study = industryStudies.find((item) => item.slug === slug);
   return study ? toFullStudy(study) : null;
 }
 

@@ -5,16 +5,51 @@ import {
   caseStudyMetrics,
   caseStudySections,
 } from "@/lib/db/schema";
+import { INDUSTRY_CASE_IMAGES } from "./industry-images";
+import {
+  getStaticIndustryCaseStudyBySlug,
+  mergeCaseStudyListItems,
+} from "./static-industry";
 import type {
   CaseStudy,
   CaseStudyListItem,
   CaseStudySectionContent,
   CaseStudySummary,
 } from "./types";
-import {
-  getStaticIndustryCaseStudyBySlug,
-  mergeCaseStudyListItems,
-} from "./static-industry";
+
+function applyIndustryImageOverridesToSummary<
+  T extends { slug: string; heroImage: string },
+>(study: T): T {
+  const images = INDUSTRY_CASE_IMAGES[study.slug];
+  if (!images) return study;
+  return { ...study, heroImage: images.hero.src };
+}
+
+function applyIndustryImageOverrides(study: CaseStudy): CaseStudy {
+  const images = INDUSTRY_CASE_IMAGES[study.slug];
+  if (!images) return study;
+
+  return {
+    ...study,
+    heroImage: images.hero.src,
+    sections: study.sections.map((section) => {
+      if (section.type !== "overview" || !section.content.image) {
+        return section;
+      }
+      return {
+        ...section,
+        content: {
+          ...section.content,
+          image: {
+            ...section.content.image,
+            src: images.overview.src,
+            alt: images.overview.alt,
+          },
+        },
+      };
+    }),
+  };
+}
 
 function mapSummary(row: typeof caseStudies.$inferSelect): CaseStudySummary {
   return {
@@ -103,11 +138,13 @@ export async function listPublishedCaseStudies(): Promise<CaseStudyListItem[]> {
       metricsByStudyId.set(metric.caseStudyId, existing);
     }
 
-    const dbItems = rows.map((row) => ({
-      ...mapSummary(row),
-      metaTitle: row.metaTitle,
-      metrics: metricsByStudyId.get(row.id) ?? [],
-    }));
+    const dbItems = rows.map((row) =>
+      applyIndustryImageOverridesToSummary({
+        ...mapSummary(row),
+        metaTitle: row.metaTitle,
+        metrics: metricsByStudyId.get(row.id) ?? [],
+      }),
+    );
 
     return mergeCaseStudyListItems(dbItems);
   } catch {
@@ -129,7 +166,7 @@ export async function getFeaturedCaseStudy(): Promise<CaseStudy | null> {
     return null;
   }
 
-  return loadCaseStudyWithRelations(study);
+  return applyIndustryImageOverrides(await loadCaseStudyWithRelations(study));
 }
 
 export async function getCaseStudyBySlug(
@@ -145,7 +182,9 @@ export async function getCaseStudyBySlug(
       .limit(1);
 
     if (study) {
-      return loadCaseStudyWithRelations(study);
+      return applyIndustryImageOverrides(
+        await loadCaseStudyWithRelations(study),
+      );
     }
   } catch {
     // Fall through to static industry data.
