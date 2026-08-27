@@ -1,7 +1,7 @@
 import {
-  AMAZON_ACCOUNT_MANAGEMENT_PATH,
   AMAZON_A_PLUS_CONTENT_PATH,
   AMAZON_A_TO_Z_PATH,
+  AMAZON_ACCOUNT_MANAGEMENT_PATH,
   AMAZON_DSP_SERVICES_PATH,
   AMAZON_LISTING_OPTIMIZATION_PATH,
   AMAZON_PPC_ADVERTISING_PATH,
@@ -38,6 +38,8 @@ export const ROUTES = {
   customDotnetDevelopment: "/custom-dotnet-development",
   /** Unlisted SEO landing — do not add to XO_NAV or FOOTER_COLUMNS */
   djangoDevelopmentCompany: "/django-development-company",
+  /** Unlisted SEO landing — do not add to XO_NAV or FOOTER_COLUMNS */
+  flutterMobileAppDevelopment: "/flutter-mobile-app-development",
   ai: "/ai",
   aiAgentDevelopment: "/ai/ai-agent-development",
   mlDataScience: "/ai/ml-data-science-services",
