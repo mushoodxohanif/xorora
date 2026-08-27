@@ -11,6 +11,18 @@ export interface BlogSeedPost {
 
 export const BLOG_POSTS: BlogSeedPost[] = [
   {
+    slug: "flutter-vs-react-native-comparison",
+    cat: "Software Development",
+    title:
+      "Flutter vs. React Native: Which Framework Is Best for App Development?",
+    excerpt:
+      "The real difference between Flutter and React Native, covering performance, cost, and use cases, plus how to hire the right team to build with either one.",
+    read: "11 min",
+    date: "Aug 27, 2026",
+    img: "/assets/blog/flutter-vs-react-native-comparison.png",
+    featured: true,
+  },
+  {
     slug: "top-3-django-development-companies-2026",
     cat: "Software Development",
     title: "Top 3 Django Development Companies",
@@ -19,7 +31,6 @@ export const BLOG_POSTS: BlogSeedPost[] = [
     read: "10 min",
     date: "Aug 24, 2026",
     img: "/assets/blog/top-3-django-development-companies-2026.png",
-    featured: true,
   },
   {
     slug: "net-vs-java-comparison-use-cases-pros-and-cons",

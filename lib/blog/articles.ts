@@ -1,5 +1,10 @@
 import type { ComponentType } from "react";
 import {
+  FLUTTER_VS_RN_META,
+  FLUTTER_VS_RN_SLUG,
+  FlutterVsRnArticle,
+} from "@/components/blog/posts/flutter-vs-react-native-comparison";
+import {
   NET_VS_JAVA_META,
   NET_VS_JAVA_SLUG,
   NetVsJavaArticle,
@@ -37,6 +42,10 @@ export interface BlogArticleDefinition extends BlogArticleMeta {
 }
 
 const BLOG_ARTICLES: Record<string, BlogArticleDefinition> = {
+  [FLUTTER_VS_RN_SLUG]: {
+    ...FLUTTER_VS_RN_META,
+    Article: FlutterVsRnArticle,
+  },
   [TOP_3_DJANGO_SLUG]: {
     ...TOP_3_DJANGO_META,
     Article: Top3DjangoArticle,
