@@ -4,6 +4,7 @@ import { SignalRule } from "@/components/geometry/signal-rule";
 import { LetsTalkContactLink } from "@/components/modals";
 import { buttonClassName } from "@/lib/button-styles";
 import { imageAltTitle } from "@/lib/image-seo";
+import { SEO_LANDING_IMAGES } from "@/lib/seo-landing-images";
 
 const photoSeo = imageAltTitle({
   primary: "Python web development services",
@@ -27,8 +28,8 @@ export function PwdMidCta() {
           </h2>
           <p className="mb-4 max-w-[520px] font-sans text-[16.5px] text-fg2 leading-relaxed">
             Bring us the system you&apos;re building or the one that stopped
-            scaling. Discovery takes one to two weeks and produces an architecture
-            proposal and a fixed estimate.
+            scaling. Discovery takes one to two weeks and produces an
+            architecture proposal and a fixed estimate.
           </p>
           <p className="mb-8 max-w-[520px] font-sans text-[16.5px] text-fg2 leading-relaxed">
             You keep the document either way.
@@ -42,7 +43,7 @@ export function PwdMidCta() {
         </div>
         <div className="relative aspect-[5/4] overflow-hidden rounded-(--r-xl) border border-indigo-100 lg:aspect-auto lg:min-h-[340px]">
           <Image
-            src="/assets/home/staff-augmentation.webp"
+            src={SEO_LANDING_IMAGES.python.midCta}
             alt={photoSeo.alt}
             title={photoSeo.title}
             fill

@@ -12,6 +12,7 @@ import Link from "next/link";
 import { LightSection } from "@/components/case-study/light-section";
 import { SectionHead } from "@/components/case-study/section-head";
 import { ROUTES } from "@/lib/navigation";
+import { SEO_LANDING_IMAGES } from "@/lib/seo-landing-images";
 
 const INDUSTRIES: {
   icon: LucideIcon;
@@ -27,7 +28,7 @@ const INDUSTRIES: {
     name: "Retail and commerce",
     href: ROUTES.industry("ecommerce"),
     body: "Checkout, loyalty, and store integration, where the measure is conversion on a phone rather than feature count. Fast startup, forgiving forms, and payment flows that survive a connection dropping halfway through.",
-    img: "/assets/ecommerce/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.flutter.industries.retail,
     imageAlt:
       "Flutter app development for retail, commerce checkout and loyalty",
     imageTitle: "Retail Flutter app development — Xorora",
@@ -37,7 +38,7 @@ const INDUSTRIES: {
     name: "Logistics and field operations",
     href: ROUTES.industry("logistics"),
     body: "Driver, courier, and technician apps used in places with no signal. Local-first data, queued actions that sync when the connection returns, and battery behaviour that survives a ten-hour shift. This is where Flutter's single codebase pays most, because field fleets are rarely all on one platform.",
-    img: "/assets/logistics/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.flutter.industries.logistics,
     imageAlt:
       "Flutter app development for logistics and field operations offline apps",
     imageTitle: "Logistics Flutter app development — Xorora",
@@ -47,7 +48,7 @@ const INDUSTRIES: {
     name: "Fintech",
     href: ROUTES.industry("fintech"),
     body: "Banking, payments, and wallet applications. Biometric auth, certificate pinning, secure storage, and jailbreak and root detection. Financial apps get scrutinised at store review more than any other category, and we build for that review rather than reacting to it.",
-    img: "/assets/fintech/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.flutter.industries.fintech,
     imageAlt:
       "Flutter app development for fintech banking payments and wallets",
     imageTitle: "Fintech Flutter app development — Xorora",
@@ -57,7 +58,7 @@ const INDUSTRIES: {
     name: "Healthcare",
     href: ROUTES.industry("health-tech"),
     body: "Patient apps, appointment management, and remote monitoring. Health data permissions differ substantially between iOS and Android, and that difference is designed for rather than discovered.",
-    img: "/assets/healthtech/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.flutter.industries.healthcare,
     imageAlt:
       "Flutter app development for healthcare patient apps and remote monitoring",
     imageTitle: "Healthcare Flutter app development — Xorora",
@@ -67,7 +68,7 @@ const INDUSTRIES: {
     name: "On-demand and marketplace apps",
     href: ROUTES.industry("ecommerce"),
     body: "Two-sided apps where supply and demand each need their own experience. Live location, push at the right moment, and state that stays correct when the app is backgrounded mid-transaction.",
-    img: "/assets/ecommerce/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.flutter.industries.marketplace,
     imageAlt:
       "Flutter app development for on-demand and marketplace platforms",
     imageTitle: "On-demand Flutter app development — Xorora",

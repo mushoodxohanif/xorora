@@ -12,6 +12,7 @@ import Link from "next/link";
 import { LightSection } from "@/components/case-study/light-section";
 import { SectionHead } from "@/components/case-study/section-head";
 import { ROUTES } from "@/lib/navigation";
+import { SEO_LANDING_IMAGES } from "@/lib/seo-landing-images";
 
 const INDUSTRIES: {
   icon: LucideIcon;
@@ -29,9 +30,8 @@ const INDUSTRIES: {
     href: ROUTES.industry("saas"),
     cta: "Explore SaaS",
     body: "Subscriptions, plan changes, proration, trials, and dunning are solved problems in Laravel Cashier against Stripe or Paddle. That is a quarter of engineering you do not spend. Where a platform bills on usage or has a commercial model Cashier does not cover, we extend it rather than replace it.",
-    img: "/assets/saas/header-bg.jpg",
-    imageAlt:
-      "Laravel website development for SaaS and subscription platforms",
+    img: SEO_LANDING_IMAGES.laravel.industries.saas,
+    imageAlt: "Laravel website development for SaaS and subscription platforms",
     imageTitle: "SaaS Laravel website development — Xorora",
   },
   {
@@ -40,7 +40,7 @@ const INDUSTRIES: {
     href: ROUTES.industry("ecommerce"),
     cta: "Explore E-commerce",
     body: "Multi-vendor catalogues, custom checkout, commission logic, and vendor payouts. Laravel suits marketplaces specifically because the commercial rules are usually the custom part while the surrounding machinery is not.",
-    img: "/assets/ecommerce/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.laravel.industries.ecommerce,
     imageAlt:
       "Laravel website development for e-commerce and marketplace platforms",
     imageTitle: "E-commerce Laravel website development — Xorora",
@@ -51,7 +51,7 @@ const INDUSTRIES: {
     href: ROUTES.industry("edtech"),
     cta: "Explore Edtech",
     body: "Course structures, cohorts, progress tracking, assessments, and certificates. Content-heavy platforms with role-based access map cleanly onto Laravel's permission and policy layer, and Filament gives course administrators a working interface early.",
-    img: "/assets/edtech/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.laravel.industries.edtech,
     imageAlt:
       "Laravel website development for education and learning platforms",
     imageTitle: "Education Laravel website development — Xorora",
@@ -62,7 +62,7 @@ const INDUSTRIES: {
     href: ROUTES.industry("real-estate"),
     cta: "Explore Real estate",
     body: "Listing portals, agent and landlord portals, viewing scheduling, and document workflows. Search and filtering at volume is the technical challenge here, and Laravel Scout with Meilisearch or Algolia handles it without a separate search team.",
-    img: "/assets/realestate/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.laravel.industries.realestate,
     imageAlt:
       "Laravel website development for real estate and property portals",
     imageTitle: "Real estate Laravel website development — Xorora",
@@ -73,7 +73,7 @@ const INDUSTRIES: {
     href: ROUTES.industry("health-tech"),
     cta: "Explore Healthcare",
     body: "Appointment systems, patient portals, and practice administration. We can build the application, the audit trail, and the role boundaries on Laravel, though where the work involves clinical data processing at scale we will usually recommend Python underneath it.",
-    img: "/assets/healthtech/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.laravel.industries.healthcare,
     imageAlt:
       "Laravel website development for healthcare appointment and patient portals",
     imageTitle: "Healthcare Laravel website development — Xorora",
@@ -96,7 +96,7 @@ export function LwdIndustries() {
             <Link
               key={item.name}
               href={item.href}
-              className="group flex flex-col overflow-hidden rounded-(--r-lg) border border-border bg-white no-underline transition-all duration-200 hover:-translate-y-0.5 hover:border-border-strong hover:shadow-md"
+              className="group hover:-translate-y-0.5 flex flex-col overflow-hidden rounded-(--r-lg) border border-border bg-white no-underline transition-all duration-200 hover:border-border-strong hover:shadow-md"
             >
               <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
                 <Image

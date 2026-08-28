@@ -12,6 +12,7 @@ import Link from "next/link";
 import { LightSection } from "@/components/case-study/light-section";
 import { SectionHead } from "@/components/case-study/section-head";
 import { ROUTES } from "@/lib/navigation";
+import { SEO_LANDING_IMAGES } from "@/lib/seo-landing-images";
 
 const INDUSTRIES: {
   icon: LucideIcon;
@@ -29,7 +30,7 @@ const INDUSTRIES: {
     href: ROUTES.industry("fintech"),
     cta: "Explore Fintech",
     body: "C# has a native decimal type built for money, which removes an entire class of rounding error that other runtimes work around with libraries. Combined with strong typing and a mature audit and identity story, this is why .NET holds the ground it does in finance. We build ledgers, reconciliation, and reporting where being approximately right is not acceptable.",
-    img: "/assets/saas/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.dotnet.industries.fintech,
     imageAlt:
       "Custom .NET development for financial services and insurance platforms",
     imageTitle: "Fintech .NET development — Xorora",
@@ -40,7 +41,7 @@ const INDUSTRIES: {
     href: ROUTES.industry("health-tech"),
     cta: "Explore Healthcare",
     body: "Patient administration, clinical workflow, and integration with record systems that have been in place for a decade. Role boundaries and audit trails are enforced at the domain layer rather than the interface, so a new integration cannot route around them.",
-    img: "/assets/healthtech/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.dotnet.industries.healthcare,
     imageAlt:
       "Custom .NET development for healthcare administration and clinical workflow",
     imageTitle: "Healthcare .NET development — Xorora",
@@ -51,7 +52,7 @@ const INDUSTRIES: {
     href: ROUTES.industry("logistics"),
     cta: "Explore Logistics",
     body: "ERP and WMS integration, production scheduling, and shop-floor systems. This is where .NET's ability to talk to old infrastructure matters more than any framework feature, and where migration projects usually live.",
-    img: "/assets/ecommerce/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.dotnet.industries.manufacturing,
     imageAlt:
       "Custom .NET development for manufacturing and supply chain systems",
     imageTitle: "Manufacturing .NET development — Xorora",
@@ -62,7 +63,7 @@ const INDUSTRIES: {
     href: ROUTES.industries,
     cta: "Explore industries",
     body: "Long procurement cycles, long service lives, and accessibility and audit requirements that are contractual rather than aspirational. .NET's LTS cadence and Microsoft's support commitments matter here in a way they do not elsewhere.",
-    img: "/assets/realestate/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.dotnet.industries.government,
     imageAlt:
       "Custom .NET development for government and public sector platforms",
     imageTitle: "Public sector .NET development — Xorora",
@@ -73,7 +74,7 @@ const INDUSTRIES: {
     href: ROUTES.industry("saas"),
     cta: "Explore SaaS",
     body: "Multi-tenant systems with complex permission models and identity federation into customers' own directories. Entra ID and OpenID Connect are first-party rather than bolted on.",
-    img: "/assets/edtech/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.dotnet.industries.enterprise,
     imageAlt:
       "Custom .NET development for enterprise B2B and multi-tenant platforms",
     imageTitle: "Enterprise B2B .NET development — Xorora",

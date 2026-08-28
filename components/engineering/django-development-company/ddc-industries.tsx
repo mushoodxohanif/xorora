@@ -12,6 +12,7 @@ import Link from "next/link";
 import { LightSection } from "@/components/case-study/light-section";
 import { SectionHead } from "@/components/case-study/section-head";
 import { ROUTES } from "@/lib/navigation";
+import { SEO_LANDING_IMAGES } from "@/lib/seo-landing-images";
 
 const INDUSTRIES: {
   icon: LucideIcon;
@@ -27,7 +28,7 @@ const INDUSTRIES: {
     name: "Content and publishing",
     href: ROUTES.cmsDevelopment,
     body: "Editorial workflows, scheduled publishing, structured content models, and previews editors trust. Wagtail on Django gives you a CMS your team can extend rather than work around, which matters when the content model is specific to your business.",
-    img: "/assets/saas/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.django.industries.publishing,
     imageAlt:
       "Django development for publishing, editorial workflows and Wagtail CMS",
     imageTitle: "Publishing Django development — Xorora",
@@ -37,7 +38,7 @@ const INDUSTRIES: {
     name: "Education and learning platforms",
     href: ROUTES.industry("edtech"),
     body: "Cohorts, course structures, progress tracking, and assessments. Django's permission system maps cleanly onto the role complexity these platforms accumulate, and the admin gives course operations a working interface early rather than as a phase two.",
-    img: "/assets/edtech/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.django.industries.edtech,
     imageAlt:
       "Django development for education platforms, cohorts and assessments",
     imageTitle: "Edtech Django development — Xorora",
@@ -47,7 +48,7 @@ const INDUSTRIES: {
     name: "Healthcare",
     href: ROUTES.industry("health-tech"),
     body: "Patient administration, clinical workflow, and integrations with record systems already in place. Audit trails and access rules enforced at the data layer, so a new integration cannot route around them.",
-    img: "/assets/healthtech/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.django.industries.healthcare,
     imageAlt:
       "Django development for healthcare patient admin and clinical workflows",
     imageTitle: "Healthcare Django development — Xorora",
@@ -57,7 +58,7 @@ const INDUSTRIES: {
     name: "Marketplaces and two-sided platforms",
     href: ROUTES.industry("ecommerce"),
     body: "Supply and demand sides with different permissions over shared objects, plus commission logic, payouts, and dispute handling. Object-level permissions are where these systems usually get it wrong, and Django gives you the tools to get it right.",
-    img: "/assets/ecommerce/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.django.industries.marketplace,
     imageAlt:
       "Django development for marketplaces and two-sided commerce platforms",
     imageTitle: "Marketplace Django development — Xorora",
@@ -67,7 +68,7 @@ const INDUSTRIES: {
     name: "Data and analytics platforms",
     href: ROUTES.mlDataScience,
     body: "Where the interface sits on top of a real pipeline. Django serving the application while pandas, Celery, and the warehouse do the work behind it, in one language across both halves.",
-    img: "/assets/fintech/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.django.industries.data,
     imageAlt:
       "Django development for data and analytics platforms with Celery pipelines",
     imageTitle: "Data platform Django development — Xorora",
@@ -90,7 +91,7 @@ export function DdcIndustries() {
             <Link
               key={item.name}
               href={item.href}
-              className="group flex flex-col overflow-hidden rounded-(--r-lg) border border-border bg-white no-underline transition-all duration-200 hover:-translate-y-0.5 hover:border-border-strong hover:shadow-md"
+              className="group hover:-translate-y-0.5 flex flex-col overflow-hidden rounded-(--r-lg) border border-border bg-white no-underline transition-all duration-200 hover:border-border-strong hover:shadow-md"
             >
               <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
                 <Image

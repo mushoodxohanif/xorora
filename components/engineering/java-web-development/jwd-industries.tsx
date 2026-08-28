@@ -12,6 +12,7 @@ import Link from "next/link";
 import { LightSection } from "@/components/case-study/light-section";
 import { SectionHead } from "@/components/case-study/section-head";
 import { ROUTES } from "@/lib/navigation";
+import { SEO_LANDING_IMAGES } from "@/lib/seo-landing-images";
 
 const INDUSTRIES: {
   icon: LucideIcon;
@@ -29,7 +30,7 @@ const INDUSTRIES: {
     href: ROUTES.industry("fintech"),
     cta: "Explore Fintech",
     body: "Core banking, ledgers, and payment processing, where Java holds the ground it does because the alternative to correctness is a reconciliation problem. Transactional integrity, audit trails, and reporting built to survive an examiner rather than a demo.",
-    img: "https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1400&q=80",
+    img: SEO_LANDING_IMAGES.java.industries.banking,
     imageAlt: "Java web development for banking and payments platforms",
     imageTitle: "Banking Java development — Xorora",
   },
@@ -39,7 +40,7 @@ const INDUSTRIES: {
     href: ROUTES.industries,
     cta: "Explore industries",
     body: "Policy administration, claims, underwriting rules, and rating engines. These systems encode decades of rules that nobody can fully describe, which is why replacing them fails and modernizing them incrementally works. We map before we cut.",
-    img: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=80",
+    img: SEO_LANDING_IMAGES.java.industries.insurance,
     imageAlt: "Java web development for insurance policy and claims systems",
     imageTitle: "Insurance Java development — Xorora",
   },
@@ -49,7 +50,7 @@ const INDUSTRIES: {
     href: ROUTES.industry("saas"),
     cta: "Explore SaaS",
     body: "Systems where throughput is the requirement rather than a nice property. Kafka pipelines, back-pressure handling, and JVM tuning against realistic load rather than a benchmark that flatters the design.",
-    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1400&q=80",
+    img: SEO_LANDING_IMAGES.java.industries.telecom,
     imageAlt: "Java web development for telecom and high-volume platforms",
     imageTitle: "Telecom Java development — Xorora",
   },
@@ -59,7 +60,7 @@ const INDUSTRIES: {
     href: ROUTES.industry("e-commerce"),
     cta: "Explore E-commerce",
     body: "Order management, inventory, and fulfilment across channels. The hard part is consistency between systems that each believe they hold the truth, which is an integration problem before it is an application problem.",
-    img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=80",
+    img: SEO_LANDING_IMAGES.java.industries.retail,
     imageAlt: "Java web development for retail order management at scale",
     imageTitle: "Retail Java development — Xorora",
   },
@@ -69,7 +70,7 @@ const INDUSTRIES: {
     href: ROUTES.industry("logistics"),
     cta: "Explore Logistics",
     body: "Routing, scheduling, tracking, and the integrations into carrier and warehouse systems that were built before anyone considered an API. Java's ability to talk to old infrastructure matters more here than any framework feature.",
-    img: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1400&q=80",
+    img: SEO_LANDING_IMAGES.java.industries.logistics,
     imageAlt: "Java web development for logistics and transportation systems",
     imageTitle: "Logistics Java development — Xorora",
   },

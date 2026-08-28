@@ -3,6 +3,7 @@ import Image from "next/image";
 import { LightSection } from "@/components/case-study/light-section";
 import { SectionHead } from "@/components/case-study/section-head";
 import { imageAltTitle } from "@/lib/image-seo";
+import { SEO_LANDING_IMAGES } from "@/lib/seo-landing-images";
 
 const FACTORS = [
   {
@@ -50,7 +51,7 @@ export function JwdCost() {
       <div className="grid items-start gap-[clamp(28px,4vw,48px)] lg:grid-cols-[0.9fr_1.1fr]">
         <div className="relative aspect-[4/5] min-h-[280px] overflow-hidden rounded-(--r-xl) border border-border lg:sticky lg:top-24 lg:aspect-auto lg:min-h-[420px]">
           <Image
-            src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1400&q=80"
+            src={SEO_LANDING_IMAGES.java.cost}
             alt={photoSeo.alt}
             title={photoSeo.title}
             fill

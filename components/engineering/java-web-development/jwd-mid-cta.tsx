@@ -4,6 +4,7 @@ import { SignalRule } from "@/components/geometry/signal-rule";
 import { LetsTalkContactLink } from "@/components/modals";
 import { buttonClassName } from "@/lib/button-styles";
 import { imageAltTitle } from "@/lib/image-seo";
+import { SEO_LANDING_IMAGES } from "@/lib/seo-landing-images";
 
 const photoSeo = imageAltTitle({
   primary: "Java web development company",
@@ -42,7 +43,7 @@ export function JwdMidCta() {
         </div>
         <div className="relative aspect-[5/4] overflow-hidden rounded-(--r-xl) border border-indigo-100 lg:aspect-auto lg:min-h-[340px]">
           <Image
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=80"
+            src={SEO_LANDING_IMAGES.java.midCta}
             alt={photoSeo.alt}
             title={photoSeo.title}
             fill

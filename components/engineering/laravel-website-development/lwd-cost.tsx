@@ -3,6 +3,7 @@ import Image from "next/image";
 import { LightSection } from "@/components/case-study/light-section";
 import { SectionHead } from "@/components/case-study/section-head";
 import { imageAltTitle } from "@/lib/image-seo";
+import { SEO_LANDING_IMAGES } from "@/lib/seo-landing-images";
 
 const FACTORS = [
   {
@@ -50,7 +51,7 @@ export function LwdCost() {
       <div className="grid items-start gap-[clamp(28px,4vw,48px)] lg:grid-cols-[0.9fr_1.1fr]">
         <div className="relative aspect-[4/5] min-h-[280px] overflow-hidden rounded-(--r-xl) border border-border lg:sticky lg:top-24 lg:aspect-auto lg:min-h-[420px]">
           <Image
-            src="/assets/infrastructure/consultancy-datacenter.webp"
+            src={SEO_LANDING_IMAGES.laravel.cost}
             alt={photoSeo.alt}
             title={photoSeo.title}
             fill
@@ -81,8 +82,8 @@ export function LwdCost() {
         </div>
       </div>
       <p className="mt-8 mb-0 max-w-[720px] font-sans text-[15.5px] text-fg2 leading-relaxed">
-        Discovery produces a fixed estimate. You see the number before you commit
-        to the build.
+        Discovery produces a fixed estimate. You see the number before you
+        commit to the build.
       </p>
     </LightSection>
   );

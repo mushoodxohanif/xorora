@@ -12,6 +12,7 @@ import Link from "next/link";
 import { LightSection } from "@/components/case-study/light-section";
 import { SectionHead } from "@/components/case-study/section-head";
 import { ROUTES } from "@/lib/navigation";
+import { SEO_LANDING_IMAGES } from "@/lib/seo-landing-images";
 
 const INDUSTRIES: {
   icon: LucideIcon;
@@ -27,7 +28,7 @@ const INDUSTRIES: {
     name: "Fintech and regtech",
     href: ROUTES.industry("fintech"),
     body: "Regulatory change detection is a parsing and classification problem, which is why Python's NLP ecosystem suits it better than any alternative. Decimal precision, immutable audit trails, and reconciliation logic are handled at the data layer rather than patched in later.",
-    img: "/assets/fintech/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.python.industries.fintech,
     imageAlt:
       "Python web development for fintech and regtech compliance platforms",
     imageTitle: "Fintech Python web development — Xorora",
@@ -37,7 +38,7 @@ const INDUSTRIES: {
     name: "B2B SaaS",
     href: ROUTES.industry("saas"),
     body: "Multi-tenancy is an access-control problem before it is a features problem. Django's permission framework and row-level scoping let us serve several user types from one backend without duplicating business rules.",
-    img: "/assets/saas/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.python.industries.saas,
     imageAlt: "Python web development for multi-tenant B2B SaaS platforms",
     imageTitle: "B2B SaaS Python development — Xorora",
   },
@@ -46,7 +47,7 @@ const INDUSTRIES: {
     name: "Healthcare",
     href: ROUTES.industry("health-tech"),
     body: "Clinical data arrives in HL7 and FHIR, and Python has mature libraries for parsing both. We can build the ingestion pipeline, the audit trail, and the application on top in one language, which keeps the compliance surface in one place instead of three.",
-    img: "/assets/healthtech/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.python.industries.healthcare,
     imageAlt:
       "Python web development for healthcare, HL7 and FHIR data platforms",
     imageTitle: "Healthcare Python web development — Xorora",
@@ -56,7 +57,7 @@ const INDUSTRIES: {
     name: "Logistics and supply chain",
     href: ROUTES.industry("logistics"),
     body: "Route optimization and demand forecasting are constraint and modeling problems. Python runs OR-Tools and pandas natively, so the optimizer and the web application around it live in the same codebase rather than in a separate system nobody maintains.",
-    img: "/assets/logistics/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.python.industries.logistics,
     imageAlt:
       "Python web development for logistics, routing and supply chain systems",
     imageTitle: "Logistics Python web development — Xorora",
@@ -66,7 +67,7 @@ const INDUSTRIES: {
     name: "Retail and e-commerce",
     href: ROUTES.industry("ecommerce"),
     body: "Recommendation, inventory forecasting, and dynamic pricing are all model-backed features. We can build the model and the storefront backend in one stack, so a pricing change ships as a deployment rather than an integration project.",
-    img: "/assets/ecommerce/header-bg.jpg",
+    img: SEO_LANDING_IMAGES.python.industries.ecommerce,
     imageAlt:
       "Python web development for retail and e-commerce storefront backends",
     imageTitle: "Retail Python web development — Xorora",
@@ -89,7 +90,7 @@ export function PwdIndustries() {
             <Link
               key={item.name}
               href={item.href}
-              className="group flex flex-col overflow-hidden rounded-(--r-lg) border border-border bg-white no-underline transition-all duration-200 hover:-translate-y-0.5 hover:border-border-strong hover:shadow-md"
+              className="group hover:-translate-y-0.5 flex flex-col overflow-hidden rounded-(--r-lg) border border-border bg-white no-underline transition-all duration-200 hover:border-border-strong hover:shadow-md"
             >
               <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
                 <Image
