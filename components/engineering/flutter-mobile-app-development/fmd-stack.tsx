@@ -32,7 +32,7 @@ const GROUPS: TechStackGroup[] = [
   },
   {
     title: "Local data",
-    logos: ["Drift", "Isar", "Hive", "flutter_secure_storage"],
+    logos: ["Drift", "Isar", "Hive", "Secure Storage"],
   },
   {
     title: "Backend & services",
