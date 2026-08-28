@@ -11,6 +11,17 @@ export interface BlogSeedPost {
 
 export const BLOG_POSTS: BlogSeedPost[] = [
   {
+    slug: "best-java-development-companies-startups-2026",
+    cat: "Software Development",
+    title: "Best Java Development Companies for Startups in 2026",
+    excerpt:
+      "8 startup-friendly Java development companies for 2026, compared by specialty, rates, and delivery model, including Xorora at #1.",
+    read: "13 min",
+    date: "Aug 28, 2026",
+    img: "/assets/blog/best-java-development-companies-startups-2026.png",
+    featured: true,
+  },
+  {
     slug: "flutter-vs-react-native-comparison",
     cat: "Software Development",
     title:
@@ -20,7 +31,6 @@ export const BLOG_POSTS: BlogSeedPost[] = [
     read: "11 min",
     date: "Aug 27, 2026",
     img: "/assets/blog/flutter-vs-react-native-comparison.png",
-    featured: true,
   },
   {
     slug: "top-3-django-development-companies-2026",

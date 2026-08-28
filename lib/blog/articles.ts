@@ -1,5 +1,10 @@
 import type { ComponentType } from "react";
 import {
+  BEST_JAVA_STARTUPS_META,
+  BEST_JAVA_STARTUPS_SLUG,
+  BestJavaStartupsArticle,
+} from "@/components/blog/posts/best-java-development-companies-startups-2026";
+import {
   FLUTTER_VS_RN_META,
   FLUTTER_VS_RN_SLUG,
   FlutterVsRnArticle,
@@ -42,6 +47,10 @@ export interface BlogArticleDefinition extends BlogArticleMeta {
 }
 
 const BLOG_ARTICLES: Record<string, BlogArticleDefinition> = {
+  [BEST_JAVA_STARTUPS_SLUG]: {
+    ...BEST_JAVA_STARTUPS_META,
+    Article: BestJavaStartupsArticle,
+  },
   [FLUTTER_VS_RN_SLUG]: {
     ...FLUTTER_VS_RN_META,
     Article: FlutterVsRnArticle,
