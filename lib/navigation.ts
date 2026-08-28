@@ -40,6 +40,8 @@ export const ROUTES = {
   djangoDevelopmentCompany: "/django-development-company",
   /** Unlisted SEO landing — do not add to XO_NAV or FOOTER_COLUMNS */
   flutterMobileAppDevelopment: "/flutter-mobile-app-development",
+  /** Unlisted SEO landing — do not add to XO_NAV or FOOTER_COLUMNS */
+  javaWebDevelopment: "/java-web-development",
   ai: "/ai",
   aiAgentDevelopment: "/ai/ai-agent-development",
   mlDataScience: "/ai/ml-data-science-services",
