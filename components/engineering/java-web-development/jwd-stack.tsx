@@ -1,11 +1,10 @@
-import Image from "next/image";
 import { LightSection } from "@/components/case-study/light-section";
 import { SectionHead } from "@/components/case-study/section-head";
+import {
+  TechStackGrid,
+  type TechStackGroup,
+} from "@/components/engineering/shared/tech-stack-grid";
 import { imageAltTitle } from "@/lib/image-seo";
-
-type Logo =
-  | { name: string; src: string }
-  | { name: string; abbr: string; color: string };
 
 const BOUNDARIES = [
   {
@@ -22,53 +21,44 @@ const BOUNDARIES = [
   },
 ] as const;
 
-const GROUPS: { title: string; logos: Logo[] }[] = [
+const GROUPS: TechStackGroup[] = [
   {
     title: "Language & runtime",
-    logos: [
-      { name: "Java LTS", src: "/assets/tech-stack/java.svg" },
-      { name: "Kotlin", src: "/assets/tech-stack/kotlin.svg" },
-      { name: "Spring Boot", src: "/assets/tech-stack/spring.svg" },
-      { name: "Jakarta EE", abbr: "JAK", color: "#E76F00" },
-    ],
+    logos: ["Java LTS", "Kotlin", "Spring Boot", "Jakarta EE"],
   },
   {
     title: "Data",
     logos: [
-      { name: "PostgreSQL", src: "/assets/tech-stack/postgresql.svg" },
-      { name: "Oracle", abbr: "OR", color: "#F80000" },
-      { name: "Hibernate", abbr: "HI", color: "#59666C" },
-      { name: "Spring Data", abbr: "SD", color: "#6DB33F" },
-      { name: "Flyway", abbr: "FW", color: "#CC0200" },
-      { name: "Redis", src: "/assets/tech-stack/redis.svg" },
+      "PostgreSQL",
+      "Oracle",
+      "Hibernate",
+      "Spring Data",
+      "Flyway",
+      "Redis",
     ],
   },
   {
     title: "Messaging",
-    logos: [
-      { name: "Kafka", abbr: "KA", color: "#231F20" },
-      { name: "RabbitMQ", src: "/assets/tech-stack/rabbitmq.svg" },
-      { name: "Spring Cloud Stream", abbr: "SC", color: "#6DB33F" },
-    ],
+    logos: ["Kafka", "RabbitMQ", "Spring Cloud Stream"],
   },
   {
     title: "Build & infra",
     logos: [
-      { name: "Maven", abbr: "MV", color: "#C71A36" },
-      { name: "Gradle", abbr: "GR", color: "#02303A" },
-      { name: "Docker", src: "/assets/tech-stack/docker.svg" },
-      { name: "Kubernetes", abbr: "K8", color: "#326CE5" },
-      { name: "GitHub Actions", src: "/assets/tech-stack/githubactions.svg" },
+      "Maven",
+      "Gradle",
+      "Docker",
+      "Kubernetes",
+      "GitHub Actions",
     ],
   },
   {
     title: "Quality",
     logos: [
-      { name: "JUnit 5", abbr: "J5", color: "#25A162" },
-      { name: "Testcontainers", abbr: "TC", color: "#291A3E" },
-      { name: "ArchUnit", abbr: "AU", color: "#0066CC" },
-      { name: "Micrometer", abbr: "MC", color: "#0066CC" },
-      { name: "OpenTelemetry", abbr: "OT", color: "#F5A800" },
+      "JUnit 5",
+      "Testcontainers",
+      "ArchUnit",
+      "Micrometer",
+      "OpenTelemetry",
     ],
   },
 ];
@@ -110,52 +100,7 @@ export function JwdStack() {
         autoscaling are the cases where a GraalVM native image earns its build
         complexity. Most systems do not need it, and we will say so.
       </p>
-      <div className="flex flex-col gap-8" title={gridSeo.title}>
-        {GROUPS.map((group) => (
-          <div key={group.title}>
-            <h3 className="mb-4 font-sans font-semibold text-[15px] text-fg2 tracking-[0.02em]">
-              {group.title}
-            </h3>
-            <ul className="m-0 grid list-none grid-cols-2 gap-3 p-0 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-              {group.logos.map((logo) => (
-                <li
-                  key={logo.name}
-                  className="flex items-center gap-3.5 rounded-(--r-md) border border-border bg-white px-5 py-4"
-                >
-                  <span className="relative flex h-8 w-8 shrink-0 items-center justify-center">
-                    {"src" in logo ? (
-                      <Image
-                        src={logo.src}
-                        alt={`${logo.name} logo`}
-                        title={logo.name}
-                        width={32}
-                        height={32}
-                        className="h-8 w-8 object-contain"
-                        unoptimized
-                      />
-                    ) : (
-                      <span
-                        className="flex h-8 w-8 items-center justify-center rounded-[8px] border font-bold font-sans text-[11px]"
-                        style={{
-                          background: `${logo.color}1A`,
-                          borderColor: `${logo.color}40`,
-                          color: logo.color,
-                        }}
-                        title={logo.name}
-                      >
-                        {logo.abbr}
-                      </span>
-                    )}
-                  </span>
-                  <span className="font-sans font-semibold text-[14px] text-fg1 leading-snug">
-                    {logo.name}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
+      <TechStackGrid groups={GROUPS} title={gridSeo.title} />
     </LightSection>
   );
 }

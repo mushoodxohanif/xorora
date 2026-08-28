@@ -1,13 +1,12 @@
-import Image from "next/image";
 import Link from "next/link";
 import { LightSection } from "@/components/case-study/light-section";
 import { SectionHead } from "@/components/case-study/section-head";
+import {
+  TechStackGrid,
+  type TechStackGroup,
+} from "@/components/engineering/shared/tech-stack-grid";
 import { imageAltTitle } from "@/lib/image-seo";
 import { ROUTES } from "@/lib/navigation";
-
-type Logo =
-  | { name: string; src: string }
-  | { name: string; abbr: string; color: string };
 
 const FRAMEWORKS = [
   {
@@ -26,53 +25,38 @@ const FRAMEWORKS = [
   },
 ] as const;
 
-const GROUPS: { title: string; logos: Logo[] }[] = [
+const GROUPS: TechStackGroup[] = [
   {
     title: "Frameworks",
     logos: [
-      { name: "Python", src: "/assets/tech-stack/python.svg" },
-      { name: "Django", src: "/assets/tech-stack/django.svg" },
-      { name: "FastAPI", src: "/assets/tech-stack/fastapi.svg" },
-      { name: "Flask", src: "/assets/tech-stack/flask.svg" },
-      { name: "Django REST Framework", abbr: "DR", color: "#A30000" },
+      "Python",
+      "Django",
+      "FastAPI",
+      "Flask",
+      "Django REST Framework",
     ],
   },
   {
     title: "Async & queues",
-    logos: [
-      { name: "Celery", src: "/assets/tech-stack/celery.svg" },
-      { name: "Redis", src: "/assets/tech-stack/redis.svg" },
-      { name: "RabbitMQ", src: "/assets/tech-stack/rabbitmq.svg" },
-      { name: "asyncio", abbr: "as", color: "#3776AB" },
-    ],
+    logos: ["Celery", "Redis", "RabbitMQ", "asyncio"],
   },
   {
     title: "Data",
-    logos: [
-      { name: "PostgreSQL", src: "/assets/tech-stack/postgresql.svg" },
-      { name: "MongoDB", src: "/assets/tech-stack/mongodb.svg" },
-      { name: "Elasticsearch", src: "/assets/tech-stack/elasticsearch.svg" },
-      { name: "pandas", src: "/assets/tech-stack/pandas.svg" },
-    ],
+    logos: ["PostgreSQL", "MongoDB", "Elasticsearch", "pandas"],
   },
   {
     title: "Infra",
     logos: [
-      { name: "Docker", src: "/assets/tech-stack/docker.svg" },
-      { name: "Kubernetes", src: "/assets/ml-platforms/kubernetes.svg" },
-      { name: "AWS", src: "/assets/tech-stack/aws.svg" },
-      { name: "GCP", src: "/assets/tech-stack/google-cloud.svg" },
-      { name: "GitHub Actions", src: "/assets/tech-stack/githubactions.svg" },
+      "Docker",
+      "Kubernetes",
+      "AWS",
+      "GCP",
+      "GitHub Actions",
     ],
   },
   {
     title: "Quality",
-    logos: [
-      { name: "pytest", src: "/assets/tech-stack/pytest.svg" },
-      { name: "mypy", abbr: "my", color: "#1F425F" },
-      { name: "ruff", abbr: "rf", color: "#D7FF64" },
-      { name: "Sentry", src: "/assets/tech-stack/sentry.svg" },
-    ],
+    logos: ["pytest", "mypy", "ruff", "Sentry"],
   },
 ];
 
@@ -124,52 +108,7 @@ export function PwdStack() {
         service handling inference or high-throughput endpoints is a common
         shape, and a deliberate one.
       </p>
-      <div className="flex flex-col gap-8" title={gridSeo.title}>
-        {GROUPS.map((group) => (
-          <div key={group.title}>
-            <h3 className="mb-4 font-sans font-semibold text-[15px] text-fg2 tracking-[0.02em]">
-              {group.title}
-            </h3>
-            <ul className="m-0 grid list-none grid-cols-2 gap-3 p-0 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-              {group.logos.map((logo) => (
-                <li
-                  key={logo.name}
-                  className="flex items-center gap-3.5 rounded-(--r-md) border border-border bg-white px-5 py-4"
-                >
-                  <span className="relative flex h-8 w-8 shrink-0 items-center justify-center">
-                    {"src" in logo ? (
-                      <Image
-                        src={logo.src}
-                        alt={`${logo.name} logo`}
-                        title={logo.name}
-                        width={32}
-                        height={32}
-                        className="h-8 w-8 object-contain"
-                        unoptimized
-                      />
-                    ) : (
-                      <span
-                        className="flex h-8 w-8 items-center justify-center rounded-[8px] border font-bold font-sans text-[12px]"
-                        style={{
-                          background: `${logo.color}1A`,
-                          borderColor: `${logo.color}40`,
-                          color: logo.color === "#D7FF64" ? "#3F4A00" : logo.color,
-                        }}
-                        title={logo.name}
-                      >
-                        {logo.abbr}
-                      </span>
-                    )}
-                  </span>
-                  <span className="font-sans font-semibold text-[14px] text-fg1 leading-snug">
-                    {logo.name}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
+      <TechStackGrid groups={GROUPS} title={gridSeo.title} />
     </LightSection>
   );
 }

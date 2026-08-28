@@ -1,11 +1,10 @@
-import Image from "next/image";
 import { LightSection } from "@/components/case-study/light-section";
 import { SectionHead } from "@/components/case-study/section-head";
+import {
+  TechStackGrid,
+  type TechStackGroup,
+} from "@/components/engineering/shared/tech-stack-grid";
 import { imageAltTitle } from "@/lib/image-seo";
-
-type Logo =
-  | { name: string; src: string }
-  | { name: string; abbr: string; color: string };
 
 const BOUNDARIES = [
   {
@@ -22,63 +21,47 @@ const BOUNDARIES = [
   },
 ] as const;
 
-const GROUPS: { title: string; logos: Logo[] }[] = [
+const GROUPS: TechStackGroup[] = [
   {
     title: "Framework",
-    logos: [
-      { name: ".NET 10 LTS", src: "/assets/tech-stack/dotnet.svg" },
-      { name: "C#", src: "/assets/tech-stack/csharp.svg" },
-      { name: "ASP.NET Core", abbr: "ASP", color: "#512BD4" },
-      { name: "Blazor", abbr: "BL", color: "#512BD4" },
-      { name: "MAUI", abbr: "MA", color: "#512BD4" },
-    ],
+    logos: [".NET 10 LTS", "C#", "ASP.NET Core", "Blazor", "MAUI"],
   },
   {
     title: "Data",
     logos: [
-      { name: "SQL Server", src: "/assets/tech-stack/sql.svg" },
-      { name: "PostgreSQL", src: "/assets/tech-stack/postgresql.svg" },
-      { name: "EF Core", abbr: "EF", color: "#512BD4" },
-      { name: "Dapper", abbr: "DP", color: "#D2691E" },
-      { name: "Redis", src: "/assets/tech-stack/redis.svg" },
+      "SQL Server",
+      "PostgreSQL",
+      "EF Core",
+      "Dapper",
+      "Redis",
     ],
   },
   {
     title: "Messaging",
     logos: [
-      { name: "Azure Service Bus", abbr: "SB", color: "#0078D4" },
-      { name: "RabbitMQ", src: "/assets/tech-stack/rabbitmq.svg" },
-      { name: "MassTransit", abbr: "MT", color: "#E85D04" },
-      { name: "SignalR", abbr: "SR", color: "#512BD4" },
+      "Azure Service Bus",
+      "RabbitMQ",
+      "MassTransit",
+      "SignalR",
     ],
   },
   {
     title: "Identity",
-    logos: [
-      { name: "Entra ID", abbr: "EN", color: "#0078D4" },
-      { name: "IdentityServer", abbr: "IS", color: "#F05033" },
-      { name: "OAuth", abbr: "OA", color: "#000000" },
-      { name: "OpenID Connect", abbr: "OI", color: "#F78C40" },
-    ],
+    logos: ["Entra ID", "IdentityServer", "OAuth", "OpenID Connect"],
   },
   {
     title: "Infra",
     logos: [
-      { name: "Azure", src: "/assets/tech-stack/azure.svg" },
-      { name: "Docker", src: "/assets/tech-stack/docker.svg" },
-      { name: "Kubernetes", abbr: "K8", color: "#326CE5" },
-      { name: "Azure DevOps", abbr: "AO", color: "#0078D4" },
-      { name: "GitHub Actions", src: "/assets/tech-stack/githubactions.svg" },
+      "Azure",
+      "Docker",
+      "Kubernetes",
+      "Azure DevOps",
+      "GitHub Actions",
     ],
   },
   {
     title: "Quality",
-    logos: [
-      { name: "xUnit", abbr: "XU", color: "#25A9E0" },
-      { name: "Testcontainers", abbr: "TC", color: "#291A3E" },
-      { name: "Roslyn analyzers", abbr: "RA", color: "#68217A" },
-      { name: "OpenTelemetry", abbr: "OT", color: "#F5A800" },
-    ],
+    logos: ["xUnit", "Testcontainers", "Roslyn analyzers", "OpenTelemetry"],
   },
 ];
 
@@ -117,52 +100,7 @@ export function CdnStack() {
         needs hand control. Server-side Blazor for internal applications,
         WebAssembly where the client needs to work without a live connection.
       </p>
-      <div className="flex flex-col gap-8" title={gridSeo.title}>
-        {GROUPS.map((group) => (
-          <div key={group.title}>
-            <h3 className="mb-4 font-sans font-semibold text-[15px] text-fg2 tracking-[0.02em]">
-              {group.title}
-            </h3>
-            <ul className="m-0 grid list-none grid-cols-2 gap-3 p-0 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-              {group.logos.map((logo) => (
-                <li
-                  key={logo.name}
-                  className="flex items-center gap-3.5 rounded-(--r-md) border border-border bg-white px-5 py-4"
-                >
-                  <span className="relative flex h-8 w-8 shrink-0 items-center justify-center">
-                    {"src" in logo ? (
-                      <Image
-                        src={logo.src}
-                        alt={`${logo.name} logo`}
-                        title={logo.name}
-                        width={32}
-                        height={32}
-                        className="h-8 w-8 object-contain"
-                        unoptimized
-                      />
-                    ) : (
-                      <span
-                        className="flex h-8 w-8 items-center justify-center rounded-[8px] border font-bold font-sans text-[11px]"
-                        style={{
-                          background: `${logo.color}1A`,
-                          borderColor: `${logo.color}40`,
-                          color: logo.color,
-                        }}
-                        title={logo.name}
-                      >
-                        {logo.abbr}
-                      </span>
-                    )}
-                  </span>
-                  <span className="font-sans font-semibold text-[14px] text-fg1 leading-snug">
-                    {logo.name}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
+      <TechStackGrid groups={GROUPS} title={gridSeo.title} />
     </LightSection>
   );
 }
