@@ -82,6 +82,10 @@ const EXACT: Record<string, string> = {
   Micrometer: "/assets/tech-stack/spring.svg",
 
   // Flutter / mobile ecosystem
+  "Dart 3": "https://cdn.simpleicons.org/dart",
+  Firebase: "https://cdn.simpleicons.org/firebase",
+  Codemagic: "https://cdn.simpleicons.org/codemagic",
+  Fastlane: "https://cdn.simpleicons.org/fastlane",
   "Flutter stable": "/assets/tech-stack/flutter.svg",
   Impeller: "/assets/tech-stack/flutter.svg",
   Riverpod: "/assets/tech-stack/flutter.svg",
@@ -98,6 +102,32 @@ const EXACT: Record<string, string> = {
   Patrol: "/assets/tech-stack/flutter.svg",
   Crashlytics: "/assets/tech-stack/flutter.svg",
   "FCM and APNs": "/assets/tech-stack/flutter.svg",
+
+  // Node / Python quality & data tools (no reliable CDN slug)
+  TypeScript: "https://cdn.simpleicons.org/typescript",
+  NestJS: "https://cdn.simpleicons.org/nestjs",
+  Fastify: "https://cdn.simpleicons.org/fastify",
+  "Socket.IO": "https://cdn.simpleicons.org/socketdotio",
+  Prisma: "https://cdn.simpleicons.org/prisma",
+  Drizzle: "https://cdn.simpleicons.org/drizzle",
+  BullMQ: "/assets/tech-stack/rabbitmq.svg",
+  Vitest: "https://cdn.simpleicons.org/vitest",
+  Playwright: "/assets/tech-stack/nodejs.svg",
+  ESLint: "https://cdn.simpleicons.org/eslint",
+  OpenTelemetry: "https://cdn.simpleicons.org/opentelemetry",
+  mypy: "/assets/tech-stack/python.svg",
+  ruff: "https://cdn.simpleicons.org/ruff",
+  HTMX: "https://cdn.simpleicons.org/htmx",
+  Alpine: "https://cdn.simpleicons.org/alpine.js",
+  MySQL: "https://cdn.simpleicons.org/mysql",
+  Gradle: "https://cdn.simpleicons.org/gradle",
+  Maven: "https://cdn.simpleicons.org/apachemaven",
+  xUnit: "/assets/tech-stack/dotnet.svg",
+  OAuth: "https://cdn.simpleicons.org/openid",
+  "OpenID Connect": "https://cdn.simpleicons.org/openid",
+  Pest: "/assets/tech-stack/php.svg",
+  PHPStan: "/assets/tech-stack/php.svg",
+  Oracle: "/assets/tech-stack/sql.svg",
 };
 
 const ALIASES: Record<string, string> = {
@@ -139,7 +169,9 @@ export function techStackDisplayIcon(name: string): string {
 
   const aliasKey = name.trim().toLowerCase();
   if (ALIASES[aliasKey]) {
-    const aliased = techIconUrl(ALIASES[aliasKey]);
+    const aliasName = ALIASES[aliasKey];
+    if (EXACT[aliasName]) return EXACT[aliasName];
+    const aliased = techIconUrl(aliasName);
     if (aliased) return aliased;
   }
 

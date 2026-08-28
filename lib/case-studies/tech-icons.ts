@@ -93,7 +93,7 @@ const TECH_CDN_SLUGS: Record<string, string> = {
   mypy: "mypy",
   ruff: "ruff",
   htmx: "htmx",
-  alpine: "alpinejs",
+  alpine: "alpine.js",
   mysql: "mysql",
   gradle: "gradle",
   maven: "apachemaven",
