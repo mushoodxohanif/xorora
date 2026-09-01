@@ -18,7 +18,7 @@ export const BLOG_POSTS: BlogSeedPost[] = [
       "A practical guide to Python application development, frameworks, use cases, cost factors, and how to choose the right Python app development company.",
     read: "10 min",
     date: "Sep 1, 2026",
-    img: "/assets/blog/python-application-development-guide-2026.png",
+    img: "/assets/blog/python-application-development-guide-2026-hero.png",
     featured: true,
   },
   {

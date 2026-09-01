@@ -50,6 +50,12 @@ function seedPosts(): BlogPost[] {
   return BLOG_POSTS.map(mapSeedPost);
 }
 
+/** Prefer seed image paths so hero updates in blog-data.ts apply without re-seeding DB. */
+function mergeSeedImage(post: BlogPost, seed?: BlogPost): BlogPost {
+  if (!seed) return post;
+  return { ...post, img: seed.img };
+}
+
 export async function listPublishedBlogPosts(): Promise<BlogPost[]> {
   if (!hasDatabaseUrl()) {
     return seedPosts();
@@ -63,7 +69,10 @@ export async function listPublishedBlogPosts(): Promise<BlogPost[]> {
 
   const fromDb = new Map(rows.map((row) => [row.slug, mapPost(row)]));
   const fromSeed = seedPosts();
-  const listed = fromSeed.map((post) => fromDb.get(post.slug) ?? post);
+  const listed = fromSeed.map((post) => {
+    const dbPost = fromDb.get(post.slug);
+    return dbPost ? mergeSeedImage(dbPost, post) : post;
+  });
   const extras = rows
     .map(mapPost)
     .filter((post) => !fromSeed.some((seed) => seed.slug === post.slug));
@@ -81,7 +90,10 @@ export async function getPublishedBlogPostBySlug(
       .limit(1);
 
     const row = rows[0];
-    if (row) return mapPost(row);
+    if (row) {
+      const seed = seedPosts().find((post) => post.slug === slug);
+      return mergeSeedImage(mapPost(row), seed);
+    }
   }
 
   return seedPosts().find((post) => post.slug === slug) ?? null;
