@@ -84,4 +84,15 @@ export const SEO_LANDING_IMAGES = {
     cost: unsplashPhoto("photo-1558494949-ef010cbdcc31"),
     midCta: unsplashPhoto("photo-1522071820081-009f0129c71c"),
   },
+  pythonApp: {
+    industries: {
+      saas: unsplashPhoto("photo-1553877522-43269d4ea984"),
+      fintech: unsplashPhoto("photo-1642790103337-fb15126f3041"),
+      ai: unsplashPhoto("photo-1677442136019-21780ecad995"),
+      automation: unsplashPhoto("photo-1454165804606-c3d57bc86b40"),
+      data: unsplashPhoto("photo-1533750345-63e4b756379a"),
+    },
+    cost: unsplashPhoto("photo-1504639725590-34d0984388bd"),
+    midCta: unsplashPhoto("photo-1517694712202-14dd9538aa97"),
+  },
 } as const;

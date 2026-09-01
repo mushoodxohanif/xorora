@@ -33,6 +33,8 @@ export const ROUTES = {
   cmsDevelopment: "/engineering/cms-development-services",
   uiUxServices: "/engineering/ui-ux-services",
   pythonWebDevelopment: "/python-web-development-services",
+  /** Unlisted SEO landing — do not add to XO_NAV or FOOTER_COLUMNS */
+  pythonApplicationDevelopment: "/python-application-development",
   nodejsWebDevelopment: "/nodejs-web-development-services",
   laravelWebsiteDevelopment: "/laravel-website-development-services",
   customDotnetDevelopment: "/custom-dotnet-development",
