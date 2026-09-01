@@ -1,5 +1,10 @@
 import type { ComponentType } from "react";
 import {
+  PYTHON_APP_GUIDE_META,
+  PYTHON_APP_GUIDE_SLUG,
+  PythonAppGuideArticle,
+} from "@/components/blog/posts/python-application-development-guide-2026";
+import {
   BEST_JAVA_STARTUPS_META,
   BEST_JAVA_STARTUPS_SLUG,
   BestJavaStartupsArticle,
@@ -47,6 +52,10 @@ export interface BlogArticleDefinition extends BlogArticleMeta {
 }
 
 const BLOG_ARTICLES: Record<string, BlogArticleDefinition> = {
+  [PYTHON_APP_GUIDE_SLUG]: {
+    ...PYTHON_APP_GUIDE_META,
+    Article: PythonAppGuideArticle,
+  },
   [BEST_JAVA_STARTUPS_SLUG]: {
     ...BEST_JAVA_STARTUPS_META,
     Article: BestJavaStartupsArticle,
