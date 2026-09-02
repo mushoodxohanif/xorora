@@ -18,7 +18,7 @@ export function Wordmark({
     <Image
       src={
         dark
-          ? "/assets/logo-wordmark-dark-transparent.svg"
+          ? "/assets/nav-logo-full-v3.png"
           : "/assets/logo-wordmark-light-transparent.svg"
       }
       alt={alt}

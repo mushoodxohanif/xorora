@@ -48,7 +48,7 @@ export function AboutDifferent() {
           <h2 className="m-0 flex flex-wrap items-center gap-[0.3em] font-bold font-sans text-[clamp(32px,4.4vw,52px)] text-white leading-tight tracking-[-0.02em]">
             <span>Our</span>
             <Image
-              src="/assets/nav-logo-x.png"
+              src="/assets/nav-logo-x-v6.png"
               alt={brandLogoAlt("icon").alt}
               title={brandLogoAlt("icon").title}
               width={0}

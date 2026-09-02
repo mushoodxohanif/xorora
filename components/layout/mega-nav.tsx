@@ -82,18 +82,17 @@ export function MegaNav({ current, onLetsTalk, nav }: MegaNavProps) {
           <div className="pointer-events-auto flex w-full max-w-[1080px] items-center gap-3 rounded-pill border border-white/12 bg-[rgba(8,12,30,0.72)] px-[9px] py-[9px] pl-[22px] shadow-[0_18px_50px_-24px_rgba(0,0,0,0.7)] backdrop-blur-lg">
             <Link
               href={ROUTES.home}
-              className="relative flex h-9 w-[150px] shrink-0 items-center"
+              className="relative flex h-9 w-[160px] shrink-0 items-center"
             >
               <Image
-                src="/assets/nav-logo-full.png"
+                src="/assets/nav-logo-full-v3.png"
                 alt={brandLogoAlt("full").alt}
                 title={brandLogoAlt("full").title}
-                width={0}
-                height={0}
+                width={150}
+                height={28}
                 sizes="150px"
-                style={{ height: 28, width: "auto" }}
                 className={cn(
-                  "absolute left-0 h-auto w-auto origin-left transition-all duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform",
+                  "absolute left-0 h-7 w-auto max-h-7 origin-left object-contain object-left transition-all duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform",
                   scrolled
                     ? "-translate-x-1.5 scale-90 opacity-0 blur-[2px]"
                     : "translate-x-0 scale-100 opacity-100 blur-0",
@@ -101,15 +100,14 @@ export function MegaNav({ current, onLetsTalk, nav }: MegaNavProps) {
                 priority
               />
               <Image
-                src="/assets/nav-logo-x.png"
+                src="/assets/nav-logo-x-v6.png"
                 alt={brandLogoAlt("icon").alt}
                 title={brandLogoAlt("icon").title}
-                width={0}
-                height={0}
-                sizes="40px"
-                style={{ height: 28, width: "auto" }}
+                width={37}
+                height={28}
+                sizes="37px"
                 className={cn(
-                  "absolute left-0 h-auto w-auto origin-left transition-all duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform",
+                  "absolute left-0 h-7 w-auto max-h-7 origin-left object-contain object-left transition-all duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform",
                   scrolled
                     ? "translate-x-0 scale-100 opacity-100 blur-0"
                     : "scale-50 opacity-0 blur-[2px]",
