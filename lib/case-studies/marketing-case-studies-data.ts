@@ -4,9 +4,6 @@ import type {
   CaseStudySectionType,
 } from "@/lib/case-studies/types";
 
-const unsplash = (id: string, w = 1400) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
-
 interface SeedMetric {
   value: string;
   label: string;
@@ -44,7 +41,8 @@ export const seedMarketingCaseStudies: MarketingSeedCaseStudy[] = [
     tags: ["Meta Ads", "D2C", "Cold Start"],
     category: "marketing",
     lead: "A premium coconut dessert brand with no paid social history. Xorora built the Meta account from a blank Ads Manager and drove 10,732 purchases at 5.27x average purchase ROAS.",
-    heroImage: unsplash("photo-1481391319762-47dff72954d9"),
+    heroImage:
+      "/assets/case-studies/meta-ads-sugar-free-dessert-cold-start/doc-image.jpg",
     headerBg: "/assets/header-bg.jpg",
     heroUrl: "meta.com",
     featured: false,
@@ -75,7 +73,7 @@ export const seedMarketingCaseStudies: MarketingSeedCaseStudy[] = [
             { label: "Live campaigns", value: "14" },
           ],
           image: {
-            src: unsplash("photo-1481391319762-47dff72954d9"),
+            src: "/assets/case-studies/meta-ads-sugar-free-dessert-cold-start/doc-image.jpg",
             alt: "Premium dessert products representing a D2C sweets brand Meta Ads case study",
             url: "meta.com",
           },
@@ -144,7 +142,8 @@ export const seedMarketingCaseStudies: MarketingSeedCaseStudy[] = [
     tags: ["Meta Ads", "Nutrition", "Cold Start"],
     category: "marketing",
     lead: "No pixel, no purchase history, and a trust-heavy category. Xorora crossed 5,047 purchases in seven months at 4.01x average purchase ROAS.",
-    heroImage: unsplash("photo-1512621776951-a57141f2eefd"),
+    heroImage:
+      "/assets/case-studies/meta-ads-organic-nutrition-cold-start/doc-image.jpg",
     headerBg: "/assets/header-bg.jpg",
     heroUrl: "meta.com",
     featured: false,
@@ -175,7 +174,7 @@ export const seedMarketingCaseStudies: MarketingSeedCaseStudy[] = [
             { label: "Window", value: "Jan–Jul 2025" },
           ],
           image: {
-            src: unsplash("photo-1512621776951-a57141f2eefd"),
+            src: "/assets/case-studies/meta-ads-organic-nutrition-cold-start/doc-image.jpg",
             alt: "Fresh organic ingredients representing an organic nutrition Meta Ads case study",
             url: "meta.com",
           },
@@ -244,7 +243,8 @@ export const seedMarketingCaseStudies: MarketingSeedCaseStudy[] = [
     tags: ["Meta Ads", "Bakery", "WhatsApp"],
     category: "marketing",
     lead: "A local bakery with no online funnel. Xorora built purchase and WhatsApp conversion campaigns in parallel and drove Rs 7.18M in purchase value at 4.03x ROAS.",
-    heroImage: unsplash("photo-1509440159596-0249088772ff"),
+    heroImage:
+      "/assets/case-studies/meta-ads-home-bakery-nationwide/doc-image.jpg",
     headerBg: "/assets/header-bg.jpg",
     heroUrl: "meta.com",
     featured: false,
@@ -275,7 +275,7 @@ export const seedMarketingCaseStudies: MarketingSeedCaseStudy[] = [
             { label: "Window", value: "Jul 2024–Feb 2025" },
           ],
           image: {
-            src: unsplash("photo-1509440159596-0249088772ff"),
+            src: "/assets/case-studies/meta-ads-home-bakery-nationwide/doc-image.jpg",
             alt: "Fresh baked goods representing a home bakery Meta Ads case study",
             url: "meta.com",
           },
@@ -340,7 +340,8 @@ export const seedMarketingCaseStudies: MarketingSeedCaseStudy[] = [
     tags: ["Meta Ads", "Supplements", "Compliance"],
     category: "marketing",
     lead: "Xorora's strongest Meta return: 26.69x average purchase ROAS and Rs 156M in purchase value — built category by category in one of Meta's most tightly regulated ad classes.",
-    heroImage: unsplash("photo-1556228720-195a672e8a03"),
+    heroImage:
+      "/assets/case-studies/meta-ads-wellness-supplements-26x-roas/doc-image.jpg",
     headerBg: "/assets/header-bg.jpg",
     heroUrl: "meta.com",
     featured: false,
@@ -371,7 +372,7 @@ export const seedMarketingCaseStudies: MarketingSeedCaseStudy[] = [
             { label: "Window", value: "Jan–Jul 2025" },
           ],
           image: {
-            src: unsplash("photo-1556228720-195a672e8a03"),
+            src: "/assets/case-studies/meta-ads-wellness-supplements-26x-roas/doc-image.jpg",
             alt: "Wellness and skincare products representing a supplements Meta Ads case study",
             url: "meta.com",
           },
@@ -440,7 +441,8 @@ export const seedMarketingCaseStudies: MarketingSeedCaseStudy[] = [
     tags: ["Meta Ads", "Fashion", "Efficiency"],
     category: "marketing",
     lead: "A modest budget and no pixel history. Xorora proved the model with product-led creative and delivered 6.33x average purchase ROAS.",
-    heroImage: unsplash("photo-1590874103328-eac38a683ce7"),
+    heroImage:
+      "/assets/case-studies/meta-ads-fashion-accessories-launch/doc-image.jpg",
     headerBg: "/assets/header-bg.jpg",
     heroUrl: "meta.com",
     featured: false,
@@ -471,7 +473,7 @@ export const seedMarketingCaseStudies: MarketingSeedCaseStudy[] = [
             { label: "Budget profile", value: "Lean / efficiency-first" },
           ],
           image: {
-            src: unsplash("photo-1590874103328-eac38a683ce7"),
+            src: "/assets/case-studies/meta-ads-fashion-accessories-launch/doc-image.jpg",
             alt: "Fashion handbag representing a fashion accessories Meta Ads case study",
             url: "meta.com",
           },
@@ -536,7 +538,8 @@ export const seedMarketingCaseStudies: MarketingSeedCaseStudy[] = [
     tags: ["Google Ads", "Search", "Supplements"],
     category: "marketing",
     lead: "Eight product-family Search campaigns over two years: Rs 82.8M in tracked conversion value against Rs 790K spent.",
-    heroImage: unsplash("photo-1584308666744-24d5c474f2ae"),
+    heroImage:
+      "/assets/case-studies/google-ads-supplements-search-two-years/doc-image.jpg",
     headerBg: "/assets/header-bg.jpg",
     heroUrl: "ads.google.com",
     featured: false,
@@ -567,7 +570,7 @@ export const seedMarketingCaseStudies: MarketingSeedCaseStudy[] = [
             { label: "Window", value: "Sep 2023–Oct 2025" },
           ],
           image: {
-            src: unsplash("photo-1584308666744-24d5c474f2ae"),
+            src: "/assets/case-studies/google-ads-supplements-search-two-years/doc-image.jpg",
             alt: "Supplement capsules representing a Google Ads supplements search case study",
             url: "ads.google.com",
           },
@@ -632,7 +635,8 @@ export const seedMarketingCaseStudies: MarketingSeedCaseStudy[] = [
     tags: ["Google Ads", "B2B", "Marketplace"],
     category: "marketing",
     lead: "Intent-matched Search and category landing pages: revenue up 649.83% and transactions up 633.88% period-over-period.",
-    heroImage: unsplash("photo-1454165804606-c3d57bc86b40"),
+    heroImage:
+      "/assets/case-studies/google-ads-b2b-wholesale-marketplace-growth/doc-image.jpg",
     headerBg: "/assets/header-bg.jpg",
     heroUrl: "ads.google.com",
     featured: false,
@@ -663,7 +667,7 @@ export const seedMarketingCaseStudies: MarketingSeedCaseStudy[] = [
             { label: "Market", value: "Middle East" },
           ],
           image: {
-            src: unsplash("photo-1454165804606-c3d57bc86b40"),
+            src: "/assets/case-studies/google-ads-b2b-wholesale-marketplace-growth/doc-image.jpg",
             alt: "Business planning representing a B2B wholesale marketplace Google Ads case study",
             url: "ads.google.com",
           },
