@@ -1,5 +1,6 @@
 import { withUniqueIndustryImages } from "./apply-industry-images";
 import { seedIndustryCaseStudies } from "./industry-case-studies-data";
+import { seedMarketingCaseStudies } from "./marketing-case-studies-data";
 import type {
   CaseStudy,
   CaseStudyListItem,
@@ -10,11 +11,18 @@ import type {
 const FIXED_PUBLISHED_AT = new Date("2026-08-01T00:00:00.000Z");
 const FIXED_CREATED_AT = new Date("2026-08-01T00:00:00.000Z");
 
-const industryStudies = seedIndustryCaseStudies.map(withUniqueIndustryImages);
+type StaticSeedStudy =
+  | (typeof seedIndustryCaseStudies)[number]
+  | (typeof seedMarketingCaseStudies)[number];
 
-function toListItem(
-  study: (typeof industryStudies)[number],
-): CaseStudyListItem {
+const industryStudies = seedIndustryCaseStudies.map(withUniqueIndustryImages);
+const marketingStudies = seedMarketingCaseStudies;
+const staticStudies: StaticSeedStudy[] = [
+  ...marketingStudies,
+  ...industryStudies,
+];
+
+function toListItem(study: StaticSeedStudy): CaseStudyListItem {
   return {
     id: `static-${study.slug}`,
     slug: study.slug,
@@ -36,7 +44,7 @@ function toListItem(
   };
 }
 
-function toFullStudy(study: (typeof industryStudies)[number]): CaseStudy {
+function toFullStudy(study: StaticSeedStudy): CaseStudy {
   const metrics: CaseStudyMetric[] = study.metrics.map((metric, index) => ({
     id: `static-${study.slug}-metric-${index}`,
     value: metric.value,
@@ -65,7 +73,7 @@ function toFullStudy(study: (typeof industryStudies)[number]): CaseStudy {
 }
 
 export function listStaticIndustryCaseStudies(): CaseStudyListItem[] {
-  return industryStudies
+  return staticStudies
     .slice()
     .sort((a, b) => a.sortOrder - b.sortOrder)
     .map(toListItem);
@@ -74,11 +82,11 @@ export function listStaticIndustryCaseStudies(): CaseStudyListItem[] {
 export function getStaticIndustryCaseStudyBySlug(
   slug: string,
 ): CaseStudy | null {
-  const study = industryStudies.find((item) => item.slug === slug);
+  const study = staticStudies.find((item) => item.slug === slug);
   return study ? toFullStudy(study) : null;
 }
 
-/** Prefer DB rows; fill any missing static industry studies. */
+/** Prefer DB rows; fill any missing static industry/marketing studies. */
 export function mergeCaseStudyListItems(
   dbStudies: CaseStudyListItem[],
 ): CaseStudyListItem[] {

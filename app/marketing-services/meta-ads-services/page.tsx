@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RelatedCaseStudies } from "@/components/case-study/related-case-studies";
 import {
   META_ADS_FAQS,
   MetaAdsApproach,
@@ -115,6 +116,11 @@ export default function MetaAdsServicesPage() {
       <MetaAdsApproach />
       <MetaAdsChallenges />
       <MetaAdsWhy />
+      <RelatedCaseStudies
+        servicePath="/marketing-services/meta-ads-services"
+        title="Meta Ads case studies"
+        sub="Cold-start Meta accounts that turned into measurable purchase ROAS."
+      />
       <MetaAdsFaq />
       <MetaAdsContact />
     </div>

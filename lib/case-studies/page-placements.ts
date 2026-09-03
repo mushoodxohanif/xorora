@@ -9,10 +9,7 @@ export const INDUSTRY_CASE_STUDIES: Record<string, string[]> = {
     "legacy-tms-modernization-logistics",
     "carrier-rate-automation-logistics",
   ],
-  fintech: [
-    "fintech-compliance-automation",
-    "ml-credit-risk-scoring-fintech",
-  ],
+  fintech: ["fintech-compliance-automation", "ml-credit-risk-scoring-fintech"],
   "health-tech": [
     "ehr-interoperability-fhir-migration",
     "ai-clinical-documentation-healthcare",
@@ -24,16 +21,13 @@ export const INDUSTRY_CASE_STUDIES: Record<string, string[]> = {
   ecommerce: [
     "headless-commerce-migration",
     "ai-personalization-ecommerce",
+    "meta-ads-sugar-free-dessert-cold-start",
+    "meta-ads-home-bakery-nationwide",
+    "meta-ads-fashion-accessories-launch",
   ],
-  edtech: [
-    "adaptive-learning-platform-edtech",
-    "edtech-pilot-to-production",
-  ],
+  edtech: ["adaptive-learning-platform-edtech", "edtech-pilot-to-production"],
   saas: ["multi-tenant-saas-migration", "saas-onboarding-automation"],
-  startups: [
-    "startup-mvp-spreadsheet-to-saas",
-    "startup-staff-augmentation",
-  ],
+  startups: ["startup-mvp-spreadsheet-to-saas", "startup-staff-augmentation"],
   "travel-hospitality": [
     "independent-hotel-pms-modernization",
     "hotel-direct-booking-recovery",
@@ -144,5 +138,16 @@ export const SERVICE_CASE_STUDIES: Record<string, string[]> = {
     "edtech-pilot-to-production",
     "multi-tenant-saas-migration",
     "startup-mvp-spreadsheet-to-saas",
+  ],
+  "/marketing-services/meta-ads-services": [
+    "meta-ads-sugar-free-dessert-cold-start",
+    "meta-ads-organic-nutrition-cold-start",
+    "meta-ads-home-bakery-nationwide",
+    "meta-ads-wellness-supplements-26x-roas",
+    "meta-ads-fashion-accessories-launch",
+  ],
+  "/marketing-services/google-ads-services": [
+    "google-ads-supplements-search-two-years",
+    "google-ads-b2b-wholesale-marketplace-growth",
   ],
 };

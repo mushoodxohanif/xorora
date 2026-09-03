@@ -22,6 +22,7 @@ export const caseStudyStatusEnum = pgEnum("case_study_status", [
 export const caseStudyCategoryEnum = pgEnum("case_study_category", [
   "development",
   "amazon",
+  "marketing",
 ]);
 
 export const caseStudySectionTypeEnum = pgEnum("case_study_section_type", [

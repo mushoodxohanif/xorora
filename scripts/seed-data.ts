@@ -1,5 +1,6 @@
 import { withUniqueIndustryImageList } from "@/lib/case-studies/apply-industry-images";
 import { seedIndustryCaseStudies } from "@/lib/case-studies/industry-case-studies-data";
+import { seedMarketingCaseStudies } from "@/lib/case-studies/marketing-case-studies-data";
 import type {
   CaseStudyCategory,
   CaseStudySectionContent,
@@ -1161,5 +1162,6 @@ export const seedCaseStudies: SeedCaseStudy[] = [
       },
     ],
   },
+  ...seedMarketingCaseStudies,
   ...withUniqueIndustryImageList(seedIndustryCaseStudies),
 ];

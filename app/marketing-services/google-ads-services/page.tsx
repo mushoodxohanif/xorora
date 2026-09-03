@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RelatedCaseStudies } from "@/components/case-study/related-case-studies";
 import {
   GOOGLE_ADS_FAQS,
   GoogleAdsApproach,
@@ -117,6 +118,11 @@ export default function GoogleAdsServicesPage() {
       <GoogleAdsApproach />
       <GoogleAdsChallenge />
       <GoogleAdsMethodology />
+      <RelatedCaseStudies
+        servicePath="/marketing-services/google-ads-services"
+        title="Google Ads case studies"
+        sub="Search accounts built for conversion value — not just clicks."
+      />
       <GoogleAdsFaq />
       <GoogleAdsContact />
     </div>
